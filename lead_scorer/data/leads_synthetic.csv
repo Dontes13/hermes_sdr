@@ -1,0 +1,1001 @@
+company,city,website,phone,google_rating,google_reviews,intel_json,reply_prob,replied
+Synthetic Lead 0000,Miami,https://lead0.example.com,+1-555-0000000,3.828903953001282,18,"{""place_id"": ""synthetic_0000"", ""types"": [""point_of_interest"", ""establishment""]}",0.08463245289065673,0
+Synthetic Lead 0001,Tallahassee,https://lead1.example.com,+1-555-0000001,4.662178878593717,11,"{""place_id"": ""synthetic_0001"", ""types"": [""point_of_interest"", ""establishment""]}",0.11970639571390837,1
+Synthetic Lead 0002,Miami,https://lead2.example.com,+1-555-0000002,4.217305937092628,52,"{""place_id"": ""synthetic_0002"", ""types"": [""real_estate_agency""]}",0.3388498414471588,0
+Synthetic Lead 0003,Tallahassee,https://lead3.example.com,+1-555-0000003,4.058602125426215,15,"{""place_id"": ""synthetic_0003"", ""types"": [""real_estate_agency""]}",0.1185213676074303,0
+Synthetic Lead 0004,St. Petersburg,https://lead4.example.com,+1-555-0000004,,0,"{""place_id"": ""synthetic_0004"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0005,Orlando,https://lead5.example.com,+1-555-0000005,4.311561009203083,22,"{""place_id"": ""synthetic_0005"", ""types"": [""real_estate_agency""]}",0.19975773144598993,0
+Synthetic Lead 0006,Miami,,+1-555-0000006,4.50840709984489,153,"{""place_id"": ""synthetic_0006"", ""types"": [""real_estate_agency""]}",0.49356850522040907,1
+Synthetic Lead 0007,Orlando,,+1-555-0000007,3.7001438856653097,4,"{""place_id"": ""synthetic_0007"", ""types"": [""real_estate_agency"", ""finance""]}",0.01443815361631842,0
+Synthetic Lead 0008,Tampa,https://lead8.example.com,,3.6792061836893644,50,"{""place_id"": ""synthetic_0008"", ""types"": [""point_of_interest"", ""establishment""]}",0.13629168977371003,0
+Synthetic Lead 0009,Orlando,https://lead9.example.com,+1-555-0000009,4.752339607701265,2,"{""place_id"": ""synthetic_0009"", ""types"": [""insurance_agency""]}",0.03289663114672195,0
+Synthetic Lead 0010,Naples,,+1-555-0000010,3.993831563897635,26,"{""place_id"": ""synthetic_0010"", ""types"": [""real_estate_agency""]}",0.08504412794147345,0
+Synthetic Lead 0011,Orlando,https://lead11.example.com,+1-555-0000011,3.491578953701563,132,"{""place_id"": ""synthetic_0011"", ""types"": [""real_estate_agency""]}",0.3247177476126006,0
+Synthetic Lead 0012,Tallahassee,https://lead12.example.com,+1-555-0000012,4.4219063546915525,36,"{""place_id"": ""synthetic_0012"", ""types"": [""real_estate_agency""]}",0.312606050721795,0
+Synthetic Lead 0013,Miami,,+1-555-0000013,4.431684903016343,24,"{""place_id"": ""synthetic_0013"", ""types"": [""real_estate_agency""]}",0.12189287514871919,0
+Synthetic Lead 0014,Naples,https://lead14.example.com,+1-555-0000014,3.434642371371647,10,"{""place_id"": ""synthetic_0014"", ""types"": [""insurance_agency""]}",0.03680705093857462,0
+Synthetic Lead 0015,Orlando,,,4.314740857731803,20,"{""place_id"": ""synthetic_0015"", ""types"": [""real_estate_agency""]}",0.07762059647571132,0
+Synthetic Lead 0016,Tampa,https://lead16.example.com,+1-555-0000016,4.567791546214187,14,"{""place_id"": ""synthetic_0016"", ""types"": [""insurance_agency""]}",0.1351657368342639,0
+Synthetic Lead 0017,Jacksonville,https://lead17.example.com,+1-555-0000017,,0,"{""place_id"": ""synthetic_0017"", ""types"": [""real_estate_agency"", ""finance""]}",0.000552778636923599,0
+Synthetic Lead 0018,Miami,,+1-555-0000018,4.515990741880698,14,"{""place_id"": ""synthetic_0018"", ""types"": [""real_estate_agency""]}",0.0825526790455421,0
+Synthetic Lead 0019,St. Petersburg,https://lead19.example.com,+1-555-0000019,3.4978654509546256,25,"{""place_id"": ""synthetic_0019"", ""types"": [""real_estate_agency""]}",0.10419212223959676,0
+Synthetic Lead 0020,Orlando,https://lead20.example.com,+1-555-0000020,4.365520077498098,7,"{""place_id"": ""synthetic_0020"", ""types"": [""real_estate_agency""]}",0.0838456809099116,0
+Synthetic Lead 0021,Jacksonville,https://lead21.example.com,+1-555-0000021,4.0486901202647765,7,"{""place_id"": ""synthetic_0021"", ""types"": [""real_estate_agency""]}",0.0641561173190113,0
+Synthetic Lead 0022,Jacksonville,https://lead22.example.com,,3.958604920637678,3,"{""place_id"": ""synthetic_0022"", ""types"": [""insurance_agency""]}",0.01952262981767532,0
+Synthetic Lead 0023,Jacksonville,https://lead23.example.com,+1-555-0000023,4.6352778047098635,32,"{""place_id"": ""synthetic_0023"", ""types"": [""real_estate_agency"", ""finance""]}",0.33984992181818985,0
+Synthetic Lead 0024,Miami,https://lead24.example.com,+1-555-0000024,4.939637255337115,38,"{""place_id"": ""synthetic_0024"", ""types"": [""point_of_interest"", ""establishment""]}",0.3918669714156855,0
+Synthetic Lead 0025,Miami,https://lead25.example.com,,5.0,26,"{""place_id"": ""synthetic_0025"", ""types"": [""insurance_agency""]}",0.2739686628360039,1
+Synthetic Lead 0026,Miami,https://lead26.example.com,+1-555-0000026,4.857403935752953,63,"{""place_id"": ""synthetic_0026"", ""types"": [""real_estate_agency""]}",0.5745055123251267,1
+Synthetic Lead 0027,Orlando,https://lead27.example.com,+1-555-0000027,,0,"{""place_id"": ""synthetic_0027"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0028,Miami,,+1-555-0000028,4.376360081513171,32,"{""place_id"": ""synthetic_0028"", ""types"": [""real_estate_agency""]}",0.14740385035594628,1
+Synthetic Lead 0029,Naples,https://lead29.example.com,+1-555-0000029,4.583411435892122,28,"{""place_id"": ""synthetic_0029"", ""types"": [""real_estate_agency""]}",0.29810369876054116,0
+Synthetic Lead 0030,Jacksonville,https://lead30.example.com,+1-555-0000030,4.260588974649731,17,"{""place_id"": ""synthetic_0030"", ""types"": [""point_of_interest"", ""establishment""]}",0.1208066406974217,0
+Synthetic Lead 0031,Fort Lauderdale,https://lead31.example.com,+1-555-0000031,4.265382093955773,10,"{""place_id"": ""synthetic_0031"", ""types"": [""real_estate_agency""]}",0.10272411640054264,0
+Synthetic Lead 0032,Tampa,https://lead32.example.com,+1-555-0000032,4.611876565938092,286,"{""place_id"": ""synthetic_0032"", ""types"": [""real_estate_agency""]}",0.8267933974874604,0
+Synthetic Lead 0033,Orlando,https://lead33.example.com,,4.170358676987034,11,"{""place_id"": ""synthetic_0033"", ""types"": [""real_estate_agency""]}",0.08520618584749813,0
+Synthetic Lead 0034,Jacksonville,https://lead34.example.com,+1-555-0000034,3.8353565318131695,9,"{""place_id"": ""synthetic_0034"", ""types"": [""real_estate_agency""]}",0.0648763217364268,0
+Synthetic Lead 0035,Orlando,https://lead35.example.com,+1-555-0000035,3.992763467082071,33,"{""place_id"": ""synthetic_0035"", ""types"": [""point_of_interest"", ""establishment""]}",0.1600135562686973,0
+Synthetic Lead 0036,Orlando,,+1-555-0000036,4.516955188866872,27,"{""place_id"": ""synthetic_0036"", ""types"": [""real_estate_agency""]}",0.1460601119157119,0
+Synthetic Lead 0037,Tampa,,+1-555-0000037,4.2014966455999785,3,"{""place_id"": ""synthetic_0037"", ""types"": [""real_estate_agency""]}",0.017632488991415275,0
+Synthetic Lead 0038,Jacksonville,https://lead38.example.com,+1-555-0000038,4.370104988434169,77,"{""place_id"": ""synthetic_0038"", ""types"": [""real_estate_agency""]}",0.4757196946704155,0
+Synthetic Lead 0039,Naples,,+1-555-0000039,4.535039621101095,17,"{""place_id"": ""synthetic_0039"", ""types"": [""real_estate_agency"", ""finance""]}",0.09964694814336417,0
+Synthetic Lead 0040,Orlando,,+1-555-0000040,4.012579268551195,5,"{""place_id"": ""synthetic_0040"", ""types"": [""insurance_agency""]}",0.016513915663847047,0
+Synthetic Lead 0041,Tampa,https://lead41.example.com,+1-555-0000041,4.578124081814903,83,"{""place_id"": ""synthetic_0041"", ""types"": [""insurance_agency""]}",0.4851005854344728,1
+Synthetic Lead 0042,Miami,https://lead42.example.com,+1-555-0000042,4.389421301729198,42,"{""place_id"": ""synthetic_0042"", ""types"": [""real_estate_agency""]}",0.3377128170635103,0
+Synthetic Lead 0043,Orlando,https://lead43.example.com,+1-555-0000043,3.5825934565442608,4,"{""place_id"": ""synthetic_0043"", ""types"": [""real_estate_agency""]}",0.0286858383512905,0
+Synthetic Lead 0044,Fort Lauderdale,https://lead44.example.com,+1-555-0000044,4.921152395593122,169,"{""place_id"": ""synthetic_0044"", ""types"": [""point_of_interest"", ""establishment""]}",0.7579233610041285,0
+Synthetic Lead 0045,Miami,https://lead45.example.com,+1-555-0000045,3.949627628121542,44,"{""place_id"": ""synthetic_0045"", ""types"": [""real_estate_agency""]}",0.24183293070765172,0
+Synthetic Lead 0046,Jacksonville,https://lead46.example.com,+1-555-0000046,3.3724523284074084,19,"{""place_id"": ""synthetic_0046"", ""types"": [""real_estate_agency""]}",0.07498112933400318,0
+Synthetic Lead 0047,Tampa,https://lead47.example.com,+1-555-0000047,3.677478145206849,135,"{""place_id"": ""synthetic_0047"", ""types"": [""insurance_agency""]}",0.3177444705435319,0
+Synthetic Lead 0048,Miami,,+1-555-0000048,3.689477419660839,24,"{""place_id"": ""synthetic_0048"", ""types"": [""real_estate_agency""]}",0.05850749296502286,0
+Synthetic Lead 0049,Naples,,+1-555-0000049,4.226086659328767,19,"{""place_id"": ""synthetic_0049"", ""types"": [""real_estate_agency""]}",0.0818999433846492,0
+Synthetic Lead 0050,Tampa,https://lead50.example.com,,4.0630747472268816,9,"{""place_id"": ""synthetic_0050"", ""types"": [""real_estate_agency"", ""finance""]}",0.0658096295149433,0
+Synthetic Lead 0051,St. Petersburg,https://lead51.example.com,+1-555-0000051,,0,"{""place_id"": ""synthetic_0051"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0052,Tampa,https://lead52.example.com,+1-555-0000052,4.50985098274124,35,"{""place_id"": ""synthetic_0052"", ""types"": [""real_estate_agency""]}",0.3283433702542531,1
+Synthetic Lead 0053,Naples,https://lead53.example.com,+1-555-0000053,4.369937680596352,20,"{""place_id"": ""synthetic_0053"", ""types"": [""real_estate_agency""]}",0.19516396211033893,1
+Synthetic Lead 0054,Orlando,,+1-555-0000054,4.3580239353221435,7,"{""place_id"": ""synthetic_0054"", ""types"": [""real_estate_agency"", ""finance""]}",0.0392394460224108,0
+Synthetic Lead 0055,Tampa,,+1-555-0000055,4.404914228664347,23,"{""place_id"": ""synthetic_0055"", ""types"": [""real_estate_agency""]}",0.11457131584758978,0
+Synthetic Lead 0056,St. Petersburg,,+1-555-0000056,4.50806733400112,18,"{""place_id"": ""synthetic_0056"", ""types"": [""real_estate_agency""]}",0.10215129458579798,0
+Synthetic Lead 0057,Orlando,,+1-555-0000057,3.1460233291112787,4,"{""place_id"": ""synthetic_0057"", ""types"": [""insurance_agency""]}",0.006762458458285159,0
+Synthetic Lead 0058,Tampa,,+1-555-0000058,4.017780873867769,3,"{""place_id"": ""synthetic_0058"", ""types"": [""insurance_agency""]}",0.011332824578160556,0
+Synthetic Lead 0059,Naples,https://lead59.example.com,+1-555-0000059,3.109894967755263,39,"{""place_id"": ""synthetic_0059"", ""types"": [""point_of_interest"", ""establishment""]}",0.07431982424610588,0
+Synthetic Lead 0060,Jacksonville,https://lead60.example.com,+1-555-0000060,4.218029963398898,0,"{""place_id"": ""synthetic_0060"", ""types"": [""real_estate_agency""]}",0.010260075355196073,0
+Synthetic Lead 0061,Fort Lauderdale,https://lead61.example.com,+1-555-0000061,4.197683513887828,25,"{""place_id"": ""synthetic_0061"", ""types"": [""real_estate_agency""]}",0.19947363669869186,0
+Synthetic Lead 0062,Fort Lauderdale,https://lead62.example.com,+1-555-0000062,4.72276613739484,11,"{""place_id"": ""synthetic_0062"", ""types"": [""insurance_agency""]}",0.1260573225044283,0
+Synthetic Lead 0063,Tallahassee,https://lead63.example.com,+1-555-0000063,4.7938171963605605,96,"{""place_id"": ""synthetic_0063"", ""types"": [""insurance_agency""]}",0.5907310658528975,1
+Synthetic Lead 0064,Tallahassee,https://lead64.example.com,,4.301387524126183,11,"{""place_id"": ""synthetic_0064"", ""types"": [""real_estate_agency""]}",0.09568050193965667,1
+Synthetic Lead 0065,Jacksonville,,+1-555-0000065,3.9498194613015505,44,"{""place_id"": ""synthetic_0065"", ""types"": [""insurance_agency""]}",0.09600426593748948,0
+Synthetic Lead 0066,Orlando,https://lead66.example.com,+1-555-0000066,4.442580556272869,12,"{""place_id"": ""synthetic_0066"", ""types"": [""real_estate_agency""]}",0.1385399119244623,0
+Synthetic Lead 0067,Miami,,+1-555-0000067,3.9360411813378433,23,"{""place_id"": ""synthetic_0067"", ""types"": [""real_estate_agency"", ""finance""]}",0.07244571235435703,0
+Synthetic Lead 0068,Jacksonville,,+1-555-0000068,,0,"{""place_id"": ""synthetic_0068"", ""types"": [""real_estate_agency"", ""finance""]}",0.00024845508183933427,0
+Synthetic Lead 0069,Tallahassee,https://lead69.example.com,,4.693068158480384,11,"{""place_id"": ""synthetic_0069"", ""types"": [""real_estate_agency""]}",0.13410200906277064,0
+Synthetic Lead 0070,Tampa,https://lead70.example.com,+1-555-0000070,3.9211143270052884,66,"{""place_id"": ""synthetic_0070"", ""types"": [""point_of_interest"", ""establishment""]}",0.2492480130419654,1
+Synthetic Lead 0071,Miami,https://lead71.example.com,+1-555-0000071,4.602839319621251,6,"{""place_id"": ""synthetic_0071"", ""types"": [""point_of_interest"", ""establishment""]}",0.06826055766789228,0
+Synthetic Lead 0072,Orlando,https://lead72.example.com,+1-555-0000072,4.538700684346152,28,"{""place_id"": ""synthetic_0072"", ""types"": [""real_estate_agency""]}",0.28786951291225454,0
+Synthetic Lead 0073,Jacksonville,https://lead73.example.com,,3.7226040914345893,60,"{""place_id"": ""synthetic_0073"", ""types"": [""real_estate_agency""]}",0.20880257907857624,0
+Synthetic Lead 0074,Tallahassee,,+1-555-0000074,,0,"{""place_id"": ""synthetic_0074"", ""types"": [""insurance_agency""]}",0.00018407190496342368,0
+Synthetic Lead 0075,Miami,https://lead75.example.com,+1-555-0000075,4.549283172685753,200,"{""place_id"": ""synthetic_0075"", ""types"": [""real_estate_agency""]}",0.7511326022153479,0
+Synthetic Lead 0076,Jacksonville,https://lead76.example.com,+1-555-0000076,4.2509629436863285,8,"{""place_id"": ""synthetic_0076"", ""types"": [""real_estate_agency""]}",0.08476131875236172,0
+Synthetic Lead 0077,St. Petersburg,https://lead77.example.com,+1-555-0000077,3.818838270986174,3,"{""place_id"": ""synthetic_0077"", ""types"": [""real_estate_agency""]}",0.028487495129366037,0
+Synthetic Lead 0078,Naples,https://lead78.example.com,+1-555-0000078,3.7703969907122152,6,"{""place_id"": ""synthetic_0078"", ""types"": [""point_of_interest"", ""establishment""]}",0.033693856299141775,0
+Synthetic Lead 0079,Miami,https://lead79.example.com,+1-555-0000079,3.931168711548489,44,"{""place_id"": ""synthetic_0079"", ""types"": [""real_estate_agency""]}",0.23789190180616063,0
+Synthetic Lead 0080,Naples,https://lead80.example.com,+1-555-0000080,4.4712972316459805,36,"{""place_id"": ""synthetic_0080"", ""types"": [""real_estate_agency"", ""finance""]}",0.3248486949162966,0
+Synthetic Lead 0081,Jacksonville,https://lead81.example.com,+1-555-0000081,3.722187416299301,22,"{""place_id"": ""synthetic_0081"", ""types"": [""real_estate_agency""]}",0.11726072534778192,0
+Synthetic Lead 0082,St. Petersburg,https://lead82.example.com,,4.418756124309935,5,"{""place_id"": ""synthetic_0082"", ""types"": [""real_estate_agency""]}",0.055512811425841246,0
+Synthetic Lead 0083,Miami,https://lead83.example.com,+1-555-0000083,3.5791222355608037,50,"{""place_id"": ""synthetic_0083"", ""types"": [""point_of_interest"", ""establishment""]}",0.14610096899952013,0
+Synthetic Lead 0084,Jacksonville,https://lead84.example.com,+1-555-0000084,,0,"{""place_id"": ""synthetic_0084"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0085,Fort Lauderdale,https://lead85.example.com,,,0,"{""place_id"": ""synthetic_0085"", ""types"": [""real_estate_agency""]}",0.00045262222324053464,0
+Synthetic Lead 0086,Orlando,https://lead86.example.com,+1-555-0000086,5.0,619,"{""place_id"": ""synthetic_0086"", ""types"": [""real_estate_agency""]}",0.951325056835945,1
+Synthetic Lead 0087,Tampa,https://lead87.example.com,,3.5113421722398166,31,"{""place_id"": ""synthetic_0087"", ""types"": [""real_estate_agency"", ""finance""]}",0.10388544677067788,0
+Synthetic Lead 0088,Jacksonville,https://lead88.example.com,+1-555-0000088,4.9360072832450665,40,"{""place_id"": ""synthetic_0088"", ""types"": [""real_estate_agency""]}",0.47773658309413936,0
+Synthetic Lead 0089,Jacksonville,https://lead89.example.com,,4.27492120699364,11,"{""place_id"": ""synthetic_0089"", ""types"": [""real_estate_agency""]}",0.093475987988749,0
+Synthetic Lead 0090,Miami,https://lead90.example.com,+1-555-0000090,4.405585959007982,2,"{""place_id"": ""synthetic_0090"", ""types"": [""real_estate_agency""]}",0.03402213779718119,0
+Synthetic Lead 0091,Tampa,https://lead91.example.com,+1-555-0000091,4.259173956694102,9,"{""place_id"": ""synthetic_0091"", ""types"": [""real_estate_agency""]}",0.09384853881189438,0
+Synthetic Lead 0092,Orlando,https://lead92.example.com,+1-555-0000092,4.422363409097617,5,"{""place_id"": ""synthetic_0092"", ""types"": [""real_estate_agency""]}",0.06717638163688153,0
+Synthetic Lead 0093,Naples,https://lead93.example.com,+1-555-0000093,4.123157447818992,3,"{""place_id"": ""synthetic_0093"", ""types"": [""insurance_agency""]}",0.027027103853279204,0
+Synthetic Lead 0094,Naples,,,4.927025090728729,158,"{""place_id"": ""synthetic_0094"", ""types"": [""real_estate_agency""]}",0.5930345223117384,1
+Synthetic Lead 0095,Orlando,https://lead95.example.com,+1-555-0000095,3.971764427887639,27,"{""place_id"": ""synthetic_0095"", ""types"": [""real_estate_agency""]}",0.17286455898037892,0
+Synthetic Lead 0096,Miami,,+1-555-0000096,4.766117286089624,31,"{""place_id"": ""synthetic_0096"", ""types"": [""insurance_agency""]}",0.16116214025555725,0
+Synthetic Lead 0097,Orlando,https://lead97.example.com,+1-555-0000097,,0,"{""place_id"": ""synthetic_0097"", ""types"": [""real_estate_agency"", ""finance""]}",0.000552778636923599,0
+Synthetic Lead 0098,Tampa,https://lead98.example.com,+1-555-0000098,4.169874076799356,16,"{""place_id"": ""synthetic_0098"", ""types"": [""real_estate_agency""]}",0.13772331960687953,0
+Synthetic Lead 0099,Tallahassee,https://lead99.example.com,+1-555-0000099,3.6640187238548907,63,"{""place_id"": ""synthetic_0099"", ""types"": [""real_estate_agency""]}",0.2386226133757264,0
+Synthetic Lead 0100,Jacksonville,,+1-555-0000100,4.42751186017376,19,"{""place_id"": ""synthetic_0100"", ""types"": [""real_estate_agency""]}",0.09926298759500891,0
+Synthetic Lead 0101,Miami,,+1-555-0000101,4.922562978463267,37,"{""place_id"": ""synthetic_0101"", ""types"": [""point_of_interest"", ""establishment""]}",0.21629829608226064,1
+Synthetic Lead 0102,Miami,https://lead102.example.com,,4.1613219100895735,15,"{""place_id"": ""synthetic_0102"", ""types"": [""real_estate_agency""]}",0.1088874778233528,0
+Synthetic Lead 0103,Orlando,,+1-555-0000103,4.101557150648046,13,"{""place_id"": ""synthetic_0103"", ""types"": [""real_estate_agency""]}",0.05256245313499546,0
+Synthetic Lead 0104,Tallahassee,https://lead104.example.com,+1-555-0000104,3.642691518466037,3,"{""place_id"": ""synthetic_0104"", ""types"": [""real_estate_agency""]}",0.02480225581112539,0
+Synthetic Lead 0105,Fort Lauderdale,https://lead105.example.com,+1-555-0000105,4.085353673223846,1,"{""place_id"": ""synthetic_0105"", ""types"": [""real_estate_agency""]}",0.018317274748889004,0
+Synthetic Lead 0106,Jacksonville,https://lead106.example.com,+1-555-0000106,3.4036028701392365,14,"{""place_id"": ""synthetic_0106"", ""types"": [""real_estate_agency""]}",0.061372802881758996,0
+Synthetic Lead 0107,Orlando,,+1-555-0000107,3.7435610066405864,21,"{""place_id"": ""synthetic_0107"", ""types"": [""real_estate_agency""]}",0.05539525515034913,0
+Synthetic Lead 0108,Naples,https://lead108.example.com,+1-555-0000108,,0,"{""place_id"": ""synthetic_0108"", ""types"": [""insurance_agency""]}",0.00040956716498605005,0
+Synthetic Lead 0109,Orlando,,+1-555-0000109,4.8595065988706985,19,"{""place_id"": ""synthetic_0109"", ""types"": [""insurance_agency""]}",0.11383807675464852,0
+Synthetic Lead 0110,Tallahassee,https://lead110.example.com,+1-555-0000110,5.0,21,"{""place_id"": ""synthetic_0110"", ""types"": [""real_estate_agency"", ""finance""]}",0.3318447536232695,0
+Synthetic Lead 0111,Tallahassee,https://lead111.example.com,+1-555-0000111,3.9067074574645497,1,"{""place_id"": ""synthetic_0111"", ""types"": [""real_estate_agency"", ""finance""]}",0.016187666696540304,0
+Synthetic Lead 0112,Tampa,https://lead112.example.com,+1-555-0000112,4.91765007832272,6,"{""place_id"": ""synthetic_0112"", ""types"": [""real_estate_agency""]}",0.11578700678006479,0
+Synthetic Lead 0113,Tallahassee,,+1-555-0000113,4.321876240200824,32,"{""place_id"": ""synthetic_0113"", ""types"": [""point_of_interest"", ""establishment""]}",0.10751535194080256,0
+Synthetic Lead 0114,Orlando,https://lead114.example.com,+1-555-0000114,4.1243761766268126,31,"{""place_id"": ""synthetic_0114"", ""types"": [""real_estate_agency"", ""finance""]}",0.2195540678496348,0
+Synthetic Lead 0115,Fort Lauderdale,https://lead115.example.com,+1-555-0000115,4.416297225863076,5,"{""place_id"": ""synthetic_0115"", ""types"": [""real_estate_agency"", ""finance""]}",0.0668468911086,0
+Synthetic Lead 0116,Miami,https://lead116.example.com,+1-555-0000116,4.230958241839979,24,"{""place_id"": ""synthetic_0116"", ""types"": [""real_estate_agency"", ""finance""]}",0.19909198700508524,0
+Synthetic Lead 0117,Tampa,https://lead117.example.com,+1-555-0000117,4.255197862806109,68,"{""place_id"": ""synthetic_0117"", ""types"": [""real_estate_agency""]}",0.4103787510954241,0
+Synthetic Lead 0118,Orlando,https://lead118.example.com,+1-555-0000118,3.9958334185866655,51,"{""place_id"": ""synthetic_0118"", ""types"": [""real_estate_agency""]}",0.27862589006546096,0
+Synthetic Lead 0119,Miami,https://lead119.example.com,+1-555-0000119,3.5009451701005747,17,"{""place_id"": ""synthetic_0119"", ""types"": [""real_estate_agency""]}",0.07799198685109461,0
+Synthetic Lead 0120,Miami,https://lead120.example.com,+1-555-0000120,3.4281873987389595,11,"{""place_id"": ""synthetic_0120"", ""types"": [""real_estate_agency""]}",0.05237341638812046,0
+Synthetic Lead 0121,Orlando,https://lead121.example.com,,4.526622441640614,9,"{""place_id"": ""synthetic_0121"", ""types"": [""real_estate_agency""]}",0.09843978891278324,0
+Synthetic Lead 0122,Jacksonville,https://lead122.example.com,+1-555-0000122,,0,"{""place_id"": ""synthetic_0122"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0123,Tampa,,+1-555-0000123,3.901955550171917,25,"{""place_id"": ""synthetic_0123"", ""types"": [""real_estate_agency""]}",0.07505238957666623,0
+Synthetic Lead 0124,Orlando,https://lead124.example.com,+1-555-0000124,,0,"{""place_id"": ""synthetic_0124"", ""types"": [""point_of_interest"", ""establishment""]}",0.00040956716498605005,0
+Synthetic Lead 0125,Naples,,+1-555-0000125,4.597466126457814,23,"{""place_id"": ""synthetic_0125"", ""types"": [""real_estate_agency"", ""finance""]}",0.13734103990766508,0
+Synthetic Lead 0126,Naples,,+1-555-0000126,4.290181971513199,53,"{""place_id"": ""synthetic_0126"", ""types"": [""insurance_agency""]}",0.15939636505530144,0
+Synthetic Lead 0127,Miami,https://lead127.example.com,,3.8719725316795164,22,"{""place_id"": ""synthetic_0127"", ""types"": [""real_estate_agency""]}",0.11321525231945367,0
+Synthetic Lead 0128,Tampa,https://lead128.example.com,+1-555-0000128,4.813146477824475,51,"{""place_id"": ""synthetic_0128"", ""types"": [""insurance_agency""]}",0.43131460820069,0
+Synthetic Lead 0129,Fort Lauderdale,https://lead129.example.com,+1-555-0000129,4.989592751490816,57,"{""place_id"": ""synthetic_0129"", ""types"": [""point_of_interest"", ""establishment""]}",0.5134728020100165,0
+Synthetic Lead 0130,St. Petersburg,https://lead130.example.com,+1-555-0000130,4.447278327661427,7,"{""place_id"": ""synthetic_0130"", ""types"": [""real_estate_agency"", ""finance""]}",0.0897533569967219,0
+Synthetic Lead 0131,Tampa,https://lead131.example.com,+1-555-0000131,4.686831755672046,2,"{""place_id"": ""synthetic_0131"", ""types"": [""insurance_agency""]}",0.03133949712354559,0
+Synthetic Lead 0132,St. Petersburg,https://lead132.example.com,+1-555-0000132,4.820979998406906,128,"{""place_id"": ""synthetic_0132"", ""types"": [""real_estate_agency""]}",0.7326052724451131,1
+Synthetic Lead 0133,Miami,https://lead133.example.com,+1-555-0000133,4.765049658202257,27,"{""place_id"": ""synthetic_0133"", ""types"": [""real_estate_agency""]}",0.33337034511243985,0
+Synthetic Lead 0134,Orlando,https://lead134.example.com,+1-555-0000134,4.5070495885563115,2,"{""place_id"": ""synthetic_0134"", ""types"": [""real_estate_agency"", ""finance""]}",0.036666683586910755,1
+Synthetic Lead 0135,Fort Lauderdale,,,,0,"{""place_id"": ""synthetic_0135"", ""types"": [""point_of_interest"", ""establishment""]}",0.0001507103580597574,0
+Synthetic Lead 0136,Fort Lauderdale,https://lead136.example.com,+1-555-0000136,4.4598302866732515,50,"{""place_id"": ""synthetic_0136"", ""types"": [""real_estate_agency""]}",0.3970740496596782,0
+Synthetic Lead 0137,Tallahassee,https://lead137.example.com,,3.6513311627264784,14,"{""place_id"": ""synthetic_0137"", ""types"": [""real_estate_agency""]}",0.06427291654377426,0
+Synthetic Lead 0138,Miami,,+1-555-0000138,4.5503615784297935,10,"{""place_id"": ""synthetic_0138"", ""types"": [""real_estate_agency""]}",0.0633386464672573,0
+Synthetic Lead 0139,Miami,https://lead139.example.com,+1-555-0000139,,0,"{""place_id"": ""synthetic_0139"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0140,Miami,https://lead140.example.com,+1-555-0000140,3.8027002724374728,5,"{""place_id"": ""synthetic_0140"", ""types"": [""point_of_interest"", ""establishment""]}",0.03020036760264985,1
+Synthetic Lead 0141,Miami,,+1-555-0000141,4.851782533904044,7,"{""place_id"": ""synthetic_0141"", ""types"": [""real_estate_agency"", ""finance""]}",0.06021236400366945,0
+Synthetic Lead 0142,Miami,https://lead142.example.com,,4.620110081347099,25,"{""place_id"": ""synthetic_0142"", ""types"": [""real_estate_agency""]}",0.24421915213853743,0
+Synthetic Lead 0143,Jacksonville,https://lead143.example.com,+1-555-0000143,4.943699144842931,32,"{""place_id"": ""synthetic_0143"", ""types"": [""real_estate_agency""]}",0.4213703127136599,0
+Synthetic Lead 0144,Jacksonville,https://lead144.example.com,,4.064162808156354,36,"{""place_id"": ""synthetic_0144"", ""types"": [""real_estate_agency""]}",0.19839160810639708,0
+Synthetic Lead 0145,Fort Lauderdale,,+1-555-0000145,3.6238755793616164,59,"{""place_id"": ""synthetic_0145"", ""types"": [""real_estate_agency""]}",0.11234139957002201,0
+Synthetic Lead 0146,Tampa,https://lead146.example.com,+1-555-0000146,4.079781401464829,25,"{""place_id"": ""synthetic_0146"", ""types"": [""insurance_agency""]}",0.13968014410204116,0
+Synthetic Lead 0147,Miami,https://lead147.example.com,+1-555-0000147,4.251015648620287,36,"{""place_id"": ""synthetic_0147"", ""types"": [""real_estate_agency"", ""finance""]}",0.272285221457347,0
+Synthetic Lead 0148,Fort Lauderdale,https://lead148.example.com,+1-555-0000148,4.239494358170005,14,"{""place_id"": ""synthetic_0148"", ""types"": [""real_estate_agency"", ""finance""]}",0.13165876742161908,0
+Synthetic Lead 0149,Miami,https://lead149.example.com,,,0,"{""place_id"": ""synthetic_0149"", ""types"": [""real_estate_agency""]}",0.00045262222324053464,0
+Synthetic Lead 0150,Tallahassee,https://lead150.example.com,+1-555-0000150,4.019364787498278,22,"{""place_id"": ""synthetic_0150"", ""types"": [""real_estate_agency"", ""finance""]}",0.1543929369941438,0
+Synthetic Lead 0151,Miami,https://lead151.example.com,+1-555-0000151,4.376017235901462,26,"{""place_id"": ""synthetic_0151"", ""types"": [""real_estate_agency"", ""finance""]}",0.23913077560358764,0
+Synthetic Lead 0152,Jacksonville,,+1-555-0000152,3.705686425282697,50,"{""place_id"": ""synthetic_0152"", ""types"": [""real_estate_agency""]}",0.10765393533498716,0
+Synthetic Lead 0153,Tallahassee,https://lead153.example.com,+1-555-0000153,4.425158639021907,39,"{""place_id"": ""synthetic_0153"", ""types"": [""insurance_agency""]}",0.2679172303666806,1
+Synthetic Lead 0154,Jacksonville,https://lead154.example.com,+1-555-0000154,4.2015542750928185,21,"{""place_id"": ""synthetic_0154"", ""types"": [""insurance_agency""]}",0.13597564348896474,0
+Synthetic Lead 0155,Jacksonville,https://lead155.example.com,+1-555-0000155,3.8250933308577415,7,"{""place_id"": ""synthetic_0155"", ""types"": [""real_estate_agency"", ""finance""]}",0.05294864867917672,0
+Synthetic Lead 0156,Fort Lauderdale,https://lead156.example.com,+1-555-0000156,4.082085318912574,21,"{""place_id"": ""synthetic_0156"", ""types"": [""real_estate_agency""]}",0.1575994273000385,0
+Synthetic Lead 0157,Miami,https://lead157.example.com,+1-555-0000157,4.10791212674239,19,"{""place_id"": ""synthetic_0157"", ""types"": [""real_estate_agency""]}",0.14920935663707263,0
+Synthetic Lead 0158,Fort Lauderdale,https://lead158.example.com,+1-555-0000158,4.064922435331452,25,"{""place_id"": ""synthetic_0158"", ""types"": [""real_estate_agency""]}",0.17739076177464524,0
+Synthetic Lead 0159,Tallahassee,https://lead159.example.com,+1-555-0000159,5.0,283,"{""place_id"": ""synthetic_0159"", ""types"": [""real_estate_agency""]}",0.8922441380723488,1
+Synthetic Lead 0160,Naples,https://lead160.example.com,+1-555-0000160,4.1507769988460606,10,"{""place_id"": ""synthetic_0160"", ""types"": [""real_estate_agency""]}",0.09302039667397961,0
+Synthetic Lead 0161,Tampa,https://lead161.example.com,+1-555-0000161,4.078051944911332,33,"{""place_id"": ""synthetic_0161"", ""types"": [""real_estate_agency"", ""finance""]}",0.22065723341687812,1
+Synthetic Lead 0162,Orlando,https://lead162.example.com,,3.1512745211949293,72,"{""place_id"": ""synthetic_0162"", ""types"": [""real_estate_agency""]}",0.13244491850622672,0
+Synthetic Lead 0163,St. Petersburg,https://lead163.example.com,+1-555-0000163,,0,"{""place_id"": ""synthetic_0163"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0164,Jacksonville,,+1-555-0000164,4.068463287771824,332,"{""place_id"": ""synthetic_0164"", ""types"": [""point_of_interest"", ""establishment""]}",0.454739240232893,0
+Synthetic Lead 0165,Orlando,,+1-555-0000165,3.857073661911679,12,"{""place_id"": ""synthetic_0165"", ""types"": [""insurance_agency""]}",0.029197392962450223,0
+Synthetic Lead 0166,Miami,,+1-555-0000166,4.890853796688899,29,"{""place_id"": ""synthetic_0166"", ""types"": [""real_estate_agency""]}",0.21757494606979408,0
+Synthetic Lead 0167,Miami,,+1-555-0000167,4.117531112301891,7,"{""place_id"": ""synthetic_0167"", ""types"": [""insurance_agency""]}",0.02372182602576824,1
+Synthetic Lead 0168,Tampa,https://lead168.example.com,+1-555-0000168,4.844222124659126,13,"{""place_id"": ""synthetic_0168"", ""types"": [""real_estate_agency""]}",0.20551588298627174,0
+Synthetic Lead 0169,Miami,,+1-555-0000169,4.230852317025184,27,"{""place_id"": ""synthetic_0169"", ""types"": [""real_estate_agency""]}",0.11100589905722312,0
+Synthetic Lead 0170,Miami,https://lead170.example.com,+1-555-0000170,4.218613918210789,55,"{""place_id"": ""synthetic_0170"", ""types"": [""real_estate_agency"", ""finance""]}",0.35143262967735095,0
+Synthetic Lead 0171,Miami,https://lead171.example.com,+1-555-0000171,4.15560177614375,29,"{""place_id"": ""synthetic_0171"", ""types"": [""real_estate_agency""]}",0.21481931755172973,0
+Synthetic Lead 0172,Naples,https://lead172.example.com,+1-555-0000172,4.20189812581073,91,"{""place_id"": ""synthetic_0172"", ""types"": [""real_estate_agency""]}",0.4635097718112818,1
+Synthetic Lead 0173,Miami,https://lead173.example.com,+1-555-0000173,5.0,17,"{""place_id"": ""synthetic_0173"", ""types"": [""real_estate_agency""]}",0.28483747577260005,1
+Synthetic Lead 0174,Miami,https://lead174.example.com,+1-555-0000174,3.040194636624391,13,"{""place_id"": ""synthetic_0174"", ""types"": [""real_estate_agency"", ""finance""]}",0.04114150821589096,0
+Synthetic Lead 0175,Tampa,https://lead175.example.com,+1-555-0000175,,0,"{""place_id"": ""synthetic_0175"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0176,Orlando,https://lead176.example.com,+1-555-0000176,3.9284145844719434,32,"{""place_id"": ""synthetic_0176"", ""types"": [""real_estate_agency"", ""finance""]}",0.1886488019393378,0
+Synthetic Lead 0177,Naples,,+1-555-0000177,4.207263940968785,8,"{""place_id"": ""synthetic_0177"", ""types"": [""real_estate_agency""]}",0.038421187186671195,0
+Synthetic Lead 0178,Naples,https://lead178.example.com,+1-555-0000178,4.545052212382006,8,"{""place_id"": ""synthetic_0178"", ""types"": [""insurance_agency""]}",0.082718964419371,0
+Synthetic Lead 0179,Tampa,https://lead179.example.com,+1-555-0000179,4.436543599013738,6,"{""place_id"": ""synthetic_0179"", ""types"": [""real_estate_agency""]}",0.07856267795355196,0
+Synthetic Lead 0180,Tampa,https://lead180.example.com,+1-555-0000180,4.007877043559715,61,"{""place_id"": ""synthetic_0180"", ""types"": [""real_estate_agency""]}",0.3165613860018455,1
+Synthetic Lead 0181,Tampa,https://lead181.example.com,+1-555-0000181,4.7095218466208815,12,"{""place_id"": ""synthetic_0181"", ""types"": [""insurance_agency""]}",0.13416756862424056,0
+Synthetic Lead 0182,Miami,https://lead182.example.com,+1-555-0000182,4.715097701576366,23,"{""place_id"": ""synthetic_0182"", ""types"": [""real_estate_agency"", ""finance""]}",0.2868162382371514,0
+Synthetic Lead 0183,Orlando,https://lead183.example.com,,4.292028915635783,18,"{""place_id"": ""synthetic_0183"", ""types"": [""real_estate_agency""]}",0.14202322594039307,0
+Synthetic Lead 0184,Miami,https://lead184.example.com,+1-555-0000184,4.681328786243421,48,"{""place_id"": ""synthetic_0184"", ""types"": [""real_estate_agency""]}",0.45109880308193023,1
+Synthetic Lead 0185,Miami,https://lead185.example.com,+1-555-0000185,4.336322631716064,7,"{""place_id"": ""synthetic_0185"", ""types"": [""real_estate_agency""]}",0.0818229501305467,0
+Synthetic Lead 0186,Jacksonville,,+1-555-0000186,3.9192584866085585,5,"{""place_id"": ""synthetic_0186"", ""types"": [""real_estate_agency""]}",0.020472780196319804,0
+Synthetic Lead 0187,Miami,,+1-555-0000187,,0,"{""place_id"": ""synthetic_0187"", ""types"": [""insurance_agency""]}",0.00018407190496342368,0
+Synthetic Lead 0188,Miami,https://lead188.example.com,+1-555-0000188,4.255306561289339,41,"{""place_id"": ""synthetic_0188"", ""types"": [""real_estate_agency""]}",0.29882650698359287,1
+Synthetic Lead 0189,Tampa,https://lead189.example.com,+1-555-0000189,4.2006699233772435,29,"{""place_id"": ""synthetic_0189"", ""types"": [""insurance_agency""]}",0.17565274936535596,0
+Synthetic Lead 0190,Tampa,,,4.936476786094787,7,"{""place_id"": ""synthetic_0190"", ""types"": [""real_estate_agency""]}",0.053629129381833694,0
+Synthetic Lead 0191,Miami,https://lead191.example.com,+1-555-0000191,2.974563935729957,45,"{""place_id"": ""synthetic_0191"", ""types"": [""real_estate_agency""]}",0.09389684622829521,1
+Synthetic Lead 0192,Miami,https://lead192.example.com,+1-555-0000192,3.4911579149202154,8,"{""place_id"": ""synthetic_0192"", ""types"": [""real_estate_agency""]}",0.04370316014088962,0
+Synthetic Lead 0193,Miami,https://lead193.example.com,+1-555-0000193,3.6064647868128152,10,"{""place_id"": ""synthetic_0193"", ""types"": [""real_estate_agency""]}",0.05734206227857427,0
+Synthetic Lead 0194,Orlando,https://lead194.example.com,+1-555-0000194,4.018369676215597,6,"{""place_id"": ""synthetic_0194"", ""types"": [""real_estate_agency""]}",0.05546179704322981,0
+Synthetic Lead 0195,St. Petersburg,https://lead195.example.com,,4.072695915116985,95,"{""place_id"": ""synthetic_0195"", ""types"": [""point_of_interest"", ""establishment""]}",0.3163752279762592,1
+Synthetic Lead 0196,Naples,https://lead196.example.com,+1-555-0000196,3.4463371761134765,42,"{""place_id"": ""synthetic_0196"", ""types"": [""real_estate_agency""]}",0.14536544355795944,0
+Synthetic Lead 0197,Tampa,https://lead197.example.com,+1-555-0000197,3.707420983844587,41,"{""place_id"": ""synthetic_0197"", ""types"": [""real_estate_agency"", ""finance""]}",0.18410253595054485,0
+Synthetic Lead 0198,Tampa,https://lead198.example.com,+1-555-0000198,3.769579160738215,89,"{""place_id"": ""synthetic_0198"", ""types"": [""real_estate_agency""]}",0.3276218618216267,0
+Synthetic Lead 0199,Fort Lauderdale,https://lead199.example.com,+1-555-0000199,5.0,587,"{""place_id"": ""synthetic_0199"", ""types"": [""real_estate_agency""]}",0.948553689479836,1
+Synthetic Lead 0200,Fort Lauderdale,https://lead200.example.com,+1-555-0000200,5.0,2,"{""place_id"": ""synthetic_0200"", ""types"": [""real_estate_agency""]}",0.052574032387290304,0
+Synthetic Lead 0201,Miami,,+1-555-0000201,3.9941252911576757,8,"{""place_id"": ""synthetic_0201"", ""types"": [""real_estate_agency""]}",0.03173462980320435,0
+Synthetic Lead 0202,Miami,https://lead202.example.com,,4.0182083548466005,9,"{""place_id"": ""synthetic_0202"", ""types"": [""real_estate_agency"", ""finance""]}",0.06324947293588631,0
+Synthetic Lead 0203,Tampa,https://lead203.example.com,+1-555-0000203,3.625398001405853,7,"{""place_id"": ""synthetic_0203"", ""types"": [""real_estate_agency"", ""finance""]}",0.044525918573131706,0
+Synthetic Lead 0204,Jacksonville,https://lead204.example.com,+1-555-0000204,,0,"{""place_id"": ""synthetic_0204"", ""types"": [""insurance_agency""]}",0.00040956716498605005,0
+Synthetic Lead 0205,Miami,,+1-555-0000205,4.141559906795738,14,"{""place_id"": ""synthetic_0205"", ""types"": [""insurance_agency""]}",0.04373385867058149,0
+Synthetic Lead 0206,Orlando,https://lead206.example.com,+1-555-0000206,3.7010740083779874,4,"{""place_id"": ""synthetic_0206"", ""types"": [""real_estate_agency""]}",0.03159795291107496,0
+Synthetic Lead 0207,Orlando,,+1-555-0000207,4.157574734168995,30,"{""place_id"": ""synthetic_0207"", ""types"": [""real_estate_agency""]}",0.11284536496461223,0
+Synthetic Lead 0208,Orlando,https://lead208.example.com,+1-555-0000208,3.3998970754782616,21,"{""place_id"": ""synthetic_0208"", ""types"": [""real_estate_agency"", ""finance""]}",0.08303455317205924,0
+Synthetic Lead 0209,Tampa,https://lead209.example.com,+1-555-0000209,3.8190127708448713,35,"{""place_id"": ""synthetic_0209"", ""types"": [""real_estate_agency""]}",0.1821966925481122,0
+Synthetic Lead 0210,Fort Lauderdale,https://lead210.example.com,+1-555-0000210,4.274313547651416,36,"{""place_id"": ""synthetic_0210"", ""types"": [""real_estate_agency""]}",0.27758726088948427,0
+Synthetic Lead 0211,Jacksonville,https://lead211.example.com,,4.383104798891969,41,"{""place_id"": ""synthetic_0211"", ""types"": [""point_of_interest"", ""establishment""]}",0.23066445975690408,0
+Synthetic Lead 0212,Orlando,,+1-555-0000212,4.4087359793710075,12,"{""place_id"": ""synthetic_0212"", ""types"": [""point_of_interest"", ""establishment""]}",0.049228620596115075,0
+Synthetic Lead 0213,Miami,,+1-555-0000213,3.5397555079214813,256,"{""place_id"": ""synthetic_0213"", ""types"": [""insurance_agency""]}",0.2336859110529338,0
+Synthetic Lead 0214,Tallahassee,https://lead214.example.com,+1-555-0000214,4.6273428650677815,26,"{""place_id"": ""synthetic_0214"", ""types"": [""real_estate_agency""]}",0.29267938334696153,0
+Synthetic Lead 0215,Tampa,,+1-555-0000215,3.799894151699075,2,"{""place_id"": ""synthetic_0215"", ""types"": [""real_estate_agency"", ""finance""]}",0.009860024722465482,0
+Synthetic Lead 0216,Miami,https://lead216.example.com,+1-555-0000216,4.516428957303654,6,"{""place_id"": ""synthetic_0216"", ""types"": [""real_estate_agency""]}",0.08387775793053355,0
+Synthetic Lead 0217,Orlando,https://lead217.example.com,+1-555-0000217,4.194680661690904,2,"{""place_id"": ""synthetic_0217"", ""types"": [""real_estate_agency""]}",0.029101614954638838,0
+Synthetic Lead 0218,St. Petersburg,https://lead218.example.com,+1-555-0000218,3.511806250461026,20,"{""place_id"": ""synthetic_0218"", ""types"": [""real_estate_agency""]}",0.0891898318644925,0
+Synthetic Lead 0219,St. Petersburg,https://lead219.example.com,+1-555-0000219,4.041901147709406,17,"{""place_id"": ""synthetic_0219"", ""types"": [""point_of_interest"", ""establishment""]}",0.09878129871721322,0
+Synthetic Lead 0220,Tallahassee,,+1-555-0000220,4.382681871031884,11,"{""place_id"": ""synthetic_0220"", ""types"": [""point_of_interest"", ""establishment""]}",0.04448534673520877,0
+Synthetic Lead 0221,Jacksonville,https://lead221.example.com,+1-555-0000221,4.506482690237299,224,"{""place_id"": ""synthetic_0221"", ""types"": [""real_estate_agency"", ""finance""]}",0.7614524673050846,1
+Synthetic Lead 0222,Tampa,https://lead222.example.com,+1-555-0000222,4.129506051277791,38,"{""place_id"": ""synthetic_0222"", ""types"": [""real_estate_agency""]}",0.2552614705535171,0
+Synthetic Lead 0223,Tampa,https://lead223.example.com,,4.965889445300527,48,"{""place_id"": ""synthetic_0223"", ""types"": [""real_estate_agency""]}",0.4851601528823626,0
+Synthetic Lead 0224,Miami,https://lead224.example.com,+1-555-0000224,4.703755385493279,6,"{""place_id"": ""synthetic_0224"", ""types"": [""real_estate_agency""]}",0.09764095974372322,1
+Synthetic Lead 0225,Fort Lauderdale,https://lead225.example.com,,4.071672941800124,6,"{""place_id"": ""synthetic_0225"", ""types"": [""point_of_interest"", ""establishment""]}",0.03600385680463127,0
+Synthetic Lead 0226,Jacksonville,https://lead226.example.com,,,0,"{""place_id"": ""synthetic_0226"", ""types"": [""real_estate_agency""]}",0.00045262222324053464,0
+Synthetic Lead 0227,Miami,https://lead227.example.com,+1-555-0000227,5.0,24,"{""place_id"": ""synthetic_0227"", ""types"": [""real_estate_agency""]}",0.3637241158433582,0
+Synthetic Lead 0228,Tallahassee,https://lead228.example.com,+1-555-0000228,5.0,2,"{""place_id"": ""synthetic_0228"", ""types"": [""real_estate_agency"", ""finance""]}",0.052574032387290304,1
+Synthetic Lead 0229,Tampa,https://lead229.example.com,+1-555-0000229,3.5860000595887516,16,"{""place_id"": ""synthetic_0229"", ""types"": [""real_estate_agency""]}",0.08070624123394417,0
+Synthetic Lead 0230,Miami,https://lead230.example.com,+1-555-0000230,3.736733444421425,20,"{""place_id"": ""synthetic_0230"", ""types"": [""real_estate_agency"", ""finance""]}",0.11047564893211989,1
+Synthetic Lead 0231,Orlando,https://lead231.example.com,+1-555-0000231,4.942459393366926,15,"{""place_id"": ""synthetic_0231"", ""types"": [""real_estate_agency""]}",0.24813063416488249,0
+Synthetic Lead 0232,Tallahassee,,+1-555-0000232,3.6708594745811816,7,"{""place_id"": ""synthetic_0232"", ""types"": [""real_estate_agency"", ""finance""]}",0.021359262439307265,0
+Synthetic Lead 0233,Naples,,+1-555-0000233,3.5387294333541606,10,"{""place_id"": ""synthetic_0233"", ""types"": [""real_estate_agency""]}",0.0249729102523259,0
+Synthetic Lead 0234,Tampa,https://lead234.example.com,+1-555-0000234,3.956902934650477,16,"{""place_id"": ""synthetic_0234"", ""types"": [""real_estate_agency""]}",0.1137878076175986,0
+Synthetic Lead 0235,Naples,,,4.410113354737293,22,"{""place_id"": ""synthetic_0235"", ""types"": [""real_estate_agency""]}",0.09259730713552716,0
+Synthetic Lead 0236,Tallahassee,https://lead236.example.com,+1-555-0000236,4.148801646694452,41,"{""place_id"": ""synthetic_0236"", ""types"": [""real_estate_agency""]}",0.27358538786485725,0
+Synthetic Lead 0237,Tallahassee,https://lead237.example.com,+1-555-0000237,3.8747181897972043,73,"{""place_id"": ""synthetic_0237"", ""types"": [""insurance_agency""]}",0.2559377580641302,1
+Synthetic Lead 0238,Tallahassee,https://lead238.example.com,,,0,"{""place_id"": ""synthetic_0238"", ""types"": [""real_estate_agency""]}",0.00045262222324053464,0
+Synthetic Lead 0239,Tampa,https://lead239.example.com,+1-555-0000239,3.843831467793646,11,"{""place_id"": ""synthetic_0239"", ""types"": [""real_estate_agency""]}",0.07647390843893355,0
+Synthetic Lead 0240,St. Petersburg,,+1-555-0000240,3.760245185670529,33,"{""place_id"": ""synthetic_0240"", ""types"": [""real_estate_agency"", ""finance""]}",0.08161304724008543,0
+Synthetic Lead 0241,Jacksonville,https://lead241.example.com,+1-555-0000241,5.0,41,"{""place_id"": ""synthetic_0241"", ""types"": [""real_estate_agency""]}",0.5028591138647577,1
+Synthetic Lead 0242,Fort Lauderdale,https://lead242.example.com,,4.348755535592778,11,"{""place_id"": ""synthetic_0242"", ""types"": [""real_estate_agency"", ""finance""]}",0.09974226201275864,0
+Synthetic Lead 0243,Miami,https://lead243.example.com,+1-555-0000243,4.643379527202369,51,"{""place_id"": ""synthetic_0243"", ""types"": [""real_estate_agency"", ""finance""]}",0.4553769531704147,0
+Synthetic Lead 0244,St. Petersburg,https://lead244.example.com,+1-555-0000244,3.955461265940538,65,"{""place_id"": ""synthetic_0244"", ""types"": [""real_estate_agency""]}",0.31549750339901783,0
+Synthetic Lead 0245,Naples,https://lead245.example.com,+1-555-0000245,4.107021661406976,94,"{""place_id"": ""synthetic_0245"", ""types"": [""real_estate_agency"", ""finance""]}",0.4411491893001625,0
+Synthetic Lead 0246,Orlando,https://lead246.example.com,+1-555-0000246,3.8432230093148227,169,"{""place_id"": ""synthetic_0246"", ""types"": [""real_estate_agency""]}",0.4910424752943554,1
+Synthetic Lead 0247,Naples,https://lead247.example.com,+1-555-0000247,2.8741458325403992,7,"{""place_id"": ""synthetic_0247"", ""types"": [""real_estate_agency""]}",0.022950104640034073,0
+Synthetic Lead 0248,Tampa,https://lead248.example.com,+1-555-0000248,3.510995361576067,20,"{""place_id"": ""synthetic_0248"", ""types"": [""real_estate_agency""]}",0.0891202502491661,0
+Synthetic Lead 0249,Miami,https://lead249.example.com,,3.294690660009803,20,"{""place_id"": ""synthetic_0249"", ""types"": [""real_estate_agency"", ""finance""]}",0.05991807547144754,0
+Synthetic Lead 0250,Miami,https://lead250.example.com,+1-555-0000250,3.0751081110241962,17,"{""place_id"": ""synthetic_0250"", ""types"": [""insurance_agency""]}",0.038788368925631714,0
+Synthetic Lead 0251,St. Petersburg,https://lead251.example.com,,3.602320512850949,9,"{""place_id"": ""synthetic_0251"", ""types"": [""insurance_agency""]}",0.032656634411573994,0
+Synthetic Lead 0252,Jacksonville,https://lead252.example.com,+1-555-0000252,4.862477839690816,3,"{""place_id"": ""synthetic_0252"", ""types"": [""point_of_interest"", ""establishment""]}",0.04805384006108077,0
+Synthetic Lead 0253,Orlando,https://lead253.example.com,,4.177781916147823,22,"{""place_id"": ""synthetic_0253"", ""types"": [""real_estate_agency""]}",0.15046019667706154,0
+Synthetic Lead 0254,Jacksonville,https://lead254.example.com,+1-555-0000254,4.845281881160587,7,"{""place_id"": ""synthetic_0254"", ""types"": [""point_of_interest"", ""establishment""]}",0.09503042094722566,0
+Synthetic Lead 0255,Orlando,https://lead255.example.com,+1-555-0000255,4.405491288450438,22,"{""place_id"": ""synthetic_0255"", ""types"": [""real_estate_agency"", ""finance""]}",0.21631467652542974,0
+Synthetic Lead 0256,Tampa,https://lead256.example.com,+1-555-0000256,4.591279412857579,7,"{""place_id"": ""synthetic_0256"", ""types"": [""point_of_interest"", ""establishment""]}",0.07689279184555041,0
+Synthetic Lead 0257,Tallahassee,https://lead257.example.com,+1-555-0000257,3.7495515023477126,5,"{""place_id"": ""synthetic_0257"", ""types"": [""point_of_interest"", ""establishment""]}",0.028876960189473534,0
+Synthetic Lead 0258,Fort Lauderdale,https://lead258.example.com,+1-555-0000258,,0,"{""place_id"": ""synthetic_0258"", ""types"": [""point_of_interest"", ""establishment""]}",0.00040956716498605005,0
+Synthetic Lead 0259,St. Petersburg,https://lead259.example.com,+1-555-0000259,4.564357117037173,24,"{""place_id"": ""synthetic_0259"", ""types"": [""real_estate_agency""]}",0.26289718286139085,0
+Synthetic Lead 0260,Jacksonville,,+1-555-0000260,3.911676353883154,40,"{""place_id"": ""synthetic_0260"", ""types"": [""real_estate_agency"", ""finance""]}",0.11161991828805062,0
+Synthetic Lead 0261,Naples,,+1-555-0000261,4.479770185308084,276,"{""place_id"": ""synthetic_0261"", ""types"": [""real_estate_agency"", ""finance""]}",0.6307449841841043,0
+Synthetic Lead 0262,Orlando,https://lead262.example.com,+1-555-0000262,4.483093879287416,28,"{""place_id"": ""synthetic_0262"", ""types"": [""insurance_agency""]}",0.21973614831006252,1
+Synthetic Lead 0263,Orlando,https://lead263.example.com,+1-555-0000263,3.925223689434959,35,"{""place_id"": ""synthetic_0263"", ""types"": [""real_estate_agency""]}",0.20089384804743501,0
+Synthetic Lead 0264,Miami,https://lead264.example.com,+1-555-0000264,3.638615783864503,5,"{""place_id"": ""synthetic_0264"", ""types"": [""point_of_interest"", ""establishment""]}",0.026293553523222494,0
+Synthetic Lead 0265,Jacksonville,,+1-555-0000265,3.6079358340508643,4,"{""place_id"": ""synthetic_0265"", ""types"": [""real_estate_agency""]}",0.013374733607103806,0
+Synthetic Lead 0266,Jacksonville,https://lead266.example.com,+1-555-0000266,4.243252770960731,134,"{""place_id"": ""synthetic_0266"", ""types"": [""real_estate_agency""]}",0.5707583711426277,0
+Synthetic Lead 0267,St. Petersburg,https://lead267.example.com,,4.3635049343946575,6,"{""place_id"": ""synthetic_0267"", ""types"": [""insurance_agency""]}",0.04621295705508233,0
+Synthetic Lead 0268,Orlando,,+1-555-0000268,3.803737084771043,5,"{""place_id"": ""synthetic_0268"", ""types"": [""real_estate_agency""]}",0.018554126580912014,0
+Synthetic Lead 0269,Miami,https://lead269.example.com,+1-555-0000269,,0,"{""place_id"": ""synthetic_0269"", ""types"": [""real_estate_agency"", ""finance""]}",0.000552778636923599,0
+Synthetic Lead 0270,Fort Lauderdale,https://lead270.example.com,+1-555-0000270,,0,"{""place_id"": ""synthetic_0270"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0271,Naples,https://lead271.example.com,+1-555-0000271,4.509095357332651,6,"{""place_id"": ""synthetic_0271"", ""types"": [""real_estate_agency"", ""finance""]}",0.08337651867050898,1
+Synthetic Lead 0272,Orlando,https://lead272.example.com,+1-555-0000272,,0,"{""place_id"": ""synthetic_0272"", ""types"": [""real_estate_agency"", ""finance""]}",0.000552778636923599,0
+Synthetic Lead 0273,Miami,https://lead273.example.com,,4.838490416099022,87,"{""place_id"": ""synthetic_0273"", ""types"": [""real_estate_agency""]}",0.6034102217905246,1
+Synthetic Lead 0274,Orlando,https://lead274.example.com,+1-555-0000274,3.6993542836217284,7,"{""place_id"": ""synthetic_0274"", ""types"": [""real_estate_agency"", ""finance""]}",0.04748489774316267,0
+Synthetic Lead 0275,Tampa,,+1-555-0000275,5.0,3,"{""place_id"": ""synthetic_0275"", ""types"": [""real_estate_agency""]}",0.03308354065009722,0
+Synthetic Lead 0276,Orlando,,+1-555-0000276,3.934511747722143,62,"{""place_id"": ""synthetic_0276"", ""types"": [""real_estate_agency"", ""finance""]}",0.16191962221953032,0
+Synthetic Lead 0277,Orlando,https://lead277.example.com,+1-555-0000277,4.722436406227214,36,"{""place_id"": ""synthetic_0277"", ""types"": [""point_of_interest"", ""establishment""]}",0.32194070543462866,0
+Synthetic Lead 0278,Fort Lauderdale,https://lead278.example.com,+1-555-0000278,4.233993313025545,9,"{""place_id"": ""synthetic_0278"", ""types"": [""real_estate_agency""]}",0.09184357776165847,0
+Synthetic Lead 0279,Orlando,https://lead279.example.com,+1-555-0000279,3.9939253107715165,3,"{""place_id"": ""synthetic_0279"", ""types"": [""real_estate_agency"", ""finance""]}",0.03267487053320023,0
+Synthetic Lead 0280,Tampa,https://lead280.example.com,+1-555-0000280,,0,"{""place_id"": ""synthetic_0280"", ""types"": [""insurance_agency""]}",0.00040956716498605005,0
+Synthetic Lead 0281,Miami,https://lead281.example.com,,4.1142177448918265,18,"{""place_id"": ""synthetic_0281"", ""types"": [""insurance_agency""]}",0.09247303037244103,0
+Synthetic Lead 0282,Naples,https://lead282.example.com,+1-555-0000282,3.4203083823471956,81,"{""place_id"": ""synthetic_0282"", ""types"": [""real_estate_agency"", ""finance""]}",0.22363414835480622,0
+Synthetic Lead 0283,Tampa,https://lead283.example.com,,4.683649617921386,5,"{""place_id"": ""synthetic_0283"", ""types"": [""real_estate_agency""]}",0.06888794813448498,0
+Synthetic Lead 0284,Orlando,https://lead284.example.com,+1-555-0000284,4.958396328569624,18,"{""place_id"": ""synthetic_0284"", ""types"": [""insurance_agency""]}",0.23068377873029977,0
+Synthetic Lead 0285,Miami,https://lead285.example.com,+1-555-0000285,3.801544505351655,45,"{""place_id"": ""synthetic_0285"", ""types"": [""real_estate_agency""]}",0.21486661024969,1
+Synthetic Lead 0286,Fort Lauderdale,https://lead286.example.com,+1-555-0000286,,0,"{""place_id"": ""synthetic_0286"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0287,Tallahassee,https://lead287.example.com,+1-555-0000287,3.8373042389960124,69,"{""place_id"": ""synthetic_0287"", ""types"": [""point_of_interest"", ""establishment""]}",0.23771848330535428,0
+Synthetic Lead 0288,Miami,,+1-555-0000288,3.8857576349316054,4,"{""place_id"": ""synthetic_0288"", ""types"": [""real_estate_agency""]}",0.016837608822399028,0
+Synthetic Lead 0289,Miami,https://lead289.example.com,+1-555-0000289,4.587247351932686,29,"{""place_id"": ""synthetic_0289"", ""types"": [""insurance_agency""]}",0.24658444085185283,0
+Synthetic Lead 0290,Miami,,+1-555-0000290,4.180730869078294,27,"{""place_id"": ""synthetic_0290"", ""types"": [""real_estate_agency""]}",0.10568147736196108,0
+Synthetic Lead 0291,Jacksonville,https://lead291.example.com,+1-555-0000291,,0,"{""place_id"": ""synthetic_0291"", ""types"": [""real_estate_agency"", ""finance""]}",0.000552778636923599,0
+Synthetic Lead 0292,Naples,,+1-555-0000292,3.95888376064854,38,"{""place_id"": ""synthetic_0292"", ""types"": [""insurance_agency""]}",0.08573330367558149,0
+Synthetic Lead 0293,Tampa,https://lead293.example.com,+1-555-0000293,,0,"{""place_id"": ""synthetic_0293"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0294,Orlando,https://lead294.example.com,,4.248706706478891,7,"{""place_id"": ""synthetic_0294"", ""types"": [""real_estate_agency""]}",0.0631073860910999,0
+Synthetic Lead 0295,St. Petersburg,,+1-555-0000295,4.597889004872116,23,"{""place_id"": ""synthetic_0295"", ""types"": [""real_estate_agency""]}",0.1373949940343511,0
+Synthetic Lead 0296,St. Petersburg,https://lead296.example.com,,3.976421171335027,15,"{""place_id"": ""synthetic_0296"", ""types"": [""point_of_interest"", ""establishment""]}",0.069785161315805,0
+Synthetic Lead 0297,Orlando,https://lead297.example.com,+1-555-0000297,4.175220581224209,35,"{""place_id"": ""synthetic_0297"", ""types"": [""insurance_agency""]}",0.19839774429119214,0
+Synthetic Lead 0298,Miami,https://lead298.example.com,+1-555-0000298,4.142250560350533,51,"{""place_id"": ""synthetic_0298"", ""types"": [""real_estate_agency""]}",0.31504058076097446,0
+Synthetic Lead 0299,Tampa,https://lead299.example.com,+1-555-0000299,3.7819714425771065,41,"{""place_id"": ""synthetic_0299"", ""types"": [""real_estate_agency"", ""finance""]}",0.19745633327505202,0
+Synthetic Lead 0300,St. Petersburg,https://lead300.example.com,+1-555-0000300,4.531040767290876,15,"{""place_id"": ""synthetic_0300"", ""types"": [""real_estate_agency""]}",0.17849717417990138,0
+Synthetic Lead 0301,Fort Lauderdale,https://lead301.example.com,+1-555-0000301,4.525124502789183,2,"{""place_id"": ""synthetic_0301"", ""types"": [""real_estate_agency""]}",0.037158101866122346,0
+Synthetic Lead 0302,Fort Lauderdale,,+1-555-0000302,4.496777347452784,11,"{""place_id"": ""synthetic_0302"", ""types"": [""real_estate_agency""]}",0.06561369757432654,0
+Synthetic Lead 0303,Tallahassee,https://lead303.example.com,+1-555-0000303,4.968482826958822,33,"{""place_id"": ""synthetic_0303"", ""types"": [""real_estate_agency""]}",0.4362034088170459,1
+Synthetic Lead 0304,Orlando,https://lead304.example.com,+1-555-0000304,4.924672400618152,5,"{""place_id"": ""synthetic_0304"", ""types"": [""real_estate_agency"", ""finance""]}",0.10024489447174716,0
+Synthetic Lead 0305,Orlando,https://lead305.example.com,+1-555-0000305,4.0125276550754325,42,"{""place_id"": ""synthetic_0305"", ""types"": [""point_of_interest"", ""establishment""]}",0.19587540710600715,0
+Synthetic Lead 0306,Miami,,+1-555-0000306,4.386526159217089,59,"{""place_id"": ""synthetic_0306"", ""types"": [""point_of_interest"", ""establishment""]}",0.19137950974407045,0
+Synthetic Lead 0307,Tallahassee,https://lead307.example.com,+1-555-0000307,3.8881996553708937,23,"{""place_id"": ""synthetic_0307"", ""types"": [""point_of_interest"", ""establishment""]}",0.10897779575230092,0
+Synthetic Lead 0308,Jacksonville,https://lead308.example.com,+1-555-0000308,4.211677658057278,0,"{""place_id"": ""synthetic_0308"", ""types"": [""real_estate_agency""]}",0.010221443653541147,0
+Synthetic Lead 0309,Orlando,https://lead309.example.com,+1-555-0000309,3.9001252754405678,4,"{""place_id"": ""synthetic_0309"", ""types"": [""real_estate_agency""]}",0.037145125663991065,0
+Synthetic Lead 0310,Miami,https://lead310.example.com,,5.0,193,"{""place_id"": ""synthetic_0310"", ""types"": [""insurance_agency""]}",0.7675706063813689,1
+Synthetic Lead 0311,St. Petersburg,,+1-555-0000311,4.381849075171481,10,"{""place_id"": ""synthetic_0311"", ""types"": [""point_of_interest"", ""establishment""]}",0.040873347549317915,0
+Synthetic Lead 0312,St. Petersburg,https://lead312.example.com,,4.090985435947789,1,"{""place_id"": ""synthetic_0312"", ""types"": [""real_estate_agency"", ""finance""]}",0.015105747572338395,0
+Synthetic Lead 0313,Fort Lauderdale,,+1-555-0000313,4.796809285928188,88,"{""place_id"": ""synthetic_0313"", ""types"": [""real_estate_agency""]}",0.4449189999513865,1
+Synthetic Lead 0314,Orlando,https://lead314.example.com,+1-555-0000314,3.1146922951022944,20,"{""place_id"": ""synthetic_0314"", ""types"": [""real_estate_agency"", ""finance""]}",0.06047245399018338,0
+Synthetic Lead 0315,Naples,https://lead315.example.com,+1-555-0000315,3.1929487025673553,75,"{""place_id"": ""synthetic_0315"", ""types"": [""real_estate_agency"", ""finance""]}",0.1687793981437976,1
+Synthetic Lead 0316,St. Petersburg,https://lead316.example.com,+1-555-0000316,4.597919327609887,28,"{""place_id"": ""synthetic_0316"", ""types"": [""point_of_interest"", ""establishment""]}",0.2422631414726972,1
+Synthetic Lead 0317,Fort Lauderdale,https://lead317.example.com,+1-555-0000317,4.230234224058684,34,"{""place_id"": ""synthetic_0317"", ""types"": [""real_estate_agency"", ""finance""]}",0.25702397902198004,0
+Synthetic Lead 0318,Fort Lauderdale,https://lead318.example.com,+1-555-0000318,4.32522315013038,31,"{""place_id"": ""synthetic_0318"", ""types"": [""real_estate_agency""]}",0.26050482582222406,0
+Synthetic Lead 0319,Tallahassee,https://lead319.example.com,,3.5368019483407256,46,"{""place_id"": ""synthetic_0319"", ""types"": [""real_estate_agency""]}",0.14334441289127034,0
+Synthetic Lead 0320,Naples,https://lead320.example.com,+1-555-0000320,4.188383144574817,308,"{""place_id"": ""synthetic_0320"", ""types"": [""real_estate_agency""]}",0.735306298038339,1
+Synthetic Lead 0321,Jacksonville,https://lead321.example.com,,5.0,64,"{""place_id"": ""synthetic_0321"", ""types"": [""real_estate_agency""]}",0.5724431083160727,0
+Synthetic Lead 0322,Tampa,https://lead322.example.com,+1-555-0000322,4.612099809897932,3,"{""place_id"": ""synthetic_0322"", ""types"": [""point_of_interest"", ""establishment""]}",0.039601629784919365,0
+Synthetic Lead 0323,Tampa,https://lead323.example.com,+1-555-0000323,4.284853272571406,34,"{""place_id"": ""synthetic_0323"", ""types"": [""insurance_agency""]}",0.21423327011006646,0
+Synthetic Lead 0324,St. Petersburg,https://lead324.example.com,+1-555-0000324,3.9804730449475314,79,"{""place_id"": ""synthetic_0324"", ""types"": [""real_estate_agency""]}",0.3631713146092603,0
+Synthetic Lead 0325,Fort Lauderdale,https://lead325.example.com,+1-555-0000325,4.002713574065304,85,"{""place_id"": ""synthetic_0325"", ""types"": [""real_estate_agency""]}",0.38581721839279076,0
+Synthetic Lead 0326,Miami,https://lead326.example.com,+1-555-0000326,3.135401055399991,12,"{""place_id"": ""synthetic_0326"", ""types"": [""insurance_agency""]}",0.03183903356964522,0
+Synthetic Lead 0327,Miami,https://lead327.example.com,+1-555-0000327,4.328820210460581,81,"{""place_id"": ""synthetic_0327"", ""types"": [""insurance_agency""]}",0.4015593923170983,0
+Synthetic Lead 0328,Tallahassee,https://lead328.example.com,,4.622741554240927,61,"{""place_id"": ""synthetic_0328"", ""types"": [""real_estate_agency""]}",0.4452067626886813,0
+Synthetic Lead 0329,Tallahassee,https://lead329.example.com,+1-555-0000329,3.4121903364146924,440,"{""place_id"": ""synthetic_0329"", ""types"": [""point_of_interest"", ""establishment""]}",0.4737808022553777,1
+Synthetic Lead 0330,Naples,https://lead330.example.com,+1-555-0000330,3.869291553846592,8,"{""place_id"": ""synthetic_0330"", ""types"": [""real_estate_agency""]}",0.060988575229549515,0
+Synthetic Lead 0331,Tampa,https://lead331.example.com,+1-555-0000331,3.621267683883289,10,"{""place_id"": ""synthetic_0331"", ""types"": [""real_estate_agency""]}",0.058114804875179935,0
+Synthetic Lead 0332,St. Petersburg,https://lead332.example.com,+1-555-0000332,3.7173244025956182,13,"{""place_id"": ""synthetic_0332"", ""types"": [""real_estate_agency""]}",0.07767240226898267,0
+Synthetic Lead 0333,Tallahassee,https://lead333.example.com,+1-555-0000333,4.2267408134109505,11,"{""place_id"": ""synthetic_0333"", ""types"": [""insurance_agency""]}",0.08175181239848837,0
+Synthetic Lead 0334,Orlando,https://lead334.example.com,+1-555-0000334,3.157798922505763,6,"{""place_id"": ""synthetic_0334"", ""types"": [""real_estate_agency"", ""finance""]}",0.02653148997807108,0
+Synthetic Lead 0335,Miami,,+1-555-0000335,4.507135219178532,0,"{""place_id"": ""synthetic_0335"", ""types"": [""point_of_interest"", ""establishment""]}",0.004087528485889856,0
+Synthetic Lead 0336,Naples,https://lead336.example.com,+1-555-0000336,,0,"{""place_id"": ""synthetic_0336"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0337,Miami,,+1-555-0000337,4.074448705981544,31,"{""place_id"": ""synthetic_0337"", ""types"": [""point_of_interest"", ""establishment""]}",0.08134743161419734,0
+Synthetic Lead 0338,Jacksonville,https://lead338.example.com,+1-555-0000338,,0,"{""place_id"": ""synthetic_0338"", ""types"": [""real_estate_agency"", ""finance""]}",0.000552778636923599,0
+Synthetic Lead 0339,Fort Lauderdale,https://lead339.example.com,+1-555-0000339,3.7017906869988053,204,"{""place_id"": ""synthetic_0339"", ""types"": [""real_estate_agency""]}",0.48496159212707407,0
+Synthetic Lead 0340,Fort Lauderdale,https://lead340.example.com,+1-555-0000340,4.816450967051349,20,"{""place_id"": ""synthetic_0340"", ""types"": [""real_estate_agency""]}",0.279895985843575,1
+Synthetic Lead 0341,Orlando,https://lead341.example.com,+1-555-0000341,2.811002859635714,94,"{""place_id"": ""synthetic_0341"", ""types"": [""real_estate_agency""]}",0.13017671152853116,1
+Synthetic Lead 0342,St. Petersburg,,+1-555-0000342,4.026238293903241,27,"{""place_id"": ""synthetic_0342"", ""types"": [""point_of_interest"", ""establishment""]}",0.06878221066969373,0
+Synthetic Lead 0343,Orlando,https://lead343.example.com,,3.6099996107663705,54,"{""place_id"": ""synthetic_0343"", ""types"": [""real_estate_agency""]}",0.17343682588974213,0
+Synthetic Lead 0344,Tallahassee,,+1-555-0000344,4.602285150792419,28,"{""place_id"": ""synthetic_0344"", ""types"": [""real_estate_agency""]}",0.1630800790236219,0
+Synthetic Lead 0345,Orlando,https://lead345.example.com,+1-555-0000345,3.8624430239282694,103,"{""place_id"": ""synthetic_0345"", ""types"": [""real_estate_agency"", ""finance""]}",0.3855176838233558,1
+Synthetic Lead 0346,Fort Lauderdale,,+1-555-0000346,4.401977010367806,21,"{""place_id"": ""synthetic_0346"", ""types"": [""point_of_interest"", ""establishment""]}",0.08047251313891103,0
+Synthetic Lead 0347,St. Petersburg,,+1-555-0000347,4.482730209584547,36,"{""place_id"": ""synthetic_0347"", ""types"": [""real_estate_agency"", ""finance""]}",0.1796788258422252,0
+Synthetic Lead 0348,Miami,https://lead348.example.com,+1-555-0000348,5.0,31,"{""place_id"": ""synthetic_0348"", ""types"": [""real_estate_agency"", ""finance""]}",0.42856936298854525,1
+Synthetic Lead 0349,Orlando,https://lead349.example.com,+1-555-0000349,,0,"{""place_id"": ""synthetic_0349"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0350,St. Petersburg,https://lead350.example.com,,4.388022184811306,32,"{""place_id"": ""synthetic_0350"", ""types"": [""point_of_interest"", ""establishment""]}",0.191236426670789,0
+Synthetic Lead 0351,Miami,https://lead351.example.com,+1-555-0000351,3.4574722604362824,293,"{""place_id"": ""synthetic_0351"", ""types"": [""real_estate_agency""]}",0.4778542940271428,0
+Synthetic Lead 0352,Miami,,+1-555-0000352,4.795206781646872,14,"{""place_id"": ""synthetic_0352"", ""types"": [""real_estate_agency""]}",0.10648021758278224,0
+Synthetic Lead 0353,Tampa,https://lead353.example.com,+1-555-0000353,3.8197455759643177,33,"{""place_id"": ""synthetic_0353"", ""types"": [""point_of_interest"", ""establishment""]}",0.13546757851667798,1
+Synthetic Lead 0354,Naples,https://lead354.example.com,+1-555-0000354,3.9196229179561275,90,"{""place_id"": ""synthetic_0354"", ""types"": [""real_estate_agency""]}",0.37348492903705427,1
+Synthetic Lead 0355,Jacksonville,https://lead355.example.com,+1-555-0000355,4.188876102575395,78,"{""place_id"": ""synthetic_0355"", ""types"": [""real_estate_agency""]}",0.4226495164874839,1
+Synthetic Lead 0356,Tampa,https://lead356.example.com,+1-555-0000356,3.4185578273300754,20,"{""place_id"": ""synthetic_0356"", ""types"": [""insurance_agency""]}",0.06168175157281979,1
+Synthetic Lead 0357,Naples,,+1-555-0000357,4.314385014464469,1,"{""place_id"": ""synthetic_0357"", ""types"": [""real_estate_agency""]}",0.00975481169628701,0
+Synthetic Lead 0358,Tampa,https://lead358.example.com,+1-555-0000358,4.683733136462505,37,"{""place_id"": ""synthetic_0358"", ""types"": [""real_estate_agency""]}",0.3867527646095356,0
+Synthetic Lead 0359,Tampa,https://lead359.example.com,+1-555-0000359,4.346466911748646,1,"{""place_id"": ""synthetic_0359"", ""types"": [""insurance_agency""]}",0.016340917351751836,0
+Synthetic Lead 0360,Tampa,,+1-555-0000360,3.4055512179106375,117,"{""place_id"": ""synthetic_0360"", ""types"": [""real_estate_agency"", ""finance""]}",0.14805879905149003,0
+Synthetic Lead 0361,Orlando,https://lead361.example.com,+1-555-0000361,4.138095352835171,24,"{""place_id"": ""synthetic_0361"", ""types"": [""real_estate_agency"", ""finance""]}",0.18354169461513828,0
+Synthetic Lead 0362,Orlando,https://lead362.example.com,+1-555-0000362,4.571014451489745,66,"{""place_id"": ""synthetic_0362"", ""types"": [""real_estate_agency""]}",0.49930192464780687,1
+Synthetic Lead 0363,Fort Lauderdale,https://lead363.example.com,+1-555-0000363,,0,"{""place_id"": ""synthetic_0363"", ""types"": [""insurance_agency""]}",0.00040956716498605005,0
+Synthetic Lead 0364,Miami,https://lead364.example.com,+1-555-0000364,3.6626169930911434,3,"{""place_id"": ""synthetic_0364"", ""types"": [""real_estate_agency"", ""finance""]}",0.025194629236266995,0
+Synthetic Lead 0365,Fort Lauderdale,https://lead365.example.com,+1-555-0000365,4.6382718020407605,27,"{""place_id"": ""synthetic_0365"", ""types"": [""real_estate_agency""]}",0.3031347140692597,0
+Synthetic Lead 0366,Orlando,,+1-555-0000366,4.335047717098643,19,"{""place_id"": ""synthetic_0366"", ""types"": [""real_estate_agency""]}",0.09091870888956159,0
+Synthetic Lead 0367,Tampa,https://lead367.example.com,+1-555-0000367,4.405985791063377,11,"{""place_id"": ""synthetic_0367"", ""types"": [""real_estate_agency""]}",0.12516289117993115,0
+Synthetic Lead 0368,Miami,,+1-555-0000368,5.0,22,"{""place_id"": ""synthetic_0368"", ""types"": [""insurance_agency""]}",0.14792661337066879,0
+Synthetic Lead 0369,Jacksonville,,+1-555-0000369,4.434276389253101,556,"{""place_id"": ""synthetic_0369"", ""types"": [""real_estate_agency""]}",0.7647434742266668,1
+Synthetic Lead 0370,St. Petersburg,,+1-555-0000370,4.52894400521659,54,"{""place_id"": ""synthetic_0370"", ""types"": [""real_estate_agency"", ""finance""]}",0.2577456284076136,1
+Synthetic Lead 0371,Tampa,https://lead371.example.com,,5.0,70,"{""place_id"": ""synthetic_0371"", ""types"": [""point_of_interest"", ""establishment""]}",0.5222223167174322,0
+Synthetic Lead 0372,Miami,https://lead372.example.com,+1-555-0000372,4.093097720954755,55,"{""place_id"": ""synthetic_0372"", ""types"": [""real_estate_agency""]}",0.31781214433571153,0
+Synthetic Lead 0373,Orlando,https://lead373.example.com,,3.8010586181907526,118,"{""place_id"": ""synthetic_0373"", ""types"": [""insurance_agency""]}",0.2845887644749493,0
+Synthetic Lead 0374,St. Petersburg,https://lead374.example.com,+1-555-0000374,4.413898199123566,15,"{""place_id"": ""synthetic_0374"", ""types"": [""real_estate_agency""]}",0.16170906769424817,0
+Synthetic Lead 0375,Orlando,https://lead375.example.com,+1-555-0000375,4.4194955146944475,1,"{""place_id"": ""synthetic_0375"", ""types"": [""real_estate_agency""]}",0.023062898957442516,0
+Synthetic Lead 0376,St. Petersburg,https://lead376.example.com,+1-555-0000376,3.936642304026896,16,"{""place_id"": ""synthetic_0376"", ""types"": [""real_estate_agency"", ""finance""]}",0.11171041850581895,0
+Synthetic Lead 0377,Orlando,https://lead377.example.com,+1-555-0000377,3.683801490222576,53,"{""place_id"": ""synthetic_0377"", ""types"": [""real_estate_agency""]}",0.2159576211842329,1
+Synthetic Lead 0378,Miami,https://lead378.example.com,+1-555-0000378,5.0,6,"{""place_id"": ""synthetic_0378"", ""types"": [""point_of_interest"", ""establishment""]}",0.0945332582258222,0
+Synthetic Lead 0379,St. Petersburg,https://lead379.example.com,+1-555-0000379,4.363421735194011,16,"{""place_id"": ""synthetic_0379"", ""types"": [""insurance_agency""]}",0.12609384267021873,0
+Synthetic Lead 0380,Tampa,https://lead380.example.com,+1-555-0000380,3.8338573092989625,8,"{""place_id"": ""synthetic_0380"", ""types"": [""real_estate_agency""]}",0.059129242432965703,0
+Synthetic Lead 0381,Miami,https://lead381.example.com,+1-555-0000381,4.657965151139799,121,"{""place_id"": ""synthetic_0381"", ""types"": [""real_estate_agency""]}",0.6754042520948037,1
+Synthetic Lead 0382,Naples,,+1-555-0000382,4.145427424219333,49,"{""place_id"": ""synthetic_0382"", ""types"": [""real_estate_agency""]}",0.16645199077467324,0
+Synthetic Lead 0383,Miami,https://lead383.example.com,+1-555-0000383,4.073559276841085,43,"{""place_id"": ""synthetic_0383"", ""types"": [""point_of_interest"", ""establishment""]}",0.21096308458756446,0
+Synthetic Lead 0384,Tampa,,+1-555-0000384,4.4811364359572465,42,"{""place_id"": ""synthetic_0384"", ""types"": [""real_estate_agency"", ""finance""]}",0.20314860251604616,1
+Synthetic Lead 0385,Tampa,,+1-555-0000385,3.554058865884155,19,"{""place_id"": ""synthetic_0385"", ""types"": [""real_estate_agency""]}",0.042208557934885114,0
+Synthetic Lead 0386,Tampa,https://lead386.example.com,+1-555-0000386,4.376313601958587,25,"{""place_id"": ""synthetic_0386"", ""types"": [""insurance_agency""]}",0.1831559497749263,0
+Synthetic Lead 0387,St. Petersburg,https://lead387.example.com,+1-555-0000387,5.0,4,"{""place_id"": ""synthetic_0387"", ""types"": [""real_estate_agency"", ""finance""]}",0.08869951224806341,0
+Synthetic Lead 0388,Miami,https://lead388.example.com,+1-555-0000388,4.433088831098655,1,"{""place_id"": ""synthetic_0388"", ""types"": [""real_estate_agency"", ""finance""]}",0.02327949208348368,0
+Synthetic Lead 0389,Naples,https://lead389.example.com,+1-555-0000389,4.011893948108268,24,"{""place_id"": ""synthetic_0389"", ""types"": [""real_estate_agency""]}",0.16394151420470593,0
+Synthetic Lead 0390,Fort Lauderdale,https://lead390.example.com,+1-555-0000390,3.9464473597858793,29,"{""place_id"": ""synthetic_0390"", ""types"": [""real_estate_agency""]}",0.1782402765923607,0
+Synthetic Lead 0391,Naples,https://lead391.example.com,+1-555-0000391,3.9948300133274457,85,"{""place_id"": ""synthetic_0391"", ""types"": [""real_estate_agency""]}",0.3834508960456535,0
+Synthetic Lead 0392,St. Petersburg,,+1-555-0000392,4.07301866097611,132,"{""place_id"": ""synthetic_0392"", ""types"": [""real_estate_agency""]}",0.319342701800348,1
+Synthetic Lead 0393,Naples,,+1-555-0000393,4.011096733620864,132,"{""place_id"": ""synthetic_0393"", ""types"": [""real_estate_agency""]}",0.3016674326153823,0
+Synthetic Lead 0394,Jacksonville,,+1-555-0000394,,0,"{""place_id"": ""synthetic_0394"", ""types"": [""real_estate_agency""]}",0.00024845508183933427,0
+Synthetic Lead 0395,Tampa,https://lead395.example.com,+1-555-0000395,3.3333954483955086,13,"{""place_id"": ""synthetic_0395"", ""types"": [""real_estate_agency""]}",0.054333992146814884,0
+Synthetic Lead 0396,Tampa,https://lead396.example.com,,4.631000025206067,35,"{""place_id"": ""synthetic_0396"", ""types"": [""real_estate_agency""]}",0.314777640358178,0
+Synthetic Lead 0397,Fort Lauderdale,,+1-555-0000397,4.010156737428719,419,"{""place_id"": ""synthetic_0397"", ""types"": [""real_estate_agency""]}",0.5630472317938401,0
+Synthetic Lead 0398,Tampa,https://lead398.example.com,+1-555-0000398,4.388473892847687,118,"{""place_id"": ""synthetic_0398"", ""types"": [""point_of_interest"", ""establishment""]}",0.5129312058507378,1
+Synthetic Lead 0399,St. Petersburg,https://lead399.example.com,+1-555-0000399,3.6365060448995683,76,"{""place_id"": ""synthetic_0399"", ""types"": [""insurance_agency""]}",0.20943685056618813,1
+Synthetic Lead 0400,Miami,https://lead400.example.com,+1-555-0000400,4.864315533424718,12,"{""place_id"": ""synthetic_0400"", ""types"": [""real_estate_agency""]}",0.19589202315829227,0
+Synthetic Lead 0401,Tallahassee,https://lead401.example.com,+1-555-0000401,4.822817480085937,6,"{""place_id"": ""synthetic_0401"", ""types"": [""insurance_agency""]}",0.08184601219303643,0
+Synthetic Lead 0402,Orlando,https://lead402.example.com,+1-555-0000402,4.679795262875037,51,"{""place_id"": ""synthetic_0402"", ""types"": [""real_estate_agency""]}",0.46616782661577955,1
+Synthetic Lead 0403,Naples,https://lead403.example.com,+1-555-0000403,3.4426226121032304,5,"{""place_id"": ""synthetic_0403"", ""types"": [""point_of_interest"", ""establishment""]}",0.022268589262971795,0
+Synthetic Lead 0404,Miami,https://lead404.example.com,+1-555-0000404,4.614560535533027,15,"{""place_id"": ""synthetic_0404"", ""types"": [""insurance_agency""]}",0.14909512068001282,0
+Synthetic Lead 0405,Miami,https://lead405.example.com,+1-555-0000405,4.402427543817854,17,"{""place_id"": ""synthetic_0405"", ""types"": [""real_estate_agency""]}",0.17679483502901286,0
+Synthetic Lead 0406,St. Petersburg,https://lead406.example.com,+1-555-0000406,3.3973643764337162,135,"{""place_id"": ""synthetic_0406"", ""types"": [""point_of_interest"", ""establishment""]}",0.2425700802164794,0
+Synthetic Lead 0407,St. Petersburg,https://lead407.example.com,,4.187851308114593,13,"{""place_id"": ""synthetic_0407"", ""types"": [""real_estate_agency"", ""finance""]}",0.09922887099599612,0
+Synthetic Lead 0408,St. Petersburg,https://lead408.example.com,,4.3822672445166315,1,"{""place_id"": ""synthetic_0408"", ""types"": [""real_estate_agency"", ""finance""]}",0.018480156207957694,0
+Synthetic Lead 0409,Naples,,+1-555-0000409,4.4780376369115755,36,"{""place_id"": ""synthetic_0409"", ""types"": [""real_estate_agency""]}",0.1788905568085473,1
+Synthetic Lead 0410,Orlando,https://lead410.example.com,+1-555-0000410,4.288630683474428,8,"{""place_id"": ""synthetic_0410"", ""types"": [""real_estate_agency""]}",0.08751748858857614,0
+Synthetic Lead 0411,Tallahassee,https://lead411.example.com,+1-555-0000411,4.34561570842369,21,"{""place_id"": ""synthetic_0411"", ""types"": [""real_estate_agency"", ""finance""]}",0.19846858829929515,0
+Synthetic Lead 0412,Tampa,,+1-555-0000412,,0,"{""place_id"": ""synthetic_0412"", ""types"": [""real_estate_agency""]}",0.00024845508183933427,0
+Synthetic Lead 0413,Jacksonville,https://lead413.example.com,+1-555-0000413,4.81301695495534,14,"{""place_id"": ""synthetic_0413"", ""types"": [""real_estate_agency"", ""finance""]}",0.21260592369993753,0
+Synthetic Lead 0414,Tampa,,+1-555-0000414,,0,"{""place_id"": ""synthetic_0414"", ""types"": [""real_estate_agency"", ""finance""]}",0.00024845508183933427,0
+Synthetic Lead 0415,Miami,https://lead415.example.com,+1-555-0000415,4.041280722581159,3,"{""place_id"": ""synthetic_0415"", ""types"": [""real_estate_agency""]}",0.03390604289923927,0
+Synthetic Lead 0416,Jacksonville,https://lead416.example.com,,4.117674486228024,10,"{""place_id"": ""synthetic_0416"", ""types"": [""real_estate_agency""]}",0.07522484049864651,0
+Synthetic Lead 0417,St. Petersburg,https://lead417.example.com,+1-555-0000417,3.3239507136365147,45,"{""place_id"": ""synthetic_0417"", ""types"": [""real_estate_agency""]}",0.13509133719649563,0
+Synthetic Lead 0418,Miami,https://lead418.example.com,+1-555-0000418,4.247091529116156,9,"{""place_id"": ""synthetic_0418"", ""types"": [""real_estate_agency""]}",0.0928816475713571,0
+Synthetic Lead 0419,Naples,,+1-555-0000419,4.8243788862052535,2,"{""place_id"": ""synthetic_0419"", ""types"": [""real_estate_agency"", ""finance""]}",0.021335008427534694,0
+Synthetic Lead 0420,Jacksonville,,+1-555-0000420,3.656716070204705,44,"{""place_id"": ""synthetic_0420"", ""types"": [""real_estate_agency"", ""finance""]}",0.09231792096583835,0
+Synthetic Lead 0421,Miami,,+1-555-0000421,,0,"{""place_id"": ""synthetic_0421"", ""types"": [""real_estate_agency""]}",0.00024845508183933427,0
+Synthetic Lead 0422,Fort Lauderdale,,+1-555-0000422,,0,"{""place_id"": ""synthetic_0422"", ""types"": [""real_estate_agency"", ""finance""]}",0.00024845508183933427,0
+Synthetic Lead 0423,Miami,https://lead423.example.com,+1-555-0000423,,0,"{""place_id"": ""synthetic_0423"", ""types"": [""insurance_agency""]}",0.00040956716498605005,0
+Synthetic Lead 0424,Miami,,+1-555-0000424,4.938696817085018,46,"{""place_id"": ""synthetic_0424"", ""types"": [""real_estate_agency"", ""finance""]}",0.323655366433323,0
+Synthetic Lead 0425,Fort Lauderdale,https://lead425.example.com,+1-555-0000425,3.9287210899440876,2,"{""place_id"": ""synthetic_0425"", ""types"": [""real_estate_agency""]}",0.023873296717557797,0
+Synthetic Lead 0426,Miami,,+1-555-0000426,4.431106244505313,29,"{""place_id"": ""synthetic_0426"", ""types"": [""real_estate_agency"", ""finance""]}",0.14304120194877953,0
+Synthetic Lead 0427,Miami,https://lead427.example.com,+1-555-0000427,3.2643909419695065,6,"{""place_id"": ""synthetic_0427"", ""types"": [""real_estate_agency"", ""finance""]}",0.02910056900258041,0
+Synthetic Lead 0428,St. Petersburg,https://lead428.example.com,,,0,"{""place_id"": ""synthetic_0428"", ""types"": [""real_estate_agency""]}",0.00045262222324053464,0
+Synthetic Lead 0429,Miami,,+1-555-0000429,4.501326223153249,11,"{""place_id"": ""synthetic_0429"", ""types"": [""insurance_agency""]}",0.04965714089583845,0
+Synthetic Lead 0430,St. Petersburg,,+1-555-0000430,4.108750078674869,16,"{""place_id"": ""synthetic_0430"", ""types"": [""point_of_interest"", ""establishment""]}",0.04756247293745898,1
+Synthetic Lead 0431,St. Petersburg,https://lead431.example.com,+1-555-0000431,4.487773254999947,9,"{""place_id"": ""synthetic_0431"", ""types"": [""real_estate_agency""]}",0.11391005731796729,0
+Synthetic Lead 0432,Miami,https://lead432.example.com,+1-555-0000432,3.495090285526095,40,"{""place_id"": ""synthetic_0432"", ""types"": [""real_estate_agency"", ""finance""]}",0.14725369695346685,0
+Synthetic Lead 0433,Jacksonville,https://lead433.example.com,,4.791265370876329,11,"{""place_id"": ""synthetic_0433"", ""types"": [""point_of_interest"", ""establishment""]}",0.11208222662824549,0
+Synthetic Lead 0434,Miami,,+1-555-0000434,,0,"{""place_id"": ""synthetic_0434"", ""types"": [""point_of_interest"", ""establishment""]}",0.00018407190496342368,0
+Synthetic Lead 0435,Fort Lauderdale,https://lead435.example.com,,4.097965242475783,28,"{""place_id"": ""synthetic_0435"", ""types"": [""real_estate_agency""]}",0.16898918040256156,0
+Synthetic Lead 0436,Miami,https://lead436.example.com,+1-555-0000436,3.954172192517258,8,"{""place_id"": ""synthetic_0436"", ""types"": [""insurance_agency""]}",0.049489558756368936,0
+Synthetic Lead 0437,Naples,https://lead437.example.com,+1-555-0000437,3.9096742986272077,7,"{""place_id"": ""synthetic_0437"", ""types"": [""point_of_interest"", ""establishment""]}",0.04282353193289337,0
+Synthetic Lead 0438,Orlando,https://lead438.example.com,+1-555-0000438,4.5473353058142045,2,"{""place_id"": ""synthetic_0438"", ""types"": [""insurance_agency""]}",0.028257807384878455,0
+Synthetic Lead 0439,Fort Lauderdale,https://lead439.example.com,+1-555-0000439,4.327953425052112,28,"{""place_id"": ""synthetic_0439"", ""types"": [""real_estate_agency""]}",0.24256840503879246,0
+Synthetic Lead 0440,Miami,https://lead440.example.com,+1-555-0000440,4.52587407070152,13,"{""place_id"": ""synthetic_0440"", ""types"": [""real_estate_agency""]}",0.15853095929346037,0
+Synthetic Lead 0441,Orlando,,+1-555-0000441,4.195602655257215,1,"{""place_id"": ""synthetic_0441"", ""types"": [""real_estate_agency"", ""finance""]}",0.008979318890714813,0
+Synthetic Lead 0442,Tampa,,+1-555-0000442,4.4565999055385905,10,"{""place_id"": ""synthetic_0442"", ""types"": [""real_estate_agency""]}",0.058205473230369655,0
+Synthetic Lead 0443,Jacksonville,,+1-555-0000443,3.990575628037481,6,"{""place_id"": ""synthetic_0443"", ""types"": [""real_estate_agency""]}",0.02509207849025642,0
+Synthetic Lead 0444,Naples,https://lead444.example.com,,5.0,133,"{""place_id"": ""synthetic_0444"", ""types"": [""real_estate_agency""]}",0.7479339998380286,0
+Synthetic Lead 0445,Miami,https://lead445.example.com,+1-555-0000445,3.416034791784751,2,"{""place_id"": ""synthetic_0445"", ""types"": [""real_estate_agency"", ""finance""]}",0.016255575831301616,0
+Synthetic Lead 0446,Miami,https://lead446.example.com,+1-555-0000446,4.8304686617814925,3,"{""place_id"": ""synthetic_0446"", ""types"": [""real_estate_agency""]}",0.06226615997646783,0
+Synthetic Lead 0447,Tampa,,+1-555-0000447,4.883953725360485,76,"{""place_id"": ""synthetic_0447"", ""types"": [""point_of_interest"", ""establishment""]}",0.361916838085679,0
+Synthetic Lead 0448,Tampa,https://lead448.example.com,+1-555-0000448,,0,"{""place_id"": ""synthetic_0448"", ""types"": [""real_estate_agency"", ""finance""]}",0.000552778636923599,0
+Synthetic Lead 0449,Tallahassee,https://lead449.example.com,,5.0,8,"{""place_id"": ""synthetic_0449"", ""types"": [""point_of_interest"", ""establishment""]}",0.10128269479052218,0
+Synthetic Lead 0450,Naples,https://lead450.example.com,+1-555-0000450,,0,"{""place_id"": ""synthetic_0450"", ""types"": [""point_of_interest"", ""establishment""]}",0.00040956716498605005,0
+Synthetic Lead 0451,Tallahassee,https://lead451.example.com,+1-555-0000451,4.685569503411456,42,"{""place_id"": ""synthetic_0451"", ""types"": [""real_estate_agency""]}",0.4185487960501195,1
+Synthetic Lead 0452,Miami,https://lead452.example.com,+1-555-0000452,4.214011093512939,1,"{""place_id"": ""synthetic_0452"", ""types"": [""real_estate_agency"", ""finance""]}",0.020018980709065638,1
+Synthetic Lead 0453,Tampa,https://lead453.example.com,+1-555-0000453,4.091386920890662,2,"{""place_id"": ""synthetic_0453"", ""types"": [""real_estate_agency""]}",0.02695067702253929,0
+Synthetic Lead 0454,St. Petersburg,https://lead454.example.com,+1-555-0000454,,0,"{""place_id"": ""synthetic_0454"", ""types"": [""point_of_interest"", ""establishment""]}",0.00040956716498605005,0
+Synthetic Lead 0455,Orlando,https://lead455.example.com,+1-555-0000455,4.395265298159758,129,"{""place_id"": ""synthetic_0455"", ""types"": [""real_estate_agency""]}",0.6106183169505939,0
+Synthetic Lead 0456,Fort Lauderdale,https://lead456.example.com,,4.900593137516948,11,"{""place_id"": ""synthetic_0456"", ""types"": [""real_estate_agency"", ""finance""]}",0.1593195996730093,0
+Synthetic Lead 0457,Orlando,,,4.29065710893071,22,"{""place_id"": ""synthetic_0457"", ""types"": [""real_estate_agency"", ""finance""]}",0.08239946709844147,0
+Synthetic Lead 0458,Orlando,https://lead458.example.com,+1-555-0000458,3.744278188431355,78,"{""place_id"": ""synthetic_0458"", ""types"": [""real_estate_agency""]}",0.29524138145592127,1
+Synthetic Lead 0459,Tallahassee,https://lead459.example.com,+1-555-0000459,4.61221353119249,251,"{""place_id"": ""synthetic_0459"", ""types"": [""real_estate_agency"", ""finance""]}",0.8065995551762066,0
+Synthetic Lead 0460,Orlando,,+1-555-0000460,4.660575373197396,10,"{""place_id"": ""synthetic_0460"", ""types"": [""real_estate_agency""]}",0.06991110363124729,0
+Synthetic Lead 0461,Naples,https://lead461.example.com,+1-555-0000461,4.527329764223893,19,"{""place_id"": ""synthetic_0461"", ""types"": [""real_estate_agency""]}",0.21404796136740656,0
+Synthetic Lead 0462,Orlando,,+1-555-0000462,4.5727494532624915,178,"{""place_id"": ""synthetic_0462"", ""types"": [""real_estate_agency""]}",0.5541189210063545,1
+Synthetic Lead 0463,Miami,https://lead463.example.com,,4.064535934921096,3,"{""place_id"": ""synthetic_0463"", ""types"": [""real_estate_agency""]}",0.02844628666962418,0
+Synthetic Lead 0464,Orlando,,+1-555-0000464,3.7355054164347106,68,"{""place_id"": ""synthetic_0464"", ""types"": [""insurance_agency""]}",0.10868149364458664,1
+Synthetic Lead 0465,Miami,https://lead465.example.com,+1-555-0000465,3.7659032846796103,5,"{""place_id"": ""synthetic_0465"", ""types"": [""point_of_interest"", ""establishment""]}",0.029278013056087043,0
+Synthetic Lead 0466,Jacksonville,https://lead466.example.com,+1-555-0000466,3.382268375771071,22,"{""place_id"": ""synthetic_0466"", ""types"": [""real_estate_agency""]}",0.08452052349305399,0
+Synthetic Lead 0467,Miami,https://lead467.example.com,+1-555-0000467,4.318474305772975,15,"{""place_id"": ""synthetic_0467"", ""types"": [""insurance_agency""]}",0.11481176154070867,0
+Synthetic Lead 0468,Fort Lauderdale,https://lead468.example.com,+1-555-0000468,4.158275608386703,6,"{""place_id"": ""synthetic_0468"", ""types"": [""point_of_interest"", ""establishment""]}",0.04696623130766425,0
+Synthetic Lead 0469,Tallahassee,https://lead469.example.com,+1-555-0000469,3.980006147735146,6,"{""place_id"": ""synthetic_0469"", ""types"": [""real_estate_agency"", ""finance""]}",0.053696393997621654,0
+Synthetic Lead 0470,Tampa,https://lead470.example.com,+1-555-0000470,2.7221905878274653,27,"{""place_id"": ""synthetic_0470"", ""types"": [""real_estate_agency""]}",0.050221780093789935,0
+Synthetic Lead 0471,Miami,https://lead471.example.com,+1-555-0000471,3.576341265152916,66,"{""place_id"": ""synthetic_0471"", ""types"": [""point_of_interest"", ""establishment""]}",0.17844177324955923,0
+Synthetic Lead 0472,Tampa,,+1-555-0000472,4.760420325701584,17,"{""place_id"": ""synthetic_0472"", ""types"": [""real_estate_agency""]}",0.122581278339241,0
+Synthetic Lead 0473,St. Petersburg,https://lead473.example.com,+1-555-0000473,3.8676869999684347,21,"{""place_id"": ""synthetic_0473"", ""types"": [""insurance_agency""]}",0.09936991290581781,0
+Synthetic Lead 0474,Jacksonville,https://lead474.example.com,+1-555-0000474,4.380295838828421,39,"{""place_id"": ""synthetic_0474"", ""types"": [""insurance_agency""]}",0.2578913690392767,0
+Synthetic Lead 0475,Miami,,+1-555-0000475,3.504657285012372,6,"{""place_id"": ""synthetic_0475"", ""types"": [""real_estate_agency"", ""finance""]}",0.016412314554744116,0
+Synthetic Lead 0476,Jacksonville,https://lead476.example.com,+1-555-0000476,4.919352741179615,48,"{""place_id"": ""synthetic_0476"", ""types"": [""real_estate_agency""]}",0.5213705416811145,0
+Synthetic Lead 0477,Tampa,,,4.127986169972662,53,"{""place_id"": ""synthetic_0477"", ""types"": [""real_estate_agency""]}",0.14715476545102593,1
+Synthetic Lead 0478,Orlando,,+1-555-0000478,4.345020198241768,456,"{""place_id"": ""synthetic_0478"", ""types"": [""real_estate_agency"", ""finance""]}",0.6989772310690902,1
+Synthetic Lead 0479,Miami,,+1-555-0000479,5.0,12,"{""place_id"": ""synthetic_0479"", ""types"": [""real_estate_agency""]}",0.11119863112070842,0
+Synthetic Lead 0480,Naples,,+1-555-0000480,4.9582200502947025,11,"{""place_id"": ""synthetic_0480"", ""types"": [""real_estate_agency""]}",0.09910189952359617,0
+Synthetic Lead 0481,Miami,https://lead481.example.com,+1-555-0000481,4.046717189356471,50,"{""place_id"": ""synthetic_0481"", ""types"": [""real_estate_agency"", ""finance""]}",0.28716709915935834,0
+Synthetic Lead 0482,Miami,https://lead482.example.com,+1-555-0000482,3.9033899075648204,53,"{""place_id"": ""synthetic_0482"", ""types"": [""real_estate_agency"", ""finance""]}",0.26381416818450765,0
+Synthetic Lead 0483,Miami,https://lead483.example.com,+1-555-0000483,4.037227494240234,10,"{""place_id"": ""synthetic_0483"", ""types"": [""real_estate_agency""]}",0.0842254676158739,0
+Synthetic Lead 0484,Jacksonville,,+1-555-0000484,,0,"{""place_id"": ""synthetic_0484"", ""types"": [""real_estate_agency""]}",0.00024845508183933427,0
+Synthetic Lead 0485,Tampa,https://lead485.example.com,+1-555-0000485,4.147387932874564,38,"{""place_id"": ""synthetic_0485"", ""types"": [""point_of_interest"", ""establishment""]}",0.20583948091051837,1
+Synthetic Lead 0486,Orlando,,+1-555-0000486,4.002377927498264,7,"{""place_id"": ""synthetic_0486"", ""types"": [""real_estate_agency""]}",0.028682615672045456,0
+Synthetic Lead 0487,Tampa,https://lead487.example.com,+1-555-0000487,4.933590625354522,12,"{""place_id"": ""synthetic_0487"", ""types"": [""real_estate_agency""]}",0.2068609320552431,0
+Synthetic Lead 0488,Fort Lauderdale,https://lead488.example.com,,4.142895054111082,22,"{""place_id"": ""synthetic_0488"", ""types"": [""real_estate_agency""]}",0.14574932712989852,0
+Synthetic Lead 0489,Orlando,https://lead489.example.com,+1-555-0000489,5.0,66,"{""place_id"": ""synthetic_0489"", ""types"": [""real_estate_agency""]}",0.6283539924592797,1
+Synthetic Lead 0490,Naples,https://lead490.example.com,+1-555-0000490,4.2453712818760865,9,"{""place_id"": ""synthetic_0490"", ""types"": [""point_of_interest"", ""establishment""]}",0.07039921263536644,0
+Synthetic Lead 0491,Orlando,https://lead491.example.com,+1-555-0000491,5.0,2,"{""place_id"": ""synthetic_0491"", ""types"": [""real_estate_agency""]}",0.052574032387290304,0
+Synthetic Lead 0492,Miami,https://lead492.example.com,+1-555-0000492,4.378659711355313,2,"{""place_id"": ""synthetic_0492"", ""types"": [""real_estate_agency""]}",0.033351813302735595,0
+Synthetic Lead 0493,Naples,,+1-555-0000493,4.6814802866247245,4,"{""place_id"": ""synthetic_0493"", ""types"": [""insurance_agency""]}",0.024182985419418122,0
+Synthetic Lead 0494,St. Petersburg,https://lead494.example.com,+1-555-0000494,3.837694474241138,4,"{""place_id"": ""synthetic_0494"", ""types"": [""real_estate_agency""]}",0.03531136928597194,0
+Synthetic Lead 0495,Orlando,https://lead495.example.com,+1-555-0000495,3.7731203887062943,16,"{""place_id"": ""synthetic_0495"", ""types"": [""real_estate_agency""]}",0.09612906693838091,0
+Synthetic Lead 0496,Tallahassee,https://lead496.example.com,+1-555-0000496,4.429852977507494,4,"{""place_id"": ""synthetic_0496"", ""types"": [""point_of_interest"", ""establishment""]}",0.04272326313625227,0
+Synthetic Lead 0497,Jacksonville,https://lead497.example.com,+1-555-0000497,4.694276621232658,8,"{""place_id"": ""synthetic_0497"", ""types"": [""real_estate_agency"", ""finance""]}",0.12268473969991779,0
+Synthetic Lead 0498,Orlando,https://lead498.example.com,+1-555-0000498,4.220128251000232,7,"{""place_id"": ""synthetic_0498"", ""types"": [""real_estate_agency""]}",0.07420701180505702,1
+Synthetic Lead 0499,Tallahassee,https://lead499.example.com,+1-555-0000499,3.5568033324581516,11,"{""place_id"": ""synthetic_0499"", ""types"": [""real_estate_agency""]}",0.058941935075957914,0
+Synthetic Lead 0500,St. Petersburg,,+1-555-0000500,3.5198708168553368,98,"{""place_id"": ""synthetic_0500"", ""types"": [""real_estate_agency""]}",0.14758725104217335,0
+Synthetic Lead 0501,Orlando,https://lead501.example.com,+1-555-0000501,3.48643179890688,44,"{""place_id"": ""synthetic_0501"", ""types"": [""real_estate_agency""]}",0.15642677811207892,0
+Synthetic Lead 0502,Jacksonville,https://lead502.example.com,,3.31618894353031,20,"{""place_id"": ""synthetic_0502"", ""types"": [""insurance_agency""]}",0.04607686864693364,0
+Synthetic Lead 0503,Tampa,https://lead503.example.com,+1-555-0000503,4.254742679723544,11,"{""place_id"": ""synthetic_0503"", ""types"": [""insurance_agency""]}",0.08381999242653584,0
+Synthetic Lead 0504,Miami,https://lead504.example.com,+1-555-0000504,4.762521960854013,11,"{""place_id"": ""synthetic_0504"", ""types"": [""real_estate_agency"", ""finance""]}",0.16831645823769173,0
+Synthetic Lead 0505,Naples,,+1-555-0000505,4.193292106537596,29,"{""place_id"": ""synthetic_0505"", ""types"": [""point_of_interest"", ""establishment""]}",0.08672668821993443,0
+Synthetic Lead 0506,Jacksonville,https://lead506.example.com,+1-555-0000506,3.0697926213310742,40,"{""place_id"": ""synthetic_0506"", ""types"": [""real_estate_agency""]}",0.09548844930844964,0
+Synthetic Lead 0507,Jacksonville,,,4.104619769832726,6,"{""place_id"": ""synthetic_0507"", ""types"": [""point_of_interest"", ""establishment""]}",0.01698862990375852,0
+Synthetic Lead 0508,Jacksonville,https://lead508.example.com,+1-555-0000508,4.118600501683696,20,"{""place_id"": ""synthetic_0508"", ""types"": [""insurance_agency""]}",0.1210652400531372,0
+Synthetic Lead 0509,Jacksonville,https://lead509.example.com,+1-555-0000509,5.0,1,"{""place_id"": ""synthetic_0509"", ""types"": [""real_estate_agency""]}",0.034305623869849956,0
+Synthetic Lead 0510,Orlando,https://lead510.example.com,+1-555-0000510,,0,"{""place_id"": ""synthetic_0510"", ""types"": [""real_estate_agency"", ""finance""]}",0.000552778636923599,0
+Synthetic Lead 0511,Naples,https://lead511.example.com,,4.004661198700402,50,"{""place_id"": ""synthetic_0511"", ""types"": [""real_estate_agency""]}",0.23880906654079975,0
+Synthetic Lead 0512,Fort Lauderdale,,+1-555-0000512,,0,"{""place_id"": ""synthetic_0512"", ""types"": [""insurance_agency""]}",0.00018407190496342368,0
+Synthetic Lead 0513,Fort Lauderdale,https://lead513.example.com,+1-555-0000513,4.424989170673274,177,"{""place_id"": ""synthetic_0513"", ""types"": [""real_estate_agency"", ""finance""]}",0.6916870253342672,1
+Synthetic Lead 0514,Tampa,,+1-555-0000514,4.481656536758212,6,"{""place_id"": ""synthetic_0514"", ""types"": [""real_estate_agency""]}",0.0383534537620288,1
+Synthetic Lead 0515,Orlando,,+1-555-0000515,4.257292218511939,26,"{""place_id"": ""synthetic_0515"", ""types"": [""point_of_interest"", ""establishment""]}",0.0841400591115764,0
+Synthetic Lead 0516,Miami,https://lead516.example.com,+1-555-0000516,4.3649717693286325,19,"{""place_id"": ""synthetic_0516"", ""types"": [""real_estate_agency""]}",0.18678039487510673,0
+Synthetic Lead 0517,Tampa,https://lead517.example.com,+1-555-0000517,4.588804765139268,17,"{""place_id"": ""synthetic_0517"", ""types"": [""real_estate_agency"", ""finance""]}",0.20659322706965966,0
+Synthetic Lead 0518,Miami,https://lead518.example.com,+1-555-0000518,,0,"{""place_id"": ""synthetic_0518"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0519,Fort Lauderdale,https://lead519.example.com,+1-555-0000519,4.6390292894541005,22,"{""place_id"": ""synthetic_0519"", ""types"": [""real_estate_agency""]}",0.26166897337771644,0
+Synthetic Lead 0520,Tallahassee,,+1-555-0000520,3.5134984915572307,55,"{""place_id"": ""synthetic_0520"", ""types"": [""real_estate_agency""]}",0.09435631453081017,0
+Synthetic Lead 0521,Orlando,https://lead521.example.com,+1-555-0000521,4.364183986415769,104,"{""place_id"": ""synthetic_0521"", ""types"": [""point_of_interest"", ""establishment""]}",0.4735266296591915,1
+Synthetic Lead 0522,Orlando,,+1-555-0000522,4.2893704816431635,20,"{""place_id"": ""synthetic_0522"", ""types"": [""real_estate_agency""]}",0.09096306701432166,0
+Synthetic Lead 0523,Fort Lauderdale,https://lead523.example.com,+1-555-0000523,3.8918534559039464,53,"{""place_id"": ""synthetic_0523"", ""types"": [""point_of_interest"", ""establishment""]}",0.2074998122045732,0
+Synthetic Lead 0524,Miami,https://lead524.example.com,+1-555-0000524,4.188657362337177,8,"{""place_id"": ""synthetic_0524"", ""types"": [""real_estate_agency""]}",0.08037492243006723,0
+Synthetic Lead 0525,Naples,https://lead525.example.com,,3.8887299236672237,50,"{""place_id"": ""synthetic_0525"", ""types"": [""real_estate_agency""]}",0.21464474187141638,0
+Synthetic Lead 0526,Tampa,https://lead526.example.com,+1-555-0000526,3.6641493365691282,8,"{""place_id"": ""synthetic_0526"", ""types"": [""real_estate_agency""]}",0.05093930393716889,0
+Synthetic Lead 0527,Miami,,+1-555-0000527,4.023192629193178,74,"{""place_id"": ""synthetic_0527"", ""types"": [""real_estate_agency""]}",0.2027086200019413,1
+Synthetic Lead 0528,Miami,https://lead528.example.com,+1-555-0000528,3.6480056823141696,285,"{""place_id"": ""synthetic_0528"", ""types"": [""point_of_interest"", ""establishment""]}",0.4658940655980137,1
+Synthetic Lead 0529,Naples,,+1-555-0000529,4.3613987320466245,17,"{""place_id"": ""synthetic_0529"", ""types"": [""real_estate_agency""]}",0.0846624223255266,0
+Synthetic Lead 0530,Orlando,,+1-555-0000530,3.6249572529238185,1,"{""place_id"": ""synthetic_0530"", ""types"": [""real_estate_agency"", ""finance""]}",0.006026585870890954,0
+Synthetic Lead 0531,Fort Lauderdale,,+1-555-0000531,4.555988511495526,10,"{""place_id"": ""synthetic_0531"", ""types"": [""insurance_agency""]}",0.04795149292474874,1
+Synthetic Lead 0532,Miami,https://lead532.example.com,+1-555-0000532,3.60926046603559,88,"{""place_id"": ""synthetic_0532"", ""types"": [""insurance_agency""]}",0.22560047078019524,0
+Synthetic Lead 0533,Miami,,+1-555-0000533,3.916852542209497,39,"{""place_id"": ""synthetic_0533"", ""types"": [""insurance_agency""]}",0.08382614941284054,0
+Synthetic Lead 0534,Tallahassee,https://lead534.example.com,+1-555-0000534,,0,"{""place_id"": ""synthetic_0534"", ""types"": [""point_of_interest"", ""establishment""]}",0.00040956716498605005,0
+Synthetic Lead 0535,Miami,,+1-555-0000535,4.86257336443742,67,"{""place_id"": ""synthetic_0535"", ""types"": [""real_estate_agency"", ""finance""]}",0.3946091699115286,0
+Synthetic Lead 0536,Miami,https://lead536.example.com,,4.365144972808296,35,"{""place_id"": ""synthetic_0536"", ""types"": [""insurance_agency""]}",0.20096171620477649,0
+Synthetic Lead 0537,Jacksonville,https://lead537.example.com,+1-555-0000537,4.094133098727803,86,"{""place_id"": ""synthetic_0537"", ""types"": [""insurance_agency""]}",0.3457329460728324,1
+Synthetic Lead 0538,Tallahassee,https://lead538.example.com,+1-555-0000538,4.449359720534861,60,"{""place_id"": ""synthetic_0538"", ""types"": [""insurance_agency""]}",0.3663367134280974,1
+Synthetic Lead 0539,Orlando,https://lead539.example.com,+1-555-0000539,3.146403826335156,124,"{""place_id"": ""synthetic_0539"", ""types"": [""real_estate_agency""]}",0.22383183454861252,1
+Synthetic Lead 0540,Miami,https://lead540.example.com,+1-555-0000540,4.178433205179546,30,"{""place_id"": ""synthetic_0540"", ""types"": [""insurance_agency""]}",0.1767182790486518,0
+Synthetic Lead 0541,Naples,,+1-555-0000541,5.0,59,"{""place_id"": ""synthetic_0541"", ""types"": [""real_estate_agency""]}",0.40222062733519337,0
+Synthetic Lead 0542,Fort Lauderdale,https://lead542.example.com,+1-555-0000542,4.266173253201337,13,"{""place_id"": ""synthetic_0542"", ""types"": [""real_estate_agency"", ""finance""]}",0.12699155804038345,1
+Synthetic Lead 0543,Tallahassee,https://lead543.example.com,+1-555-0000543,4.233956584584668,9,"{""place_id"": ""synthetic_0543"", ""types"": [""point_of_interest"", ""establishment""]}",0.06969626051162639,1
+Synthetic Lead 0544,St. Petersburg,https://lead544.example.com,+1-555-0000544,4.474064189821098,155,"{""place_id"": ""synthetic_0544"", ""types"": [""point_of_interest"", ""establishment""]}",0.608472295740788,1
+Synthetic Lead 0545,Fort Lauderdale,,+1-555-0000545,4.647802621657173,26,"{""place_id"": ""synthetic_0545"", ""types"": [""real_estate_agency"", ""finance""]}",0.15975989747781144,0
+Synthetic Lead 0546,Tampa,,+1-555-0000546,3.2012666535550705,52,"{""place_id"": ""synthetic_0546"", ""types"": [""insurance_agency""]}",0.04819323526488597,0
+Synthetic Lead 0547,Orlando,https://lead547.example.com,+1-555-0000547,,0,"{""place_id"": ""synthetic_0547"", ""types"": [""real_estate_agency"", ""finance""]}",0.000552778636923599,0
+Synthetic Lead 0548,Fort Lauderdale,https://lead548.example.com,,4.305145645543074,9,"{""place_id"": ""synthetic_0548"", ""types"": [""real_estate_agency""]}",0.08135606586301586,0
+Synthetic Lead 0549,Fort Lauderdale,,+1-555-0000549,3.842561719051245,20,"{""place_id"": ""synthetic_0549"", ""types"": [""real_estate_agency""]}",0.058741833866589536,0
+Synthetic Lead 0550,Naples,,+1-555-0000550,4.856012631109957,112,"{""place_id"": ""synthetic_0550"", ""types"": [""real_estate_agency""]}",0.5278789444422529,1
+Synthetic Lead 0551,Jacksonville,https://lead551.example.com,+1-555-0000551,4.042412805057388,39,"{""place_id"": ""synthetic_0551"", ""types"": [""real_estate_agency""]}",0.24110178478219985,1
+Synthetic Lead 0552,Orlando,https://lead552.example.com,,3.2327346321434414,2,"{""place_id"": ""synthetic_0552"", ""types"": [""point_of_interest"", ""establishment""]}",0.008636219511056692,0
+Synthetic Lead 0553,Tampa,,+1-555-0000553,3.5659930415780017,15,"{""place_id"": ""synthetic_0553"", ""types"": [""point_of_interest"", ""establishment""]}",0.026417823785699807,0
+Synthetic Lead 0554,Jacksonville,https://lead554.example.com,,,0,"{""place_id"": ""synthetic_0554"", ""types"": [""insurance_agency""]}",0.0003353501304664781,0
+Synthetic Lead 0555,Tampa,,+1-555-0000555,4.082937231358544,15,"{""place_id"": ""synthetic_0555"", ""types"": [""real_estate_agency""]}",0.058316412599960225,0
+Synthetic Lead 0556,St. Petersburg,https://lead556.example.com,+1-555-0000556,4.105807936367809,2,"{""place_id"": ""synthetic_0556"", ""types"": [""real_estate_agency"", ""finance""]}",0.02724142116494473,0
+Synthetic Lead 0557,Jacksonville,,+1-555-0000557,3.9877686451090515,194,"{""place_id"": ""synthetic_0557"", ""types"": [""real_estate_agency""]}",0.37574138666381657,0
+Synthetic Lead 0558,Miami,https://lead558.example.com,+1-555-0000558,4.739439519514869,45,"{""place_id"": ""synthetic_0558"", ""types"": [""real_estate_agency"", ""finance""]}",0.4515352302216353,0
+Synthetic Lead 0559,Jacksonville,https://lead559.example.com,+1-555-0000559,4.799259918258347,18,"{""place_id"": ""synthetic_0559"", ""types"": [""point_of_interest"", ""establishment""]}",0.20258410895193804,0
+Synthetic Lead 0560,Fort Lauderdale,,,,0,"{""place_id"": ""synthetic_0560"", ""types"": [""real_estate_agency""]}",0.00020342697805520653,0
+Synthetic Lead 0561,Naples,,+1-555-0000561,3.132653166261572,73,"{""place_id"": ""synthetic_0561"", ""types"": [""real_estate_agency""]}",0.0764552363547985,0
+Synthetic Lead 0562,Tampa,,+1-555-0000562,4.50864079024613,10,"{""place_id"": ""synthetic_0562"", ""types"": [""real_estate_agency""]}",0.061004393465196205,0
+Synthetic Lead 0563,Jacksonville,,+1-555-0000563,4.477680114254288,79,"{""place_id"": ""synthetic_0563"", ""types"": [""real_estate_agency""]}",0.3237731279838739,0
+Synthetic Lead 0564,Tampa,https://lead564.example.com,+1-555-0000564,4.354695785078473,38,"{""place_id"": ""synthetic_0564"", ""types"": [""real_estate_agency""]}",0.3074897078479654,0
+Synthetic Lead 0565,Jacksonville,https://lead565.example.com,+1-555-0000565,4.690739874654058,26,"{""place_id"": ""synthetic_0565"", ""types"": [""real_estate_agency""]}",0.30724601430757603,0
+Synthetic Lead 0566,Miami,https://lead566.example.com,,3.61758595176948,23,"{""place_id"": ""synthetic_0566"", ""types"": [""real_estate_agency""]}",0.09173792003775136,0
+Synthetic Lead 0567,Tallahassee,https://lead567.example.com,,,0,"{""place_id"": ""synthetic_0567"", ""types"": [""real_estate_agency""]}",0.00045262222324053464,0
+Synthetic Lead 0568,Naples,https://lead568.example.com,+1-555-0000568,3.7202861234290663,70,"{""place_id"": ""synthetic_0568"", ""types"": [""real_estate_agency""]}",0.2695056681421829,0
+Synthetic Lead 0569,Jacksonville,,+1-555-0000569,4.574611463600427,7,"{""place_id"": ""synthetic_0569"", ""types"": [""real_estate_agency"", ""finance""]}",0.047401799144430226,0
+Synthetic Lead 0570,Jacksonville,https://lead570.example.com,+1-555-0000570,3.3563261527933244,2,"{""place_id"": ""synthetic_0570"", ""types"": [""real_estate_agency""]}",0.015541240584867378,0
+Synthetic Lead 0571,Miami,https://lead571.example.com,,3.7348676563649748,41,"{""place_id"": ""synthetic_0571"", ""types"": [""point_of_interest"", ""establishment""]}",0.12379860942699158,0
+Synthetic Lead 0572,Jacksonville,https://lead572.example.com,+1-555-0000572,4.958184323362668,42,"{""place_id"": ""synthetic_0572"", ""types"": [""real_estate_agency""]}",0.49715981857558333,1
+Synthetic Lead 0573,Tampa,https://lead573.example.com,+1-555-0000573,4.069550088499575,35,"{""place_id"": ""synthetic_0573"", ""types"": [""real_estate_agency""]}",0.228545593857262,0
+Synthetic Lead 0574,Fort Lauderdale,https://lead574.example.com,,4.6199613025663995,32,"{""place_id"": ""synthetic_0574"", ""types"": [""real_estate_agency""]}",0.2929320444105606,0
+Synthetic Lead 0575,Miami,https://lead575.example.com,,4.318477694359623,13,"{""place_id"": ""synthetic_0575"", ""types"": [""real_estate_agency"", ""finance""]}",0.11147754039578624,0
+Synthetic Lead 0576,Fort Lauderdale,https://lead576.example.com,+1-555-0000576,4.147520921999914,51,"{""place_id"": ""synthetic_0576"", ""types"": [""real_estate_agency""]}",0.316398587331798,0
+Synthetic Lead 0577,Orlando,https://lead577.example.com,+1-555-0000577,4.881925162466345,19,"{""place_id"": ""synthetic_0577"", ""types"": [""insurance_agency""]}",0.22642699172697425,0
+Synthetic Lead 0578,Fort Lauderdale,,+1-555-0000578,4.08167058767405,11,"{""place_id"": ""synthetic_0578"", ""types"": [""real_estate_agency""]}",0.04479220552699197,0
+Synthetic Lead 0579,Fort Lauderdale,https://lead579.example.com,+1-555-0000579,3.309630946218265,13,"{""place_id"": ""synthetic_0579"", ""types"": [""point_of_interest"", ""establishment""]}",0.03990979366795436,0
+Synthetic Lead 0580,Orlando,https://lead580.example.com,+1-555-0000580,3.7983799540241474,226,"{""place_id"": ""synthetic_0580"", ""types"": [""real_estate_agency""]}",0.5420662462230951,0
+Synthetic Lead 0581,Tampa,https://lead581.example.com,+1-555-0000581,4.475595864350847,2,"{""place_id"": ""synthetic_0581"", ""types"": [""real_estate_agency""]}",0.03582639383673833,0
+Synthetic Lead 0582,Tallahassee,https://lead582.example.com,+1-555-0000582,4.3977545531812545,36,"{""place_id"": ""synthetic_0582"", ""types"": [""point_of_interest"", ""establishment""]}",0.24684017479892567,0
+Synthetic Lead 0583,Jacksonville,https://lead583.example.com,+1-555-0000583,3.416470874882281,2,"{""place_id"": ""synthetic_0583"", ""types"": [""real_estate_agency""]}",0.01626091000571651,0
+Synthetic Lead 0584,Miami,,+1-555-0000584,3.8378287402958997,17,"{""place_id"": ""synthetic_0584"", ""types"": [""real_estate_agency""]}",0.05108831796725026,0
+Synthetic Lead 0585,Tampa,https://lead585.example.com,+1-555-0000585,3.909139325398877,11,"{""place_id"": ""synthetic_0585"", ""types"": [""real_estate_agency"", ""finance""]}",0.08108302605443601,0
+Synthetic Lead 0586,Orlando,https://lead586.example.com,,4.0172652029428875,1,"{""place_id"": ""synthetic_0586"", ""types"": [""real_estate_agency""]}",0.014352764327888385,0
+Synthetic Lead 0587,Fort Lauderdale,https://lead587.example.com,+1-555-0000587,3.5120432056992246,32,"{""place_id"": ""synthetic_0587"", ""types"": [""real_estate_agency""]}",0.1270814995551969,1
+Synthetic Lead 0588,Jacksonville,,,3.885814445940261,12,"{""place_id"": ""synthetic_0588"", ""types"": [""real_estate_agency""]}",0.03306226609644303,0
+Synthetic Lead 0589,Miami,https://lead589.example.com,+1-555-0000589,,0,"{""place_id"": ""synthetic_0589"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0590,Jacksonville,https://lead590.example.com,+1-555-0000590,4.585766629880959,55,"{""place_id"": ""synthetic_0590"", ""types"": [""point_of_interest"", ""establishment""]}",0.38443438697910665,1
+Synthetic Lead 0591,St. Petersburg,,+1-555-0000591,4.604560655495122,112,"{""place_id"": ""synthetic_0591"", ""types"": [""insurance_agency""]}",0.373426174926816,0
+Synthetic Lead 0592,St. Petersburg,https://lead592.example.com,+1-555-0000592,4.127094770955592,120,"{""place_id"": ""synthetic_0592"", ""types"": [""insurance_agency""]}",0.4313576458972291,0
+Synthetic Lead 0593,Miami,https://lead593.example.com,+1-555-0000593,4.003980102064634,30,"{""place_id"": ""synthetic_0593"", ""types"": [""real_estate_agency""]}",0.19258907715730328,1
+Synthetic Lead 0594,Orlando,https://lead594.example.com,+1-555-0000594,,0,"{""place_id"": ""synthetic_0594"", ""types"": [""real_estate_agency"", ""finance""]}",0.000552778636923599,0
+Synthetic Lead 0595,Tampa,https://lead595.example.com,+1-555-0000595,3.7917124462722125,98,"{""place_id"": ""synthetic_0595"", ""types"": [""real_estate_agency"", ""finance""]}",0.35361772807439684,0
+Synthetic Lead 0596,Miami,,+1-555-0000596,3.62658395891628,151,"{""place_id"": ""synthetic_0596"", ""types"": [""real_estate_agency""]}",0.22569824288135285,0
+Synthetic Lead 0597,Tampa,https://lead597.example.com,+1-555-0000597,3.7298893955371417,78,"{""place_id"": ""synthetic_0597"", ""types"": [""point_of_interest"", ""establishment""]}",0.23359426081134707,0
+Synthetic Lead 0598,Miami,https://lead598.example.com,+1-555-0000598,3.882593418014272,6,"{""place_id"": ""synthetic_0598"", ""types"": [""insurance_agency""]}",0.03710835622818931,0
+Synthetic Lead 0599,Miami,https://lead599.example.com,+1-555-0000599,3.6182631001038645,25,"{""place_id"": ""synthetic_0599"", ""types"": [""real_estate_agency"", ""finance""]}",0.11707652206750846,1
+Synthetic Lead 0600,Fort Lauderdale,https://lead600.example.com,+1-555-0000600,4.281029779531438,34,"{""place_id"": ""synthetic_0600"", ""types"": [""real_estate_agency""]}",0.2681698954353859,1
+Synthetic Lead 0601,Orlando,,+1-555-0000601,4.564857836891854,2,"{""place_id"": ""synthetic_0601"", ""types"": [""real_estate_agency""]}",0.017561656674428,0
+Synthetic Lead 0602,Fort Lauderdale,https://lead602.example.com,+1-555-0000602,3.4064508496008794,35,"{""place_id"": ""synthetic_0602"", ""types"": [""real_estate_agency"", ""finance""]}",0.12229915360469523,0
+Synthetic Lead 0603,Miami,,+1-555-0000603,4.212564355608017,307,"{""place_id"": ""synthetic_0603"", ""types"": [""real_estate_agency"", ""finance""]}",0.5631203594105328,0
+Synthetic Lead 0604,Jacksonville,https://lead604.example.com,+1-555-0000604,4.090032102366832,43,"{""place_id"": ""synthetic_0604"", ""types"": [""real_estate_agency""]}",0.26896190802386,0
+Synthetic Lead 0605,Tampa,https://lead605.example.com,+1-555-0000605,4.370754342768402,117,"{""place_id"": ""synthetic_0605"", ""types"": [""real_estate_agency""]}",0.5793037331128535,1
+Synthetic Lead 0606,St. Petersburg,https://lead606.example.com,+1-555-0000606,4.193530615948206,25,"{""place_id"": ""synthetic_0606"", ""types"": [""real_estate_agency"", ""finance""]}",0.19875263555297493,0
+Synthetic Lead 0607,St. Petersburg,,+1-555-0000607,3.473200360034185,18,"{""place_id"": ""synthetic_0607"", ""types"": [""real_estate_agency""]}",0.037271870241619834,0
+Synthetic Lead 0608,Tampa,https://lead608.example.com,+1-555-0000608,3.5688053505714175,31,"{""place_id"": ""synthetic_0608"", ""types"": [""real_estate_agency""]}",0.13119559722119306,0
+Synthetic Lead 0609,Fort Lauderdale,https://lead609.example.com,+1-555-0000609,4.214711787792487,7,"{""place_id"": ""synthetic_0609"", ""types"": [""insurance_agency""]}",0.055791189790680526,0
+Synthetic Lead 0610,Orlando,,,4.714390459872755,6,"{""place_id"": ""synthetic_0610"", ""types"": [""real_estate_agency""]}",0.03863371536489132,0
+Synthetic Lead 0611,Jacksonville,https://lead611.example.com,,3.0929063144784985,91,"{""place_id"": ""synthetic_0611"", ""types"": [""real_estate_agency""]}",0.14631381320394596,1
+Synthetic Lead 0612,Miami,https://lead612.example.com,+1-555-0000612,4.37286328990079,104,"{""place_id"": ""synthetic_0612"", ""types"": [""real_estate_agency""]}",0.551139041736094,1
+Synthetic Lead 0613,Tampa,https://lead613.example.com,+1-555-0000613,4.794811002643822,6,"{""place_id"": ""synthetic_0613"", ""types"": [""point_of_interest"", ""establishment""]}",0.07998843805953021,0
+Synthetic Lead 0614,Miami,,+1-555-0000614,4.123487061896894,64,"{""place_id"": ""synthetic_0614"", ""types"": [""real_estate_agency""]}",0.2005408558210194,0
+Synthetic Lead 0615,Tallahassee,https://lead615.example.com,+1-555-0000615,4.47510124801322,18,"{""place_id"": ""synthetic_0615"", ""types"": [""real_estate_agency"", ""finance""]}",0.19656766811192547,0
+Synthetic Lead 0616,Tampa,https://lead616.example.com,+1-555-0000616,3.848465459551099,30,"{""place_id"": ""synthetic_0616"", ""types"": [""point_of_interest"", ""establishment""]}",0.129353392058073,0
+Synthetic Lead 0617,Jacksonville,https://lead617.example.com,+1-555-0000617,4.140316900361562,34,"{""place_id"": ""synthetic_0617"", ""types"": [""real_estate_agency"", ""finance""]}",0.23805041947949285,0
+Synthetic Lead 0618,Tampa,https://lead618.example.com,+1-555-0000618,3.3895432408459243,66,"{""place_id"": ""synthetic_0618"", ""types"": [""insurance_agency""]}",0.14718736257333767,1
+Synthetic Lead 0619,Orlando,https://lead619.example.com,+1-555-0000619,,0,"{""place_id"": ""synthetic_0619"", ""types"": [""insurance_agency""]}",0.00040956716498605005,0
+Synthetic Lead 0620,Orlando,https://lead620.example.com,,4.671382900612638,109,"{""place_id"": ""synthetic_0620"", ""types"": [""real_estate_agency""]}",0.6086543636327337,0
+Synthetic Lead 0621,Naples,https://lead621.example.com,,3.7075025361377794,29,"{""place_id"": ""synthetic_0621"", ""types"": [""insurance_agency""]}",0.09165546016780474,0
+Synthetic Lead 0622,St. Petersburg,https://lead622.example.com,+1-555-0000622,3.972236077498285,42,"{""place_id"": ""synthetic_0622"", ""types"": [""point_of_interest"", ""establishment""]}",0.18859245369991992,0
+Synthetic Lead 0623,Miami,,+1-555-0000623,3.5067788733649037,7,"{""place_id"": ""synthetic_0623"", ""types"": [""real_estate_agency"", ""finance""]}",0.018445684941678895,0
+Synthetic Lead 0624,St. Petersburg,https://lead624.example.com,+1-555-0000624,3.4950151484580623,267,"{""place_id"": ""synthetic_0624"", ""types"": [""real_estate_agency""]}",0.4712672310276695,0
+Synthetic Lead 0625,Tampa,https://lead625.example.com,+1-555-0000625,4.113081149952692,35,"{""place_id"": ""synthetic_0625"", ""types"": [""real_estate_agency""]}",0.2373933220179196,0
+Synthetic Lead 0626,Miami,,,3.835211402932177,47,"{""place_id"": ""synthetic_0626"", ""types"": [""point_of_interest"", ""establishment""]}",0.07468038971003527,0
+Synthetic Lead 0627,Jacksonville,,+1-555-0000627,,0,"{""place_id"": ""synthetic_0627"", ""types"": [""real_estate_agency""]}",0.00024845508183933427,0
+Synthetic Lead 0628,Miami,https://lead628.example.com,+1-555-0000628,4.426269209489796,7,"{""place_id"": ""synthetic_0628"", ""types"": [""real_estate_agency"", ""finance""]}",0.0882004005266963,0
+Synthetic Lead 0629,Orlando,https://lead629.example.com,+1-555-0000629,4.360424823162304,88,"{""place_id"": ""synthetic_0629"", ""types"": [""real_estate_agency""]}",0.5057827023038665,1
+Synthetic Lead 0630,Fort Lauderdale,https://lead630.example.com,+1-555-0000630,4.319300395464222,28,"{""place_id"": ""synthetic_0630"", ""types"": [""real_estate_agency"", ""finance""]}",0.24081584005450973,0
+Synthetic Lead 0631,Orlando,https://lead631.example.com,+1-555-0000631,4.988884102465943,2,"{""place_id"": ""synthetic_0631"", ""types"": [""real_estate_agency"", ""finance""]}",0.0521521873479669,0
+Synthetic Lead 0632,Tallahassee,https://lead632.example.com,+1-555-0000632,,0,"{""place_id"": ""synthetic_0632"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0633,Fort Lauderdale,https://lead633.example.com,,4.172532566898541,10,"{""place_id"": ""synthetic_0633"", ""types"": [""real_estate_agency""]}",0.0789701366514035,0
+Synthetic Lead 0634,Tallahassee,https://lead634.example.com,+1-555-0000634,,0,"{""place_id"": ""synthetic_0634"", ""types"": [""real_estate_agency"", ""finance""]}",0.000552778636923599,0
+Synthetic Lead 0635,Jacksonville,https://lead635.example.com,+1-555-0000635,4.832269904669018,18,"{""place_id"": ""synthetic_0635"", ""types"": [""real_estate_agency""]}",0.261954271197118,0
+Synthetic Lead 0636,Tallahassee,https://lead636.example.com,+1-555-0000636,3.4891181753277136,25,"{""place_id"": ""synthetic_0636"", ""types"": [""real_estate_agency""]}",0.10330660024259085,0
+Synthetic Lead 0637,Tampa,https://lead637.example.com,+1-555-0000637,4.0438222791720655,82,"{""place_id"": ""synthetic_0637"", ""types"": [""insurance_agency""]}",0.3215273617433387,0
+Synthetic Lead 0638,Jacksonville,https://lead638.example.com,+1-555-0000638,4.87906054793363,6,"{""place_id"": ""synthetic_0638"", ""types"": [""real_estate_agency""]}",0.11230965850121312,0
+Synthetic Lead 0639,Jacksonville,,+1-555-0000639,4.454039552599533,6,"{""place_id"": ""synthetic_0639"", ""types"": [""real_estate_agency"", ""finance""]}",0.03745525254953085,0
+Synthetic Lead 0640,Tallahassee,,+1-555-0000640,4.297631515739886,15,"{""place_id"": ""synthetic_0640"", ""types"": [""real_estate_agency""]}",0.07151278695434796,0
+Synthetic Lead 0641,Miami,https://lead641.example.com,+1-555-0000641,4.0911576532826714,54,"{""place_id"": ""synthetic_0641"", ""types"": [""real_estate_agency""]}",0.31355657199200043,1
+Synthetic Lead 0642,Jacksonville,https://lead642.example.com,+1-555-0000642,,0,"{""place_id"": ""synthetic_0642"", ""types"": [""point_of_interest"", ""establishment""]}",0.00040956716498605005,0
+Synthetic Lead 0643,St. Petersburg,https://lead643.example.com,+1-555-0000643,4.344109531545162,2,"{""place_id"": ""synthetic_0643"", ""types"": [""real_estate_agency""]}",0.03251035201800662,0
+Synthetic Lead 0644,Tampa,https://lead644.example.com,,4.073812937507759,53,"{""place_id"": ""synthetic_0644"", ""types"": [""real_estate_agency""]}",0.26463575073852336,0
+Synthetic Lead 0645,Tallahassee,https://lead645.example.com,,4.178710689477778,9,"{""place_id"": ""synthetic_0645"", ""types"": [""real_estate_agency"", ""finance""]}",0.07285807648704658,0
+Synthetic Lead 0646,Tampa,https://lead646.example.com,+1-555-0000646,,0,"{""place_id"": ""synthetic_0646"", ""types"": [""point_of_interest"", ""establishment""]}",0.00040956716498605005,0
+Synthetic Lead 0647,Miami,https://lead647.example.com,+1-555-0000647,3.8609642357532508,2,"{""place_id"": ""synthetic_0647"", ""types"": [""insurance_agency""]}",0.01691239012808922,0
+Synthetic Lead 0648,Jacksonville,https://lead648.example.com,+1-555-0000648,4.46606468694072,8,"{""place_id"": ""synthetic_0648"", ""types"": [""real_estate_agency"", ""finance""]}",0.10161655405208908,0
+Synthetic Lead 0649,Tampa,https://lead649.example.com,,,0,"{""place_id"": ""synthetic_0649"", ""types"": [""real_estate_agency""]}",0.00045262222324053464,0
+Synthetic Lead 0650,Miami,https://lead650.example.com,+1-555-0000650,3.3115066803369624,61,"{""place_id"": ""synthetic_0650"", ""types"": [""real_estate_agency""]}",0.1654057691041758,0
+Synthetic Lead 0651,Miami,https://lead651.example.com,+1-555-0000651,4.36200626209499,7,"{""place_id"": ""synthetic_0651"", ""types"": [""point_of_interest"", ""establishment""]}",0.06330394796153004,0
+Synthetic Lead 0652,Miami,,+1-555-0000652,3.8199049556905473,146,"{""place_id"": ""synthetic_0652"", ""types"": [""point_of_interest"", ""establishment""]}",0.21383552259455288,0
+Synthetic Lead 0653,St. Petersburg,https://lead653.example.com,,4.488701288759625,8,"{""place_id"": ""synthetic_0653"", ""types"": [""insurance_agency""]}",0.06547635119989448,0
+Synthetic Lead 0654,Tallahassee,https://lead654.example.com,+1-555-0000654,4.22327873666393,8,"{""place_id"": ""synthetic_0654"", ""types"": [""real_estate_agency""]}",0.08278611157381545,0
+Synthetic Lead 0655,Jacksonville,https://lead655.example.com,+1-555-0000655,4.580927387021232,127,"{""place_id"": ""synthetic_0655"", ""types"": [""real_estate_agency""]}",0.663914274220353,1
+Synthetic Lead 0656,Miami,https://lead656.example.com,+1-555-0000656,4.78775328825439,25,"{""place_id"": ""synthetic_0656"", ""types"": [""real_estate_agency""]}",0.32143828297415833,0
+Synthetic Lead 0657,Jacksonville,https://lead657.example.com,+1-555-0000657,4.29621055888409,10,"{""place_id"": ""synthetic_0657"", ""types"": [""point_of_interest"", ""establishment""]}",0.08034040909841855,0
+Synthetic Lead 0658,Tallahassee,https://lead658.example.com,,4.766026144207089,16,"{""place_id"": ""synthetic_0658"", ""types"": [""real_estate_agency"", ""finance""]}",0.19414722327207645,0
+Synthetic Lead 0659,St. Petersburg,,+1-555-0000659,3.0278510531056613,101,"{""place_id"": ""synthetic_0659"", ""types"": [""real_estate_agency""]}",0.0859602120948161,0
+Synthetic Lead 0660,Orlando,https://lead660.example.com,+1-555-0000660,4.995226148958012,116,"{""place_id"": ""synthetic_0660"", ""types"": [""real_estate_agency""]}",0.7562293596511704,1
+Synthetic Lead 0661,Miami,https://lead661.example.com,+1-555-0000661,4.38753107594617,7,"{""place_id"": ""synthetic_0661"", ""types"": [""real_estate_agency""]}",0.08540047280494067,0
+Synthetic Lead 0662,Tallahassee,https://lead662.example.com,+1-555-0000662,4.738921677872591,19,"{""place_id"": ""synthetic_0662"", ""types"": [""real_estate_agency""]}",0.25375975763830616,0
+Synthetic Lead 0663,Tallahassee,https://lead663.example.com,+1-555-0000663,,0,"{""place_id"": ""synthetic_0663"", ""types"": [""real_estate_agency"", ""finance""]}",0.000552778636923599,0
+Synthetic Lead 0664,Miami,https://lead664.example.com,+1-555-0000664,3.7846150591973324,6,"{""place_id"": ""synthetic_0664"", ""types"": [""insurance_agency""]}",0.034109178832460764,0
+Synthetic Lead 0665,Tallahassee,,,4.272969147072387,18,"{""place_id"": ""synthetic_0665"", ""types"": [""real_estate_agency""]}",0.06796102001833855,0
+Synthetic Lead 0666,Miami,https://lead666.example.com,+1-555-0000666,4.191481055331269,20,"{""place_id"": ""synthetic_0666"", ""types"": [""insurance_agency""]}",0.12950192571903466,0
+Synthetic Lead 0667,Miami,https://lead667.example.com,+1-555-0000667,4.341534294004995,78,"{""place_id"": ""synthetic_0667"", ""types"": [""point_of_interest"", ""establishment""]}",0.39645536863110403,0
+Synthetic Lead 0668,St. Petersburg,https://lead668.example.com,+1-555-0000668,4.742257580464983,85,"{""place_id"": ""synthetic_0668"", ""types"": [""real_estate_agency""]}",0.6160759338923806,0
+Synthetic Lead 0669,Jacksonville,https://lead669.example.com,+1-555-0000669,3.3173898423485757,13,"{""place_id"": ""synthetic_0669"", ""types"": [""real_estate_agency""]}",0.0535207948780006,0
+Synthetic Lead 0670,Tampa,https://lead670.example.com,+1-555-0000670,4.686909535858654,15,"{""place_id"": ""synthetic_0670"", ""types"": [""real_estate_agency""]}",0.20290801344812184,0
+Synthetic Lead 0671,Tallahassee,https://lead671.example.com,+1-555-0000671,4.204140954978964,44,"{""place_id"": ""synthetic_0671"", ""types"": [""real_estate_agency""]}",0.30056229339147217,1
+Synthetic Lead 0672,Tallahassee,https://lead672.example.com,+1-555-0000672,4.098109069437727,9,"{""place_id"": ""synthetic_0672"", ""types"": [""insurance_agency""]}",0.06181546722193161,0
+Synthetic Lead 0673,Miami,https://lead673.example.com,+1-555-0000673,3.464442382807555,40,"{""place_id"": ""synthetic_0673"", ""types"": [""insurance_agency""]}",0.10989971401885823,0
+Synthetic Lead 0674,Jacksonville,https://lead674.example.com,+1-555-0000674,4.4515243341884325,18,"{""place_id"": ""synthetic_0674"", ""types"": [""real_estate_agency""]}",0.19271793423275152,0
+Synthetic Lead 0675,St. Petersburg,,+1-555-0000675,2.9929460744844816,6,"{""place_id"": ""synthetic_0675"", ""types"": [""real_estate_agency""]}",0.010461227114762621,0
+Synthetic Lead 0676,Jacksonville,,+1-555-0000676,4.524197005619357,6,"{""place_id"": ""synthetic_0676"", ""types"": [""point_of_interest"", ""establishment""]}",0.02977493569714374,0
+Synthetic Lead 0677,Naples,,+1-555-0000677,3.4539470822635043,114,"{""place_id"": ""synthetic_0677"", ""types"": [""real_estate_agency""]}",0.15334619095993948,0
+Synthetic Lead 0678,Fort Lauderdale,,,4.226728956308738,16,"{""place_id"": ""synthetic_0678"", ""types"": [""insurance_agency""]}",0.044105872545805794,0
+Synthetic Lead 0679,Miami,,+1-555-0000679,4.14041558133604,143,"{""place_id"": ""synthetic_0679"", ""types"": [""insurance_agency""]}",0.29116098111694305,1
+Synthetic Lead 0680,Miami,,+1-555-0000680,,0,"{""place_id"": ""synthetic_0680"", ""types"": [""real_estate_agency"", ""finance""]}",0.00024845508183933427,0
+Synthetic Lead 0681,Tallahassee,https://lead681.example.com,+1-555-0000681,4.110672415493055,28,"{""place_id"": ""synthetic_0681"", ""types"": [""real_estate_agency"", ""finance""]}",0.20120733940587332,0
+Synthetic Lead 0682,Naples,,+1-555-0000682,,0,"{""place_id"": ""synthetic_0682"", ""types"": [""real_estate_agency"", ""finance""]}",0.00024845508183933427,0
+Synthetic Lead 0683,Miami,,+1-555-0000683,3.9466986520143985,5,"{""place_id"": ""synthetic_0683"", ""types"": [""insurance_agency""]}",0.015609625576099457,0
+Synthetic Lead 0684,Miami,https://lead684.example.com,+1-555-0000684,4.836441384377332,2,"{""place_id"": ""synthetic_0684"", ""types"": [""real_estate_agency""]}",0.046680891986628656,0
+Synthetic Lead 0685,St. Petersburg,https://lead685.example.com,+1-555-0000685,4.468148484590447,94,"{""place_id"": ""synthetic_0685"", ""types"": [""real_estate_agency""]}",0.5564719510276276,1
+Synthetic Lead 0686,Miami,https://lead686.example.com,+1-555-0000686,4.00718500923842,7,"{""place_id"": ""synthetic_0686"", ""types"": [""real_estate_agency""]}",0.061920789687141375,0
+Synthetic Lead 0687,Miami,,+1-555-0000687,4.081776790017743,19,"{""place_id"": ""synthetic_0687"", ""types"": [""real_estate_agency""]}",0.07121055193310777,1
+Synthetic Lead 0688,Tallahassee,https://lead688.example.com,+1-555-0000688,3.416411454707277,9,"{""place_id"": ""synthetic_0688"", ""types"": [""real_estate_agency""]}",0.044605736212721396,0
+Synthetic Lead 0689,St. Petersburg,,+1-555-0000689,4.39423710042577,27,"{""place_id"": ""synthetic_0689"", ""types"": [""real_estate_agency""]}",0.13001663822460377,0
+Synthetic Lead 0690,Tallahassee,,+1-555-0000690,3.3200921461522674,6,"{""place_id"": ""synthetic_0690"", ""types"": [""real_estate_agency""]}",0.013956074934762506,0
+Synthetic Lead 0691,Fort Lauderdale,,+1-555-0000691,4.575898232917728,16,"{""place_id"": ""synthetic_0691"", ""types"": [""real_estate_agency""]}",0.09813135014018079,0
+Synthetic Lead 0692,Orlando,https://lead692.example.com,+1-555-0000692,4.264310796245633,34,"{""place_id"": ""synthetic_0692"", ""types"": [""real_estate_agency""]}",0.26446769919532453,0
+Synthetic Lead 0693,Tallahassee,https://lead693.example.com,+1-555-0000693,5.0,5,"{""place_id"": ""synthetic_0693"", ""types"": [""real_estate_agency"", ""finance""]}",0.10630382659624675,0
+Synthetic Lead 0694,Orlando,,+1-555-0000694,3.6499322231378475,8,"{""place_id"": ""synthetic_0694"", ""types"": [""insurance_agency""]}",0.01732625909600634,0
+Synthetic Lead 0695,Orlando,,+1-555-0000695,4.1486689544796835,13,"{""place_id"": ""synthetic_0695"", ""types"": [""real_estate_agency"", ""finance""]}",0.05494853948449062,0
+Synthetic Lead 0696,Tallahassee,,,5.0,3,"{""place_id"": ""synthetic_0696"", ""types"": [""insurance_agency""]}",0.020330835519106163,0
+Synthetic Lead 0697,Fort Lauderdale,https://lead697.example.com,+1-555-0000697,4.795694820145707,12,"{""place_id"": ""synthetic_0697"", ""types"": [""point_of_interest"", ""establishment""]}",0.14433478721986248,0
+Synthetic Lead 0698,Tallahassee,https://lead698.example.com,+1-555-0000698,3.8518939742100504,23,"{""place_id"": ""synthetic_0698"", ""types"": [""real_estate_agency"", ""finance""]}",0.1370139459704975,0
+Synthetic Lead 0699,Miami,https://lead699.example.com,,4.311983714186724,12,"{""place_id"": ""synthetic_0699"", ""types"": [""real_estate_agency""]}",0.10376494518572098,0
+Synthetic Lead 0700,Naples,,+1-555-0000700,4.200999678207544,14,"{""place_id"": ""synthetic_0700"", ""types"": [""point_of_interest"", ""establishment""]}",0.04630451635415054,0
+Synthetic Lead 0701,Jacksonville,https://lead701.example.com,+1-555-0000701,4.340977933697078,19,"{""place_id"": ""synthetic_0701"", ""types"": [""real_estate_agency""]}",0.18298611864040823,0
+Synthetic Lead 0702,Fort Lauderdale,https://lead702.example.com,+1-555-0000702,3.850659782007585,9,"{""place_id"": ""synthetic_0702"", ""types"": [""insurance_agency""]}",0.04956058418903664,0
+Synthetic Lead 0703,Naples,,+1-555-0000703,4.155339798649633,46,"{""place_id"": ""synthetic_0703"", ""types"": [""real_estate_agency"", ""finance""]}",0.15983668421583014,1
+Synthetic Lead 0704,Tampa,https://lead704.example.com,+1-555-0000704,3.4009738123616433,112,"{""place_id"": ""synthetic_0704"", ""types"": [""real_estate_agency""]}",0.27028607272516475,0
+Synthetic Lead 0705,Fort Lauderdale,https://lead705.example.com,+1-555-0000705,4.2675617259340415,11,"{""place_id"": ""synthetic_0705"", ""types"": [""insurance_agency""]}",0.08478256425046159,0
+Synthetic Lead 0706,Fort Lauderdale,https://lead706.example.com,+1-555-0000706,4.425010336710916,35,"{""place_id"": ""synthetic_0706"", ""types"": [""real_estate_agency""]}",0.3074227564234929,0
+Synthetic Lead 0707,St. Petersburg,,+1-555-0000707,4.086290293678058,15,"{""place_id"": ""synthetic_0707"", ""types"": [""real_estate_agency""]}",0.05850375533923934,0
+Synthetic Lead 0708,Tallahassee,https://lead708.example.com,+1-555-0000708,3.392474554707606,31,"{""place_id"": ""synthetic_0708"", ""types"": [""real_estate_agency""]}",0.11027898434917739,0
+Synthetic Lead 0709,Fort Lauderdale,https://lead709.example.com,+1-555-0000709,4.694265931425732,131,"{""place_id"": ""synthetic_0709"", ""types"": [""real_estate_agency""]}",0.7034364145278085,0
+Synthetic Lead 0710,Miami,https://lead710.example.com,+1-555-0000710,4.382262518996401,36,"{""place_id"": ""synthetic_0710"", ""types"": [""real_estate_agency""]}",0.3029640818884262,0
+Synthetic Lead 0711,Miami,https://lead711.example.com,+1-555-0000711,3.836992451149512,2,"{""place_id"": ""synthetic_0711"", ""types"": [""insurance_agency""]}",0.01661025633271276,0
+Synthetic Lead 0712,Naples,,+1-555-0000712,4.059699776580969,34,"{""place_id"": ""synthetic_0712"", ""types"": [""insurance_agency""]}",0.08668805019412104,0
+Synthetic Lead 0713,Naples,https://lead713.example.com,,3.449665298609081,88,"{""place_id"": ""synthetic_0713"", ""types"": [""real_estate_agency""]}",0.2080805985662276,0
+Synthetic Lead 0714,Naples,https://lead714.example.com,+1-555-0000714,3.687294936111048,15,"{""place_id"": ""synthetic_0714"", ""types"": [""real_estate_agency"", ""finance""]}",0.0844230354836294,0
+Synthetic Lead 0715,Miami,https://lead715.example.com,+1-555-0000715,3.9310943268214302,66,"{""place_id"": ""synthetic_0715"", ""types"": [""real_estate_agency""]}",0.31209470513363163,0
+Synthetic Lead 0716,Tampa,https://lead716.example.com,+1-555-0000716,4.8142104061400754,8,"{""place_id"": ""synthetic_0716"", ""types"": [""real_estate_agency""]}",0.1351980313196122,0
+Synthetic Lead 0717,St. Petersburg,https://lead717.example.com,+1-555-0000717,3.8802483045562624,3,"{""place_id"": ""synthetic_0717"", ""types"": [""real_estate_agency"", ""finance""]}",0.029893260885443567,0
+Synthetic Lead 0718,St. Petersburg,,+1-555-0000718,4.520106829664379,23,"{""place_id"": ""synthetic_0718"", ""types"": [""point_of_interest"", ""establishment""]}",0.09789409988984953,0
+Synthetic Lead 0719,Miami,https://lead719.example.com,,3.93084189856921,2,"{""place_id"": ""synthetic_0719"", ""types"": [""real_estate_agency""]}",0.01966199409358759,0
+Synthetic Lead 0720,Jacksonville,https://lead720.example.com,+1-555-0000720,4.323973780425938,15,"{""place_id"": ""synthetic_0720"", ""types"": [""real_estate_agency""]}",0.14970463326364336,0
+Synthetic Lead 0721,Miami,https://lead721.example.com,+1-555-0000721,4.1293022489280995,94,"{""place_id"": ""synthetic_0721"", ""types"": [""real_estate_agency"", ""finance""]}",0.4482085263365961,1
+Synthetic Lead 0722,Tampa,https://lead722.example.com,,,0,"{""place_id"": ""synthetic_0722"", ""types"": [""point_of_interest"", ""establishment""]}",0.0003353501304664781,0
+Synthetic Lead 0723,Orlando,,+1-555-0000723,3.9325943308907214,4,"{""place_id"": ""synthetic_0723"", ""types"": [""real_estate_agency""]}",0.01750256707860581,0
+Synthetic Lead 0724,Miami,https://lead724.example.com,,3.4137358749987796,5,"{""place_id"": ""synthetic_0724"", ""types"": [""real_estate_agency""]}",0.023959162145536665,0
+Synthetic Lead 0725,Miami,,+1-555-0000725,,0,"{""place_id"": ""synthetic_0725"", ""types"": [""real_estate_agency""]}",0.00024845508183933427,0
+Synthetic Lead 0726,Naples,https://lead726.example.com,+1-555-0000726,3.9340612530286214,12,"{""place_id"": ""synthetic_0726"", ""types"": [""insurance_agency""]}",0.06734348667361158,0
+Synthetic Lead 0727,St. Petersburg,https://lead727.example.com,,,0,"{""place_id"": ""synthetic_0727"", ""types"": [""point_of_interest"", ""establishment""]}",0.0003353501304664781,0
+Synthetic Lead 0728,Naples,https://lead728.example.com,+1-555-0000728,4.405106007839776,63,"{""place_id"": ""synthetic_0728"", ""types"": [""real_estate_agency"", ""finance""]}",0.4370165445195203,1
+Synthetic Lead 0729,Tampa,https://lead729.example.com,+1-555-0000729,3.967115917570961,36,"{""place_id"": ""synthetic_0729"", ""types"": [""real_estate_agency""]}",0.21296084266944046,0
+Synthetic Lead 0730,Tampa,,+1-555-0000730,5.0,23,"{""place_id"": ""synthetic_0730"", ""types"": [""insurance_agency""]}",0.15392522800326888,1
+Synthetic Lead 0731,Tampa,https://lead731.example.com,+1-555-0000731,,0,"{""place_id"": ""synthetic_0731"", ""types"": [""real_estate_agency"", ""finance""]}",0.000552778636923599,0
+Synthetic Lead 0732,Jacksonville,https://lead732.example.com,+1-555-0000732,4.3018165893549005,7,"{""place_id"": ""synthetic_0732"", ""types"": [""real_estate_agency""]}",0.07948982058258486,0
+Synthetic Lead 0733,Tampa,https://lead733.example.com,+1-555-0000733,3.6360234882471656,56,"{""place_id"": ""synthetic_0733"", ""types"": [""real_estate_agency"", ""finance""]}",0.21446414117843182,0
+Synthetic Lead 0734,St. Petersburg,https://lead734.example.com,+1-555-0000734,,0,"{""place_id"": ""synthetic_0734"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0735,St. Petersburg,,+1-555-0000735,4.270709736670272,54,"{""place_id"": ""synthetic_0735"", ""types"": [""real_estate_agency""]}",0.20296193071779953,1
+Synthetic Lead 0736,Tallahassee,,+1-555-0000736,3.0373143125628568,83,"{""place_id"": ""synthetic_0736"", ""types"": [""insurance_agency""]}",0.05688491949847475,0
+Synthetic Lead 0737,Orlando,https://lead737.example.com,+1-555-0000737,4.318413058394014,25,"{""place_id"": ""synthetic_0737"", ""types"": [""real_estate_agency""]}",0.22129297505387888,1
+Synthetic Lead 0738,Jacksonville,,+1-555-0000738,5.0,16,"{""place_id"": ""synthetic_0738"", ""types"": [""point_of_interest"", ""establishment""]}",0.1107143221867036,0
+Synthetic Lead 0739,Orlando,,+1-555-0000739,3.9732808508157036,32,"{""place_id"": ""synthetic_0739"", ""types"": [""insurance_agency""]}",0.07527398785815233,0
+Synthetic Lead 0740,Miami,https://lead740.example.com,+1-555-0000740,,0,"{""place_id"": ""synthetic_0740"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0741,Fort Lauderdale,https://lead741.example.com,+1-555-0000741,4.7124608465627,28,"{""place_id"": ""synthetic_0741"", ""types"": [""real_estate_agency""]}",0.32877462197786306,1
+Synthetic Lead 0742,Jacksonville,https://lead742.example.com,+1-555-0000742,4.118023249986502,17,"{""place_id"": ""synthetic_0742"", ""types"": [""insurance_agency""]}",0.10600980480963344,0
+Synthetic Lead 0743,St. Petersburg,,+1-555-0000743,,0,"{""place_id"": ""synthetic_0743"", ""types"": [""real_estate_agency""]}",0.00024845508183933427,0
+Synthetic Lead 0744,Miami,,+1-555-0000744,3.062131798139124,46,"{""place_id"": ""synthetic_0744"", ""types"": [""real_estate_agency"", ""finance""]}",0.04989174603405437,0
+Synthetic Lead 0745,Naples,https://lead745.example.com,+1-555-0000745,4.520495359697486,18,"{""place_id"": ""synthetic_0745"", ""types"": [""real_estate_agency""]}",0.20414268524352167,0
+Synthetic Lead 0746,Naples,,,4.143415795135551,5,"{""place_id"": ""synthetic_0746"", ""types"": [""real_estate_agency""]}",0.020367559305899476,0
+Synthetic Lead 0747,Tampa,,,3.6936580743059193,16,"{""place_id"": ""synthetic_0747"", ""types"": [""insurance_agency""]}",0.026022103881568278,0
+Synthetic Lead 0748,Tallahassee,https://lead748.example.com,+1-555-0000748,4.263298355138847,21,"{""place_id"": ""synthetic_0748"", ""types"": [""real_estate_agency""]}",0.1849067775428008,0
+Synthetic Lead 0749,Orlando,https://lead749.example.com,,3.9081598215969096,23,"{""place_id"": ""synthetic_0749"", ""types"": [""real_estate_agency"", ""finance""]}",0.12134720473033901,0
+Synthetic Lead 0750,St. Petersburg,,,3.9357869344422376,24,"{""place_id"": ""synthetic_0750"", ""types"": [""insurance_agency""]}",0.046904571547578315,0
+Synthetic Lead 0751,Tallahassee,,+1-555-0000751,4.503145578054355,69,"{""place_id"": ""synthetic_0751"", ""types"": [""real_estate_agency""]}",0.30123991840113257,0
+Synthetic Lead 0752,St. Petersburg,https://lead752.example.com,+1-555-0000752,3.530808794338078,5,"{""place_id"": ""synthetic_0752"", ""types"": [""real_estate_agency"", ""finance""]}",0.032125730942460594,0
+Synthetic Lead 0753,St. Petersburg,https://lead753.example.com,+1-555-0000753,4.723657643036879,24,"{""place_id"": ""synthetic_0753"", ""types"": [""real_estate_agency"", ""finance""]}",0.29765936343051724,0
+Synthetic Lead 0754,Tampa,https://lead754.example.com,+1-555-0000754,3.5011569184407985,94,"{""place_id"": ""synthetic_0754"", ""types"": [""real_estate_agency"", ""finance""]}",0.26622252435579047,1
+Synthetic Lead 0755,St. Petersburg,https://lead755.example.com,+1-555-0000755,3.8686492958223684,2,"{""place_id"": ""synthetic_0755"", ""types"": [""real_estate_agency""]}",0.022825781910455166,0
+Synthetic Lead 0756,Fort Lauderdale,https://lead756.example.com,+1-555-0000756,5.0,24,"{""place_id"": ""synthetic_0756"", ""types"": [""real_estate_agency""]}",0.3637241158433582,0
+Synthetic Lead 0757,Miami,https://lead757.example.com,+1-555-0000757,4.763677380821211,9,"{""place_id"": ""synthetic_0757"", ""types"": [""real_estate_agency"", ""finance""]}",0.1430024973765754,0
+Synthetic Lead 0758,Miami,https://lead758.example.com,,,0,"{""place_id"": ""synthetic_0758"", ""types"": [""insurance_agency""]}",0.0003353501304664781,0
+Synthetic Lead 0759,St. Petersburg,https://lead759.example.com,+1-555-0000759,3.729734892249392,6,"{""place_id"": ""synthetic_0759"", ""types"": [""insurance_agency""]}",0.03253284865578861,0
+Synthetic Lead 0760,Fort Lauderdale,https://lead760.example.com,+1-555-0000760,3.935363846650054,16,"{""place_id"": ""synthetic_0760"", ""types"": [""insurance_agency""]}",0.08512254392907558,0
+Synthetic Lead 0761,Jacksonville,https://lead761.example.com,+1-555-0000761,4.236637657292849,183,"{""place_id"": ""synthetic_0761"", ""types"": [""real_estate_agency"", ""finance""]}",0.6413616720654146,1
+Synthetic Lead 0762,Tallahassee,,+1-555-0000762,,0,"{""place_id"": ""synthetic_0762"", ""types"": [""real_estate_agency""]}",0.00024845508183933427,0
+Synthetic Lead 0763,Fort Lauderdale,https://lead763.example.com,+1-555-0000763,4.154564535187019,4,"{""place_id"": ""synthetic_0763"", ""types"": [""insurance_agency""]}",0.03419174900924521,0
+Synthetic Lead 0764,Tampa,https://lead764.example.com,+1-555-0000764,4.184583742957908,4,"{""place_id"": ""synthetic_0764"", ""types"": [""real_estate_agency""]}",0.046720623733883124,0
+Synthetic Lead 0765,Tampa,https://lead765.example.com,+1-555-0000765,,0,"{""place_id"": ""synthetic_0765"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0766,Jacksonville,https://lead766.example.com,+1-555-0000766,3.479010632179994,11,"{""place_id"": ""synthetic_0766"", ""types"": [""real_estate_agency"", ""finance""]}",0.054882029381380454,0
+Synthetic Lead 0767,St. Petersburg,https://lead767.example.com,+1-555-0000767,,0,"{""place_id"": ""synthetic_0767"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0768,Jacksonville,https://lead768.example.com,+1-555-0000768,4.657312026993424,12,"{""place_id"": ""synthetic_0768"", ""types"": [""real_estate_agency""]}",0.16575517211208138,0
+Synthetic Lead 0769,Jacksonville,https://lead769.example.com,+1-555-0000769,3.5158328512244417,6,"{""place_id"": ""synthetic_0769"", ""types"": [""point_of_interest"", ""establishment""]}",0.027035217654805332,0
+Synthetic Lead 0770,St. Petersburg,https://lead770.example.com,+1-555-0000770,4.105222244230361,15,"{""place_id"": ""synthetic_0770"", ""types"": [""real_estate_agency"", ""finance""]}",0.12355942753304218,0
+Synthetic Lead 0771,Fort Lauderdale,https://lead771.example.com,+1-555-0000771,3.7901230356145783,383,"{""place_id"": ""synthetic_0771"", ""types"": [""insurance_agency""]}",0.584153800754817,0
+Synthetic Lead 0772,Tallahassee,https://lead772.example.com,+1-555-0000772,4.255675214699056,106,"{""place_id"": ""synthetic_0772"", ""types"": [""point_of_interest"", ""establishment""]}",0.4431966617633276,1
+Synthetic Lead 0773,Miami,,+1-555-0000773,4.005683409466591,7,"{""place_id"": ""synthetic_0773"", ""types"": [""real_estate_agency""]}",0.028766713884795344,0
+Synthetic Lead 0774,St. Petersburg,,+1-555-0000774,,0,"{""place_id"": ""synthetic_0774"", ""types"": [""real_estate_agency"", ""finance""]}",0.00024845508183933427,0
+Synthetic Lead 0775,Jacksonville,https://lead775.example.com,+1-555-0000775,4.453291577095127,7,"{""place_id"": ""synthetic_0775"", ""types"": [""real_estate_agency""]}",0.09020236177167222,0
+Synthetic Lead 0776,Miami,https://lead776.example.com,+1-555-0000776,3.5440984171113943,2,"{""place_id"": ""synthetic_0776"", ""types"": [""real_estate_agency""]}",0.017898317457922166,0
+Synthetic Lead 0777,Fort Lauderdale,https://lead777.example.com,+1-555-0000777,4.535614005806849,68,"{""place_id"": ""synthetic_0777"", ""types"": [""real_estate_agency""]}",0.4959867348740842,0
+Synthetic Lead 0778,Fort Lauderdale,https://lead778.example.com,,3.812674071868969,80,"{""place_id"": ""synthetic_0778"", ""types"": [""real_estate_agency""]}",0.2766484050506677,1
+Synthetic Lead 0779,Jacksonville,https://lead779.example.com,+1-555-0000779,3.9115018143112334,70,"{""place_id"": ""synthetic_0779"", ""types"": [""insurance_agency""]}",0.25728290330595777,0
+Synthetic Lead 0780,St. Petersburg,https://lead780.example.com,+1-555-0000780,4.356909510053561,11,"{""place_id"": ""synthetic_0780"", ""types"": [""real_estate_agency""]}",0.12002853713311777,0
+Synthetic Lead 0781,Orlando,https://lead781.example.com,+1-555-0000781,3.954126290134933,16,"{""place_id"": ""synthetic_0781"", ""types"": [""insurance_agency""]}",0.08663220207184633,0
+Synthetic Lead 0782,Orlando,https://lead782.example.com,+1-555-0000782,4.646427908161478,49,"{""place_id"": ""synthetic_0782"", ""types"": [""real_estate_agency""]}",0.44611130465658194,0
+Synthetic Lead 0783,Tampa,https://lead783.example.com,+1-555-0000783,3.8127449692433024,32,"{""place_id"": ""synthetic_0783"", ""types"": [""real_estate_agency""]}",0.16954130198167666,0
+Synthetic Lead 0784,Tampa,,+1-555-0000784,3.8905267237043186,12,"{""place_id"": ""synthetic_0784"", ""types"": [""point_of_interest"", ""establishment""]}",0.030145772321067042,0
+Synthetic Lead 0785,Fort Lauderdale,,+1-555-0000785,3.8718145532259456,2,"{""place_id"": ""synthetic_0785"", ""types"": [""real_estate_agency"", ""finance""]}",0.010411754755493968,0
+Synthetic Lead 0786,Tallahassee,https://lead786.example.com,+1-555-0000786,3.9171806258224806,23,"{""place_id"": ""synthetic_0786"", ""types"": [""point_of_interest"", ""establishment""]}",0.11204493430035131,0
+Synthetic Lead 0787,St. Petersburg,https://lead787.example.com,+1-555-0000787,4.749595777773907,73,"{""place_id"": ""synthetic_0787"", ""types"": [""real_estate_agency""]}",0.5799493951847458,1
+Synthetic Lead 0788,Miami,https://lead788.example.com,+1-555-0000788,4.514398146805152,4,"{""place_id"": ""synthetic_0788"", ""types"": [""real_estate_agency""]}",0.060755893883176995,0
+Synthetic Lead 0789,Tampa,https://lead789.example.com,+1-555-0000789,5.0,43,"{""place_id"": ""synthetic_0789"", ""types"": [""insurance_agency""]}",0.44092929831958905,0
+Synthetic Lead 0790,Miami,https://lead790.example.com,+1-555-0000790,5.0,29,"{""place_id"": ""synthetic_0790"", ""types"": [""insurance_agency""]}",0.3410355462818263,1
+Synthetic Lead 0791,Fort Lauderdale,https://lead791.example.com,+1-555-0000791,3.6846414840338304,49,"{""place_id"": ""synthetic_0791"", ""types"": [""real_estate_agency""]}",0.20459048961206713,0
+Synthetic Lead 0792,Orlando,https://lead792.example.com,+1-555-0000792,4.235209563663645,57,"{""place_id"": ""synthetic_0792"", ""types"": [""point_of_interest"", ""establishment""]}",0.2977165689511865,1
+Synthetic Lead 0793,Jacksonville,,+1-555-0000793,,0,"{""place_id"": ""synthetic_0793"", ""types"": [""insurance_agency""]}",0.00018407190496342368,0
+Synthetic Lead 0794,St. Petersburg,https://lead794.example.com,,,0,"{""place_id"": ""synthetic_0794"", ""types"": [""real_estate_agency"", ""finance""]}",0.00045262222324053464,0
+Synthetic Lead 0795,Fort Lauderdale,https://lead795.example.com,+1-555-0000795,3.8849587448721654,10,"{""place_id"": ""synthetic_0795"", ""types"": [""real_estate_agency""]}",0.07361761395246719,0
+Synthetic Lead 0796,Orlando,https://lead796.example.com,+1-555-0000796,,0,"{""place_id"": ""synthetic_0796"", ""types"": [""insurance_agency""]}",0.00040956716498605005,0
+Synthetic Lead 0797,Orlando,https://lead797.example.com,+1-555-0000797,3.6740563635507932,10,"{""place_id"": ""synthetic_0797"", ""types"": [""real_estate_agency""]}",0.060950709234432465,0
+Synthetic Lead 0798,Fort Lauderdale,https://lead798.example.com,+1-555-0000798,4.127857810739873,8,"{""place_id"": ""synthetic_0798"", ""types"": [""point_of_interest"", ""establishment""]}",0.05766110491687294,0
+Synthetic Lead 0799,Jacksonville,https://lead799.example.com,+1-555-0000799,3.591640790806797,2,"{""place_id"": ""synthetic_0799"", ""types"": [""real_estate_agency""]}",0.018548783208627965,0
+Synthetic Lead 0800,Miami,https://lead800.example.com,+1-555-0000800,4.621063479568816,164,"{""place_id"": ""synthetic_0800"", ""types"": [""real_estate_agency""]}",0.7308528192127034,1
+Synthetic Lead 0801,Tallahassee,https://lead801.example.com,+1-555-0000801,3.741123231291243,54,"{""place_id"": ""synthetic_0801"", ""types"": [""real_estate_agency""]}",0.23076966553017003,0
+Synthetic Lead 0802,Jacksonville,https://lead802.example.com,+1-555-0000802,5.0,50,"{""place_id"": ""synthetic_0802"", ""types"": [""insurance_agency""]}",0.4812608302422622,0
+Synthetic Lead 0803,Tampa,,+1-555-0000803,3.9743077745178024,64,"{""place_id"": ""synthetic_0803"", ""types"": [""point_of_interest"", ""establishment""]}",0.13402440417617464,0
+Synthetic Lead 0804,Miami,https://lead804.example.com,+1-555-0000804,4.236008820958526,40,"{""place_id"": ""synthetic_0804"", ""types"": [""point_of_interest"", ""establishment""]}",0.23164677261371666,0
+Synthetic Lead 0805,Tampa,https://lead805.example.com,,3.5523294077669827,14,"{""place_id"": ""synthetic_0805"", ""types"": [""real_estate_agency"", ""finance""]}",0.05853557736843365,0
+Synthetic Lead 0806,Orlando,https://lead806.example.com,+1-555-0000806,5.0,16,"{""place_id"": ""synthetic_0806"", ""types"": [""point_of_interest"", ""establishment""]}",0.21696092656644028,0
+Synthetic Lead 0807,Orlando,https://lead807.example.com,+1-555-0000807,4.7597503404014585,12,"{""place_id"": ""synthetic_0807"", ""types"": [""real_estate_agency"", ""finance""]}",0.18017833358533755,1
+Synthetic Lead 0808,Jacksonville,https://lead808.example.com,+1-555-0000808,4.348457935368057,474,"{""place_id"": ""synthetic_0808"", ""types"": [""real_estate_agency""]}",0.8437464752321855,1
+Synthetic Lead 0809,Tampa,,+1-555-0000809,3.526598725610217,39,"{""place_id"": ""synthetic_0809"", ""types"": [""insurance_agency""]}",0.055119582835518176,0
+Synthetic Lead 0810,Tallahassee,https://lead810.example.com,+1-555-0000810,,0,"{""place_id"": ""synthetic_0810"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0811,Naples,https://lead811.example.com,+1-555-0000811,,0,"{""place_id"": ""synthetic_0811"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0812,Orlando,https://lead812.example.com,+1-555-0000812,4.931177631736681,5,"{""place_id"": ""synthetic_0812"", ""types"": [""real_estate_agency""]}",0.10075579012559881,0
+Synthetic Lead 0813,Miami,https://lead813.example.com,+1-555-0000813,4.604597365926587,122,"{""place_id"": ""synthetic_0813"", ""types"": [""real_estate_agency""]}",0.6616707753081326,1
+Synthetic Lead 0814,St. Petersburg,https://lead814.example.com,+1-555-0000814,4.247719519243868,9,"{""place_id"": ""synthetic_0814"", ""types"": [""point_of_interest"", ""establishment""]}",0.07054463475391692,0
+Synthetic Lead 0815,Naples,https://lead815.example.com,+1-555-0000815,2.9818121683763392,36,"{""place_id"": ""synthetic_0815"", ""types"": [""point_of_interest"", ""establishment""]}",0.06110961120309681,0
+Synthetic Lead 0816,Tallahassee,https://lead816.example.com,+1-555-0000816,3.708292010670485,72,"{""place_id"": ""synthetic_0816"", ""types"": [""real_estate_agency""]}",0.27154014629211753,0
+Synthetic Lead 0817,Miami,https://lead817.example.com,+1-555-0000817,4.543880565799936,31,"{""place_id"": ""synthetic_0817"", ""types"": [""real_estate_agency"", ""finance""]}",0.31035062869212326,0
+Synthetic Lead 0818,Orlando,https://lead818.example.com,+1-555-0000818,4.806441845861578,22,"{""place_id"": ""synthetic_0818"", ""types"": [""real_estate_agency""]}",0.29773095846701564,0
+Synthetic Lead 0819,Miami,https://lead819.example.com,+1-555-0000819,4.754584905746066,20,"{""place_id"": ""synthetic_0819"", ""types"": [""real_estate_agency""]}",0.26691133354529967,1
+Synthetic Lead 0820,Tallahassee,https://lead820.example.com,,,0,"{""place_id"": ""synthetic_0820"", ""types"": [""real_estate_agency""]}",0.00045262222324053464,0
+Synthetic Lead 0821,Jacksonville,,+1-555-0000821,4.350776153406453,10,"{""place_id"": ""synthetic_0821"", ""types"": [""real_estate_agency""]}",0.05288177693655132,0
+Synthetic Lead 0822,Jacksonville,https://lead822.example.com,+1-555-0000822,4.707757608241465,11,"{""place_id"": ""synthetic_0822"", ""types"": [""real_estate_agency""]}",0.16099040446204005,0
+Synthetic Lead 0823,Jacksonville,https://lead823.example.com,+1-555-0000823,3.3708322172088776,118,"{""place_id"": ""synthetic_0823"", ""types"": [""real_estate_agency""]}",0.27123535300521656,0
+Synthetic Lead 0824,Orlando,https://lead824.example.com,+1-555-0000824,4.196047742313382,17,"{""place_id"": ""synthetic_0824"", ""types"": [""real_estate_agency""]}",0.1478555141041781,0
+Synthetic Lead 0825,Jacksonville,https://lead825.example.com,+1-555-0000825,,0,"{""place_id"": ""synthetic_0825"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0826,Miami,https://lead826.example.com,,4.049617707576632,10,"{""place_id"": ""synthetic_0826"", ""types"": [""point_of_interest"", ""establishment""]}",0.053434571290511414,1
+Synthetic Lead 0827,Fort Lauderdale,https://lead827.example.com,+1-555-0000827,3.2739190722993996,75,"{""place_id"": ""synthetic_0827"", ""types"": [""real_estate_agency""]}",0.1834536971721717,1
+Synthetic Lead 0828,St. Petersburg,https://lead828.example.com,+1-555-0000828,4.037150944963136,45,"{""place_id"": ""synthetic_0828"", ""types"": [""real_estate_agency""]}",0.265190185646602,0
+Synthetic Lead 0829,Fort Lauderdale,,+1-555-0000829,4.036347284872488,39,"{""place_id"": ""synthetic_0829"", ""types"": [""insurance_agency""]}",0.09503560110531034,0
+Synthetic Lead 0830,Orlando,https://lead830.example.com,+1-555-0000830,4.125963797726123,14,"{""place_id"": ""synthetic_0830"", ""types"": [""real_estate_agency""]}",0.11913924897167548,0
+Synthetic Lead 0831,Tallahassee,https://lead831.example.com,+1-555-0000831,3.9182642872874656,39,"{""place_id"": ""synthetic_0831"", ""types"": [""insurance_agency""]}",0.16940740452638928,1
+Synthetic Lead 0832,Fort Lauderdale,https://lead832.example.com,+1-555-0000832,3.9784939233792667,9,"{""place_id"": ""synthetic_0832"", ""types"": [""real_estate_agency""]}",0.07358536501419619,0
+Synthetic Lead 0833,Miami,https://lead833.example.com,+1-555-0000833,4.180146858826511,14,"{""place_id"": ""synthetic_0833"", ""types"": [""insurance_agency""]}",0.09568751125023925,0
+Synthetic Lead 0834,Miami,https://lead834.example.com,+1-555-0000834,4.421227302484856,64,"{""place_id"": ""synthetic_0834"", ""types"": [""insurance_agency""]}",0.3733572585958458,0
+Synthetic Lead 0835,Fort Lauderdale,https://lead835.example.com,+1-555-0000835,4.047786618571666,57,"{""place_id"": ""synthetic_0835"", ""types"": [""real_estate_agency"", ""finance""]}",0.3132858814143824,1
+Synthetic Lead 0836,Orlando,https://lead836.example.com,+1-555-0000836,3.9951755358159993,6,"{""place_id"": ""synthetic_0836"", ""types"": [""insurance_agency""]}",0.04086773012709207,0
+Synthetic Lead 0837,Miami,https://lead837.example.com,+1-555-0000837,4.246177019127229,7,"{""place_id"": ""synthetic_0837"", ""types"": [""real_estate_agency""]}",0.07585553603871983,0
+Synthetic Lead 0838,Miami,https://lead838.example.com,+1-555-0000838,3.2395420370524093,22,"{""place_id"": ""synthetic_0838"", ""types"": [""real_estate_agency""]}",0.0734259192026034,0
+Synthetic Lead 0839,Miami,,+1-555-0000839,4.438517563613229,159,"{""place_id"": ""synthetic_0839"", ""types"": [""real_estate_agency""]}",0.4796009770161265,0
+Synthetic Lead 0840,Tampa,https://lead840.example.com,+1-555-0000840,,0,"{""place_id"": ""synthetic_0840"", ""types"": [""insurance_agency""]}",0.00040956716498605005,0
+Synthetic Lead 0841,Jacksonville,https://lead841.example.com,+1-555-0000841,4.219846763298781,28,"{""place_id"": ""synthetic_0841"", ""types"": [""real_estate_agency""]}",0.22129811740734,0
+Synthetic Lead 0842,Miami,,+1-555-0000842,4.680367153797232,3,"{""place_id"": ""synthetic_0842"", ""types"": [""real_estate_agency""]}",0.025747783029081373,0
+Synthetic Lead 0843,Fort Lauderdale,https://lead843.example.com,+1-555-0000843,3.223592234975876,9,"{""place_id"": ""synthetic_0843"", ""types"": [""real_estate_agency"", ""finance""]}",0.03745103603171517,0
+Synthetic Lead 0844,Orlando,https://lead844.example.com,+1-555-0000844,,0,"{""place_id"": ""synthetic_0844"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0845,Orlando,https://lead845.example.com,+1-555-0000845,4.33690192266176,12,"{""place_id"": ""synthetic_0845"", ""types"": [""real_estate_agency""]}",0.1265806101849032,0
+Synthetic Lead 0846,Orlando,,+1-555-0000846,4.1964415724357425,10,"{""place_id"": ""synthetic_0846"", ""types"": [""real_estate_agency"", ""finance""]}",0.04593617670987692,1
+Synthetic Lead 0847,St. Petersburg,https://lead847.example.com,+1-555-0000847,4.285088471595966,20,"{""place_id"": ""synthetic_0847"", ""types"": [""real_estate_agency""]}",0.18146447945406594,0
+Synthetic Lead 0848,Naples,https://lead848.example.com,+1-555-0000848,3.9689364624137773,10,"{""place_id"": ""synthetic_0848"", ""types"": [""real_estate_agency"", ""finance""]}",0.07930623845685207,0
+Synthetic Lead 0849,Tampa,,,4.532176837119966,3,"{""place_id"": ""synthetic_0849"", ""types"": [""point_of_interest"", ""establishment""]}",0.014021382361557137,0
+Synthetic Lead 0850,Miami,https://lead850.example.com,+1-555-0000850,4.66631942149556,51,"{""place_id"": ""synthetic_0850"", ""types"": [""point_of_interest"", ""establishment""]}",0.38897845827939875,1
+Synthetic Lead 0851,Orlando,,+1-555-0000851,4.441991146975764,49,"{""place_id"": ""synthetic_0851"", ""types"": [""real_estate_agency""]}",0.22114237699060912,0
+Synthetic Lead 0852,Miami,,+1-555-0000852,4.069585770797708,55,"{""place_id"": ""synthetic_0852"", ""types"": [""real_estate_agency""]}",0.16908185361181619,0
+Synthetic Lead 0853,Tallahassee,,+1-555-0000853,3.1461553061927985,3,"{""place_id"": ""synthetic_0853"", ""types"": [""insurance_agency""]}",0.005636277735367495,0
+Synthetic Lead 0854,Miami,https://lead854.example.com,,4.584618104018564,28,"{""place_id"": ""synthetic_0854"", ""types"": [""insurance_agency""]}",0.20505237730439352,0
+Synthetic Lead 0855,Naples,https://lead855.example.com,+1-555-0000855,4.810864333108796,45,"{""place_id"": ""synthetic_0855"", ""types"": [""insurance_agency""]}",0.3987692775501753,0
+Synthetic Lead 0856,Jacksonville,https://lead856.example.com,+1-555-0000856,4.52227920599199,5,"{""place_id"": ""synthetic_0856"", ""types"": [""real_estate_agency""]}",0.07282444985121972,0
+Synthetic Lead 0857,Jacksonville,https://lead857.example.com,+1-555-0000857,3.760178786316247,20,"{""place_id"": ""synthetic_0857"", ""types"": [""real_estate_agency""]}",0.11293382349215797,1
+Synthetic Lead 0858,Tallahassee,https://lead858.example.com,+1-555-0000858,4.536897196833879,17,"{""place_id"": ""synthetic_0858"", ""types"": [""real_estate_agency""]}",0.19793774972697373,1
+Synthetic Lead 0859,Miami,,+1-555-0000859,4.630264853980723,183,"{""place_id"": ""synthetic_0859"", ""types"": [""real_estate_agency""]}",0.580631547408586,1
+Synthetic Lead 0860,St. Petersburg,https://lead860.example.com,+1-555-0000860,4.979408123899543,202,"{""place_id"": ""synthetic_0860"", ""types"": [""real_estate_agency""]}",0.8475819064921666,1
+Synthetic Lead 0861,Miami,https://lead861.example.com,+1-555-0000861,3.7619450378860213,2,"{""place_id"": ""synthetic_0861"", ""types"": [""point_of_interest"", ""establishment""]}",0.0156982878002243,0
+Synthetic Lead 0862,Tallahassee,https://lead862.example.com,+1-555-0000862,4.086772707727931,400,"{""place_id"": ""synthetic_0862"", ""types"": [""real_estate_agency""]}",0.7547935612275111,1
+Synthetic Lead 0863,Jacksonville,https://lead863.example.com,,4.573636025571727,6,"{""place_id"": ""synthetic_0863"", ""types"": [""insurance_agency""]}",0.05521268461464684,0
+Synthetic Lead 0864,Miami,https://lead864.example.com,+1-555-0000864,4.228705035719079,65,"{""place_id"": ""synthetic_0864"", ""types"": [""point_of_interest"", ""establishment""]}",0.32325004546102576,1
+Synthetic Lead 0865,Tallahassee,https://lead865.example.com,+1-555-0000865,3.6413361989743627,64,"{""place_id"": ""synthetic_0865"", ""types"": [""real_estate_agency""]}",0.23611277517449675,0
+Synthetic Lead 0866,Miami,,+1-555-0000866,4.407308142513352,6,"{""place_id"": ""synthetic_0866"", ""types"": [""insurance_agency""]}",0.026906488567993693,0
+Synthetic Lead 0867,Miami,https://lead867.example.com,+1-555-0000867,4.489330816907583,36,"{""place_id"": ""synthetic_0867"", ""types"": [""real_estate_agency"", ""finance""]}",0.329380237926707,0
+Synthetic Lead 0868,St. Petersburg,https://lead868.example.com,,,0,"{""place_id"": ""synthetic_0868"", ""types"": [""real_estate_agency""]}",0.00045262222324053464,0
+Synthetic Lead 0869,Tampa,https://lead869.example.com,+1-555-0000869,4.3097924635899725,39,"{""place_id"": ""synthetic_0869"", ""types"": [""real_estate_agency""]}",0.30189906001094347,0
+Synthetic Lead 0870,Tallahassee,https://lead870.example.com,+1-555-0000870,4.070647049157135,26,"{""place_id"": ""synthetic_0870"", ""types"": [""real_estate_agency"", ""finance""]}",0.1836756137048573,0
+Synthetic Lead 0871,Fort Lauderdale,,,,0,"{""place_id"": ""synthetic_0871"", ""types"": [""real_estate_agency"", ""finance""]}",0.00020342697805520653,0
+Synthetic Lead 0872,Fort Lauderdale,,+1-555-0000872,3.749653908143662,21,"{""place_id"": ""synthetic_0872"", ""types"": [""real_estate_agency"", ""finance""]}",0.0557353498302897,0
+Synthetic Lead 0873,Orlando,https://lead873.example.com,+1-555-0000873,3.9063396186181105,16,"{""place_id"": ""synthetic_0873"", ""types"": [""point_of_interest"", ""establishment""]}",0.08283417834587144,0
+Synthetic Lead 0874,Miami,,+1-555-0000874,4.205492756763763,74,"{""place_id"": ""synthetic_0874"", ""types"": [""real_estate_agency""]}",0.24195174156072466,0
+Synthetic Lead 0875,Naples,https://lead875.example.com,+1-555-0000875,4.639477013850446,40,"{""place_id"": ""synthetic_0875"", ""types"": [""real_estate_agency"", ""finance""]}",0.39359903029989307,0
+Synthetic Lead 0876,Miami,https://lead876.example.com,+1-555-0000876,3.4513134149527316,48,"{""place_id"": ""synthetic_0876"", ""types"": [""insurance_agency""]}",0.12430375120297107,0
+Synthetic Lead 0877,Jacksonville,,+1-555-0000877,3.5448516251172806,9,"{""place_id"": ""synthetic_0877"", ""types"": [""real_estate_agency"", ""finance""]}",0.023138751316373374,0
+Synthetic Lead 0878,Orlando,https://lead878.example.com,,3.1811357461326413,5,"{""place_id"": ""synthetic_0878"", ""types"": [""real_estate_agency"", ""finance""]}",0.019661640469289667,0
+Synthetic Lead 0879,Orlando,https://lead879.example.com,+1-555-0000879,4.2163476126266355,10,"{""place_id"": ""synthetic_0879"", ""types"": [""real_estate_agency"", ""finance""]}",0.09846709723483889,0
+Synthetic Lead 0880,Jacksonville,https://lead880.example.com,+1-555-0000880,3.6408470913967284,9,"{""place_id"": ""synthetic_0880"", ""types"": [""point_of_interest"", ""establishment""]}",0.041009283488261696,0
+Synthetic Lead 0881,St. Petersburg,https://lead881.example.com,+1-555-0000881,4.0077249449910415,51,"{""place_id"": ""synthetic_0881"", ""types"": [""real_estate_agency""]}",0.2814854839142952,0
+Synthetic Lead 0882,St. Petersburg,https://lead882.example.com,+1-555-0000882,4.5306890949458545,64,"{""place_id"": ""synthetic_0882"", ""types"": [""real_estate_agency"", ""finance""]}",0.4791063325601447,1
+Synthetic Lead 0883,Tallahassee,https://lead883.example.com,,3.879228639608577,16,"{""place_id"": ""synthetic_0883"", ""types"": [""real_estate_agency""]}",0.08848816258116163,0
+Synthetic Lead 0884,Orlando,https://lead884.example.com,+1-555-0000884,4.3156410113716825,111,"{""place_id"": ""synthetic_0884"", ""types"": [""insurance_agency""]}",0.4738641674646243,1
+Synthetic Lead 0885,Tampa,https://lead885.example.com,+1-555-0000885,4.050331046124139,103,"{""place_id"": ""synthetic_0885"", ""types"": [""real_estate_agency"", ""finance""]}",0.4445869406281355,0
+Synthetic Lead 0886,Miami,,+1-555-0000886,4.5360571575482185,26,"{""place_id"": ""synthetic_0886"", ""types"": [""real_estate_agency"", ""finance""]}",0.14401848258898273,0
+Synthetic Lead 0887,St. Petersburg,https://lead887.example.com,+1-555-0000887,4.437564033674005,7,"{""place_id"": ""synthetic_0887"", ""types"": [""real_estate_agency""]}",0.08903225336130777,0
+Synthetic Lead 0888,Orlando,,,3.854033151912695,133,"{""place_id"": ""synthetic_0888"", ""types"": [""insurance_agency""]}",0.17626350408098215,0
+Synthetic Lead 0889,Jacksonville,https://lead889.example.com,+1-555-0000889,4.115674123299774,18,"{""place_id"": ""synthetic_0889"", ""types"": [""real_estate_agency""]}",0.14402069607703552,0
+Synthetic Lead 0890,Miami,https://lead890.example.com,+1-555-0000890,4.721871698860247,23,"{""place_id"": ""synthetic_0890"", ""types"": [""real_estate_agency""]}",0.2883104840357047,1
+Synthetic Lead 0891,St. Petersburg,https://lead891.example.com,+1-555-0000891,4.396688435127048,13,"{""place_id"": ""synthetic_0891"", ""types"": [""real_estate_agency""]}",0.14211299097199692,0
+Synthetic Lead 0892,St. Petersburg,,+1-555-0000892,3.5015189711244346,6,"{""place_id"": ""synthetic_0892"", ""types"": [""point_of_interest"", ""establishment""]}",0.01217676827697307,0
+Synthetic Lead 0893,Tallahassee,https://lead893.example.com,+1-555-0000893,,0,"{""place_id"": ""synthetic_0893"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0894,Miami,,+1-555-0000894,3.657694688781881,42,"{""place_id"": ""synthetic_0894"", ""types"": [""point_of_interest"", ""establishment""]}",0.06752371228026341,0
+Synthetic Lead 0895,Naples,https://lead895.example.com,+1-555-0000895,4.906256534980503,7,"{""place_id"": ""synthetic_0895"", ""types"": [""real_estate_agency""]}",0.1303236123239201,0
+Synthetic Lead 0896,Orlando,https://lead896.example.com,+1-555-0000896,4.712049419920513,789,"{""place_id"": ""synthetic_0896"", ""types"": [""real_estate_agency"", ""finance""]}",0.9414909629899634,1
+Synthetic Lead 0897,Orlando,https://lead897.example.com,+1-555-0000897,4.344942737959201,5,"{""place_id"": ""synthetic_0897"", ""types"": [""insurance_agency""]}",0.047509307372835985,0
+Synthetic Lead 0898,Orlando,https://lead898.example.com,+1-555-0000898,4.278616421718097,4,"{""place_id"": ""synthetic_0898"", ""types"": [""real_estate_agency"", ""finance""]}",0.050373583756551654,0
+Synthetic Lead 0899,Orlando,https://lead899.example.com,+1-555-0000899,4.09548387198629,37,"{""place_id"": ""synthetic_0899"", ""types"": [""insurance_agency""]}",0.19233585778410742,0
+Synthetic Lead 0900,Jacksonville,https://lead900.example.com,+1-555-0000900,4.539261975700014,125,"{""place_id"": ""synthetic_0900"", ""types"": [""real_estate_agency"", ""finance""]}",0.647764778148933,1
+Synthetic Lead 0901,Orlando,https://lead901.example.com,+1-555-0000901,4.014610915268969,21,"{""place_id"": ""synthetic_0901"", ""types"": [""point_of_interest"", ""establishment""]}",0.11425779621401334,0
+Synthetic Lead 0902,Tampa,https://lead902.example.com,+1-555-0000902,,0,"{""place_id"": ""synthetic_0902"", ""types"": [""insurance_agency""]}",0.00040956716498605005,0
+Synthetic Lead 0903,Fort Lauderdale,https://lead903.example.com,+1-555-0000903,4.635967183259726,2,"{""place_id"": ""synthetic_0903"", ""types"": [""real_estate_agency""]}",0.040312898663093136,0
+Synthetic Lead 0904,Tallahassee,https://lead904.example.com,+1-555-0000904,3.9190967282372053,8,"{""place_id"": ""synthetic_0904"", ""types"": [""real_estate_agency""]}",0.06369453472920429,0
+Synthetic Lead 0905,Fort Lauderdale,https://lead905.example.com,,3.891903630004653,5,"{""place_id"": ""synthetic_0905"", ""types"": [""real_estate_agency"", ""finance""]}",0.035855689337629,0
+Synthetic Lead 0906,Jacksonville,https://lead906.example.com,+1-555-0000906,3.6028172596377708,2,"{""place_id"": ""synthetic_0906"", ""types"": [""real_estate_agency""]}",0.018705033300326936,0
+Synthetic Lead 0907,Miami,https://lead907.example.com,+1-555-0000907,3.667763626936914,23,"{""place_id"": ""synthetic_0907"", ""types"": [""insurance_agency""]}",0.08797855225163431,0
+Synthetic Lead 0908,St. Petersburg,https://lead908.example.com,,3.285802344279249,1,"{""place_id"": ""synthetic_0908"", ""types"": [""insurance_agency""]}",0.006404779542897556,0
+Synthetic Lead 0909,Miami,https://lead909.example.com,+1-555-0000909,4.564914394507765,4,"{""place_id"": ""synthetic_0909"", ""types"": [""real_estate_agency""]}",0.0632272022876492,0
+Synthetic Lead 0910,Orlando,,+1-555-0000910,5.0,10,"{""place_id"": ""synthetic_0910"", ""types"": [""real_estate_agency"", ""finance""]}",0.0942924618460752,0
+Synthetic Lead 0911,Miami,https://lead911.example.com,+1-555-0000911,4.912664471735153,7,"{""place_id"": ""synthetic_0911"", ""types"": [""real_estate_agency"", ""finance""]}",0.13098734300250806,0
+Synthetic Lead 0912,Fort Lauderdale,https://lead912.example.com,+1-555-0000912,3.386957755686742,32,"{""place_id"": ""synthetic_0912"", ""types"": [""real_estate_agency"", ""finance""]}",0.11227914648676518,0
+Synthetic Lead 0913,Tampa,,+1-555-0000913,4.5624273357781,28,"{""place_id"": ""synthetic_0913"", ""types"": [""real_estate_agency"", ""finance""]}",0.1571572276535142,0
+Synthetic Lead 0914,Fort Lauderdale,https://lead914.example.com,+1-555-0000914,4.911053174961778,58,"{""place_id"": ""synthetic_0914"", ""types"": [""point_of_interest"", ""establishment""]}",0.4943803596029143,0
+Synthetic Lead 0915,Orlando,https://lead915.example.com,+1-555-0000915,3.971595009630668,49,"{""place_id"": ""synthetic_0915"", ""types"": [""insurance_agency""]}",0.21126963927063916,0
+Synthetic Lead 0916,Tampa,,+1-555-0000916,,0,"{""place_id"": ""synthetic_0916"", ""types"": [""point_of_interest"", ""establishment""]}",0.00018407190496342368,0
+Synthetic Lead 0917,Tampa,,+1-555-0000917,3.196053474597665,20,"{""place_id"": ""synthetic_0917"", ""types"": [""real_estate_agency""]}",0.030554372617796283,0
+Synthetic Lead 0918,Miami,https://lead918.example.com,,4.333368083988321,28,"{""place_id"": ""synthetic_0918"", ""types"": [""insurance_agency""]}",0.16346550501774954,1
+Synthetic Lead 0919,Tampa,https://lead919.example.com,+1-555-0000919,3.6682201352826413,37,"{""place_id"": ""synthetic_0919"", ""types"": [""real_estate_agency"", ""finance""]}",0.16459994776583234,0
+Synthetic Lead 0920,Fort Lauderdale,https://lead920.example.com,+1-555-0000920,,0,"{""place_id"": ""synthetic_0920"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0921,Jacksonville,,,3.41939853890556,12,"{""place_id"": ""synthetic_0921"", ""types"": [""real_estate_agency""]}",0.02114373873985271,0
+Synthetic Lead 0922,Miami,,+1-555-0000922,4.471429112238798,13,"{""place_id"": ""synthetic_0922"", ""types"": [""insurance_agency""]}",0.05607170950243501,0
+Synthetic Lead 0923,Fort Lauderdale,https://lead923.example.com,+1-555-0000923,4.712256337713345,7,"{""place_id"": ""synthetic_0923"", ""types"": [""real_estate_agency""]}",0.11154930925676171,1
+Synthetic Lead 0924,Orlando,https://lead924.example.com,+1-555-0000924,3.8084100691424165,33,"{""place_id"": ""synthetic_0924"", ""types"": [""point_of_interest"", ""establishment""]}",0.13397579195075135,0
+Synthetic Lead 0925,Miami,https://lead925.example.com,+1-555-0000925,3.631538709294783,17,"{""place_id"": ""synthetic_0925"", ""types"": [""real_estate_agency""]}",0.08826770429000398,0
+Synthetic Lead 0926,Miami,https://lead926.example.com,+1-555-0000926,3.12198847872501,9,"{""place_id"": ""synthetic_0926"", ""types"": [""real_estate_agency""]}",0.034138142542376466,0
+Synthetic Lead 0927,Tampa,https://lead927.example.com,+1-555-0000927,4.066793232962412,9,"{""place_id"": ""synthetic_0927"", ""types"": [""insurance_agency""]}",0.0601206207822483,0
+Synthetic Lead 0928,Orlando,https://lead928.example.com,+1-555-0000928,3.909203032859198,4,"{""place_id"": ""synthetic_0928"", ""types"": [""real_estate_agency""]}",0.03741927540063854,0
+Synthetic Lead 0929,Fort Lauderdale,https://lead929.example.com,+1-555-0000929,3.424490293825973,65,"{""place_id"": ""synthetic_0929"", ""types"": [""real_estate_agency""]}",0.1935959188096771,1
+Synthetic Lead 0930,Orlando,https://lead930.example.com,+1-555-0000930,4.426509378156086,22,"{""place_id"": ""synthetic_0930"", ""types"": [""insurance_agency""]}",0.17296221617921453,0
+Synthetic Lead 0931,St. Petersburg,https://lead931.example.com,+1-555-0000931,3.975014809067676,7,"{""place_id"": ""synthetic_0931"", ""types"": [""insurance_agency""]}",0.04533353699191703,0
+Synthetic Lead 0932,Orlando,https://lead932.example.com,+1-555-0000932,3.662132020677384,52,"{""place_id"": ""synthetic_0932"", ""types"": [""real_estate_agency""]}",0.2088025240846527,0
+Synthetic Lead 0933,Fort Lauderdale,https://lead933.example.com,+1-555-0000933,3.9227137971797768,10,"{""place_id"": ""synthetic_0933"", ""types"": [""insurance_agency""]}",0.05753150149281344,0
+Synthetic Lead 0934,St. Petersburg,https://lead934.example.com,+1-555-0000934,4.735652269464808,3,"{""place_id"": ""synthetic_0934"", ""types"": [""insurance_agency""]}",0.04357768307736993,1
+Synthetic Lead 0935,Tampa,,+1-555-0000935,4.501468471877612,68,"{""place_id"": ""synthetic_0935"", ""types"": [""real_estate_agency"", ""finance""]}",0.297709888373197,0
+Synthetic Lead 0936,Miami,https://lead936.example.com,+1-555-0000936,4.134986969250756,10,"{""place_id"": ""synthetic_0936"", ""types"": [""real_estate_agency""]}",0.0917497972697556,0
+Synthetic Lead 0937,Jacksonville,https://lead937.example.com,+1-555-0000937,4.509552509232426,12,"{""place_id"": ""synthetic_0937"", ""types"": [""real_estate_agency""]}",0.14660005424722275,0
+Synthetic Lead 0938,Naples,https://lead938.example.com,,3.6195440218066306,21,"{""place_id"": ""synthetic_0938"", ""types"": [""point_of_interest"", ""establishment""]}",0.06487704905926396,1
+Synthetic Lead 0939,Naples,https://lead939.example.com,+1-555-0000939,4.216185050363515,79,"{""place_id"": ""synthetic_0939"", ""types"": [""insurance_agency""]}",0.36233026335574875,0
+Synthetic Lead 0940,Orlando,https://lead940.example.com,+1-555-0000940,4.273661165243236,20,"{""place_id"": ""synthetic_0940"", ""types"": [""real_estate_agency""]}",0.1796778135096421,0
+Synthetic Lead 0941,St. Petersburg,https://lead941.example.com,+1-555-0000941,3.965081745750637,4,"{""place_id"": ""synthetic_0941"", ""types"": [""real_estate_agency"", ""finance""]}",0.03915011800070469,0
+Synthetic Lead 0942,Orlando,https://lead942.example.com,+1-555-0000942,4.417729167978709,38,"{""place_id"": ""synthetic_0942"", ""types"": [""real_estate_agency""]}",0.32313045059235246,0
+Synthetic Lead 0943,Miami,https://lead943.example.com,+1-555-0000943,3.8097832726777745,11,"{""place_id"": ""synthetic_0943"", ""types"": [""real_estate_agency"", ""finance""]}",0.07416735876902063,0
+Synthetic Lead 0944,Fort Lauderdale,https://lead944.example.com,,4.454910353888059,193,"{""place_id"": ""synthetic_0944"", ""types"": [""real_estate_agency"", ""finance""]}",0.67631145866969,1
+Synthetic Lead 0945,Jacksonville,https://lead945.example.com,,4.475929385765646,20,"{""place_id"": ""synthetic_0945"", ""types"": [""point_of_interest"", ""establishment""]}",0.14126784089286695,0
+Synthetic Lead 0946,Jacksonville,https://lead946.example.com,+1-555-0000946,2.741420059651467,1,"{""place_id"": ""synthetic_0946"", ""types"": [""point_of_interest"", ""establishment""]}",0.005338194420216337,0
+Synthetic Lead 0947,Tallahassee,https://lead947.example.com,+1-555-0000947,4.795152851755059,30,"{""place_id"": ""synthetic_0947"", ""types"": [""real_estate_agency""]}",0.3656234476829969,0
+Synthetic Lead 0948,Orlando,https://lead948.example.com,+1-555-0000948,2.676183717323623,207,"{""place_id"": ""synthetic_0948"", ""types"": [""real_estate_agency"", ""finance""]}",0.18489685012819948,0
+Synthetic Lead 0949,Fort Lauderdale,https://lead949.example.com,+1-555-0000949,3.8919754872219374,133,"{""place_id"": ""synthetic_0949"", ""types"": [""real_estate_agency""]}",0.4523376801639134,0
+Synthetic Lead 0950,Tampa,https://lead950.example.com,+1-555-0000950,4.712674017128878,180,"{""place_id"": ""synthetic_0950"", ""types"": [""insurance_agency""]}",0.7154294223731473,1
+Synthetic Lead 0951,Miami,https://lead951.example.com,+1-555-0000951,4.04135663737378,5,"{""place_id"": ""synthetic_0951"", ""types"": [""insurance_agency""]}",0.036901647158195966,0
+Synthetic Lead 0952,Tampa,https://lead952.example.com,+1-555-0000952,3.4669070087652294,60,"{""place_id"": ""synthetic_0952"", ""types"": [""real_estate_agency""]}",0.1910429844690088,0
+Synthetic Lead 0953,Naples,,,3.6531314691416648,8,"{""place_id"": ""synthetic_0953"", ""types"": [""real_estate_agency""]}",0.019169485113564998,0
+Synthetic Lead 0954,Tampa,,+1-555-0000954,4.7134528731603105,26,"{""place_id"": ""synthetic_0954"", ""types"": [""real_estate_agency""]}",0.1696415756793851,0
+Synthetic Lead 0955,Miami,,+1-555-0000955,3.239247734725681,4,"{""place_id"": ""synthetic_0955"", ""types"": [""real_estate_agency""]}",0.009842611145001108,0
+Synthetic Lead 0956,Fort Lauderdale,https://lead956.example.com,,4.7644955504810085,9,"{""place_id"": ""synthetic_0956"", ""types"": [""real_estate_agency""]}",0.12027808419615836,0
+Synthetic Lead 0957,Naples,https://lead957.example.com,+1-555-0000957,4.172448950478856,8,"{""place_id"": ""synthetic_0957"", ""types"": [""point_of_interest"", ""establishment""]}",0.05995514345051412,0
+Synthetic Lead 0958,Tallahassee,https://lead958.example.com,+1-555-0000958,3.6038023347787833,59,"{""place_id"": ""synthetic_0958"", ""types"": [""insurance_agency""]}",0.16918466652100517,0
+Synthetic Lead 0959,Jacksonville,https://lead959.example.com,+1-555-0000959,3.9084424638486546,52,"{""place_id"": ""synthetic_0959"", ""types"": [""real_estate_agency"", ""finance""]}",0.26159716781403464,1
+Synthetic Lead 0960,Tampa,https://lead960.example.com,+1-555-0000960,3.6913878294491793,27,"{""place_id"": ""synthetic_0960"", ""types"": [""real_estate_agency"", ""finance""]}",0.13309954501910295,0
+Synthetic Lead 0961,Jacksonville,https://lead961.example.com,+1-555-0000961,4.633112600429264,3,"{""place_id"": ""synthetic_0961"", ""types"": [""real_estate_agency"", ""finance""]}",0.053580499414058506,0
+Synthetic Lead 0962,St. Petersburg,https://lead962.example.com,+1-555-0000962,4.566213904881419,13,"{""place_id"": ""synthetic_0962"", ""types"": [""real_estate_agency""]}",0.16396375767871588,0
+Synthetic Lead 0963,Tallahassee,https://lead963.example.com,+1-555-0000963,3.3404194330619768,8,"{""place_id"": ""synthetic_0963"", ""types"": [""point_of_interest"", ""establishment""]}",0.02858776803834857,0
+Synthetic Lead 0964,St. Petersburg,https://lead964.example.com,+1-555-0000964,3.998203940740333,57,"{""place_id"": ""synthetic_0964"", ""types"": [""real_estate_agency"", ""finance""]}",0.300535177083737,0
+Synthetic Lead 0965,Tampa,https://lead965.example.com,+1-555-0000965,3.7684071688278618,82,"{""place_id"": ""synthetic_0965"", ""types"": [""real_estate_agency"", ""finance""]}",0.31118976862410785,0
+Synthetic Lead 0966,Miami,https://lead966.example.com,+1-555-0000966,4.846754984229685,71,"{""place_id"": ""synthetic_0966"", ""types"": [""point_of_interest"", ""establishment""]}",0.5284888745479023,0
+Synthetic Lead 0967,Jacksonville,,+1-555-0000967,3.5249504409367898,8,"{""place_id"": ""synthetic_0967"", ""types"": [""insurance_agency""]}",0.01545518347685959,0
+Synthetic Lead 0968,Miami,https://lead968.example.com,+1-555-0000968,5.0,0,"{""place_id"": ""synthetic_0968"", ""types"": [""insurance_agency""]}",0.012128434984274237,0
+Synthetic Lead 0969,Miami,https://lead969.example.com,+1-555-0000969,4.183352630241531,2,"{""place_id"": ""synthetic_0969"", ""types"": [""point_of_interest"", ""establishment""]}",0.02153950483833919,0
+Synthetic Lead 0970,Tampa,https://lead970.example.com,+1-555-0000970,3.6190327968099565,110,"{""place_id"": ""synthetic_0970"", ""types"": [""real_estate_agency""]}",0.3265890503518672,0
+Synthetic Lead 0971,Fort Lauderdale,https://lead971.example.com,+1-555-0000971,,0,"{""place_id"": ""synthetic_0971"", ""types"": [""real_estate_agency"", ""finance""]}",0.000552778636923599,0
+Synthetic Lead 0972,Tallahassee,https://lead972.example.com,+1-555-0000972,3.7991905796157748,8,"{""place_id"": ""synthetic_0972"", ""types"": [""real_estate_agency""]}",0.057361699994171685,0
+Synthetic Lead 0973,St. Petersburg,https://lead973.example.com,+1-555-0000973,3.5626907989922474,144,"{""place_id"": ""synthetic_0973"", ""types"": [""real_estate_agency""]}",0.36332902196847283,0
+Synthetic Lead 0974,Tallahassee,https://lead974.example.com,+1-555-0000974,4.247413429865188,91,"{""place_id"": ""synthetic_0974"", ""types"": [""insurance_agency""]}",0.40418919303981626,0
+Synthetic Lead 0975,St. Petersburg,https://lead975.example.com,+1-555-0000975,3.5860422246540784,20,"{""place_id"": ""synthetic_0975"", ""types"": [""real_estate_agency""]}",0.09577089712637335,0
+Synthetic Lead 0976,Fort Lauderdale,https://lead976.example.com,+1-555-0000976,3.109816895630906,14,"{""place_id"": ""synthetic_0976"", ""types"": [""point_of_interest"", ""establishment""]}",0.03478847058940157,0
+Synthetic Lead 0977,Miami,,+1-555-0000977,4.010161764575914,17,"{""place_id"": ""synthetic_0977"", ""types"": [""real_estate_agency""]}",0.0604466139529555,0
+Synthetic Lead 0978,Fort Lauderdale,https://lead978.example.com,+1-555-0000978,3.2985719017910586,26,"{""place_id"": ""synthetic_0978"", ""types"": [""real_estate_agency"", ""finance""]}",0.0881383352138617,0
+Synthetic Lead 0979,Miami,https://lead979.example.com,+1-555-0000979,3.82391956596624,137,"{""place_id"": ""synthetic_0979"", ""types"": [""real_estate_agency""]}",0.43661874544421536,1
+Synthetic Lead 0980,Miami,https://lead980.example.com,+1-555-0000980,3.745448555698322,33,"{""place_id"": ""synthetic_0980"", ""types"": [""point_of_interest"", ""establishment""]}",0.12594099371265413,0
+Synthetic Lead 0981,Miami,https://lead981.example.com,+1-555-0000981,3.764391963987093,48,"{""place_id"": ""synthetic_0981"", ""types"": [""real_estate_agency""]}",0.21726486926220492,0
+Synthetic Lead 0982,Tallahassee,https://lead982.example.com,+1-555-0000982,5.0,81,"{""place_id"": ""synthetic_0982"", ""types"": [""real_estate_agency""]}",0.6786099830908406,0
+Synthetic Lead 0983,St. Petersburg,https://lead983.example.com,+1-555-0000983,4.2282057835847855,4,"{""place_id"": ""synthetic_0983"", ""types"": [""real_estate_agency""]}",0.048382819216908665,0
+Synthetic Lead 0984,Naples,https://lead984.example.com,+1-555-0000984,4.322685504497667,49,"{""place_id"": ""synthetic_0984"", ""types"": [""insurance_agency""]}",0.2889243622986252,0
+Synthetic Lead 0985,Naples,https://lead985.example.com,,3.3118008518288526,14,"{""place_id"": ""synthetic_0985"", ""types"": [""point_of_interest"", ""establishment""]}",0.03489735335277412,0
+Synthetic Lead 0986,Tallahassee,https://lead986.example.com,+1-555-0000986,3.873018433181539,0,"{""place_id"": ""synthetic_0986"", ""types"": [""point_of_interest"", ""establishment""]}",0.006204917302966111,0
+Synthetic Lead 0987,Miami,https://lead987.example.com,,,0,"{""place_id"": ""synthetic_0987"", ""types"": [""real_estate_agency""]}",0.00045262222324053464,0
+Synthetic Lead 0988,Tallahassee,,+1-555-0000988,3.687735543543497,5,"{""place_id"": ""synthetic_0988"", ""types"": [""real_estate_agency""]}",0.01680530424980439,0
+Synthetic Lead 0989,Tallahassee,,+1-555-0000989,4.654031421758993,37,"{""place_id"": ""synthetic_0989"", ""types"": [""real_estate_agency""]}",0.21500603235382004,0
+Synthetic Lead 0990,Tallahassee,,+1-555-0000990,3.598651707049485,23,"{""place_id"": ""synthetic_0990"", ""types"": [""insurance_agency""]}",0.03868003199794633,0
+Synthetic Lead 0991,Miami,https://lead991.example.com,+1-555-0000991,4.056816932067412,25,"{""place_id"": ""synthetic_0991"", ""types"": [""insurance_agency""]}",0.13670267175887887,0
+Synthetic Lead 0992,Miami,https://lead992.example.com,+1-555-0000992,3.906974180012221,208,"{""place_id"": ""synthetic_0992"", ""types"": [""real_estate_agency""]}",0.5609099340720319,0
+Synthetic Lead 0993,Naples,https://lead993.example.com,+1-555-0000993,4.282160329690958,4,"{""place_id"": ""synthetic_0993"", ""types"": [""insurance_agency""]}",0.037919966229647425,0
+Synthetic Lead 0994,Miami,,+1-555-0000994,3.879754964072287,19,"{""place_id"": ""synthetic_0994"", ""types"": [""point_of_interest"", ""establishment""]}",0.04392995893355269,0
+Synthetic Lead 0995,Tampa,https://lead995.example.com,+1-555-0000995,4.064553186464532,28,"{""place_id"": ""synthetic_0995"", ""types"": [""real_estate_agency""]}",0.1931405077724621,0
+Synthetic Lead 0996,Tampa,https://lead996.example.com,,4.0819349541110075,8,"{""place_id"": ""synthetic_0996"", ""types"": [""real_estate_agency""]}",0.06085526556885573,0
+Synthetic Lead 0997,Miami,https://lead997.example.com,+1-555-0000997,,0,"{""place_id"": ""synthetic_0997"", ""types"": [""real_estate_agency""]}",0.000552778636923599,0
+Synthetic Lead 0998,Miami,https://lead998.example.com,+1-555-0000998,4.442546934248557,2,"{""place_id"": ""synthetic_0998"", ""types"": [""real_estate_agency""]}",0.03496347382001213,0
+Synthetic Lead 0999,Naples,https://lead999.example.com,+1-555-0000999,4.319194187418713,109,"{""place_id"": ""synthetic_0999"", ""types"": [""real_estate_agency""]}",0.5453817026936034,1

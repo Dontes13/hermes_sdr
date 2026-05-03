@@ -1,0 +1,400 @@
+@import "tailwindcss";
+
+/*
+ * Helios SDR — clean SaaS aesthetic.
+ * Light mode, orange-red accent.
+ */
+
+:root {
+  /* Neutrals — light mode */
+  --bg:               #f8f8f8;
+  --surface:          #ffffff;
+  --surface-2:        #f3f4f6;
+  --surface-elevated: #ffffff;
+  --border:           #e5e7eb;
+  --border-strong:    #d1d5db;
+  --text:             #111827;
+  --text-dim:         #4b5563;
+  --text-mute:        #9ca3af;
+
+  /* Accent — orange-red */
+  --accent:       #FF5E1A;
+  --accent-hover: #e8521a;
+  --accent-fg:    #ffffff;
+  --accent-glow:      none;
+  --accent-glow-soft: none;
+
+  /* Motion — used everywhere for consistency */
+  --ease-out-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur-med: 220ms;
+  --dur-slow: 360ms;
+
+  /* Shadow/elevation scale — light mode */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-md: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow-lg: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-focus: 0 0 0 2px #ffffff, 0 0 0 4px #FF5E1A;
+
+  /* Semantic signal, used sparingly */
+  --warn:   oklch(0.800 0.155 80);
+  --danger: oklch(0.680 0.200 25);
+  --info:   oklch(0.700 0.140 245);
+  --success: var(--accent);
+
+  /* Hook tier contract — tier → hue mapping (do not rename) */
+  --tier-1: oklch(0.720 0.180 340); /* T1 brand/slogan   — magenta */
+  --tier-2: oklch(0.700 0.140 245); /* T2 website intel  — blue */
+  --tier-3: oklch(0.735 0.140 155); /* T3 reputation     — green */
+  --tier-4: oklch(0.800 0.150 75);  /* T4 market context — amber */
+  --tier-5: oklch(0.620 0.015 250); /* T5 baseline       — tinted neutral */
+
+  /* Reply intent mapping (reuses hue tokens for coherence) */
+  --intent-interested: var(--tier-3);
+  --intent-question:   var(--tier-2);
+  --intent-objection:  var(--warn);
+  --intent-booking:    var(--tier-1);
+  --intent-negative:   var(--danger);
+  --intent-other:      var(--text-mute);
+
+  /* Status pill hues */
+  --status-new:          var(--text-mute);
+  --status-enriched:     var(--info);
+  --status-drafted:      oklch(0.705 0.140 275); /* indigo */
+  --status-approved:     oklch(0.705 0.140 275);
+  --status-sent:         oklch(0.745 0.120 215); /* cyan */
+  --status-replied:      var(--accent);
+  --status-booked:       var(--accent);
+  --status-dead:         var(--danger);
+  --status-unsubscribed: var(--danger);
+
+  /* shadcn/ui compatibility layer — components in ui/ use these tokens */
+  --background: var(--bg);
+  --foreground: var(--text);
+  --card: var(--surface);
+  --card-foreground: var(--text);
+  --popover: var(--surface);
+  --popover-foreground: var(--text);
+  --primary: var(--accent);
+  --primary-foreground: var(--accent-fg);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--text);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--text-dim);
+  --accent-default: var(--surface-2);
+  --accent-foreground: var(--text);
+  --destructive: var(--danger);
+  --destructive-foreground: oklch(0.985 0.000 0);
+  --input: var(--border);
+  --ring: var(--accent);
+  --radius: 0.75rem;
+
+  /* Fluid type scale */
+  --fs-xs:   clamp(0.720rem, 0.69rem + 0.10vw, 0.760rem);
+  --fs-sm:   clamp(0.820rem, 0.79rem + 0.12vw, 0.870rem);
+  --fs-base: clamp(0.935rem, 0.90rem + 0.15vw, 1.000rem);
+  --fs-md:   clamp(1.075rem, 1.02rem + 0.20vw, 1.150rem);
+  --fs-lg:   clamp(1.250rem, 1.15rem + 0.40vw, 1.400rem);
+  --fs-xl:   clamp(1.550rem, 1.40rem + 0.60vw, 1.800rem);
+  --fs-2xl:  clamp(2.000rem, 1.80rem + 0.80vw, 2.400rem);
+}
+
+/* Map our tokens into Tailwind v4's theme so utility classes like
+   bg-surface, text-text-dim, border-border generate automatically. */
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-text-dim: var(--text-dim);
+  --color-text-mute: var(--text-mute);
+
+  /* My brand emerald is exposed as `bg-brand` so it doesn't clash with
+     shadcn's `accent` convention (neutral hover). */
+  --color-brand: var(--accent);
+  --color-brand-hover: var(--accent-hover);
+  --color-brand-fg: var(--accent-fg);
+
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --color-success: var(--accent);
+
+  --color-tier-1: var(--tier-1);
+  --color-tier-2: var(--tier-2);
+  --color-tier-3: var(--tier-3);
+  --color-tier-4: var(--tier-4);
+  --color-tier-5: var(--tier-5);
+
+  --color-intent-interested: var(--intent-interested);
+  --color-intent-question:   var(--intent-question);
+  --color-intent-objection:  var(--intent-objection);
+  --color-intent-booking:    var(--intent-booking);
+  --color-intent-negative:   var(--intent-negative);
+  --color-intent-other:      var(--intent-other);
+
+  --color-status-new: var(--status-new);
+  --color-status-enriched: var(--status-enriched);
+  --color-status-drafted: var(--status-drafted);
+  --color-status-approved: var(--status-approved);
+  --color-status-sent: var(--status-sent);
+  --color-status-replied: var(--status-replied);
+  --color-status-booked: var(--status-booked);
+  --color-status-dead: var(--status-dead);
+  --color-status-unsubscribed: var(--status-unsubscribed);
+
+  /* shadcn color utilities */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--surface-2);
+  --color-accent-foreground: var(--text);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  --radius-sm: calc(var(--radius) - 0.125rem);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 0.125rem);
+}
+
+/* Base layer */
+* {
+  border-color: var(--border);
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--fs-base);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Tabular numerals on anything that looks like data */
+.tabular,
+.font-mono,
+.mono,
+th,
+td {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Numeric-forward mono class used for metrics */
+.metric {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: color-mix(in oklch, var(--accent) 40%, transparent);
+  color: var(--text);
+}
+
+/* Scrollbars — thin, tinted, not loud */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border: 2px solid var(--bg);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Focus ring — restrained, never a thick halo */
+:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* shadcn animations (inline — avoid pulling tailwindcss-animate plugin conflict with v4) */
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-cursor {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes flash-danger {
+  0% { box-shadow: 0 0 0 1px var(--danger), 0 0 20px color-mix(in oklch, var(--danger) 40%, transparent); }
+  100% { box-shadow: none; }
+}
+.animate-in {
+  animation: fade-in 200ms var(--ease-out-spring) both;
+}
+.animate-flash-danger {
+  animation: flash-danger 500ms var(--ease-standard) both;
+}
+
+/* Stagger utility — children fade-in in sequence. Set --i via inline style on each child. */
+@media (prefers-reduced-motion: no-preference) {
+  .stagger > * {
+    animation: fade-in-up var(--dur-med) var(--ease-out-spring) both;
+    animation-delay: calc(var(--i, 0) * 40ms);
+  }
+}
+
+/* Numeric crossfade — relies on tabular-nums to avoid layout shift */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-tabular {
+    transition: color var(--dur-fast) var(--ease-standard);
+  }
+}
+
+/* Typography utility classes */
+.label-xs {
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+.label-sm {
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+.label-md {
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* Metric utility classes — for data-forward numeric displays */
+.metric-sm {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.metric-md {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+.metric-lg {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.025em;
+}
+.metric-xl {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 52px;
+  line-height: 1;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+/* Ambient accent glow — used on hero tiles with unseen activity */
+.glow-accent {
+  box-shadow: var(--accent-glow-soft);
+}
+.glow-accent-strong {
+  box-shadow: var(--accent-glow);
+}
+
+/* Utility: terminal-style bordered section */
+.frame {
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.frame-hover:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-2);
+}
+
+/* react-markdown prose — minimal, terminal-feeling */
+.prose-terminal {
+  color: var(--text);
+  font-size: var(--fs-sm);
+  line-height: 1.65;
+}
+.prose-terminal h1,
+.prose-terminal h2,
+.prose-terminal h3 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+.prose-terminal h1 { font-size: var(--fs-lg); }
+.prose-terminal h2 { font-size: var(--fs-md); color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.prose-terminal h3 { font-size: var(--fs-base); color: var(--text-dim); }
+.prose-terminal p { margin: 0.65em 0; }
+.prose-terminal ul, .prose-terminal ol { margin: 0.6em 0; padding-left: 1.3em; }
+.prose-terminal li { margin: 0.25em 0; }
+.prose-terminal code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.92em;
+  background: var(--surface-2);
+  padding: 0.1em 0.35em;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+.prose-terminal a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-terminal strong { color: var(--text); font-weight: 600; }
+.prose-terminal hr { border-color: var(--border); }

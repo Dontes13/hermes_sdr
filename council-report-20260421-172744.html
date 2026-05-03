@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Council Report — Project Selection</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; color: #1a1a2e; line-height: 1.6; }
+  .container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+  .header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 2px solid #e0e0e0; }
+  .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; color: #1a1a2e; }
+  .header .subtitle { font-size: 14px; color: #6b7280; }
+  .question-box { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin-bottom: 32px; }
+  .question-box h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; margin-bottom: 10px; }
+  .question-box p { font-size: 15px; color: #374151; }
+
+  .verdict { background: #fff; border: 2px solid #2563eb; border-radius: 12px; padding: 28px; margin-bottom: 32px; }
+  .verdict h2 { font-size: 18px; color: #2563eb; margin-bottom: 16px; }
+  .verdict h3 { font-size: 15px; font-weight: 600; margin-top: 20px; margin-bottom: 8px; color: #1a1a2e; }
+  .verdict p { font-size: 14px; color: #374151; margin-bottom: 10px; }
+  .verdict .recommendation { background: #eff6ff; border-radius: 8px; padding: 16px; margin-top: 16px; }
+  .verdict .recommendation h3 { color: #1d4ed8; margin-top: 0; }
+  .verdict .first-step { background: #f0fdf4; border-radius: 8px; padding: 16px; margin-top: 16px; }
+  .verdict .first-step h3 { color: #166534; margin-top: 0; }
+
+  .alignment { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 24px; margin-bottom: 32px; }
+  .alignment h2 { font-size: 16px; margin-bottom: 16px; }
+  .advisor-row { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f3f4f6; }
+  .advisor-row:last-child { border-bottom: none; }
+  .advisor-name { width: 180px; font-size: 13px; font-weight: 600; }
+  .advisor-pick { flex: 1; display: flex; align-items: center; gap: 8px; }
+  .pick-badge { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
+  .pick-a { background: #dbeafe; color: #1d4ed8; }
+  .pick-b { background: #fef3c7; color: #92400e; }
+  .advisor-note { font-size: 12px; color: #6b7280; }
+
+  .peer-summary { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 24px; margin-bottom: 32px; }
+  .peer-summary h2 { font-size: 16px; margin-bottom: 12px; }
+  .peer-stat { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f3f4f6; font-size: 14px; }
+  .peer-stat:last-child { border-bottom: none; }
+  .peer-label { color: #6b7280; }
+  .peer-value { font-weight: 600; }
+
+  details { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 12px; }
+  summary { padding: 14px 20px; cursor: pointer; font-size: 14px; font-weight: 600; color: #374151; }
+  summary:hover { background: #f9fafb; border-radius: 8px; }
+  .detail-content { padding: 0 20px 16px; font-size: 14px; color: #4b5563; line-height: 1.7; }
+
+  .footer { text-align: center; padding-top: 24px; border-top: 1px solid #e0e0e0; margin-top: 40px; font-size: 12px; color: #9ca3af; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>LLM Council Report</h1>
+    <div class="subtitle">5 advisors &middot; 5 peer reviews &middot; 1 verdict</div>
+  </div>
+
+  <div class="question-box">
+    <h2>The Question</h2>
+    <p>Which project should Enrique build for his Intro to AI final? <strong>Option A</strong> (Lead Quality Scorer — binary classification with logistic regression, decision tree, random forest) or <strong>Option B</strong> (Enrichment Budget Optimizer — genetic algorithm for 0/1 knapsack under budget constraint). Both connect to his real B2B sales platform Hermes, both use synthetic data. Rubric: Report (30), Clarity (20), Solves Problem (20), Originality (15), Accuracy (15).</p>
+  </div>
+
+  <!-- VERDICT -->
+  <div class="verdict">
+    <h2>Council Verdict</h2>
+
+    <h3>Where the Council Agrees</h3>
+    <p>Every advisor agrees Option B produces a richer report — more parameters to justify, more experiments to run, more plots to generate. They also agree Option A is the safer, more conventional choice. Four out of five advisors favor B, and the one dissenter (the Contrarian) raises the single strongest technical objection in the entire discussion.</p>
+    <p>The peer reviewers converge even more tightly: all five identify the Contrarian's argument as the strongest contribution. The "why not just use dynamic programming?" question is a concrete, likely challenge from a grader.</p>
+
+    <h3>Where the Council Clashes</h3>
+    <p>The core disagreement: <strong>is originality a strength or a liability in an intro course?</strong></p>
+    <p>The majority argues B's originality earns points directly (15pts) and indirectly (richer report, more design decisions). They see A as ceiling-limited — a tutorial project.</p>
+    <p>The Contrarian argues originality that can't justify itself is a liability. If the GA produces results within 1-2% of a greedy baseline, the grader sees a student who picked an overpowered tool for an already-solved problem. That costs 20 points on "Solves the problem" — more than the 15 gained from originality.</p>
+
+    <h3>Blind Spots the Council Caught</h3>
+    <p><strong>The accuracy paradox:</strong> To prove the GA works correctly, Enrique needs to compare against a known optimal (via DP or brute force). But computing the optimal proves the GA unnecessary. This trap would surface during grading.</p>
+    <p><strong>Course scope risk:</strong> Intro AI courses overwhelmingly emphasize supervised learning and model evaluation. A GA project may land outside the course's intended scope entirely. Being "off-topic" is worse than being "conventional."</p>
+    <p><strong>Synthetic data asymmetry:</strong> For A, synthetic labels can be engineered to produce meaningful classifier separation. For B, synthetic costs make results unfalsifiable — the grader can't assess whether the output is meaningful.</p>
+
+    <div class="recommendation">
+      <h3>The Recommendation: Build Option A</h3>
+      <p>The peer reviews broke the tie. The specific objections — the accuracy paradox, the course scope risk, the "why not DP?" challenge — are predictable grading outcomes, not hypothetical risks.</p>
+      <p>Option A's report is not thin. Feature engineering, class imbalance, threshold tuning, cross-validation, and three-model comparison provide plenty of material. "Solves the problem" (20pts) and "Accuracy of results" (15pts) together are 35 points that are straightforward to earn with A and vulnerable with B.</p>
+      <p><strong>Option A with strong execution: 85–92. Option B with strong execution: 72–95 depending on the grader.</strong> In a course worth a final grade, take the lower variance path.</p>
+    </div>
+
+    <div class="first-step">
+      <h3>The One Thing to Do First</h3>
+      <p>Design the synthetic dataset schema right now — define 8-10 features (google_rating, review_count, has_website, city, business_type, etc.), set the reply rate at 15-20% for realistic class imbalance, and write the data generation function with a known logistic model underneath so the ground truth is controlled and classifier results will be interpretable.</p>
+    </div>
+  </div>
+
+  <!-- ADVISOR ALIGNMENT -->
+  <div class="alignment">
+    <h2>Advisor Alignment</h2>
+    <div class="advisor-row">
+      <div class="advisor-name">The Contrarian</div>
+      <div class="advisor-pick">
+        <span class="pick-badge pick-a">Option A</span>
+        <span class="advisor-note">"Cannon to kill a fly. Grader asks 'why not DP?'"</span>
+      </div>
+    </div>
+    <div class="advisor-row">
+      <div class="advisor-name">First Principles</div>
+      <div class="advisor-pick">
+        <span class="pick-badge pick-b">Option B</span>
+        <span class="advisor-note">"GA has more to write about. Classification is sklearn calls."</span>
+      </div>
+    </div>
+    <div class="advisor-row">
+      <div class="advisor-name">The Expansionist</div>
+      <div class="advisor-pick">
+        <span class="pick-badge pick-b">Option B</span>
+        <span class="advisor-note">"A has a ceiling. B has compounding upside."</span>
+      </div>
+    </div>
+    <div class="advisor-row">
+      <div class="advisor-name">The Outsider</div>
+      <div class="advisor-pick">
+        <span class="pick-badge pick-b">Option B</span>
+        <span class="advisor-note">"A sounds like a Kaggle tutorial."</span>
+      </div>
+    </div>
+    <div class="advisor-row">
+      <div class="advisor-name">The Executor</div>
+      <div class="advisor-pick">
+        <span class="pick-badge pick-b">Option B</span>
+        <span class="advisor-note">"B has a concrete executable path."</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PEER REVIEW SUMMARY -->
+  <div class="peer-summary">
+    <h2>Peer Review Summary</h2>
+    <div class="peer-stat">
+      <span class="peer-label">Strongest advisor response (consensus)</span>
+      <span class="peer-value">The Contrarian (5/5 reviewers)</span>
+    </div>
+    <div class="peer-stat">
+      <span class="peer-label">Biggest blind spot flagged</span>
+      <span class="peer-value">First Principles — dismissed A's report depth</span>
+    </div>
+    <div class="peer-stat">
+      <span class="peer-label">Most cited missed insight</span>
+      <span class="peer-value">Synthetic data asymmetry (4/5 reviewers)</span>
+    </div>
+    <div class="peer-stat">
+      <span class="peer-label">Final shift after peer review</span>
+      <span class="peer-value">4-1 for B &rarr; Verdict: A</span>
+    </div>
+  </div>
+
+  <!-- ADVISOR DETAILS -->
+  <details>
+    <summary>The Contrarian — Full Response</summary>
+    <div class="detail-content">
+      <p>Option B has a fatal flaw that Enrique is probably not seeing: it's an optimization problem dressed up as AI, and an intro-level grader will notice.</p>
+      <p>The 0/1 knapsack problem is solved. A greedy heuristic sorted by value-to-cost ratio will get within a few percent of optimal for 200 items. When Enrique runs his GA against the greedy baseline, the results will be nearly identical — maybe the GA wins by 1-2%. The grader asks: "Why not just use dynamic programming, which gives the exact answer in polynomial time for this size?" Enrique has no good answer. He built a cannon to kill a fly. That kills him on "Solves the problem" (20pts) because the problem didn't need a GA to be solved. Originality also suffers because knapsack-via-GA is a textbook exercise, not a novel application.</p>
+      <p>Worse, the "connection to Hermes" is fabricated either way since he's generating synthetic data, but Option B's connection is especially thin. He's optimizing over made-up costs and made-up lead values. There's no ground truth to validate against. What does "accuracy of results" even mean when you're comparing a GA to a greedy algorithm on fake numbers? He'll struggle to fill 15 points there.</p>
+      <p>Option A has a real dependent variable — did the lead reply or not. That's measurable. The feature set maps directly to what Hermes collects during prospecting. The model comparison (logistic regression vs. trees vs. forest) is exactly what intro AI courses want to see. Feature importance analysis tells a genuine business story. ROC-AUC gives him a concrete accuracy metric.</p>
+      <p>Option A's biggest risk is boring results — all models perform similarly on synthetic data. He needs to engineer the synthetic dataset carefully to create meaningful signal.</p>
+      <p>But "boring with solid execution" scores 85+. "Clever but unjustified" scores 70. <strong>Pick Option A.</strong></p>
+    </div>
+  </details>
+
+  <details>
+    <summary>The First Principles Thinker — Full Response</summary>
+    <div class="detail-content">
+      <p>The real question isn't "which project scores higher" — it's "which project demonstrates that Enrique actually learned AI?" Strip away the Hermes connection, the cool factor, the real-world narrative. What does the rubric reward?</p>
+      <p>The rubric gives 30 points to the report and 20 to clarity/reproducibility. That's half the grade on writing and methodology, not results. A genetic algorithm project has dramatically more to write about: encoding scheme, selection pressure, crossover operators, mutation rates, convergence analysis, parameter sensitivity. Each design choice demands justification. A classification project? You call sklearn, print metrics, done. The report writes thin.</p>
+      <p>"Solves the problem" (20pts) — what problem does the lead scorer actually solve? It predicts replies using features available before enrichment. With synthetic data and no real outcome labels, the "problem" is fabricated end-to-end. The optimizer solves a concrete, defensible problem: budget-constrained selection. The problem statement is mathematically clean. The solution is verifiable.</p>
+      <p>Originality (15pts) — binary classification with sklearn is the most common intro AI project on Earth. A knapsack-variant GA applied to a real business constraint? That's genuinely unusual for an intro class.</p>
+      <p>Accuracy (15pts) — counterintuitively, this favors B. GA convergence toward known optimal solutions gives you provable accuracy metrics. Classification accuracy on synthetic data with no ground truth is meaningless theater.</p>
+      <p>The deeper issue: Option A looks like AI but is really just API calls. Option B looks simple but is actually algorithmic thinking. An intro AI class should reward the latter. <strong>Build the optimizer.</strong></p>
+    </div>
+  </details>
+
+  <details>
+    <summary>The Expansionist — Full Response</summary>
+    <div class="detail-content">
+      <p>Option B is where the upside is hiding.</p>
+      <p>Option A is a perfectly fine ML exercise, but it has a ceiling. You train a classifier, you get an AUC score, you write it up, done. The upside is capped. There's no "what if this works even better than expected" story.</p>
+      <p>Option B has compounding upside across every rubric dimension. Originality (15pts): every other student in an Intro to AI class is building a classifier. A genetic algorithm solving a real resource allocation problem? The professor will notice. That alone could be worth 5+ extra points over A.</p>
+      <p>Solves the problem (20pts): B solves a problem that actually matters to Hermes right now. Enrique has a real budget constraint on enrichment API calls. This isn't hypothetical — he could deploy this tomorrow. Option A's "will they reply" classifier needs months of reply data he doesn't have, making the synthetic dataset feel more artificial.</p>
+      <p>Report quality (30pts): B gives you more to write about — convergence plots, parameter sensitivity across mutation rate/population size/generations, scaling experiments, comparison against greedy and random baselines. That's a richer, more structured report with more visualizations.</p>
+      <p>The hidden opportunity: if the GA works well, Enrique can extend it to multi-objective optimization (maximize expected value AND diversity of lead types). That's a bonus section that screams ambition to a grader.</p>
+      <p>Feasibility is fine. A basic GA for 0/1 knapsack is ~150 lines of Python. The complexity comes from experiments and analysis — exactly where you earn points. <strong>Take the shot with more upside.</strong></p>
+    </div>
+  </details>
+
+  <details>
+    <summary>The Outsider — Full Response</summary>
+    <div class="detail-content">
+      <p>Option B. Here's why, from someone reading this cold.</p>
+      <p>Option A sounds like a Kaggle tutorial. Binary classifier, compare three models, show ROC curves. Every intro AI student does this. The connection to Hermes is cosmetic — you're classifying synthetic data with made-up reply labels. A grader who's seen fifty projects will recognize the template instantly. Originality: low. The "real system" angle falls apart because you're generating fake outcomes for a prediction task. You can't validate whether your model actually works without real reply data. So what are you even proving?</p>
+      <p>Option B is a different animal. The problem formulation itself requires thought — defining chromosomes, fitness functions, constraints. That's not something you copy from a scikit-learn quickstart. The knapsack framing is concrete and easy for a grader to understand, but the implementation demands real design decisions. Tournament selection parameters, crossover rates, mutation rates, convergence criteria — each one is a knob you have to justify. That's report material that writes itself.</p>
+      <p>Rubric breakdown for B: Report quality (30pts) benefits from parameter sensitivity analysis giving you rich tables and plots. Clarity & reproducibility (20pts) is straightforward because GAs are self-contained — no external dependencies, no data pipeline complexity. Solves the problem (20pts) is clean because you have a concrete constraint (budget) and a measurable objective (total value). Originality (15pts) is where B dominates — this is not a standard intro AI project. Accuracy (15pts) works because you're comparing against a greedy baseline, so you have a clear benchmark.</p>
+      <p>The feasibility concern people will raise about GAs is wrong. A basic GA on 200 binary variables is a weekend of coding. The hard part of ML projects — data cleaning, feature engineering, debugging convergence — is actually worse in Option A. <strong>Build B.</strong></p>
+    </div>
+  </details>
+
+  <details>
+    <summary>The Executor — Full Response</summary>
+    <div class="detail-content">
+      <p>Option B. Here's why.</p>
+      <p>Monday morning, here's what Enrique does for Option A: generate synthetic lead data, slap labels on it, run three sklearn classifiers, plot ROC curves, write it up. That's a weekend project, maybe two days. The problem? The labels are fake. He's never going to have real reply data at scale, so the whole thing is an exercise in fitting noise he invented. The grader knows this. "Accuracy of results" (15pts) becomes meaningless when your ground truth is synthetic. And "Originality" (15pts)? Binary classification with logistic regression and random forest is literally the first tutorial on every ML course. He's competing against every other student who also picked "train a classifier."</p>
+      <p>Option B has a concrete, executable path. Step one: define 200 leads with estimated value and enrichment cost columns. Step two: implement the knapsack GA — binary chromosome, fitness function is total value of selected leads under budget constraint. Step three: implement greedy baseline (sort by value/cost ratio, fill until budget exhausted). Step four: run experiments varying population size, mutation rate, crossover rate, budget levels, and pool size. Step five: plot convergence curves, compare GA vs greedy across scenarios.</p>
+      <p>Every single one of those steps is a clear task he can finish in an afternoon. The synthetic data problem disappears because the GA doesn't need "real" labels — it just needs plausible cost and value numbers, which he can derive from actual Hermes enrichment costs. The connection to Hermes is direct and obvious: "I built a tool that decides which leads to spend money enriching."</p>
+      <p>For the rubric: Report quality and Clarity are about execution, which both can hit. Solves the problem — GA clearly solves budget allocation. Originality — GA knapsack applied to sales ops beats "I ran random forest" every time. Accuracy — he can mathematically verify against brute force on small instances. <strong>Build Option B. Start coding today.</strong></p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Peer Review Highlights</summary>
+    <div class="detail-content">
+      <p><strong>All 5 reviewers</strong> identified the Contrarian's response as the strongest, specifically for the "why not dynamic programming?" challenge — a concrete, likely grader question that B-advocates failed to address.</p>
+      <p><strong>All 5 reviewers</strong> identified the First Principles Thinker as having the biggest blind spot, for claiming classification reports "write thin" while ignoring feature engineering, cross-validation, threshold tuning, and model interpretability.</p>
+      <p><strong>Key insights that emerged only in peer review:</strong></p>
+      <p>1. <em>The accuracy paradox</em> — verifying GA correctness requires computing the DP-optimal solution, which proves the GA was unnecessary.</p>
+      <p>2. <em>Course scope risk</em> — intro AI courses emphasize supervised learning. A GA project may be seen as off-topic rather than original.</p>
+      <p>3. <em>Synthetic data asymmetry</em> — A's synthetic labels can be designed to produce meaningful separation; B's synthetic costs make results unfalsifiable.</p>
+      <p>4. <em>Combination opportunity</em> — one reviewer noted both projects could be combined, with the classifier's predicted reply probabilities feeding the GA's value function.</p>
+    </div>
+  </details>
+
+  <div class="footer">
+    LLM Council &middot; April 21, 2026 &middot; Counciled: "Which AI class project to build — Lead Quality Scorer vs. Enrichment Budget Optimizer"
+  </div>
+
+</div>
+</body>
+</html>

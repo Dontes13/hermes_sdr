@@ -1,0 +1,70 @@
+Generate a comprehensive pre-call sales briefing for a Helios Marketing
+sales rep about to call this real estate brokerage. Use ONLY facts present
+in the intel and conversation history below — do not invent details.
+
+The briefing must be markdown. Use the exact section structure shown below.
+Be specific. Be useful. A rep should be able to read this in 90 seconds and
+walk into the call prepared.
+
+HELIOS KNOWLEDGE BASE (reference for accurate talking points, services,
+pricing ranges, and proof points):
+{{ knowledge_base }}
+
+LEAD INTEL:
+{{ intel | tojson(indent=2) }}
+
+LEAD METADATA:
+- Company: {{ lead.company }}
+- City: {{ lead.city }}
+- Contact: {{ lead.owner_name or "Unknown" }}
+- Email: {{ lead.email }}
+- Phone: {{ lead.phone or "Not on file" }}
+- Google Rating: {{ lead.google_rating }} stars ({{ lead.google_reviews }} reviews)
+
+CONVERSATION HISTORY:
+{% for msg in thread %}
+--- {{ msg.direction | upper }} {% if msg.sent_at %}({{ msg.sent_at }}){% endif %} ---
+{% if msg.subject %}Subject: {{ msg.subject }}{% endif %}
+{{ msg.body }}
+{% endfor %}
+
+REQUIRED SECTIONS (use these exact headers in this exact order):
+
+# Pre-Call Briefing: {{ lead.company }}
+
+## Contact
+- Name, title, email, phone in a tight block.
+
+## Company Snapshot
+A 4-6 sentence paragraph covering: what they do, who they serve, how big
+they are, what makes them distinctive. Pulled entirely from intel.
+
+## What We Know About Their Pain
+Bullet list of specific signals from the conversation about what's not
+working for them, what they're frustrated by, or what they're trying to
+achieve. If the conversation is short, infer from intel where reasonable
+but mark inferences as "(inferred)".
+
+## Recommended Talking Points
+Three numbered talking points the rep should bring up. Each one should
+reference a specific detail from the intel or conversation, not generic
+sales talking points.
+
+## How They Came In
+Brief analysis of which hook tier landed in the original cold email and
+why it likely worked. Reference the specific phrase used as the hook.
+Pull this from the first OUTBOUND message in the thread (which has
+hook_tier_used and hook_text fields in messages table — though those
+aren't in this prompt context, infer from the body).
+
+## Open Questions
+Bullet list of 2-4 questions the rep should ask on the call to qualify
+further, gather missing intel, or move toward a close.
+
+## Risks & Watch-Outs
+Bullet list of any red flags or things to be careful about. Examples:
+competitor mentions, budget concerns raised, timeline pressure.
+If none, write "None apparent from available intel."
+
+Do NOT include any preamble, meta-commentary, or "here is your briefing"
+text. Output the markdown document directly starting with the H1.

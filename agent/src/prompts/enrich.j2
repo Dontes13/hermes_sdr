@@ -1,0 +1,24 @@
+You are extracting structured information from a real estate brokerage's
+website. Return JSON only, matching the provided schema. Do not invent
+facts. If something is not stated on the page, return null for that field
+(or an empty list for list fields).
+
+Brokerage name: {{ company }}
+City: {{ city }}
+
+Website content (multiple pages, separated by PAGE BREAK markers):
+---
+{{ page_text }}
+---
+
+Extract:
+- owner_name: the owner, broker, or principal of the brokerage if named
+- owner_email: their direct email if visible (prefer over general inbox)
+- general_email: a general contact email like info@ or contact@
+- agent_count: number of agents, if explicitly stated
+- year_founded: year the brokerage was founded, if stated
+- slogan: any prominent tagline or slogan from the homepage hero
+- markets_served: list of cities/neighborhoods/submarkets they cover
+- specialties: list of specialties (luxury, first-time buyers, commercial...)
+- value_prop: their stated value proposition in one short phrase
+- notable_facts: 1-5 specific facts that make them distinctive

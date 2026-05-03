@@ -1,0 +1,30 @@
+{
+  "pool_size": 200,
+  "budget": 0.2142,
+  "random": {
+    "mean_value": 74974.13511731225,
+    "best_value": 81333.33112363501,
+    "best_cost": 0.214,
+    "best_leads": 122
+  },
+  "greedy": {
+    "total_value": 93303.60677862853,
+    "total_cost": 0.214,
+    "leads_selected": 129
+  },
+  "ga": {
+    "best_fitness": 93174.31544837503,
+    "total_value": 93174.31544837503,
+    "total_cost": 0.214,
+    "leads_selected": 128,
+    "generations_run": 100,
+    "population_size": 50
+  },
+  "dp": {
+    "total_value": 93304.91857713055,
+    "total_cost": 0.214,
+    "leads_selected": 128
+  },
+  "ga_over_greedy_pct": 99.8614294401713,
+  "ga_over_dp_pct": 99.8600254619508
+}

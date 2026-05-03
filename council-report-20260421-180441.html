@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Council Report — Spec Grade Review</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; color: #1a1a2e; line-height: 1.6; }
+  .container { max-width: 820px; margin: 0 auto; padding: 24px 20px; }
+
+  .header { text-align: center; padding: 40px 0 30px; }
+  .header h1 { font-size: 26px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+  .header .subtitle { font-size: 15px; color: #64748b; }
+  .header .date { font-size: 13px; color: #94a3b8; margin-top: 4px; }
+
+  .verdict-box { background: #fff; border: 2px solid #1a1a2e; border-radius: 12px; padding: 32px; margin-bottom: 28px; }
+  .verdict-box h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; margin-bottom: 16px; }
+  .grade-display { display: flex; align-items: baseline; gap: 16px; margin-bottom: 20px; }
+  .grade-current { font-size: 48px; font-weight: 800; color: #dc2626; }
+  .grade-arrow { font-size: 28px; color: #64748b; }
+  .grade-potential { font-size: 48px; font-weight: 800; color: #16a34a; }
+  .grade-labels { display: flex; gap: 60px; margin-bottom: 20px; }
+  .grade-label { font-size: 13px; color: #64748b; }
+  .verdict-summary { font-size: 16px; line-height: 1.7; color: #334155; }
+
+  .advisor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+  @media (max-width: 640px) { .advisor-grid { grid-template-columns: 1fr; } }
+
+  .advisor-card { background: #fff; border-radius: 10px; border: 1px solid #e2e8f0; overflow: hidden; }
+  .advisor-header { padding: 14px 16px 10px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; }
+  .advisor-name { font-size: 14px; font-weight: 600; }
+  .advisor-grade { font-size: 14px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+  .grade-low { background: #fef2f2; color: #dc2626; }
+  .grade-mid { background: #fffbeb; color: #d97706; }
+  .grade-high { background: #f0fdf4; color: #16a34a; }
+  .advisor-body { padding: 14px 16px; font-size: 13px; color: #475569; line-height: 1.6; display: none; }
+  .advisor-toggle { padding: 8px 16px; font-size: 12px; color: #6366f1; cursor: pointer; border: none; background: none; font-weight: 500; width: 100%; text-align: left; }
+  .advisor-toggle:hover { color: #4338ca; }
+
+  .section { background: #fff; border-radius: 10px; border: 1px solid #e2e8f0; padding: 24px; margin-bottom: 16px; }
+  .section h3 { font-size: 16px; font-weight: 700; color: #1a1a2e; margin-bottom: 12px; }
+  .section p { font-size: 14px; color: #475569; margin-bottom: 10px; }
+  .section ul { list-style: none; padding: 0; }
+  .section li { font-size: 14px; color: #475569; padding: 6px 0; padding-left: 20px; position: relative; }
+  .section li::before { content: "→"; position: absolute; left: 0; color: #6366f1; font-weight: 600; }
+
+  .priority-list { list-style: none; padding: 0; counter-reset: priority; }
+  .priority-list li { padding: 10px 0 10px 36px; position: relative; font-size: 14px; color: #475569; border-bottom: 1px solid #f1f5f9; }
+  .priority-list li:last-child { border-bottom: none; }
+  .priority-list li::before { counter-increment: priority; content: counter(priority); position: absolute; left: 0; top: 10px; width: 24px; height: 24px; border-radius: 50%; background: #6366f1; color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .priority-list li strong { color: #1a1a2e; }
+
+  .agreement-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin: 16px 0; }
+  .agreement-cell { text-align: center; padding: 8px 4px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+  .agree { background: #dcfce7; color: #166534; }
+  .disagree { background: #fef9c3; color: #854d0e; }
+  .strong-disagree { background: #fecaca; color: #991b1b; }
+
+  .cta-box { background: #eef2ff; border: 2px solid #6366f1; border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 28px; }
+  .cta-box h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; color: #6366f1; margin-bottom: 8px; }
+  .cta-box p { font-size: 16px; font-weight: 600; color: #1a1a2e; }
+
+  .peer-review { background: #fff; border-radius: 10px; border: 1px solid #e2e8f0; padding: 24px; margin-bottom: 16px; }
+  .peer-review h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; cursor: pointer; }
+  .peer-review-content { display: none; }
+  .peer-review h3::after { content: " ▸"; color: #94a3b8; font-size: 14px; }
+
+  .footer { text-align: center; padding: 24px 0; font-size: 12px; color: #94a3b8; }
+
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-right: 4px; }
+  .tag-risk { background: #fef2f2; color: #dc2626; }
+  .tag-fix { background: #f0fdf4; color: #16a34a; }
+  .tag-pts { background: #eef2ff; color: #6366f1; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>LLM Council Report</h1>
+    <div class="subtitle">Lead Quality Scorer Spec — Grade Prediction & Improvements</div>
+    <div class="date">April 21, 2026</div>
+  </div>
+
+  <!-- VERDICT -->
+  <div class="verdict-box">
+    <h2>Council Verdict</h2>
+    <div class="grade-display">
+      <span class="grade-current">80-85</span>
+      <span class="grade-arrow">→</span>
+      <span class="grade-potential">90-95</span>
+    </div>
+    <div class="grade-labels">
+      <span class="grade-label">As currently specced</span>
+      <span class="grade-label" style="margin-left:20px">With recommended changes</span>
+    </div>
+    <p class="verdict-summary">
+      Strong engineering skeleton, but optimizes for production impressiveness over academic demonstration.
+      The synthetic data circularity (generating from logistic model, then "discovering" logistic regression wins)
+      is the biggest intellectual risk — 4 of 5 advisors flagged it independently. Missing PEAS analysis and
+      environment classification are free points left on the table. Report quality (30pts) is dangerously under-planned.
+    </p>
+  </div>
+
+  <!-- AGREEMENT VISUALIZATION -->
+  <div class="section">
+    <h3>Advisor Agreement Map</h3>
+    <p style="font-size:13px;color:#64748b;margin-bottom:8px;">How each advisor rated key dimensions of the spec:</p>
+
+    <table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:8px;">
+      <tr style="border-bottom:2px solid #e2e8f0;">
+        <th style="text-align:left;padding:8px 4px;color:#64748b;font-weight:600;">Issue</th>
+        <th style="text-align:center;padding:8px 4px;font-size:11px;color:#64748b;">Contrarian</th>
+        <th style="text-align:center;padding:8px 4px;font-size:11px;color:#64748b;">1st Princ.</th>
+        <th style="text-align:center;padding:8px 4px;font-size:11px;color:#64748b;">Expansion.</th>
+        <th style="text-align:center;padding:8px 4px;font-size:11px;color:#64748b;">Outsider</th>
+        <th style="text-align:center;padding:8px 4px;font-size:11px;color:#64748b;">Executor</th>
+      </tr>
+      <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:8px 4px;font-weight:500;">Synthetic data is circular</td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#dc2626;font-weight:700;">RISK</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#dc2626;font-weight:700;">RISK</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#94a3b8;">—</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#dc2626;font-weight:700;">RISK</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#d97706;font-weight:700;">FRAME IT</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:8px 4px;font-weight:500;">Needs real data validation</td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#16a34a;font-weight:700;">YES</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#16a34a;font-weight:700;">YES</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#16a34a;font-weight:700;">YES</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#16a34a;font-weight:700;">YES</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#94a3b8;">—</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:8px 4px;font-weight:500;">Missing PEAS / env. classif.</td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#94a3b8;">—</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#dc2626;font-weight:700;">RISK</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#94a3b8;">—</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#94a3b8;">—</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#94a3b8;">—</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:8px 4px;font-weight:500;">Report under-planned</td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#94a3b8;">—</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#d97706;font-weight:700;">NOTED</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#94a3b8;">—</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#94a3b8;">—</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#dc2626;font-weight:700;">RISK</span></td>
+      </tr>
+      <tr>
+        <td style="padding:8px 4px;font-weight:500;">Production module adds value</td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#94a3b8;">MINOR</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#94a3b8;">MINOR</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#16a34a;font-weight:700;">BIG</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#d97706;font-weight:700;">VAPOR</span></td>
+        <td style="text-align:center;padding:8px 4px;"><span style="color:#d97706;font-weight:700;">MOCK IT</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- PRIORITY CHANGES -->
+  <div class="section">
+    <h3>Priority Changes to Push 80 → 90+</h3>
+    <ol class="priority-list">
+      <li><strong>Add PEAS decomposition & environment classification</strong> — 30 min of work, directly ties to class content, easy points on Report Quality and Originality <span class="tag tag-pts">+3-5 pts</span></li>
+      <li><strong>Validate on 50-100 real Hermes leads</strong> — even comparing feature distributions (no labels needed) neutralizes the circularity criticism and adds genuine originality <span class="tag tag-pts">+5-8 pts</span></li>
+      <li><strong>Write report outline before more code</strong> — map each section to a rubric category, allocate 40% of time to writing <span class="tag tag-pts">+5-10 pts</span></li>
+      <li><strong>Lock down reproducibility</strong> — fixed seeds, pinned requirements.txt, single-command reproduction, "How to Reproduce" section <span class="tag tag-pts">+3-5 pts</span></li>
+      <li><strong>Frame noise feature as deliberate ablation experiment</strong> — state hypothesis before showing results, converts gimmick into methodology <span class="tag tag-pts">+1-2 pts</span></li>
+      <li><strong>Show one perceptron training pass by hand</strong> — literal math for one example, proves understanding of the algorithm taught in class <span class="tag tag-pts">+2-3 pts</span></li>
+    </ol>
+  </div>
+
+  <!-- ADVISOR CARDS -->
+  <h3 style="font-size:16px;font-weight:700;margin-bottom:12px;color:#1a1a2e;">Advisor Responses</h3>
+  <div class="advisor-grid">
+    <div class="advisor-card">
+      <div class="advisor-header">
+        <span class="advisor-name">The Contrarian</span>
+        <span class="advisor-grade grade-low">78-84</span>
+      </div>
+      <button class="advisor-toggle" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.textContent = this.textContent === 'Show full response ▸' ? 'Hide response ▾' : 'Show full response ▸'">Show full response ▸</button>
+      <div class="advisor-body">
+        The synthetic data is the fatal flaw — you're generating data from a logistic model then "discovering" logistic regression fits best. That's circular. The professor will see through this immediately. You're not solving a real problem — you're solving a problem you manufactured to have a known answer. That costs you on Solves the Problem (20pts) and Originality (15pts).<br><br>
+        The noise feature trick (is_insurance with coefficient 0) is transparent. Comparing four off-the-shelf classifiers on synthetic data is a standard homework exercise, not a final project.<br><br>
+        Suggestions: Use real Hermes reply data even a small subset. Add calibration curve. Drop one classifier and add a meaningful baseline. Discuss where synthetic assumptions break down. Safe gets you a B.
+      </div>
+    </div>
+
+    <div class="advisor-card">
+      <div class="advisor-header">
+        <span class="advisor-name">First Principles Thinker</span>
+        <span class="advisor-grade grade-mid">82-88</span>
+      </div>
+      <button class="advisor-toggle" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.textContent = this.textContent === 'Show full response ▸' ? 'Hide response ▾' : 'Show full response ▸'">Show full response ▸</button>
+      <div class="advisor-body">
+        The project over-engineers a production system while under-investing in demonstrating course concepts. The professor taught PEAS, agent types, environment classification — the spec treats these as irrelevant.<br><br>
+        Synthetic data is a tautology. Missing connection to course content. Where's the PEAS analysis? Where's the environment classification?<br><br>
+        Suggestions: Use 50-200 real leads as validation. Add PEAS decomposition. Implement perceptron step-by-step (not just sklearn). Strip away production language — professor grades learning demonstration, not software engineering.
+      </div>
+    </div>
+
+    <div class="advisor-card">
+      <div class="advisor-header">
+        <span class="advisor-name">The Expansionist</span>
+        <span class="advisor-grade grade-high">88-93</span>
+      </div>
+      <button class="advisor-toggle" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.textContent = this.textContent === 'Show full response ▸' ? 'Hide response ▾' : 'Show full response ▸'">Show full response ▸</button>
+      <div class="advisor-body">
+        The spec has compounding upside. Hidden gold: real production data for validation. The production scoring module sets this apart from every other student. The noise feature is a built-in ablation study.<br><br>
+        The synthetic-to-real transfer story is the real differentiator.<br><br>
+        Suggestions: Add calibration plot. Compare synthetic vs real distributions. Add precision-recall curve. The ceiling is higher than the spec aims for.
+      </div>
+    </div>
+
+    <div class="advisor-card">
+      <div class="advisor-header">
+        <span class="advisor-name">The Outsider</span>
+        <span class="advisor-grade grade-mid">82-88</span>
+      </div>
+      <button class="advisor-toggle" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.textContent = this.textContent === 'Show full response ▸' ? 'Hide response ▾' : 'Show full response ▸'">Show full response ▸</button>
+      <div class="advisor-body">
+        The synthetic data does all the heavy lifting. "Did you solve a problem or build a puzzle and solve your own puzzle?"<br><br>
+        Random forest and logistic regression weren't class topics — could go either way. The production integration is vaporware without real validation.<br><br>
+        Suggestions: Run on 50-100 real leads. Add limitations section. Show perceptron math by hand. Frame noise feature as explicit experiment.
+      </div>
+    </div>
+  </div>
+
+  <!-- EXECUTOR - full width -->
+  <div class="advisor-card" style="margin-bottom:28px;">
+    <div class="advisor-header">
+      <span class="advisor-name">The Executor</span>
+      <span class="advisor-grade grade-mid">82-88</span>
+    </div>
+    <button class="advisor-toggle" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.textContent = this.textContent === 'Show full response ▸' ? 'Hide response ▾' : 'Show full response ▸'">Show full response ▸</button>
+    <div class="advisor-body">
+      Buildable in a weekend with guaranteed working output. Biggest risk: Report quality is 30 points and students always botch it. 90% of time on code, 10% on report — backwards for this rubric.<br><br>
+      Suggestions: Write report outline FIRST. Allocate 40% of time to the report. Include Hermes screenshot/mock. Add calibration plot. The risk isn't ambition — it's underinvesting in the writeup.
+    </div>
+  </div>
+
+  <!-- KEY RISKS -->
+  <div class="section">
+    <h3>Key Risks Identified</h3>
+    <ul>
+      <li><span class="tag tag-risk">35 pts at risk</span> <strong>Synthetic circularity</strong> — generating from logistic model guarantees logistic regression wins. Undermines Solves the Problem (20) + Originality (15)</li>
+      <li><span class="tag tag-risk">30 pts at risk</span> <strong>Report under-investment</strong> — code-heavy spec with no report structure. Report Quality is 30% of the grade</li>
+      <li><span class="tag tag-risk">20 pts at risk</span> <strong>Reproducibility unaddressed</strong> — no mention of seeds, pinned deps, or run instructions in the spec</li>
+      <li><span class="tag tag-risk">15 pts at risk</span> <strong>Missing course frameworks</strong> — PEAS and environment classification not in spec despite being core class content</li>
+    </ul>
+  </div>
+
+  <!-- PEER REVIEW HIGHLIGHTS -->
+  <div class="peer-review">
+    <h3 onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'">Peer Review Highlights</h3>
+    <div class="peer-review-content">
+      <p style="font-size:14px;color:#475569;margin-bottom:12px;"><strong>Strongest advisor (unanimous):</strong> The First Principles Thinker — uniquely caught the missing PEAS analysis and correctly diagnosed the audience (professor grades learning demonstration, not production readiness).</p>
+      <p style="font-size:14px;color:#475569;margin-bottom:12px;"><strong>Biggest blind spot (unanimous):</strong> The Expansionist — projected 88-93 with potential 97+, which all reviewers called "dangerously optimistic." Mistakes aspiration for substance and would leave Enrique overconfident.</p>
+      <p style="font-size:14px;color:#475569;"><strong>All advisors missed:</strong> Clarity & Reproducibility (20pts) was never concretely addressed. No advisor mapped rubric categories to specific deliverables. No one asked about required submission format.</p>
+    </div>
+  </div>
+
+  <!-- FIRST STEP -->
+  <div class="cta-box">
+    <h3>The One Thing to Do First</h3>
+    <p>Write the full report outline — section headings, contents, and which rubric category each section serves — before touching any more code.</p>
+  </div>
+
+  <div class="footer">
+    LLM Council Report &middot; Generated April 21, 2026 &middot; Topic: Lead Quality Scorer Spec Review
+  </div>
+
+</div>
+</body>
+</html>
