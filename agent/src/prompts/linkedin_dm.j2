@@ -17,6 +17,9 @@ Company: {{ company }}
 City: {{ city }}
 {% if owner_name %}Owner: {{ owner_name }}{% endif %}
 {% if google_rating %}Google: {{ google_rating }} stars ({{ google_reviews }} reviews){% endif %}
+{% if apollo_title %}Contact Title (Apollo-verified): {{ apollo_title }}{% endif %}
+{% if apollo_headcount %}Headcount (Apollo-verified): ~{{ apollo_headcount }} employees{% endif %}
+{% if apollo_tenure_start %}In Role Since: {{ apollo_tenure_start }}{% endif %}
 
 INTEL (do NOT invent facts beyond this):
 {{ intel | tojson(indent=2) }}

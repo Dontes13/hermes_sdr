@@ -72,6 +72,10 @@ def draft(lead_id: str, sample_email: str | None = None) -> DraftResult:
 
     # 4. Render prompt
     intel = lead.get("intel_json") or {}
+    apollo = intel.get("apollo") or {}
+    apollo_contact = apollo.get("contact") or {}
+    apollo_org = apollo.get("org") or {}
+
     prompt = DRAFT_TEMPLATE.render(
         sender_name=sender_name,
         sender_title=sender_title,
@@ -84,6 +88,9 @@ def draft(lead_id: str, sample_email: str | None = None) -> DraftResult:
         tier_descriptions=TIER_NAMES,
         sample_email=sample_email,
         knowledge_base=load_knowledge_base(),
+        apollo_title=apollo_contact.get("title"),
+        apollo_headcount=apollo_org.get("headcount"),
+        apollo_tenure_start=apollo_contact.get("tenure_start"),
     )
 
     # 5. Call Gemini Pro

@@ -108,6 +108,9 @@ def draft_invite(lead_id: str) -> _LinkedInResult:
     available_tiers = compute_available_tiers(lead)
     sample_email = _load_sample_email(lead)
     intel = lead.get("intel_json") or {}
+    apollo = intel.get("apollo") or {}
+    apollo_contact = apollo.get("contact") or {}
+    apollo_org = apollo.get("org") or {}
 
     prompt = INVITE_TEMPLATE.render(
         sender_name=sender_name,
@@ -121,6 +124,9 @@ def draft_invite(lead_id: str) -> _LinkedInResult:
         available_tiers=available_tiers,
         tier_descriptions=TIER_NAMES,
         sample_email=sample_email,
+        apollo_title=apollo_contact.get("title"),
+        apollo_headcount=apollo_org.get("headcount"),
+        apollo_tenure_start=apollo_contact.get("tenure_start"),
     )
 
     result = gemini.generate_json_pro(prompt, _LinkedInResult)
@@ -215,6 +221,9 @@ def draft_dm(lead_id: str) -> _LinkedInResult:
     available_tiers = compute_available_tiers(lead)
     sample_email = _load_sample_email(lead)
     intel = lead.get("intel_json") or {}
+    apollo = intel.get("apollo") or {}
+    apollo_contact = apollo.get("contact") or {}
+    apollo_org = apollo.get("org") or {}
 
     prompt = DM_TEMPLATE.render(
         sender_name=sender_name,
@@ -230,6 +239,9 @@ def draft_dm(lead_id: str) -> _LinkedInResult:
         tier_descriptions=TIER_NAMES,
         sample_email=sample_email,
         knowledge_base=load_knowledge_base(),
+        apollo_title=apollo_contact.get("title"),
+        apollo_headcount=apollo_org.get("headcount"),
+        apollo_tenure_start=apollo_contact.get("tenure_start"),
     )
 
     result = gemini.generate_json_pro(prompt, _LinkedInResult)

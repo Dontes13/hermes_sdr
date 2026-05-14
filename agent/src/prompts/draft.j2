@@ -16,6 +16,9 @@ PROSPECT
 Company: {{ company }}
 City: {{ city }}
 {% if google_rating %}Google: {{ google_rating }} stars ({{ google_reviews }} reviews){% endif %}
+{% if apollo_title %}Contact Title (Apollo-verified): {{ apollo_title }}{% endif %}
+{% if apollo_headcount %}Headcount (Apollo-verified): ~{{ apollo_headcount }} employees{% endif %}
+{% if apollo_tenure_start %}In Role Since: {{ apollo_tenure_start }}{% endif %}
 
 INTEL (everything we know — do NOT invent facts beyond this):
 {{ intel | tojson(indent=2) }}
@@ -85,6 +88,10 @@ Good openers (by tier):
            brokerage your size."
   Tier 4: "Dominating the Coral Gables and Coconut Grove luxury market is
            no small thing."
+  Apollo: "Running your own shop since 2018 in this market — most people
+           who try it are gone inside three years."
+  Apollo: "Broker-Owner at that volume and you're still personally working
+           deals — that's not what most people picture at that title."
 
 Never open with:
   - "I came across your website" or "I noticed your company" (vague)
@@ -189,6 +196,13 @@ Layer 3 — Role-specific (minimum bar): Showing you understand the specific
 Layer 4 — Intel-driven (target): Using a specific fact from their website,
           reviews, or business — team size, founding year, specialty,
           slogan. This is what the hook tiers give you.
+Layer 4b — Apollo-verified (use when apollo_title / apollo_headcount are
+            present in the PROSPECT block above): title and headcount are
+            confirmed, not scraped guesses. "Running your own brokerage
+            since 2019" hits differently than "you seem to own a brokerage."
+            Weave the title or tenure in naturally — don't state it as a
+            fact you looked up. This is the strongest single signal when
+            available; treat it as higher confidence than website intel.
 Layer 5 — Insight-driven (highest): Going beyond observation to
           interpretation. You noticed something and drew a conclusion that
           shows strategic thinking about their business.

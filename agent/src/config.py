@@ -32,6 +32,9 @@ class Settings(BaseSettings):
     API_HOST: str = "0.0.0.0"
     API_PORT: int = 8000
 
+    # Apollo.io enrichment (optional; empty disables contact/org enrichment)
+    APOLLO_API_KEY: str | None = None
+
     # Firecrawl fallback (optional; empty disables JS-render fallback)
     FIRECRAWL_API_KEY: str | None = None
 

@@ -6,6 +6,7 @@ import structlog
 from jinja2 import Template
 from pydantic import BaseModel
 
+from agent.src.clients.apollo import _extract_domain, apollo_client
 from agent.src.clients.firecrawl import firecrawl_client
 from agent.src.clients.gemini import gemini
 from agent.src.clients.supabase_client import supabase
@@ -211,6 +212,38 @@ def enrich(lead_id: str) -> bool:
     # HTML (where href= lives) then concatenated page text. Not finding a
     # URL is fine; LinkedIn channel is opt-in per lead anyway.
     linkedin_url = _extract_linkedin_url(html) or _extract_linkedin_url(page_text)
+
+    # 10b. Apollo enrichment — optional, fires only when APOLLO_API_KEY is set.
+    # Never blocks enrichment on failure; all errors are caught inside the client.
+    if apollo_client.enabled:
+        domain = _extract_domain(lead["website"])
+        apollo_contact: dict | None = None
+        apollo_org: dict | None = None
+        try:
+            if email and domain:
+                apollo_contact = apollo_client.enrich_contact(
+                    email=email, domain=domain
+                )
+            if domain:
+                apollo_org = apollo_client.enrich_organization(domain=domain)
+        except Exception as exc:
+            log.warning("apollo_enrichment_error", lead_id=lead_id, error=str(exc))
+
+        apollo_intel: dict = {}
+        if apollo_contact:
+            apollo_intel["contact"] = apollo_contact
+            if apollo_contact.get("name") and not owner_name:
+                owner_name = apollo_contact["name"]
+            if apollo_contact.get("linkedin_url") and not linkedin_url:
+                linkedin_url = apollo_contact["linkedin_url"]
+        if apollo_org:
+            apollo_intel["org"] = apollo_org
+            if apollo_org.get("founded_year") and not merged_intel.get("year_founded"):
+                merged_intel["year_founded"] = apollo_org["founded_year"]
+            if apollo_org.get("headcount") and not merged_intel.get("agent_count"):
+                merged_intel["estimated_employees"] = apollo_org["headcount"]
+        if apollo_intel:
+            merged_intel["apollo"] = apollo_intel
 
     update: dict = {
         "intel_json": merged_intel,

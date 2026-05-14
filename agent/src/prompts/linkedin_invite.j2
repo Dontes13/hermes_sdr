@@ -20,6 +20,9 @@ Company: {{ company }}
 City: {{ city }}
 {% if owner_name %}Owner: {{ owner_name }}{% endif %}
 {% if google_rating %}Google: {{ google_rating }} stars ({{ google_reviews }} reviews){% endif %}
+{% if apollo_title %}Contact Title (Apollo-verified): {{ apollo_title }}{% endif %}
+{% if apollo_headcount %}Headcount (Apollo-verified): ~{{ apollo_headcount }} employees{% endif %}
+{% if apollo_tenure_start %}In Role Since: {{ apollo_tenure_start }}{% endif %}
 
 INTEL (do NOT invent facts beyond this):
 {{ intel | tojson(indent=2) }}
@@ -47,6 +50,9 @@ Good examples (under 280 chars):
   "Saw {{ company }}'s 4.9-star Google reputation — really uncommon for a
    brokerage your size. Building tools for indie brokers, would love to
    stay in touch."
+
+  Apollo title example: "Broker-Owner running your own shop in this market
+   since 2019 — that's not easy to pull off. Would be great to connect."
 
 Banned (instant reject of accept):
   "I'd love to connect and explore synergies"
