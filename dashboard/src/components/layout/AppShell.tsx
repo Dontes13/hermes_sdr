@@ -1,28 +1,29 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-
+import { useRouter, usePathname } from "next/navigation";
 import { useAuthStore } from "@/lib/auth";
 import { Sidebar } from "@/components/layout/Sidebar";
 
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const UNSHELLED_ROUTES = ["/login"];
+
+export function AppShell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
+  const pathname = usePathname();
   const status = useAuthStore((s) => s.status);
+  const noShell = UNSHELLED_ROUTES.includes(pathname);
 
   useEffect(() => {
-    if (status === "unauthed") {
+    if (!noShell && status === "unauthed") {
       router.replace("/login");
     }
-  }, [status, router]);
+  }, [status, router, noShell]);
+
+  if (noShell) {
+    return <>{children}</>;
+  }
 
   if (status === "idle") {
-    // Hydration in progress. Render a skeleton shell that mirrors the real
-    // chrome so layout doesn't shift when auth resolves.
     return (
       <div className="flex min-h-screen">
         <div className="w-56 shrink-0 border-r border-border bg-surface" />

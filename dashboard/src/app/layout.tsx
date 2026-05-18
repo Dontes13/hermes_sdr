@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { AppShell } from "@/components/layout/AppShell";
 import "./globals.css";
 
 const inter = Inter({
@@ -33,7 +34,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <TooltipProvider delayDuration={200}>
-          {children}
+          <AppShell>{children}</AppShell>
         </TooltipProvider>
         <Toaster position="bottom-right" />
       </body>
