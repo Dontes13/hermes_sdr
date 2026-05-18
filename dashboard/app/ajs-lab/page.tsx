@@ -124,7 +124,7 @@ async function callGemini(fullPrompt: string, apiKey: string): Promise<string> {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         contents: [{ parts: [{ text: fullPrompt }] }],
-        generationConfig: { temperature: 0.85, maxOutputTokens: 1024 },
+        generationConfig: { temperature: 0.85, maxOutputTokens: 2048 },
       }),
     }
   );
