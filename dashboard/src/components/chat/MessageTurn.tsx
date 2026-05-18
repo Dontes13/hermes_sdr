@@ -4,6 +4,23 @@ import * as React from "react";
 import { createContext, useContext, useState } from "react";
 
 const OlIndexContext = createContext(0);
+
+function ListItem({ children }: { children: React.ReactNode }) {
+  const num = useContext(OlIndexContext);
+  return (
+    <li className="flex items-start gap-2.5">
+      {num > 0 && (
+        <span
+          className="shrink-0 mt-0.5 h-5 w-5 rounded-full flex items-center justify-center text-white text-[10px] font-semibold leading-none"
+          style={{ background: "var(--accent)" }}
+        >
+          {num}
+        </span>
+      )}
+      <span className="flex-1">{children}</span>
+    </li>
+  );
+}
 import { Check, CheckCheck, Copy, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
@@ -122,22 +139,7 @@ function AssistantBubble({ content, at }: { content: string; at?: string }) {
                   </ol>
                 );
               },
-              li: ({ children }) => {
-                const num = useContext(OlIndexContext);
-                return (
-                  <li className="flex items-start gap-2.5">
-                    {num > 0 && (
-                      <span
-                        className="shrink-0 mt-0.5 h-5 w-5 rounded-full flex items-center justify-center text-white text-[10px] font-semibold leading-none"
-                        style={{ background: "var(--accent)" }}
-                      >
-                        {num}
-                      </span>
-                    )}
-                    <span className="flex-1">{children}</span>
-                  </li>
-                );
-              },
+              li: ({ children }) => <ListItem>{children}</ListItem>,
               ul: ({ children }) => (
                 <ul className="mt-2 space-y-1.5 list-disc pl-4">{children}</ul>
               ),
