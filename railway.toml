@@ -1,0 +1,7 @@
+[build]
+builder = "nixpacks"
+buildCommand = "pip install -e ."
+
+[deploy]
+startCommand = "python scripts/run_api.py"
+restartPolicyType = "on_failure"
