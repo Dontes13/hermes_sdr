@@ -27,9 +27,13 @@ def create_app() -> FastAPI:
 
     app.add_middleware(
         CORSMiddleware,
+        allow_origins=[
+            "http://localhost:3000",
+            "https://hermes-phi-tawny.vercel.app",
+        ],
         allow_origin_regex=os.environ.get(
             "CORS_ORIGIN_REGEX",
-            r"^http://(localhost|127\.0\.0\.1):\d+$",
+            r"https://hermes.*\.vercel\.app",
         ),
         allow_credentials=True,
         allow_methods=["*"],
