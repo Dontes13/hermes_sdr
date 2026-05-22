@@ -172,6 +172,41 @@ def poll_replies() -> dict:
                 error=str(e),
             )
 
+        # Send notification email for new inbound reply.
+        # Failures here must never crash the poll loop.
+        try:
+            from agent.src.services.notifications import send_reply_notification
+
+            msg_row = (
+                supabase.table("messages")
+                .select("id, notification_sent_at")
+                .eq("provider_msg_id", m["message_id"])
+                .eq("direction", "inbound")
+                .single()
+                .execute()
+            )
+            if msg_row.data and msg_row.data.get("notification_sent_at") is None:
+                lead_data = (
+                    supabase.table("leads")
+                    .select("company, email")
+                    .eq("id", lead_id)
+                    .single()
+                    .execute()
+                )
+                if lead_data.data:
+                    sent = send_reply_notification(m, lead_data.data)
+                    if sent:
+                        supabase.table("messages").update(
+                            {"notification_sent_at": datetime.now(timezone.utc).isoformat()}
+                        ).eq("id", msg_row.data["id"]).execute()
+        except Exception as e:
+            log.error(
+                "reply_notification_error",
+                lead_id=lead_id,
+                inbound_provider_msg_id=m["message_id"],
+                error=str(e),
+            )
+
         # Flip to 'replied' unless terminal state — but NOT for test threads,
         # since those were never "real" sends and the lead should stay at
         # whatever it was (usually 'drafted') so the user can still Approve

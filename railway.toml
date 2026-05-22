@@ -5,3 +5,9 @@ buildCommand = "pip install -e ."
 [deploy]
 startCommand = "python scripts/run_api.py"
 restartPolicyType = "on_failure"
+
+[[services]]
+name = "poll-cron"
+buildCommand = "pip install -e ."
+startCommand = "python scripts/cron_poll.py"
+cronSchedule = "*/5 * * * *"
