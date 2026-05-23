@@ -15,6 +15,7 @@ import type {
   ReplyEntry,
   ReplyIntent,
   Stats,
+  SubjectVariant,
 } from "./types";
 
 export interface CreateCampaignInput {
@@ -279,6 +280,19 @@ export const api = {
       `/api/chat/${id}/cancel`,
       { method: "POST" }
     ),
+
+  listVariants: () => apiFetch<SubjectVariant[]>("/api/variants"),
+
+  createVariant: (data: { name: string; subject_prompt: string; is_active?: boolean }) =>
+    apiFetch<SubjectVariant>("/api/variants", { method: "POST", body: data }),
+
+  updateVariant: (
+    id: string,
+    patch: { name?: string; subject_prompt?: string; is_active?: boolean }
+  ) => apiFetch<SubjectVariant>(`/api/variants/${id}`, { method: "PATCH", body: patch }),
+
+  deleteVariant: (id: string) =>
+    apiFetch<void>(`/api/variants/${id}`, { method: "DELETE" }),
 };
 
 /** Human-friendly message for toasts. Catch-all that preserves ApiError and

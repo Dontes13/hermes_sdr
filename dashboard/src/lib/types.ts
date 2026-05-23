@@ -243,3 +243,12 @@ export const CONFIG_KEYS = [
 ] as const satisfies readonly (keyof ConfigMap)[];
 
 export type ConfigKey = (typeof CONFIG_KEYS)[number];
+
+export interface SubjectVariant {
+  id: string;
+  name: string;
+  subject_prompt: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}

@@ -3,6 +3,7 @@
 import { TopBar } from "@/components/layout/TopBar";
 import { ConfigEditor } from "@/components/settings/ConfigEditor";
 import { TestSendCard } from "@/components/settings/TestSendCard";
+import { VariantsEditor } from "@/components/settings/VariantsEditor";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useConfig } from "@/lib/hooks/useConfig";
 import { useSWRConfig } from "swr";
@@ -61,6 +62,8 @@ export default function SettingsPage() {
             />
 
             <TestSendCard />
+
+            <VariantsEditor />
           </>
         )}
       </div>

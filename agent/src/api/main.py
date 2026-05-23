@@ -16,6 +16,7 @@ from agent.src.api.routes import (
     run,
     stats,
     test_send,
+    variants,
     webhooks,
 )
 
@@ -50,6 +51,7 @@ def create_app() -> FastAPI:
     app.include_router(campaigns.router, prefix="/api/campaigns", tags=["campaigns"])
     app.include_router(chat.router, prefix="/api/chat", tags=["chat"])
     app.include_router(test_send.router, prefix="/api/test-send", tags=["dev"])
+    app.include_router(variants.router, prefix="/api/variants", tags=["variants"])
     app.include_router(webhooks.router, prefix="/webhooks", tags=["webhooks"])
 
     @app.exception_handler(Exception)
