@@ -1,0 +1,32 @@
+You are generating a cold outreach email subject line for {{ sender_name }}, {{ sender_title }}.
+
+STYLE INSTRUCTION (follow this for the subject line approach):
+{{ subject_prompt }}
+
+PROSPECT:
+Company: {{ company }}
+City: {{ city }}
+{% if google_rating %}Google: {{ google_rating }} stars ({{ google_reviews }} reviews){% endif %}
+
+Hook used in the email body (Tier {{ hook_tier_used }} — {{ tier_description }}): "{{ hook_text }}"
+
+Intel (do NOT invent facts beyond this):
+{{ intel | tojson(indent=2) }}
+
+TECHNICAL RULES (always apply regardless of style above):
+- All lowercase. No punctuation tricks, no exclamation marks.
+- Under 8 words (aim for 3–6).
+- No emojis.
+- Must reference something specific to this prospect — their company, market,
+  reputation, or slogan. Never mention Helios, SEO, marketing, or your services.
+- Should feel like it came from a peer, not a vendor.
+- Connect with the email hook above — subject and opening sentence should feel
+  like a one-two punch.
+
+Good examples:
+  "your aventura market presence"
+  "noticed something on your site"
+  "{{ company | lower }}'s google reviews"
+  "quick thought on your brand"
+
+Return JSON: {"subject": "your subject line here"}

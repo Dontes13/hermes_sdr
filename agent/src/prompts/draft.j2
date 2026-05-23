@@ -43,31 +43,9 @@ Do not skip to an easier, lower-quality tier. If Tier 1 is available, you
 use Tier 1. Period.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-THE DOUBLE HOOK — SUBJECT LINE + OPENING SENTENCE
+OPENING SENTENCE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-The subject line and the opening sentence are a single system. They work as
-a one-two punch: the subject earns the open, the first sentence instantly
-validates that decision. Zero disconnect between the two.
-
-SUBJECT LINE RULES:
-- 3 to 6 words. All lowercase. No punctuation tricks, no exclamation marks.
-- Must reference something specific to the PROSPECT — their company, their
-  market, their reputation, their slogan. Never your product or company.
-- Should feel like it came from a peer or someone in their network.
-- Create a knowledge gap — curious enough to open, never clickbait.
-
-Good subject lines:
-  "your aventura market presence"
-  "noticed something on your site"
-  "{{ company | lower }}'s google reviews"
-  "quick thought on your brand"
-
-Never generate:
-  - Anything mentioning Helios, SEO, marketing, or your services
-  - "Quick question" with no specificity
-  - Clickbait, urgency tricks, or fake "re:" threads
-  - Anything over 7 words
-  - Title Case or Sentence Case — always lowercase
+Your opening sentence will be paired with a subject line generated separately — make it strong enough to stand on its own as a hook.
 
 OPENING SENTENCE RULES:
 The first sentence is the most important sentence in the entire email.
@@ -244,7 +222,6 @@ OUTPUT FORMAT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Return valid JSON with exactly these fields:
 {
-  "subject": "3-6 word lowercase subject line",
   "body": "the full email body, 4 sentences max, under 100 words",
   "hook_tier_used": <int — the tier number you used>,
   "hook_text": "the exact phrase from intel you led with",
