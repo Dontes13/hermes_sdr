@@ -22,9 +22,13 @@ Read this before continuing. The "Key architectural decisions" and "Non-goals" s
 - `subject_variant_id` stored on message row
 - Body generation is behaviorally identical to before Phase 2.2
 
-### Phase 2.3 — Settings UI ⚠️ In progress — code written, NOT yet committed or pushed
+### Phase 2.3 — Settings UI ⚠️ In progress — committed (WIP, unverified)
 
-**Done (files written, tsc passes, not yet committed):**
+Commit: `f251202` — "wip: Phase 2.3 subject variants settings UI — unverified checkpoint"
+
+All code is written and tsc-clean. NOT yet deployed or verified against production.
+
+**Committed files:**
 
 | File | Status |
 |------|--------|
@@ -36,11 +40,26 @@ Read this before continuing. The "Key architectural decisions" and "Non-goals" s
 | `dashboard/src/components/settings/VariantsEditor.tsx` | Created — full UI component |
 | `dashboard/src/app/settings/page.tsx` | Updated — `<VariantsEditor />` added below `<TestSendCard />` |
 
-**Still needed before Phase 2.3 is complete:**
-1. Commit and push all the above changes
-2. Verify Railway redeploys the backend (`variants.py` route live)
-3. Run the four curl commands against Railway production to verify all endpoints
-4. Verify Vercel picks up the frontend changes (check the settings page renders the variants section)
+**What the next session needs to do (no re-writing, just verify):**
+1. Push is already done. Wait for Railway to redeploy automatically (or trigger manually).
+2. Run the four curl commands against `https://web-production-f11ee.up.railway.app` to verify all endpoints:
+   ```bash
+   # List
+   curl -s -H "Authorization: Bearer <TOKEN>" https://web-production-f11ee.up.railway.app/api/variants | jq
+   # Create
+   curl -s -X POST -H "Authorization: Bearer <TOKEN>" -H "Content-Type: application/json" \
+     -d '{"name":"Test Variant","subject_prompt":"Write a short subject.","is_active":false}' \
+     https://web-production-f11ee.up.railway.app/api/variants | jq
+   # Patch (use id from create response)
+   curl -s -X PATCH -H "Authorization: Bearer <TOKEN>" -H "Content-Type: application/json" \
+     -d '{"is_active":true}' \
+     https://web-production-f11ee.up.railway.app/api/variants/<ID> | jq
+   # Delete
+   curl -s -X DELETE -H "Authorization: Bearer <TOKEN>" \
+     https://web-production-f11ee.up.railway.app/api/variants/<ID> -w "%{http_code}"
+   ```
+3. Open `https://hermes-phi-tawny.vercel.app/settings` and confirm the "Subject line variants" section renders with the two seed variants.
+4. Once all four curls pass and UI renders: Phase 2.3 is done — proceed to Phase 2.4.
 
 ---
 
