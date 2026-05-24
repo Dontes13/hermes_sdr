@@ -22,66 +22,44 @@ Read this before continuing. The "Key architectural decisions" and "Non-goals" s
 - `subject_variant_id` stored on message row
 - Body generation is behaviorally identical to before Phase 2.2
 
-### Phase 2.3 — Settings UI ⚠️ In progress — committed (WIP, unverified)
+### Phase 2.3 — Settings UI ✅ Shipped & verified
 
-Commit: `f251202` — "wip: Phase 2.3 subject variants settings UI — unverified checkpoint"
+Commits:
+- `f251202` — initial VariantsEditor implementation
+- `669e735` — delete confirm replaced with Dialog (spec copy)
+- `8c2f789` — fix ESLint `react/no-unescaped-entities` (was blocking Vercel build)
 
-All code is written and tsc-clean. NOT yet deployed or verified against production.
+All four `/api/variants` endpoints verified via curl against Railway. Delete test variant confirmed removed. Bundle confirmed on `hermes-phi-tawny.vercel.app`.
 
-**Committed files:**
+**Deployed files:**
 
 | File | Status |
 |------|--------|
-| `agent/src/api/routes/variants.py` | Created — GET/POST/PATCH/DELETE, JWT-auth'd |
-| `agent/src/api/main.py` | Updated — variants router registered at `/api/variants` |
-| `dashboard/src/lib/types.ts` | Updated — `SubjectVariant` interface added at end |
-| `dashboard/src/lib/api.ts` | Updated — `listVariants`, `createVariant`, `updateVariant`, `deleteVariant` added |
-| `dashboard/src/lib/hooks/useVariants.ts` | Created — SWR hook |
-| `dashboard/src/components/settings/VariantsEditor.tsx` | Created — full UI component |
-| `dashboard/src/app/settings/page.tsx` | Updated — `<VariantsEditor />` added below `<TestSendCard />` |
+| `agent/src/api/routes/variants.py` | GET/POST/PATCH/DELETE, JWT-auth'd |
+| `agent/src/api/main.py` | variants router at `/api/variants` |
+| `dashboard/src/lib/types.ts` | `SubjectVariant` interface |
+| `dashboard/src/lib/api.ts` | `listVariants`, `createVariant`, `updateVariant`, `deleteVariant` |
+| `dashboard/src/lib/hooks/useVariants.ts` | SWR hook |
+| `dashboard/src/components/settings/VariantsEditor.tsx` | Full UI — Dialog confirm with spec copy |
+| `dashboard/src/app/settings/page.tsx` | `<VariantsEditor />` below `<TestSendCard />` |
 
-**What the next session needs to do (no re-writing, just verify):**
-1. Push is already done. Wait for Railway to redeploy automatically (or trigger manually).
-2. Run the four curl commands against `https://web-production-f11ee.up.railway.app` to verify all endpoints:
-   ```bash
-   # List
-   curl -s -H "Authorization: Bearer <TOKEN>" https://web-production-f11ee.up.railway.app/api/variants | jq
-   # Create
-   curl -s -X POST -H "Authorization: Bearer <TOKEN>" -H "Content-Type: application/json" \
-     -d '{"name":"Test Variant","subject_prompt":"Write a short subject.","is_active":false}' \
-     https://web-production-f11ee.up.railway.app/api/variants | jq
-   # Patch (use id from create response)
-   curl -s -X PATCH -H "Authorization: Bearer <TOKEN>" -H "Content-Type: application/json" \
-     -d '{"is_active":true}' \
-     https://web-production-f11ee.up.railway.app/api/variants/<ID> | jq
-   # Delete
-   curl -s -X DELETE -H "Authorization: Bearer <TOKEN>" \
-     https://web-production-f11ee.up.railway.app/api/variants/<ID> -w "%{http_code}"
-   ```
-3. Open `https://hermes-phi-tawny.vercel.app/settings` and confirm the "Subject line variants" section renders with the two seed variants.
-4. Once all four curls pass and UI renders: Phase 2.3 is done — proceed to Phase 2.4.
+**Delete confirm dialog copy (verified in prod bundle):**
+> "This will delete the variant. Past sends using it stay in the database. Continue?"
 
 ---
 
-## Phase 2.3 UI spec (for reference / verification)
+## Vercel deploy process (manual — GitHub auto-deploy is not wired)
 
-The `VariantsEditor.tsx` component implements:
-- Card matching `ConfigEditor` pattern: `border border-border bg-surface`, header with title + description
-- `divide-y` rows, one `VariantRow` per variant
-- Each `VariantRow` has:
-  - Name text input
-  - Subject prompt textarea (~5 rows, `resize-y`)
-  - Active checkbox toggle with inline label
-  - **Save** button (disabled unless row is dirty AND both fields non-empty)
-  - **Delete** button — two-click arm/confirm pattern (first click turns red + shows "Confirm?", second click fires delete, blur resets)
-- "+ New variant" button at bottom → inline `NewVariantRow` form (name input, prompt textarea, active checkbox, Create + Cancel buttons)
-- All mutations call `mutate()` on the SWR key to refresh
-- Toast notifications via `sonner`
+The Vercel project is `hermes` under team `helios-754baa8e`. GitHub pushes do NOT auto-deploy. For each phase, after pushing to GitHub, deploy manually:
 
-Delete confirm copy in the handoff spec says:
-> "This will delete the variant. Past sends using it stay in the database. Continue?"
+```bash
+# From repo root (~/Helios/hermes), not dashboard/
+vercel --prod --cwd /path/to/hermes
+# Or cd to repo root first, then:
+cd ~/Helios/hermes && vercel --prod
+```
 
-The current implementation uses a two-click arm pattern instead of a dialog. If the next session wants a dialog instead, use `dashboard/src/components/ui/dialog.tsx` (it exists).
+The `.vercel/project.json` at repo root is already linked to `helios-754baa8e/hermes`. Vercel project settings have `rootDirectory = dashboard`.
 
 ---
 
