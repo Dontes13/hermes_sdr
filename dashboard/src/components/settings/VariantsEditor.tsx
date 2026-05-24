@@ -133,7 +133,7 @@ function VariantRow({
             Name
           </Label>
           <div className="text-[11px] text-text-mute leading-relaxed">
-            Short label for this variant (e.g. "Variant A — Direct").
+            Short label for this variant (e.g. &ldquo;Variant A — Direct&rdquo;).
           </div>
         </div>
         <Input
