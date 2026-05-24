@@ -48,33 +48,8 @@ def create_variant(_user: CurrentUser, body: CreateVariantBody):
     return resp.data[0]
 
 
-@router.patch("/{variant_id}")
-def update_variant(
-    _user: CurrentUser, variant_id: str, body: UpdateVariantBody
-):
-    """Update one or more fields on a variant."""
-    patch: dict = {}
-    if body.name is not None:
-        patch["name"] = body.name.strip()
-    if body.subject_prompt is not None:
-        patch["subject_prompt"] = body.subject_prompt.strip()
-    if body.is_active is not None:
-        patch["is_active"] = body.is_active
-
-    if not patch:
-        raise HTTPException(400, "No fields to update")
-
-    resp = (
-        supabase.table("subject_variants")
-        .update(patch)
-        .eq("id", variant_id)
-        .execute()
-    )
-    if not resp.data:
-        raise HTTPException(404, "Variant not found")
-    return resp.data[0]
-
-
+# /stats must be registered before /{variant_id} so FastAPI's router doesn't
+# match the literal string "stats" as a path parameter.
 @router.get("/stats")
 def get_variant_stats(_user: CurrentUser):
     """Per-variant send/reply/booked counts and rates for the A/B Testing tab."""
@@ -151,6 +126,33 @@ def get_variant_stats(_user: CurrentUser):
         })
 
     return result
+
+
+@router.patch("/{variant_id}")
+def update_variant(
+    _user: CurrentUser, variant_id: str, body: UpdateVariantBody
+):
+    """Update one or more fields on a variant."""
+    patch: dict = {}
+    if body.name is not None:
+        patch["name"] = body.name.strip()
+    if body.subject_prompt is not None:
+        patch["subject_prompt"] = body.subject_prompt.strip()
+    if body.is_active is not None:
+        patch["is_active"] = body.is_active
+
+    if not patch:
+        raise HTTPException(400, "No fields to update")
+
+    resp = (
+        supabase.table("subject_variants")
+        .update(patch)
+        .eq("id", variant_id)
+        .execute()
+    )
+    if not resp.data:
+        raise HTTPException(404, "Variant not found")
+    return resp.data[0]
 
 
 @router.delete("/{variant_id}", status_code=204)
