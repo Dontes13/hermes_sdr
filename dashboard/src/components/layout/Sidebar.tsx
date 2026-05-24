@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   Activity,
   CheckSquare,
+  FlaskConical,
   MessageSquare,
   Users,
   Settings,
@@ -29,6 +30,7 @@ const NAV: NavItem[] = [
   { href: "/campaigns", label: "Campaigns", icon: Target, badgeKey: "campaigns" },
   { href: "/approvals", label: "Approvals", icon: CheckSquare, badgeKey: "approvals" },
   { href: "/replies", label: "Replies", icon: MessageSquare, badgeKey: "replies" },
+  { href: "/ab-testing", label: "A/B Testing", icon: FlaskConical },
   { href: "/leads", label: "Leads", icon: Users },
   { href: "/chat", label: "Chat", icon: Sparkles },
   { href: "/settings", label: "Settings", icon: Settings },

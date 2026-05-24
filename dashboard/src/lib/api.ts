@@ -16,6 +16,7 @@ import type {
   ReplyIntent,
   Stats,
   SubjectVariant,
+  VariantStats,
 } from "./types";
 
 export interface CreateCampaignInput {
@@ -280,6 +281,8 @@ export const api = {
       `/api/chat/${id}/cancel`,
       { method: "POST" }
     ),
+
+  getVariantStats: () => apiFetch<VariantStats[]>("/api/variants/stats"),
 
   listVariants: () => apiFetch<SubjectVariant[]>("/api/variants"),
 

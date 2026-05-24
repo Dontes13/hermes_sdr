@@ -252,3 +252,14 @@ export interface SubjectVariant {
   created_at: string;
   updated_at: string;
 }
+
+export interface VariantStats {
+  variant_id: string;
+  name: string;
+  is_active: boolean;
+  sends: number;
+  replies: number;
+  booked: number;
+  reply_rate: number;
+  book_rate: number;
+}
