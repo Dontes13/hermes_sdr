@@ -5,6 +5,15 @@ import { Loader2, Plus, Save, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -71,7 +80,7 @@ function VariantRow({
   const [prompt, setPrompt] = useState(variant.subject_prompt);
   const [isActive, setIsActive] = useState(variant.is_active);
   const [saving, setSaving] = useState(false);
-  const [deleteArmed, setDeleteArmed] = useState(false);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
@@ -103,23 +112,20 @@ function VariantRow({
   };
 
   const handleDelete = async () => {
-    if (!deleteArmed) {
-      setDeleteArmed(true);
-      return;
-    }
     setDeleting(true);
     try {
       await api.deleteVariant(variant.id);
       toast.success(`"${variant.name}" deleted`);
+      setShowDeleteDialog(false);
       onMutate();
     } catch (e) {
       toast.error(`Delete failed: ${errorMessage(e)}`);
       setDeleting(false);
-      setDeleteArmed(false);
     }
   };
 
   return (
+    <>
     <div className="px-5 py-4 space-y-3">
       <div className="grid grid-cols-[200px_1fr_auto_auto] gap-4 items-start">
         <div className="space-y-1 pt-1">
@@ -155,17 +161,11 @@ function VariantRow({
         </Button>
         <Button
           size="sm"
-          variant={deleteArmed ? "destructive" : "outline"}
-          onClick={handleDelete}
-          disabled={deleting}
-          onBlur={() => setDeleteArmed(false)}
+          variant="outline"
+          onClick={() => setShowDeleteDialog(true)}
         >
-          {deleting ? (
-            <Loader2 className="h-3.5 w-3.5 animate-spin" />
-          ) : (
-            <Trash2 className="h-3.5 w-3.5" />
-          )}
-          {deleteArmed ? "Confirm?" : "Delete"}
+          <Trash2 className="h-3.5 w-3.5" />
+          Delete
         </Button>
       </div>
 
@@ -205,6 +205,27 @@ function VariantRow({
         </label>
       </div>
     </div>
+
+    <Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+      <DialogContent showCloseButton={false}>
+        <DialogHeader>
+          <DialogTitle>Delete variant?</DialogTitle>
+          <DialogDescription>
+            This will delete the variant. Past sends using it stay in the database. Continue?
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button variant="outline" disabled={deleting}>Cancel</Button>
+          </DialogClose>
+          <Button variant="destructive" onClick={handleDelete} disabled={deleting}>
+            {deleting && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
+            Delete
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+    </>
   );
 }
 
