@@ -49,7 +49,12 @@ class ApolloClient:
 
     def _post(self, path: str, payload: dict) -> dict | None:
         if not self._api_key:
+            log.warning("apollo_disabled", reason="no_api_key")
             return None
+
+        # Log input sans API key
+        safe_payload = {k: v for k, v in payload.items() if k != "api_key"}
+        log.info("apollo_call_start", path=path, payload=safe_payload)
 
         self._throttle()
 
@@ -68,23 +73,38 @@ class ApolloClient:
             log.warning("apollo_request_failed", path=path, error=str(exc))
             return None
 
+        try:
+            _body_keys = list(resp.json().keys()) if resp.ok else None
+        except Exception:
+            _body_keys = None
+        log.info(
+            "apollo_response",
+            path=path,
+            status=resp.status_code,
+            response_keys=_body_keys,
+            response_text_snippet=resp.text[:300] if not resp.ok else None,
+        )
+
         if resp.status_code == 429:
             log.warning("apollo_rate_limited", path=path)
             return None
 
         if resp.status_code == 422:
-            # No match — not an error condition
+            log.info("apollo_no_match", path=path, payload=safe_payload)
             return None
 
         if not resp.ok:
-            log.warning("apollo_api_error", path=path, status=resp.status_code)
+            log.warning("apollo_api_error", path=path, status=resp.status_code,
+                        body_snippet=resp.text[:300])
             return None
 
         try:
-            return resp.json()
+            data = resp.json()
         except Exception as exc:
             log.warning("apollo_parse_error", path=path, error=str(exc))
             return None
+
+        return data
 
     def enrich_contact(self, email: str, domain: str | None = None) -> dict | None:
         """Enrich a contact by email.
@@ -96,6 +116,7 @@ class ApolloClient:
         any error occurs.
         """
         if not self.enabled:
+            log.warning("apollo_contact_skipped", reason="disabled", email=email)
             return None
 
         payload: dict = {"email": email, "reveal_personal_emails": False}
@@ -104,6 +125,8 @@ class ApolloClient:
 
         data = self._post("/people/match", payload)
         if not data or not data.get("person"):
+            log.info("apollo_contact_no_person", email=email,
+                     top_level_keys=list(data.keys()) if data else None)
             return None
 
         person = data["person"]
@@ -137,10 +160,13 @@ class ApolloClient:
         error occurs.
         """
         if not self.enabled:
+            log.warning("apollo_org_skipped", reason="disabled", domain=domain)
             return None
 
         data = self._post("/organizations/enrich", {"domain": domain})
         if not data or not data.get("organization"):
+            log.info("apollo_org_no_data", domain=domain,
+                     top_level_keys=list(data.keys()) if data else None)
             return None
 
         org = data["organization"]
