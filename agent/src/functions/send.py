@@ -37,11 +37,7 @@ def _check_inbox_capacity(inbox_uuid: str) -> None:
         return  # no record — skip enforcement
 
     daily_limit = resp.data[0]["daily_send_limit"]
-    today_utc = (
-        datetime.now(timezone.utc)
-        .replace(hour=0, minute=0, second=0, microsecond=0)
-        .isoformat()
-    )
+    today_utc = datetime.now(timezone.utc).date().isoformat()
     count_resp = (
         supabase.table("messages")
         .select("id", count="exact")
