@@ -82,6 +82,9 @@ function VariantRow({
   const [saving, setSaving] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [previewing, setPreviewing] = useState(false);
+  const [previewResult, setPreviewResult] = useState<string | null>(null);
+  const [previewError, setPreviewError] = useState<string | null>(null);
 
   useEffect(() => {
     setName(variant.name);
@@ -93,6 +96,20 @@ function VariantRow({
     name !== variant.name ||
     prompt !== variant.subject_prompt ||
     isActive !== variant.is_active;
+
+  const handlePreview = async () => {
+    setPreviewing(true);
+    setPreviewError(null);
+    try {
+      const result = await api.previewVariant(variant.id);
+      setPreviewResult(result.preview);
+    } catch (e) {
+      setPreviewError(errorMessage(e));
+      setPreviewResult(null);
+    } finally {
+      setPreviewing(false);
+    }
+  };
 
   const handleSave = async () => {
     setSaving(true);
@@ -127,7 +144,7 @@ function VariantRow({
   return (
     <>
     <div className="px-5 py-4 space-y-3">
-      <div className="grid grid-cols-[200px_1fr_auto_auto] gap-4 items-start">
+      <div className="grid grid-cols-[200px_1fr_auto_auto_auto] gap-4 items-start">
         <div className="space-y-1 pt-1">
           <Label className="font-mono text-[11px] uppercase tracking-wider text-text-dim">
             Name
@@ -142,6 +159,21 @@ function VariantRow({
           placeholder="Variant A — Direct"
           className="font-mono text-sm"
         />
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={handlePreview}
+          disabled={previewing}
+        >
+          {previewing ? (
+            <>
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              Preview…
+            </>
+          ) : (
+            "Preview"
+          )}
+        </Button>
         <Button
           size="sm"
           onClick={handleSave}
@@ -179,13 +211,25 @@ function VariantRow({
             (lowercase, under 8 words, no emojis) always apply.
           </div>
         </div>
-        <Textarea
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          rows={5}
-          className="font-mono text-sm resize-y"
-          placeholder="Generate a short, direct subject line…"
-        />
+        <div className="space-y-2">
+          <Textarea
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            rows={6}
+            className="font-mono text-sm resize-y"
+            placeholder="Generate a short, direct subject line…"
+          />
+          {previewResult && (
+            <div className="rounded border border-border p-2 text-sm font-mono">
+              {previewResult}
+            </div>
+          )}
+          {previewError && (
+            <div className="rounded border border-red-500/40 p-2 text-sm font-mono text-red-500">
+              {previewError}
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="grid grid-cols-[200px_1fr] gap-4 items-center">

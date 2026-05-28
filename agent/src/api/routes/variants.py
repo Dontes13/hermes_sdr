@@ -1,8 +1,34 @@
+from pathlib import Path
+
 from fastapi import APIRouter, HTTPException
+from jinja2 import Template
 from pydantic import BaseModel
 
 from agent.src.api.deps import CurrentUser
+from agent.src.clients.gemini import gemini
 from agent.src.clients.supabase_client import supabase
+from agent.src.exceptions import GeminiError
+
+_SUBJECT_TEMPLATE = Template(
+    (Path(__file__).parent.parent.parent / "prompts" / "subject.j2").read_text()
+)
+
+_PREVIEW_FAKE_LEAD = {
+    "company": "Rosario's Italian Kitchen",
+    "city": "Miami",
+    "google_rating": 4.5,
+    "google_reviews": 127,
+    "intel": {
+        "slogan": "Authentic Italian, straight from Nonna's kitchen",
+        "notable_facts": ["Family-owned since 1998", "Known for handmade pasta"],
+    },
+    "hook_tier_used": 3,
+    "tier_description": "Reputation",
+    "hook_text": (
+        "You've built a reputation for authentic Italian food in Miami "
+        "with 127 five-star reviews"
+    ),
+}
 
 router = APIRouter()
 
@@ -17,6 +43,10 @@ class UpdateVariantBody(BaseModel):
     name: str | None = None
     subject_prompt: str | None = None
     is_active: bool | None = None
+
+
+class _SubjectPreviewResult(BaseModel):
+    subject: str
 
 
 @router.get("")
@@ -126,6 +156,54 @@ def get_variant_stats(_user: CurrentUser):
         })
 
     return result
+
+
+# /{variant_id}/preview must be registered before /{variant_id} so FastAPI
+# doesn't swallow "preview" as a variant_id path parameter.
+@router.post("/{variant_id}/preview")
+def preview_variant(_user: CurrentUser, variant_id: str):
+    """Run one subject-line generation against a hardcoded fake lead and return it."""
+    variant_resp = (
+        supabase.table("subject_variants")
+        .select("id, subject_prompt")
+        .eq("id", variant_id)
+        .limit(1)
+        .execute()
+    )
+    if not variant_resp.data:
+        raise HTTPException(404, "Variant not found")
+    variant = variant_resp.data[0]
+
+    config_resp = (
+        supabase.table("config")
+        .select("key, value")
+        .in_("key", ["sender_name", "sender_title"])
+        .execute()
+    )
+    config_map = {row["key"]: row["value"] for row in config_resp.data}
+    sender_name = config_map.get("sender_name", "Enrique")
+    sender_title = config_map.get("sender_title", "CTO, Helios Marketing")
+
+    prompt = _SUBJECT_TEMPLATE.render(
+        sender_name=sender_name,
+        sender_title=sender_title,
+        subject_prompt=variant["subject_prompt"],
+        company=_PREVIEW_FAKE_LEAD["company"],
+        city=_PREVIEW_FAKE_LEAD["city"],
+        google_rating=_PREVIEW_FAKE_LEAD["google_rating"],
+        google_reviews=_PREVIEW_FAKE_LEAD["google_reviews"],
+        intel=_PREVIEW_FAKE_LEAD["intel"],
+        hook_tier_used=_PREVIEW_FAKE_LEAD["hook_tier_used"],
+        tier_description=_PREVIEW_FAKE_LEAD["tier_description"],
+        hook_text=_PREVIEW_FAKE_LEAD["hook_text"],
+    )
+
+    try:
+        result = gemini.generate_json_pro(prompt, _SubjectPreviewResult)
+    except GeminiError as exc:
+        raise HTTPException(502, f"Gemini call failed: {exc}") from exc
+
+    return {"preview": result.subject}
 
 
 @router.patch("/{variant_id}")

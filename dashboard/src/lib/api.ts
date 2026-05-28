@@ -296,6 +296,9 @@ export const api = {
 
   deleteVariant: (id: string) =>
     apiFetch<void>(`/api/variants/${id}`, { method: "DELETE" }),
+
+  previewVariant: (id: string) =>
+    apiFetch<{ preview: string }>(`/api/variants/${id}/preview`, { method: "POST" }),
 };
 
 /** Human-friendly message for toasts. Catch-all that preserves ApiError and
