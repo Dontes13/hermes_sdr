@@ -18,6 +18,8 @@ import type {
   Stats,
   SubjectVariant,
   VariantStats,
+  WarmingRunSummary,
+  WarmingSchedule,
 } from "./types";
 
 export interface CreateCampaignInput {
@@ -311,6 +313,29 @@ export const api = {
 
   deleteInbox: (id: string) =>
     apiFetch<void>(`/api/inboxes/${id}`, { method: "DELETE" }),
+
+  getWarmingSchedules: () => apiFetch<WarmingSchedule[]>("/api/warming"),
+
+  createWarmingSchedule: (inbox_id: string, target_daily_limit = 40) =>
+    apiFetch<WarmingSchedule>("/api/warming", {
+      method: "POST",
+      body: { inbox_id, target_daily_limit },
+    }),
+
+  updateWarmingSchedule: (
+    id: string,
+    patch: { status?: string; target_daily_limit?: number }
+  ) =>
+    apiFetch<WarmingSchedule>(`/api/warming/${id}`, {
+      method: "PATCH",
+      body: patch,
+    }),
+
+  deleteWarmingSchedule: (id: string) =>
+    apiFetch<{ ok: boolean }>(`/api/warming/${id}`, { method: "DELETE" }),
+
+  runWarmingNow: () =>
+    apiFetch<WarmingRunSummary>("/api/warming/run-now", { method: "POST" }),
 };
 
 /** Human-friendly message for toasts. Catch-all that preserves ApiError and

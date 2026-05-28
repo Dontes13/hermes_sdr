@@ -259,6 +259,27 @@ export interface Inbox {
   created_at: string;
 }
 
+export type WarmingStatus = "warming" | "complete" | "paused";
+
+export interface WarmingSchedule {
+  id: string;
+  inbox_id: string;
+  started_at: string;
+  current_day: number;
+  status: WarmingStatus;
+  target_daily_limit: number;
+  quota_today: number;
+  created_at: string;
+  updated_at: string;
+  inboxes: { email: string } | null;
+}
+
+export interface WarmingRunSummary {
+  schedules_processed: number;
+  total_sends: number;
+  errors: number;
+}
+
 export interface SubjectVariant {
   id: string;
   name: string;

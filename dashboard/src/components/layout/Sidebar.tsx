@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   Activity,
   CheckSquare,
+  Flame,
   FlaskConical,
   MessageSquare,
   Users,
@@ -34,6 +35,7 @@ const NAV: NavItem[] = [
   { href: "/leads", label: "Leads", icon: Users },
   { href: "/chat", label: "Chat", icon: Sparkles },
   { href: "/settings", label: "Settings", icon: Settings },
+  { href: "/warming", label: "Warming", icon: Flame },
 ];
 
 export function Sidebar() {
