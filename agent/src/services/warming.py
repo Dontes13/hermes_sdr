@@ -68,7 +68,7 @@ def _active_schedules() -> list[dict]:
 def _inbox_details(inbox_uuid: str) -> dict | None:
     resp = (
         supabase.table("inboxes")
-        .select("id, agentmail_inbox_id, email, display_name")
+        .select("id, agentmail_inbox_id, email")
         .eq("id", inbox_uuid)
         .eq("is_active", True)
         .limit(1)
@@ -80,7 +80,7 @@ def _inbox_details(inbox_uuid: str) -> dict | None:
 def _all_active_inboxes() -> list[dict]:
     resp = (
         supabase.table("inboxes")
-        .select("id, agentmail_inbox_id, email, display_name")
+        .select("id, agentmail_inbox_id, email")
         .eq("is_active", True)
         .execute()
     )

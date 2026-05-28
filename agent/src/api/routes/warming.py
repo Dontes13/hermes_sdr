@@ -26,7 +26,7 @@ def list_schedules(_user: CurrentUser):
     """List all warming schedules with their current state."""
     resp = (
         supabase.table("warming_schedule")
-        .select("*, inboxes(email, display_name)")
+        .select("*, inboxes(email)")
         .order("created_at", desc=True)
         .execute()
     )
