@@ -208,7 +208,7 @@ function VariantRow({
           </Label>
           <div className="text-[11px] text-text-mute leading-relaxed">
             Instruction passed to the model for subject line style. Technical rules
-            (lowercase, under 8 words, no emojis) always apply.
+            (under 8 words, no emojis) always apply.
           </div>
         </div>
         <div className="space-y-2">
