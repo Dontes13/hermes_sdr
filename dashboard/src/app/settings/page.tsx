@@ -2,6 +2,7 @@
 
 import { TopBar } from "@/components/layout/TopBar";
 import { ConfigEditor } from "@/components/settings/ConfigEditor";
+import { InboxesEditor } from "@/components/settings/InboxesEditor";
 import { TestSendCard } from "@/components/settings/TestSendCard";
 import { VariantsEditor } from "@/components/settings/VariantsEditor";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -62,6 +63,8 @@ export default function SettingsPage() {
             />
 
             <TestSendCard />
+
+            <InboxesEditor />
 
             <VariantsEditor />
           </>

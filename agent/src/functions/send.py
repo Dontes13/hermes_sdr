@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta, timezone
 
 import structlog
+from fastapi import HTTPException
 
 from agent.src.clients.agentmail import agentmail_client
 from agent.src.clients.supabase_client import supabase
@@ -8,6 +9,57 @@ from agent.src.config import settings
 from agent.src.exceptions import AgentMailError, SendError
 
 log = structlog.get_logger(__name__)
+
+
+def _find_inbox_uuid(agentmail_inbox_id: str) -> str | None:
+    """Return our inboxes.id UUID for the given AgentMail inbox ID, or None."""
+    resp = (
+        supabase.table("inboxes")
+        .select("id")
+        .eq("agentmail_inbox_id", agentmail_inbox_id)
+        .eq("is_active", True)
+        .limit(1)
+        .execute()
+    )
+    return resp.data[0]["id"] if resp.data else None
+
+
+def _check_inbox_capacity(inbox_uuid: str) -> None:
+    """Raise HTTPException(429) if the inbox has reached its daily send limit."""
+    resp = (
+        supabase.table("inboxes")
+        .select("daily_send_limit")
+        .eq("id", inbox_uuid)
+        .limit(1)
+        .execute()
+    )
+    if not resp.data:
+        return  # no record — skip enforcement
+
+    daily_limit = resp.data[0]["daily_send_limit"]
+    today_utc = (
+        datetime.now(timezone.utc)
+        .replace(hour=0, minute=0, second=0, microsecond=0)
+        .isoformat()
+    )
+    count_resp = (
+        supabase.table("messages")
+        .select("id", count="exact")
+        .eq("inbox_id", inbox_uuid)
+        .eq("direction", "outbound")
+        .gte("created_at", today_utc)
+        .execute()
+    )
+    sent_today = count_resp.count or 0
+    if sent_today >= daily_limit:
+        log.warning(
+            "inbox_capacity_blocked",
+            inbox_uuid=inbox_uuid,
+            sent_today=sent_today,
+            daily_limit=daily_limit,
+        )
+        raise HTTPException(429, "inbox daily send limit reached")
+
 
 COMPLIANCE_FOOTER = """
 
@@ -79,6 +131,20 @@ def send(message_id: str) -> dict:
                 f"expected 'drafted' or 'approved'"
             )
 
+    # 4b. Inbox capacity check — email sends only.
+    # Look up our inboxes row via the AgentMail inbox ID and enforce the daily limit.
+    # Raises HTTPException(429) if blocked; no-ops gracefully if inbox not yet seeded.
+    our_inbox_uuid: str | None = None
+    try:
+        agentmail_inbox_id = agentmail_client.get_or_create_inbox()
+        our_inbox_uuid = _find_inbox_uuid(agentmail_inbox_id)
+        if our_inbox_uuid:
+            _check_inbox_capacity(our_inbox_uuid)
+    except HTTPException:
+        raise
+    except Exception as _cap_err:
+        log.warning("inbox_capacity_check_failed", error=str(_cap_err))
+
     # 5. Build full body + send. Compliance footer only on fresh cold sends.
     try:
         if is_reply:
@@ -118,15 +184,16 @@ def send(message_id: str) -> dict:
         )
         raise SendError(f"agentmail send failed: {e}") from e
 
-    # 6. Update message row
+    # 6. Update message row — include inbox_id if we resolved one
     now = datetime.now(timezone.utc).isoformat()
-    supabase.table("messages").update(
-        {
-            "provider_msg_id": result["message_id"],
-            "provider_thread_id": result["thread_id"],
-            "sent_at": now,
-        }
-    ).eq("id", message_id).execute()
+    msg_update: dict = {
+        "provider_msg_id": result["message_id"],
+        "provider_thread_id": result["thread_id"],
+        "sent_at": now,
+    }
+    if our_inbox_uuid:
+        msg_update["inbox_id"] = our_inbox_uuid
+    supabase.table("messages").update(msg_update).eq("id", message_id).execute()
 
     # 7. Update lead status — only on fresh sends. Replies leave the lead
     # at 'replied' or 'booked' (don't regress the sales funnel).

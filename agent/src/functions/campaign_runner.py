@@ -12,6 +12,7 @@ targets / uncapped total_lead_cap configurations.
 from datetime import datetime, timedelta, timezone
 
 import structlog
+from fastapi import HTTPException
 
 from agent.src.clients.supabase_client import supabase
 from agent.src.config import settings
@@ -256,6 +257,22 @@ def run_campaign_tick(campaign_id: str) -> dict:
                         try:
                             send(msg.data[0]["id"])
                             summary["sent"] += 1
+                        except HTTPException as e:
+                            if e.status_code == 429:
+                                log.warning(
+                                    "campaign_send_blocked_inbox_capacity",
+                                    campaign_id=campaign_id,
+                                )
+                                summary["errors"].append("inbox daily send limit reached — batch stopped")
+                                break
+                            log.warning(
+                                "campaign_send_error_http",
+                                campaign_id=campaign_id,
+                                lead_id=row["id"],
+                                status_code=e.status_code,
+                                error=str(e.detail),
+                            )
+                            summary["errors"].append(f"send {row['id']}: HTTP {e.status_code}")
                         except Exception as e:
                             log.warning(
                                 "campaign_send_error",

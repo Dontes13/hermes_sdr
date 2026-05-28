@@ -244,6 +244,18 @@ export const CONFIG_KEYS = [
 
 export type ConfigKey = (typeof CONFIG_KEYS)[number];
 
+export interface Inbox {
+  id: string;
+  email: string;
+  agentmail_inbox_id: string;
+  daily_send_limit: number;
+  is_active: boolean;
+  sent_today: number;
+  utilization_pct: number;
+  status: "ok" | "warning" | "blocked";
+  created_at: string;
+}
+
 export interface SubjectVariant {
   id: string;
   name: string;

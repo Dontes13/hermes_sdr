@@ -9,6 +9,7 @@ import type {
   ChatSession,
   ChatSessionSummary,
   ConfigMap,
+  Inbox,
   Lead,
   LeadStatus,
   LeadWithMessages,
@@ -299,6 +300,17 @@ export const api = {
 
   previewVariant: (id: string) =>
     apiFetch<{ preview: string }>(`/api/variants/${id}/preview`, { method: "POST" }),
+
+  getInboxes: () => apiFetch<Inbox[]>("/api/inboxes"),
+
+  createInbox: (payload: { email: string; agentmail_inbox_id: string; daily_send_limit?: number }) =>
+    apiFetch<Inbox>("/api/inboxes", { method: "POST", body: payload }),
+
+  updateInbox: (id: string, patch: { email?: string; daily_send_limit?: number; is_active?: boolean }) =>
+    apiFetch<Inbox>(`/api/inboxes/${id}`, { method: "PATCH", body: patch }),
+
+  deleteInbox: (id: string) =>
+    apiFetch<void>(`/api/inboxes/${id}`, { method: "DELETE" }),
 };
 
 /** Human-friendly message for toasts. Catch-all that preserves ApiError and
