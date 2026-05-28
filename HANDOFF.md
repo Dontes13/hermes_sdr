@@ -74,6 +74,7 @@ hermes/
 │   │   │       ├── campaigns.py    # Campaign CRUD + tick
 │   │   │       ├── chat.py         # AI chat sessions
 │   │   │       ├── config.py       # Key-value config store
+│   │   │       ├── inboxes.py      # Inbox CRUD + capacity (Sprint Feature 2)
 │   │   │       ├── leads.py        # Lead CRUD + actions
 │   │   │       ├── replies.py      # Reply drafting/approval
 │   │   │       ├── run.py          # Prospect/enrich/draft/poll batch ops
@@ -102,7 +103,9 @@ hermes/
 │   │   └── services/
 │   │       └── notifications.py    # Inbound reply email notifications
 │   └── sql/migrations/
-│       └── 2026_05_ab_testing.sql  # subject_variants table + messages FK
+│       ├── 2026_05_ab_testing.sql      # subject_variants table + messages FK
+│       ├── 2026_06_variant_prompts.sql # no-op doc migration (subject_prompt already existed)
+│       └── 2026_06_inbox_capacity.sql  # inboxes table + messages.inbox_id FK
 ├── dashboard/                      # Next.js 15 frontend (TypeScript)
 │   └── src/
 │       ├── app/                    # App Router pages
@@ -229,6 +232,24 @@ This runs both tsc AND ESLint. The `react/no-unescaped-entities` ESLint rule blo
 
 ## What's Next
 
+### Sprint Feature 2 — Inbox Capacity Tracking ✅ Shipped & verified
+**Commits:** `4413fef`, `2698c28`
+
+**What was added:**
+- `agent/sql/migrations/2026_06_inbox_capacity.sql` — `inboxes` table (email, agentmail_inbox_id, daily_send_limit, is_active), `messages.inbox_id` FK column, auto-seeded the production inbox from `agentmail_sync`, backfilled all historical `messages.inbox_id`.
+- `agent/src/api/routes/inboxes.py` — GET `/capacity`, GET `""`, POST `""`, PATCH `/{inbox_id}`, DELETE `/{inbox_id}` (soft-delete). `_annotate()` adds `sent_today`, `utilization_pct`, `status` (ok/warning/blocked).
+- `agent/src/functions/send.py` — `_find_inbox_uuid()` + `_check_inbox_capacity()` — raises `HTTPException(429)` when `sent_today >= daily_limit`. `inbox_id` stamped on message row at send time.
+- `agent/src/functions/campaign_runner.py` — catches `HTTPException(429)` and breaks the batch.
+- `agent/src/api/main.py` — registered `inboxes.router` at `/api/inboxes`.
+- Dashboard: `Inbox` type, `useInboxes` hook, `InboxesEditor` component (progress bar, status badge, inline-editable limit, active toggle, add form), wired into settings page.
+
+**Verified:** `GET /api/inboxes/capacity` returns `sent_today: 2, utilization_pct: 5.0, status: ok`. 429 test passed: PATCH limit=2 → approve lead → `{"detail":"inbox daily send limit reached"}`. Limit restored to 40.
+
+**Gotchas:**
+- PostgREST date filter: always use `datetime.now(timezone.utc).date().isoformat()` → `"2026-05-28"`. Full ISO with timezone (`+00:00`) breaks `gte` because `+` is URL-decoded as space.
+- Seeded inbox: `heliosmarketingg@agentmail.to`, UUID `e602f0f3-ba89-4fae-acaf-79408f4781c4`. Update email via PATCH once you have a real sending domain.
+- Route order in `inboxes.py`: GET `/capacity` must stay above PATCH/DELETE `/{inbox_id}`.
+
 ### Phase 2.5 — End-to-end verification (NOT done)
 From the spec (`02_ab_testing_subject_lines.md` section "Phase 2.5"):
 
@@ -302,3 +323,8 @@ All endpoints require `Authorization: Bearer <token>` except `/auth/login` and `
 | POST | `/api/test-send` | Send test email |
 | GET | `/api/config` | Get config key-value store |
 | POST | `/api/config` | Set config value |
+| GET | `/api/inboxes/capacity` | Inbox utilization (same as GET /api/inboxes) |
+| GET | `/api/inboxes` | List inboxes with sent_today/utilization/status |
+| POST | `/api/inboxes` | Register inbox |
+| PATCH | `/api/inboxes/{id}` | Update email, limit, or is_active |
+| DELETE | `/api/inboxes/{id}` | Soft-delete inbox (204) |
