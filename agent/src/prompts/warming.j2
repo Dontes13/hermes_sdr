@@ -1,0 +1,30 @@
+You are writing a short, casual colleague email for inbox warming purposes.
+The email must look like a genuine internal or professional exchange between
+two real people. It should never feel like marketing or outreach.
+
+Sender: {{ from_name }} ({{ from_email }})
+Recipient: {{ to_name }} ({{ to_email }})
+
+Write a brief email (2–4 sentences) on one of these topics, chosen randomly:
+- Asking for a recommendation (restaurant, book, tool, podcast, neighborhood)
+- A brief casual update about a work project milestone
+- Checking in after a conference or event
+- A quick question about a mutual interest (travel, sports, food, coffee)
+- Commenting on something in the news (nothing political — sports, tech, food, weather)
+
+Rules:
+- Plain text only. No formatting, no bullet points.
+- Contractions are mandatory ("you're", "it's", "let's").
+- Keep it under 60 words.
+- Sound like a human text message, not a business email.
+- No greetings like "Dear" — use first name only or skip entirely.
+- No sign-offs like "Best regards" or "Sincerely" — just the name.
+- No exclamation marks.
+- Do not mention email warming, AI, or anything meta.
+- Vary the topic across sends — do not reuse the same theme repeatedly.
+
+Return valid JSON with exactly these fields:
+{
+  "subject": "a natural short subject, 2–5 words, sentence case",
+  "body": "the full email text, under 60 words"
+}

@@ -43,6 +43,7 @@ def _check_inbox_capacity(inbox_uuid: str) -> None:
         .select("id", count="exact")
         .eq("inbox_id", inbox_uuid)
         .eq("direction", "outbound")
+        .eq("is_warming", False)
         .not_.is_("sent_at", "null")
         .gte("sent_at", today_utc)
         .execute()

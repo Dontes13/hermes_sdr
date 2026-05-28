@@ -52,7 +52,23 @@ def poll_replies() -> dict:
 
     stored_timestamps: list[datetime] = []
 
-    # 3. Build known thread IDs (our conversations) + mark which are test-only
+    # 3a. Load warming thread IDs — must happen BEFORE the known_threads gate.
+    # Warming sends never write to messages, so their thread_ids will NOT appear
+    # in known_threads. A warming reply would be silently dropped there if we
+    # checked known_threads first, preventing replied_at from being stamped.
+    warming_resp = (
+        supabase.table("warming_sends")
+        .select("provider_thread_id")
+        .not_.is_("provider_thread_id", "null")
+        .execute()
+    )
+    warming_thread_ids: set[str] = {
+        r["provider_thread_id"]
+        for r in (warming_resp.data or [])
+        if r.get("provider_thread_id")
+    }
+
+    # 3b. Build known thread IDs (our conversations) + mark which are test-only
     threads_resp = (
         supabase.table("messages")
         .select("provider_thread_id, is_test")
@@ -89,6 +105,35 @@ def poll_replies() -> dict:
     }
 
     for m in inbound:
+        # Warming threads are not in messages, so check before known_threads gate.
+        if m["thread_id"] in warming_thread_ids:
+            ts = m.get("timestamp")
+            sent_at_iso = None
+            if ts is not None:
+                if isinstance(ts, datetime):
+                    sent_at_iso = ts.isoformat()
+                    stored_timestamps.append(ts)
+                else:
+                    sent_at_iso = str(ts)
+            warming_send = (
+                supabase.table("warming_sends")
+                .select("id, replied_at")
+                .eq("provider_thread_id", m["thread_id"])
+                .is_("replied_at", "null")
+                .limit(1)
+                .execute()
+            )
+            if warming_send.data:
+                supabase.table("warming_sends").update(
+                    {"replied_at": sent_at_iso or datetime.now(timezone.utc).isoformat()}
+                ).eq("id", warming_send.data[0]["id"]).execute()
+                log.info(
+                    "warming_reply_via_poll",
+                    warming_send_id=warming_send.data[0]["id"],
+                    thread_id=m["thread_id"],
+                )
+            continue
+
         if m["thread_id"] not in known_threads:
             continue
         if m["message_id"] in processed_ids:

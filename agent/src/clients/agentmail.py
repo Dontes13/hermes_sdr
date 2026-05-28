@@ -186,4 +186,76 @@ class AgentMailClient:
         return results
 
 
+    @retry_network(extra_exceptions=(ApiError,))
+    def send_from(self, inbox_id: str, to: str, subject: str, text: str) -> dict:
+        """Send a plaintext message from a specific inbox (used by warming).
+
+        Unlike send_message(), this bypasses the get_or_create_inbox() lookup
+        and uses the provided inbox_id directly. Returns {'message_id': str,
+        'thread_id': str}.
+        """
+        try:
+            resp = self._client.inboxes.messages.send(
+                inbox_id=inbox_id,
+                to=[to],
+                subject=subject,
+                text=text,
+            )
+        except ApiError as e:
+            raise AgentMailError(f"send_from failed ({inbox_id}): {e}") from e
+
+        log.info(
+            "agentmail_sent_warming",
+            from_inbox_id=inbox_id,
+            to=to,
+            subject=subject,
+            message_id=resp.message_id,
+            thread_id=resp.thread_id,
+        )
+        return {"message_id": resp.message_id, "thread_id": resp.thread_id}
+
+    @retry_network(extra_exceptions=(ApiError,))
+    def list_inbound_for_inbox(self, inbox_id: str, since_dt: datetime) -> list[dict]:
+        """Fetch inbound messages for a specific inbox since a given datetime.
+
+        Used by warming to poll for replies on warming threads without
+        touching the main agentmail_sync cursor.
+        """
+        try:
+            list_resp = self._client.inboxes.messages.list(
+                inbox_id=inbox_id,
+                after=since_dt,
+                labels=["received"],
+            )
+        except ApiError as e:
+            raise AgentMailError(f"list_inbound_for_inbox failed ({inbox_id}): {e}") from e
+
+        results: list[dict] = []
+        for stub in list_resp.messages:
+            try:
+                full = self._client.inboxes.messages.get(
+                    inbox_id=inbox_id,
+                    message_id=stub.message_id,
+                )
+            except ApiError as e:
+                log.warning(
+                    "agentmail_warming_get_failed",
+                    inbox_id=inbox_id,
+                    message_id=stub.message_id,
+                    error=str(e),
+                )
+                continue
+            results.append(
+                {
+                    "message_id": full.message_id,
+                    "thread_id": full.thread_id,
+                    "from": full.from_,
+                    "subject": full.subject or "",
+                    "text": full.text or "",
+                    "timestamp": full.timestamp,
+                }
+            )
+        return results
+
+
 agentmail_client = AgentMailClient()
