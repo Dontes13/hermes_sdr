@@ -1,6 +1,6 @@
 # Hermes — Session Handoff
 
-**Last updated:** 2026-05-27  
+**Last updated:** 2026-05-28  
 **Repo:** `DanteHelios/hermes` (GitHub, branch `main`)  
 **Owner:** Dante Santurian / Enrique
 
@@ -81,6 +81,7 @@ hermes/
 │   │   │       ├── stats.py        # Dashboard stats
 │   │   │       ├── test_send.py    # Test email send
 │   │   │       ├── variants.py     # Subject line variants + stats
+│   │   │       ├── warming.py      # Warming schedule CRUD + /run-now (Sprint Feature 4)
 │   │   │       └── webhooks.py     # Calendly webhook
 │   │   ├── clients/
 │   │   │   ├── agentmail.py        # Email send/receive
@@ -99,14 +100,17 @@ hermes/
 │   │   │   └── send.py             # Email sending
 │   │   ├── prompts/
 │   │   │   ├── draft.j2            # Body-only prompt (subject removed in Phase 2.2)
-│   │   │   └── subject.j2          # Subject-only prompt (new in Phase 2.2)
+│   │   │   ├── subject.j2          # Subject-only prompt (new in Phase 2.2)
+│   │   │   └── warming.j2          # Gemini Flash prompt for casual warming emails (Sprint Feature 4)
 │   │   └── services/
-│   │       └── notifications.py    # Inbound reply email notifications
+│   │       ├── notifications.py    # Inbound reply email notifications
+│   │       └── warming.py          # Warming ramp logic + cron cycle + reply poll (Sprint Feature 4)
 │   └── sql/migrations/
 │       ├── 2026_05_ab_testing.sql      # subject_variants table + messages FK
 │       ├── 2026_06_variant_prompts.sql # no-op doc migration (subject_prompt already existed)
 │       ├── 2026_06_inbox_capacity.sql  # inboxes table + messages.inbox_id FK
-│       └── 2026_06_icp_score.sql       # icp_score, icp_score_reasons, vertical + indexes + vertical backfill
+│       ├── 2026_06_icp_score.sql       # icp_score, icp_score_reasons, vertical + indexes + vertical backfill
+│       └── 2026_06_warming.sql         # warming_schedule + warming_sends tables + messages.is_warming column
 ├── dashboard/                      # Next.js 15 frontend (TypeScript)
 │   └── src/
 │       ├── app/                    # App Router pages
@@ -117,17 +121,20 @@ hermes/
 │       │   ├── leads/page.tsx
 │       │   ├── pipeline/page.tsx
 │       │   ├── replies/page.tsx
-│       │   └── settings/page.tsx
+│       │   ├── settings/page.tsx
+│       │   └── warming/page.tsx    # Email Warming ops page (Sprint Feature 4)
 │       ├── components/
 │       │   ├── ab-testing/
 │       │   │   └── VariantResultsTable.tsx
 │       │   ├── layout/
 │       │   │   ├── Sidebar.tsx     # NAV array — add new routes here
 │       │   │   └── TopBar.tsx
-│       │   └── settings/
-│       │       ├── ConfigEditor.tsx
-│       │       ├── TestSendCard.tsx
-│       │       └── VariantsEditor.tsx
+│       │   ├── settings/
+│       │   │   ├── ConfigEditor.tsx
+│       │   │   ├── TestSendCard.tsx
+│       │   │   └── VariantsEditor.tsx
+│       │   └── warming/
+│       │       └── WarmingTable.tsx  # Warming pool table with inline edit + actions
 │       └── lib/
 │           ├── api.ts              # All API calls (apiFetch wrapper)
 │           ├── auth.ts             # Zustand auth store + token helpers
@@ -135,9 +142,11 @@ hermes/
 │           └── hooks/
 │               ├── useVariants.ts
 │               ├── useVariantStats.ts
+│               ├── useWarmingSchedules.ts
 │               └── ... (useConfig, useLeads, useStats, etc.)
 ├── scripts/
 │   ├── backfill_icp_scores.py      # One-off: scores all existing leads via score_lead()
+│   ├── cron_warming.py             # Warming cron entrypoint (NOT in railway.toml — parked)
 │   └── ... (cron_poll, e2e_check, etc.)
 ├── 02_ab_testing_subject_lines.md  # Spec — "Key architectural decisions" are locked
 ├── hermes_sprint_spec.md           # Sprint spec (Features 1–4)
@@ -291,6 +300,38 @@ This runs both tsc AND ESLint. The `react/no-unescaped-entities` ESLint rule blo
 
 **Gotcha:** See LEAD_SUMMARY_FIELDS in Known Quirks below — this bug bit Feature 3 on first deploy.
 
+### Sprint Feature 4 — Email Warming ✅ Shipped & verified (cron parked)
+**Commits:** `345d071` (Phase B infrastructure), `1cb3bca` (fix: display_name), `0c15c4b` (Phase C frontend)
+
+**Overview:** Progressively ramps new inboxes from 5 sends/day to a target (default 40) over ~21 days by exchanging casual-looking colleague emails between inboxes in the pool. Warming traffic is fully isolated from the campaign pipeline — never visible to leads, never counted against inbox daily limits.
+
+**New DB tables (`agent/sql/migrations/2026_06_warming.sql`):**
+- `warming_schedule` — one row per inbox being warmed: `inbox_id` (FK → inboxes), `current_day`, `status` (warming/complete/paused), `target_daily_limit`, `started_at`, `updated_at`. Unique constraint on `inbox_id`.
+- `warming_sends` — one row per warming email sent: `from_inbox_id`, `to_inbox_id`, `subject`, `body`, `sent_at`, `replied_at`, `provider_thread_id`. Indexes on `(from_inbox_id, sent_at)` and `(provider_thread_id) WHERE NOT NULL`.
+- `messages.is_warming BOOLEAN NOT NULL DEFAULT FALSE` — defensive column to tag any warming traffic written to messages. Warming sends don't currently write to messages, but the column exists so the `_check_inbox_capacity()` query can safely filter them out via `.eq("is_warming", False)`.
+
+**New/modified backend files:**
+- `agent/src/prompts/warming.j2` — Gemini Flash prompt generating a casual 2–4 sentence colleague email (subject + body JSON). Topics vary: recommendations, project check-ins, events, shared interests. Plaintext only, under 60 words, no marketing language.
+- `agent/src/clients/agentmail.py` — two new methods on `AgentMailClient`: `send_from(inbox_id, to, subject, text)` sends from a specific inbox without touching the primary inbox lookup; `list_inbound_for_inbox(inbox_id, since_dt)` polls a specific inbox for warming reply detection.
+- `agent/src/functions/send.py` — `_check_inbox_capacity()` now adds `.eq("is_warming", False)` to the `sent_today` count so warming sends never block real outbound.
+- `agent/src/services/warming.py` — core warming service:
+  - `WARMING_SCHEDULE` dict: `{1:5, 2:8, 3:10, 4:13, 5:16, 6:19, 7:22, 8:25, 9:28, 10:31, 14:35, 21:40}`
+  - `quota_for_day(day)` — returns daily send quota for a given day
+  - `run_warming_cycle(jitter=True)` — loops over active schedules, generates Gemini emails, sends via `send_from()`, records to `warming_sends`, advances `current_day`. Gemini/send failures skip and continue; logs error only if all sends in a cycle fail.
+  - `_poll_pool_replies()` — checks all active inboxes for warming reply threads and stamps `warming_sends.replied_at`
+- `agent/src/functions/poll.py` — warming reply detection integrated. Loads `warming_thread_ids` from `warming_sends` **before** the `known_threads` gate (warming threads are not in `messages`, so they'd be silently dropped at the gate otherwise). Warming replies stamp `replied_at` and `continue` — they never enter the lead reply flow.
+- `agent/src/api/routes/warming.py` — 5 JWT-auth'd endpoints (see API Quick Reference). `GET ""` enriches each schedule with `quota_today`. Route order: GET → POST → POST `/run-now` → PATCH `/{id}` → DELETE `/{id}`.
+- `agent/src/api/main.py` — warming router registered at `/api/warming`.
+- `scripts/cron_warming.py` — cron entrypoint: calls `run_warming_cycle(jitter=True)` then `_poll_pool_replies()`. **NOT added to `railway.toml`** — must be enabled manually once the inbox pool has ≥2 inboxes.
+
+**Frontend (`dashboard/src/`):**
+- `lib/types.ts` — `WarmingSchedule` interface (`id`, `inbox_id`, `started_at`, `current_day`, `status`, `target_daily_limit`, `quota_today`, `created_at`, `updated_at`, `inboxes: {email}|null`) and `WarmingRunSummary`
+- `lib/api.ts` — `getWarmingSchedules()`, `createWarmingSchedule()`, `updateWarmingSchedule()`, `deleteWarmingSchedule()`, `runWarmingNow()`
+- `lib/hooks/useWarmingSchedules.ts` — SWR hook
+- `app/warming/page.tsx` — page with TopBar explainer, "Add inbox to warming pool" dialog (filters out already-pooled inboxes), "Run cycle now" dialog (confirmation + toast with cycle summary)
+- `components/warming/WarmingTable.tsx` — table with status badges (blue Warming / green Complete / grey Paused), Day X / Y progress (Y computed from `target_daily_limit` via mirrored `totalWarmingDays()`), today's quota, inline-editable target limit (blur-to-save), Pause/Resume toggle, Remove with confirmation dialog
+- `components/layout/Sidebar.tsx` — Flame icon + "Warming" nav entry added
+
 ---
 
 ### Phase 2.5 — End-to-end verification (NOT done)
@@ -311,21 +352,17 @@ From the spec (`02_ab_testing_subject_lines.md` section "Phase 2.5"):
 
 These are behavioral tests requiring the pipeline to actually run — can't be verified by curl alone.
 
-### Sprint Feature 4 — Email Warming (not started)
-Full spec in `hermes_sprint_spec.md` § 4. ~2 days effort. Key pieces:
-- `warming_schedule` + `warming_sends` tables
-- `agent/src/services/warming.py` — ramp schedule (5→10→20→35→40 sends/day over 5 weeks)
-- `agent/src/services/warming_cron.py` — daily cron at 08:00 UTC
-- `agent/src/prompts/warming.j2` — Gemini Flash generates mundane colleague emails
-- `agent/src/api/routes/warming.py` — GET/POST/PATCH/DELETE `/api/warming`
-- `dashboard/src/app/warming/page.tsx` — new page, Flame icon in sidebar
-- Warming sends must NOT count against `inboxes.daily_send_limit` (tag `messages.is_warming = true` and exclude from `sent_today` query)
-- Reply poller must detect warming replies (check `X-Warming` header or sender in inbox pool) and not trigger notification system
+### Future work
 
-### Future specs (not started)
-- Open rate tracking (separate spec)
-- Phase 2.5 end-to-end
-- Anything else Dante adds
+The sprint (Features 1–4) is fully shipped. Open items:
+
+1. **Enable the warming cron** — once additional AgentMail inboxes are created and registered via `POST /api/inboxes`, add a `[[services]]` block to `railway.toml` pointing at `scripts/cron_warming.py`. The infrastructure and dashboard are ready; only the cron wire-up is missing.
+
+2. **Phase 2.5 — End-to-end A/B verification** — still not done. Requires running an actual draft batch and checking the DB for ~50/50 variant split, toggling a variant inactive, and confirming the A/B Testing tab shows real numbers. See the Phase 2.5 section above for the full checklist.
+
+3. **Open rate tracking** — on the wish list (separate spec). The A/B Testing tab has an "Opens" column that always shows `—` pending this work.
+
+4. **Anything Dante adds** — backlog lives in `hermes_sprint_spec.md` and new session discussions.
 
 ---
 
@@ -352,6 +389,14 @@ Full spec in `hermes_sprint_spec.md` § 4. ~2 days effort. Key pieces:
 **`LEAD_SUMMARY_FIELDS` in `leads.py`:** `GET /api/leads` selects an explicit column string (`LEAD_SUMMARY_FIELDS` at the top of `agent/src/api/routes/leads.py`), not `select("*")`. Whenever you add a new column to the `leads` table that the frontend needs in the list view, you must also add it to this string — PostgREST silently drops fields not in the select list. `GET /api/leads/{id}` uses `select("*")` so detail views are unaffected. Feature 3 shipped with this bug on first deploy (ICP and Vertical showed as null/— until `966cc0b` fixed it).
 
 **Apollo plan restriction:** `/v1/people/match` (contact lookup by email) returns HTTP 403 on Apollo's free plan with `{"error_code": "API_INACCESSIBLE"}`. `/v1/organizations/enrich` works on the free plan. All existing leads have zero Apollo data because `APOLLO_API_KEY` was added to Railway after enrichment had already run. New enrichment runs will populate `intel_json["apollo"]["org"]` for leads with a resolvable domain. Org-data backfill deferred.
+
+**Warming cron is parked:** `scripts/cron_warming.py` exists but is not in `railway.toml`. To enable autopilot, add a `[[services]]` block per the audit notes in the sprint spec — but only after the inbox pool has ≥2 inboxes.
+
+**Warming requires ≥2 inboxes:** The warming service needs at least 2 active inboxes in the AgentMail pool so each inbox has a peer to exchange emails with. Currently only `heliosmarketingg@agentmail.to` (UUID `e602f0f3-ba89-4fae-acaf-79408f4781c4`) exists. Create additional inboxes in AgentMail and register them via `POST /api/inboxes` before running a cycle. The `/run-now` endpoint will return `0 sends` with a `warming_skipped` log entry if fewer than 2 inboxes are active.
+
+**Warming reply detection uses `provider_thread_id`, not `X-Warming` header:** AgentMail's SDK does not surface inbound message headers, so we cannot detect warming replies via a custom header. Instead, `poll.py` loads all `warming_sends.provider_thread_id` values and checks inbound thread IDs against that set. This check must stay **above** the `known_threads` gate in `poll.py` — warming sends never write to `messages`, so their thread IDs won't appear in `known_threads` and would be silently dropped before the warming check could fire.
+
+**The warming thread filter in `poll.py` must stay above the `known_threads` gate:** See the point above. If you ever refactor `poll.py`, preserve the order: (1) load `warming_thread_ids`, (2) check warming threads before `known_threads`, (3) then proceed with normal lead-reply logic.
 
 **Railway `$PORT`:** Railway injects `$PORT` at runtime. `run_api.py` and `railway.toml` respect this — don't hardcode port 8000 in any new Railway-specific config.
 
@@ -386,3 +431,8 @@ All endpoints require `Authorization: Bearer <token>` except `/auth/login` and `
 | POST | `/api/inboxes` | Register inbox |
 | PATCH | `/api/inboxes/{id}` | Update email, limit, or is_active |
 | DELETE | `/api/inboxes/{id}` | Soft-delete inbox (204) |
+| GET | `/api/warming` | List warming schedules (includes `quota_today` + joined inbox email) |
+| POST | `/api/warming` | Create warming schedule (`inbox_id`, `target_daily_limit`) |
+| POST | `/api/warming/run-now` | Manually trigger one warming cycle (no jitter) |
+| PATCH | `/api/warming/{id}` | Update status (warming/paused/complete) or target_daily_limit |
+| DELETE | `/api/warming/{id}` | Delete warming schedule |
