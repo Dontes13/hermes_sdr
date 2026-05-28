@@ -105,7 +105,8 @@ hermes/
 │   └── sql/migrations/
 │       ├── 2026_05_ab_testing.sql      # subject_variants table + messages FK
 │       ├── 2026_06_variant_prompts.sql # no-op doc migration (subject_prompt already existed)
-│       └── 2026_06_inbox_capacity.sql  # inboxes table + messages.inbox_id FK
+│       ├── 2026_06_inbox_capacity.sql  # inboxes table + messages.inbox_id FK
+│       └── 2026_06_icp_score.sql       # icp_score, icp_score_reasons, vertical + indexes + vertical backfill
 ├── dashboard/                      # Next.js 15 frontend (TypeScript)
 │   └── src/
 │       ├── app/                    # App Router pages
@@ -135,7 +136,11 @@ hermes/
 │               ├── useVariants.ts
 │               ├── useVariantStats.ts
 │               └── ... (useConfig, useLeads, useStats, etc.)
+├── scripts/
+│   ├── backfill_icp_scores.py      # One-off: scores all existing leads via score_lead()
+│   └── ... (cron_poll, e2e_check, etc.)
 ├── 02_ab_testing_subject_lines.md  # Spec — "Key architectural decisions" are locked
+├── hermes_sprint_spec.md           # Sprint spec (Features 1–4)
 └── HANDOFF.md                      # This file
 ```
 
@@ -250,6 +255,44 @@ This runs both tsc AND ESLint. The `react/no-unescaped-entities` ESLint rule blo
 - Seeded inbox: `heliosmarketingg@agentmail.to`, UUID `e602f0f3-ba89-4fae-acaf-79408f4781c4`. Update email via PATCH once you have a real sending domain.
 - Route order in `inboxes.py`: GET `/capacity` must stay above PATCH/DELETE `/{inbox_id}`.
 
+### Sprint Feature 3 — ICP Scoring + Vertical ✅ Shipped & verified
+**Commits:** `808ebfc` (scoring), `f4cd0da` (Apollo diagnostics), `530b06a` (frontend), `966cc0b` (bugfix: LEAD_SUMMARY_FIELDS)
+
+**New DB columns on `leads`:**
+- `icp_score INTEGER` — 0–100 score written at the end of every enrichment run
+- `icp_score_reasons JSONB` — map of reason key → points (e.g. `{"named_owner_email": 40, "healthy_review_count": 25}`)
+- `vertical TEXT` — `"real_estate"`, `"restaurant"`, or `"other"`, derived from Google Places `types` array
+- Migration: `agent/sql/migrations/2026_06_icp_score.sql` — adds columns + indexes + SQL backfill of `vertical` for all existing leads
+
+**Scoring logic — `agent/src/functions/enrich.py`:**
+- `score_lead(lead: dict) -> tuple[int, dict]` added just above `enrich()`. Called as step 12 (final step) of the enrich pipeline using local variables (`verified_owner_email`, `verified_general_email`, `lead["google_reviews"]`, `lead["website"]`, `owner_name`) so it never re-fetches the row.
+- Weights: named owner email (+40), named non-generic email (+25), generic email (+10), healthy reviews 50–500 (+25), >500 reviews (+15), 10–49 reviews (+5), has website (+10), owner name known (+10). Cap: 100.
+- `owner_email` and `general_email` live in `intel_json`, NOT as top-level columns. The score_lead call passes them explicitly from local vars — do not pass the raw lead row.
+
+**Vertical classifier (SQL, runs once in migration):**
+- `real_estate_agency` in `intel_json->'types'` → `"real_estate"`
+- Any type containing `restaurant` or `food` → `"restaurant"`
+- Else → `"other"`
+- New leads get `vertical` set only if added by a future enrichment step that writes it, or via a follow-up migration.
+
+**Backfill script:** `scripts/backfill_icp_scores.py` — scores all existing leads using the same `score_lead()` import. Run from repo root: `.venv/bin/python scripts/backfill_icp_scores.py`. Results: 21 leads ≥70, 17 leads 40–69, 15 leads <40.
+
+**Apollo investigation findings (Part B):**
+- `/v1/people/match` (contact enrichment) — **paywalled on free plan, returns HTTP 403**. Not a code bug. Contact title/role data unavailable without paid plan.
+- `/v1/organizations/enrich` (org data) — **works on free plan**, returns headcount/founded_year/description/industry/phone. Confirmed live against 3 real domains.
+- Zero Apollo data on all 53 existing leads because `APOLLO_API_KEY` was added to Railway after all leads were already enriched. New leads will get org data. Backfill deferred until something downstream consumes it.
+- Diagnostic logging added to `agent/src/clients/apollo.py`: logs `apollo_call_start`, `apollo_response`, `apollo_no_match`, `apollo_contact_no_person`, `apollo_org_no_data`, and disabled-skip paths.
+
+**Frontend (Part C) — `dashboard/src/`:**
+- `lib/types.ts` — `Lead` interface extended with `icp_score: number | null`, `icp_score_reasons: Record<string, number> | null`, `vertical: "real_estate" | "restaurant" | "other" | null`
+- `components/leads/LeadsTable.tsx` — new `ICP` column (score + color dot: green ≥70, yellow 40–69, red <40, grey null) with hover tooltip showing reasons breakdown; new `Vertical` column (small border badge); default sort changed to `icp_score DESC NULLS LAST`; `SortField` type extended with `"icp_score"`
+- `components/leads/LeadFilters.tsx` — `icpOnly: boolean` added to `LeadFiltersState`; ICP ≥ 40 toggle chip (styled button, default **off**)
+- `app/leads/page.tsx` — `icpOnly: false` in initial state; filter logic gates on `lead.icp_score >= 40`; active filter count includes `icpOnly`
+
+**Gotcha:** See LEAD_SUMMARY_FIELDS in Known Quirks below — this bug bit Feature 3 on first deploy.
+
+---
+
 ### Phase 2.5 — End-to-end verification (NOT done)
 From the spec (`02_ab_testing_subject_lines.md` section "Phase 2.5"):
 
@@ -267,6 +310,17 @@ From the spec (`02_ab_testing_subject_lines.md` section "Phase 2.5"):
 5. Confirm Test Send still works normally (it picks a variant just like real sends)
 
 These are behavioral tests requiring the pipeline to actually run — can't be verified by curl alone.
+
+### Sprint Feature 4 — Email Warming (not started)
+Full spec in `hermes_sprint_spec.md` § 4. ~2 days effort. Key pieces:
+- `warming_schedule` + `warming_sends` tables
+- `agent/src/services/warming.py` — ramp schedule (5→10→20→35→40 sends/day over 5 weeks)
+- `agent/src/services/warming_cron.py` — daily cron at 08:00 UTC
+- `agent/src/prompts/warming.j2` — Gemini Flash generates mundane colleague emails
+- `agent/src/api/routes/warming.py` — GET/POST/PATCH/DELETE `/api/warming`
+- `dashboard/src/app/warming/page.tsx` — new page, Flame icon in sidebar
+- Warming sends must NOT count against `inboxes.daily_send_limit` (tag `messages.is_warming = true` and exclude from `sent_today` query)
+- Reply poller must detect warming replies (check `X-Warming` header or sender in inbox pool) and not trigger notification system
 
 ### Future specs (not started)
 - Open rate tracking (separate spec)
@@ -295,6 +349,10 @@ These are behavioral tests requiring the pipeline to actually run — can't be v
 
 **Supabase `sends` counts:** All existing messages sent before Phase 2.2 have `subject_variant_id = NULL`. The A/B stats endpoint filters those out. Variant counts will be 0 until new drafts are generated after Phase 2.2 was deployed.
 
+**`LEAD_SUMMARY_FIELDS` in `leads.py`:** `GET /api/leads` selects an explicit column string (`LEAD_SUMMARY_FIELDS` at the top of `agent/src/api/routes/leads.py`), not `select("*")`. Whenever you add a new column to the `leads` table that the frontend needs in the list view, you must also add it to this string — PostgREST silently drops fields not in the select list. `GET /api/leads/{id}` uses `select("*")` so detail views are unaffected. Feature 3 shipped with this bug on first deploy (ICP and Vertical showed as null/— until `966cc0b` fixed it).
+
+**Apollo plan restriction:** `/v1/people/match` (contact lookup by email) returns HTTP 403 on Apollo's free plan with `{"error_code": "API_INACCESSIBLE"}`. `/v1/organizations/enrich` works on the free plan. All existing leads have zero Apollo data because `APOLLO_API_KEY` was added to Railway after enrichment had already run. New enrichment runs will populate `intel_json["apollo"]["org"]` for leads with a resolvable domain. Org-data backfill deferred.
+
 **Railway `$PORT`:** Railway injects `$PORT` at runtime. `run_api.py` and `railway.toml` respect this — don't hardcode port 8000 in any new Railway-specific config.
 
 **CORS:** `main.py` allows `localhost:3000`, `hermes-phi-tawny.vercel.app`, and regex `https://hermes.*\.vercel\.app`. If you add a new Vercel domain, update the regex or add an explicit origin.
@@ -316,7 +374,7 @@ All endpoints require `Authorization: Bearer <token>` except `/auth/login` and `
 | PATCH | `/api/variants/{id}` | Update variant fields |
 | DELETE | `/api/variants/{id}` | Delete variant (204) |
 | GET | `/api/stats` | Dashboard stats |
-| GET | `/api/leads` | List leads (status filter, limit) |
+| GET | `/api/leads` | List leads (status filter, limit) — includes `icp_score`, `icp_score_reasons`, `vertical` |
 | POST | `/api/run/draft-batch` | Run draft batch |
 | POST | `/api/run/enrich-batch` | Run enrich batch |
 | POST | `/api/run/poll-replies` | Poll for new replies |
