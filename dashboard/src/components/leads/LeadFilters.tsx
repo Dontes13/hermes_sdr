@@ -21,6 +21,7 @@ export interface LeadFiltersState {
   city: string | null;
   hookTier: HookTier | null;
   search: string;
+  icpOnly: boolean;
 }
 
 interface LeadFiltersProps {
@@ -34,10 +35,11 @@ export function LeadFilters({ filters, setFilters, cities }: LeadFiltersProps) {
     filters.status !== null ||
     filters.city !== null ||
     filters.hookTier !== null ||
-    filters.search.length > 0;
+    filters.search.length > 0 ||
+    filters.icpOnly;
 
   const clearAll = () =>
-    setFilters(() => ({ status: null, city: null, hookTier: null, search: "" }));
+    setFilters(() => ({ status: null, city: null, hookTier: null, search: "", icpOnly: false }));
 
   return (
     <div
@@ -113,6 +115,19 @@ export function LeadFilters({ filters, setFilters, cities }: LeadFiltersProps) {
         placeholder="Search company or owner…"
         className="h-8 w-[240px] font-mono text-xs"
       />
+
+      <button
+        type="button"
+        onClick={() => setFilters((p) => ({ ...p, icpOnly: !p.icpOnly }))}
+        className={cn(
+          "h-8 px-3 rounded border font-mono text-xs transition-colors",
+          filters.icpOnly
+            ? "border-emerald-500 bg-emerald-500/10 text-emerald-400"
+            : "border-border text-text-mute hover:text-text hover:border-text-dim"
+        )}
+      >
+        ICP ≥ 40
+      </button>
 
       {active && (
         <Button

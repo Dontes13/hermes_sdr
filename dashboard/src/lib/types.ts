@@ -74,6 +74,9 @@ export interface Lead {
   linkedin_url?: string | null;
   linkedin_state?: LinkedInState | null;
   linkedin_followup_eligible_at?: string | null;
+  icp_score: number | null;
+  icp_score_reasons: Record<string, number> | null;
+  vertical: "real_estate" | "restaurant" | "other" | null;
   created_at: string;
   updated_at: string;
 }

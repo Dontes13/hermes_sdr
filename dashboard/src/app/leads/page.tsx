@@ -43,6 +43,7 @@ function LeadsPageInner() {
     city: null,
     hookTier: null,
     search: "",
+    icpOnly: false,
   });
 
   // Combine configured cities with distinct cities found in leads.
@@ -68,6 +69,9 @@ function LeadsPageInner() {
       if (filters.hookTier != null && lead.latest_hook_tier !== filters.hookTier) {
         return false;
       }
+      if (filters.icpOnly && (lead.icp_score == null || lead.icp_score < 40)) {
+        return false;
+      }
       if (search) {
         const hay =
           `${lead.company} ${lead.owner_name ?? ""} ${lead.email ?? ""}`.toLowerCase();
@@ -82,6 +86,7 @@ function LeadsPageInner() {
     filters.city,
     filters.hookTier,
     filters.search.length > 0 ? filters.search : null,
+    filters.icpOnly ? true : null,
   ].filter(Boolean).length;
 
   return (
