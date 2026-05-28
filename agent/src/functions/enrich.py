@@ -94,6 +94,52 @@ class EnrichResult(BaseModel):
     notable_facts: list[str] = []
 
 
+def score_lead(lead: dict) -> tuple[int, dict]:
+    """Score a lead 0–100 based on available enrichment signals.
+
+    lead must contain: owner_email, general_email, google_reviews, website, owner_name.
+    owner_email / general_email are sourced from intel_json, not the top-level email column.
+    """
+    score = 0
+    reasons: dict = {}
+
+    owner_email = lead.get("owner_email")
+    general_email = lead.get("general_email")
+    if owner_email:
+        score += 40
+        reasons["named_owner_email"] = 40
+    elif general_email and not any(
+        general_email.startswith(p)
+        for p in ("info@", "hello@", "contact@", "admin@")
+    ):
+        score += 25
+        reasons["named_email"] = 25
+    elif general_email:
+        score += 10
+        reasons["generic_email_only"] = 10
+
+    reviews = lead.get("google_reviews") or 0
+    if 50 <= reviews <= 500:
+        score += 25
+        reasons["healthy_review_count"] = 25
+    elif reviews > 500:
+        score += 15
+        reasons["established_business"] = 15
+    elif reviews >= 10:
+        score += 5
+        reasons["some_reviews"] = 5
+
+    if lead.get("website"):
+        score += 10
+        reasons["has_website"] = 10
+
+    if lead.get("owner_name"):
+        score += 10
+        reasons["owner_identified"] = 10
+
+    return min(score, 100), reasons
+
+
 def enrich(lead_id: str) -> bool:
     """Scrape lead website, extract intel via Gemini Flash, update lead.
 
@@ -264,6 +310,19 @@ def enrich(lead_id: str) -> bool:
         log.info(
             "enrich_success", lead_id=lead_id, company=lead["company"], email=email
         )
+
+    # 12. ICP score — uses local variables so we don't re-fetch the row
+    icp_score, icp_reasons = score_lead(
+        {
+            "owner_email": verified_owner_email,
+            "general_email": verified_general_email,
+            "google_reviews": lead.get("google_reviews"),
+            "website": lead.get("website"),
+            "owner_name": owner_name,
+        }
+    )
+    update["icp_score"] = icp_score
+    update["icp_score_reasons"] = icp_reasons
 
     supabase.table("leads").update(update).eq("id", lead_id).execute()
     return True
