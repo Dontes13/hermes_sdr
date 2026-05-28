@@ -209,6 +209,22 @@ This runs both tsc AND ESLint. The `react/no-unescaped-entities` ESLint rule blo
 - Footer note on statistical significance
 - **`GET /stats` must stay above `PATCH /{variant_id}` and `DELETE /{variant_id}` in `variants.py`** — FastAPI matches path patterns in registration order; "stats" would be swallowed as a path param otherwise
 
+### Sprint Feature 1 — Subject Line Prompts DB-driven ✅ Shipped & verified
+**Commit:** `348db9d`
+
+**Key finding:** `subject_prompt` column already existed in `subject_variants` from Phase 2.1. `draft.py` was already reading it from DB and injecting it into `subject.j2` via `{{ subject_prompt }}`. The system was already fully DB-driven — no schema change was needed.
+
+**What was added:**
+- `POST /api/variants/{variant_id}/preview` — renders `subject.j2` with a hardcoded fake lead (all template variables populated: company, city, google_rating, google_reviews, intel, hook_tier/text/description), fetches real sender_name/sender_title from config table, calls Gemini Pro, returns `{"preview": "..."}`. Registered above `PATCH /{variant_id}` per FastAPI ordering rules.
+- `agent/sql/migrations/2026_06_variant_prompts.sql` — no-op documentation file; contains idempotent `UPDATE` seeds for both variants.
+- `dashboard/src/lib/api.ts` — `previewVariant(id)` calling `POST /api/variants/{id}/preview`.
+- `dashboard/src/components/settings/VariantsEditor.tsx` — Preview button with spinner; result shown in `rounded border p-2 text-sm font-mono` div below textarea; red error div on failure; textarea bumped from 5 to 6 rows.
+
+**Gotchas:**
+- `subject_prompt` (not `system_prompt`) is the existing column name — the sprint spec used `system_prompt` as a placeholder name. Do not rename.
+- Route ordering in `variants.py` is now: GET `""` → POST `""` → GET `/stats` → POST `/{id}/preview` → PATCH `/{id}` → DELETE `/{id}`. Any new static-segment route must stay above the parameterized ones.
+- Railway showed a brief window where `/preview` returned FastAPI's default 404 after push, then started working ~60s later (not a code bug — in-flight deployment).
+
 ---
 
 ## What's Next
@@ -275,6 +291,7 @@ All endpoints require `Authorization: Bearer <token>` except `/auth/login` and `
 | GET | `/api/variants` | List all subject variants |
 | POST | `/api/variants` | Create variant |
 | GET | `/api/variants/stats` | Per-variant A/B stats |
+| POST | `/api/variants/{id}/preview` | Preview subject line via Gemini (fake lead) |
 | PATCH | `/api/variants/{id}` | Update variant fields |
 | DELETE | `/api/variants/{id}` | Delete variant (204) |
 | GET | `/api/stats` | Dashboard stats |
