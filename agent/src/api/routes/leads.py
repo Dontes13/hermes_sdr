@@ -15,7 +15,8 @@ router = APIRouter()
 
 LEAD_SUMMARY_FIELDS = (
     "id, company, city, email, status, owner_name, "
-    "google_rating, google_reviews, created_at, updated_at"
+    "google_rating, google_reviews, created_at, updated_at, "
+    "icp_score, icp_score_reasons, vertical"
 )
 
 
