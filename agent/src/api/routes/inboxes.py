@@ -24,7 +24,8 @@ def _annotate(raw: list[dict]) -> list[dict]:
             .select("id", count="exact")
             .eq("inbox_id", row["id"])
             .eq("direction", "outbound")
-            .gte("created_at", today)
+            .not_.is_("sent_at", "null")
+            .gte("sent_at", today)
             .execute()
         )
         sent_today = count_resp.count or 0
