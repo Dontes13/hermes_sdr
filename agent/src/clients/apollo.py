@@ -106,6 +106,159 @@ class ApolloClient:
 
         return data
 
+    @staticmethod
+    def _log_rate_limit_headers(path: str, resp: "requests.Response") -> None:
+        """Surface Apollo's remaining rate-limit budget for observability.
+
+        Apollo returns several headers (names vary by plan/endpoint, e.g.
+        x-rate-limit-*, x-minute-requests-left). We log whatever is present
+        rather than hardcoding a 1 req/s assumption.
+        """
+        keys = [
+            k for k in resp.headers
+            if k.lower().startswith("x-rate-limit")
+            or k.lower().endswith("requests-left")
+        ]
+        if keys:
+            log.info(
+                "apollo_rate_limit",
+                path=path,
+                headers={k: resp.headers[k] for k in keys},
+            )
+
+    @staticmethod
+    def _retry_after_seconds(resp: "requests.Response", attempt: int) -> float:
+        """Seconds to wait before retrying a 429. Honors Retry-After when
+        present, else exponential backoff (2, 4, 8, …) capped at 30s."""
+        ra = resp.headers.get("Retry-After")
+        if ra:
+            try:
+                return min(float(ra), 60.0)
+            except ValueError:
+                pass
+        return min(2.0 ** (attempt + 1), 30.0)
+
+    def _request_with_retry(
+        self, path: str, payload: dict, *, max_retries: int = 3
+    ) -> dict | None:
+        """POST to Apollo with 429 backoff for the sourcing path.
+
+        Unlike _post() (used by the enrichment pipeline, which intentionally
+        abandons on 429 so a best-effort enrich never blocks), this retries:
+        sourcing must not silently drop a search page or a paid reveal. A 429
+        means the request was rejected before processing, so retrying it does
+        not double-spend a credit. Returns parsed JSON, or None on a
+        non-retryable error / exhausted retries.
+        """
+        if not self._api_key:
+            log.warning("apollo_disabled", reason="no_api_key")
+            return None
+
+        safe_payload = {k: v for k, v in payload.items() if k != "api_key"}
+        attempt = 0
+        while True:
+            self._throttle()
+            log.info(
+                "apollo_call_start", path=path, payload=safe_payload, attempt=attempt
+            )
+            try:
+                resp = requests.post(
+                    f"{_BASE_URL}{path}",
+                    json=payload,
+                    headers={
+                        "Content-Type": "application/json",
+                        "x-api-key": self._api_key,
+                        "Cache-Control": "no-cache",
+                    },
+                    timeout=_TIMEOUT_S,
+                )
+            except requests.RequestException as exc:
+                log.warning(
+                    "apollo_request_failed", path=path, error=str(exc), attempt=attempt
+                )
+                return None
+
+            self._log_rate_limit_headers(path, resp)
+
+            if resp.status_code == 429:
+                if attempt >= max_retries:
+                    log.warning(
+                        "apollo_rate_limited_exhausted", path=path, attempt=attempt
+                    )
+                    return None
+                wait = self._retry_after_seconds(resp, attempt)
+                log.warning(
+                    "apollo_rate_limited_retry",
+                    path=path,
+                    attempt=attempt,
+                    wait_s=wait,
+                )
+                time.sleep(wait)
+                attempt += 1
+                continue
+
+            if not resp.ok:
+                log.warning(
+                    "apollo_api_error",
+                    path=path,
+                    status=resp.status_code,
+                    body_snippet=resp.text[:300],
+                )
+                return None
+
+            try:
+                return resp.json()
+            except Exception as exc:
+                log.warning("apollo_parse_error", path=path, error=str(exc))
+                return None
+
+    def people_search(
+        self, *, page: int = 1, per_page: int = 25, **filters
+    ) -> dict | None:
+        """POST /people/search. No credits spent — emails come back LOCKED.
+
+        `filters` are passed through as Apollo search params (e.g.
+        person_titles, person_locations, q_keywords). Returns the raw Apollo
+        response ({"people": [...], "pagination": {...}, ...}) or None.
+        """
+        per_page = max(1, min(per_page, 100))
+        payload = {"page": max(1, page), "per_page": per_page, **filters}
+        return self._request_with_retry("/people/search", payload)
+
+    def mixed_people_search(
+        self, *, page: int = 1, per_page: int = 25, **filters
+    ) -> dict | None:
+        """POST /mixed_people/search. No credits spent — emails LOCKED.
+
+        Returns both net-new `people` and already-in-account `contacts`
+        arrays plus `pagination`. Returns the raw response or None.
+        """
+        per_page = max(1, min(per_page, 100))
+        payload = {"page": max(1, page), "per_page": per_page, **filters}
+        return self._request_with_retry("/mixed_people/search", payload)
+
+    def reveal_person_by_id(
+        self, apollo_id: str, *, reveal_personal_emails: bool = False
+    ) -> dict | None:
+        """Reveal (unlock) one person via /people/match by Apollo person id.
+
+        COSTS ONE CREDIT per call (even when no email is found). Returns the
+        raw `person` dict (with the unlocked `email`) or None if the match
+        returned nothing.
+        """
+        data = self._request_with_retry(
+            "/people/match",
+            {"id": apollo_id, "reveal_personal_emails": reveal_personal_emails},
+        )
+        if not data or not data.get("person"):
+            log.info(
+                "apollo_reveal_no_person",
+                apollo_id=apollo_id,
+                top_level_keys=list(data.keys()) if data else None,
+            )
+            return None
+        return data["person"]
+
     def enrich_contact(self, email: str, domain: str | None = None) -> dict | None:
         """Enrich a contact by email.
 

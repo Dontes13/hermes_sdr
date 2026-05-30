@@ -15,6 +15,7 @@ from agent.src.api.routes import (
     leads,
     replies,
     run,
+    sourcing,
     stats,
     test_send,
     variants,
@@ -51,6 +52,7 @@ def create_app() -> FastAPI:
     app.include_router(run.router, prefix="/api/run", tags=["run"])
     app.include_router(replies.router, prefix="/api/replies", tags=["replies"])
     app.include_router(campaigns.router, prefix="/api/campaigns", tags=["campaigns"])
+    app.include_router(sourcing.router, prefix="/api/campaigns", tags=["sourcing"])
     app.include_router(chat.router, prefix="/api/chat", tags=["chat"])
     app.include_router(test_send.router, prefix="/api/test-send", tags=["dev"])
     app.include_router(variants.router, prefix="/api/variants", tags=["variants"])

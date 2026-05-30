@@ -205,7 +205,7 @@ def campaign_leads(_user: CurrentUser, campaign_id: str, limit: int = 100):
         supabase.table("leads")
         .select(
             "id, company, city, email, status, owner_name, "
-            "google_rating, google_reviews, created_at, updated_at"
+            "google_rating, google_reviews, created_at, updated_at, source"
         )
         .eq("campaign_id", campaign_id)
         .order("updated_at", desc=True)

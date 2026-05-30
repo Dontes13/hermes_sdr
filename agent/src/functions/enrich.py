@@ -94,16 +94,33 @@ class EnrichResult(BaseModel):
     notable_facts: list[str] = []
 
 
-def score_lead(lead: dict) -> tuple[int, dict]:
+def score_lead(lead: dict, source: str = "google_places") -> tuple[int, dict]:
     """Score a lead 0–100 based on available enrichment signals.
 
-    lead must contain: owner_email, general_email, google_reviews, website, owner_name.
-    owner_email / general_email are sourced from intel_json, not the top-level email column.
+    Google Places leads carry: owner_email, general_email (both sourced from
+    intel_json, not the top-level email column), google_reviews, website,
+    owner_name.
+
+    Apollo leads (source="apollo") arrive differently: the revealed email is
+    top-level (no owner/general split) and is attached to a named person +
+    title, so it counts as a named-contact email. Apollo has no Google review
+    count, so the "company quality" dimension uses Apollo firmographics
+    instead — email deliverability (email_status) and company size
+    (estimated_employees) — with a comparable point ceiling so the two
+    sources score on roughly the same scale.
+
+    The email / website / owner dimensions are identical across sources; only
+    the third (company-quality) signal branches. Return shape is unchanged so
+    icp_score_reasons stays uniform across both sources.
     """
     score = 0
     reasons: dict = {}
 
+    # Email. For Apollo, fall back to the top-level `email` (a named contact's
+    # revealed address) when the owner/general split isn't present.
     owner_email = lead.get("owner_email")
+    if not owner_email and source == "apollo":
+        owner_email = lead.get("email")
     general_email = lead.get("general_email")
     if owner_email:
         score += 40
@@ -118,16 +135,29 @@ def score_lead(lead: dict) -> tuple[int, dict]:
         score += 10
         reasons["generic_email_only"] = 10
 
-    reviews = lead.get("google_reviews") or 0
-    if 50 <= reviews <= 500:
-        score += 25
-        reasons["healthy_review_count"] = 25
-    elif reviews > 500:
-        score += 15
-        reasons["established_business"] = 15
-    elif reviews >= 10:
-        score += 5
-        reasons["some_reviews"] = 5
+    # Company-quality signal — differs by source.
+    if source == "apollo":
+        if lead.get("email_status") == "verified":
+            score += 15
+            reasons["verified_email"] = 15
+        employees = lead.get("estimated_employees") or 0
+        if 2 <= employees <= 500:
+            score += 10
+            reasons["company_size_fit"] = 10
+        elif employees > 500:
+            score += 5
+            reasons["large_company"] = 5
+    else:
+        reviews = lead.get("google_reviews") or 0
+        if 50 <= reviews <= 500:
+            score += 25
+            reasons["healthy_review_count"] = 25
+        elif reviews > 500:
+            score += 15
+            reasons["established_business"] = 15
+        elif reviews >= 10:
+            score += 5
+            reasons["some_reviews"] = 5
 
     if lead.get("website"):
         score += 10
