@@ -1,5 +1,83 @@
 # Session Handoff — 2026-05-30
 
+> **Latest work: Apollo lead sourcing — Phase B (backend) shipped.** See the
+> Apollo Phase B section directly below. The original warming-session handoff
+> follows it, unchanged.
+
+---
+
+## Apollo Lead Sourcing — Phase B (backend) — SHIPPED 2026-05-30
+
+**Status: code shipped & deployed; routes live but 403 on the current
+free-tier Apollo key. NOT "done" until the migration is applied and the
+upgraded Apollo key is verified in Railway (see blockers).**
+
+### What shipped (commits `2a783c5`, `4f1c2e9` on `main`)
+- **Migration `agent/sql/migrations/2026_06_apollo_sourcing.sql`** — adds
+  `leads.source TEXT NOT NULL DEFAULT 'google_places'` (CHECK in
+  `('google_places','apollo')`, auto-backfills the 53 existing rows) + a
+  partial unique index on `intel_json->>'apollo_id' WHERE source='apollo'`
+  for dedup. **NOT YET APPLIED — run manually (see below).**
+- **`agent/src/clients/apollo.py`** — `people_search()`, `mixed_people_search()`,
+  `reveal_person_by_id()` via a new `_request_with_retry()` with 429 backoff
+  (honors `Retry-After`, exponential fallback) and `x-rate-limit-*` header
+  logging. Raises `ApolloError` (carries upstream status) on failure. The
+  enrichment `_post()` path is untouched (still abandons on 429 by design).
+- **`agent/src/functions/sourcing.py`** — `source_leads_from_apollo()` (search,
+  no credits, emails locked) and `reveal_and_persist()` (reveals picked ids,
+  1 credit each; dedups on `apollo_id` BEFORE the reveal so a duplicate never
+  costs a credit). `industry→vertical` keyword map. Apollo leads inserted as
+  `status='enriched'` to skip the scrape and protect the revealed email.
+- **`agent/src/api/routes/sourcing.py`** — `POST /api/campaigns/{id}/apollo/search`
+  and `.../apollo/add`, JWT-gated, registered in `main.py` at `/api/campaigns`.
+- **`score_lead()` in `enrich.py`** — gained a `source` branch: Apollo leads
+  score the email top-level and use `email_status` + `estimated_employees` in
+  place of `google_reviews`. The `google_places` path is unchanged (default arg).
+- **`source` added to BOTH** `LEAD_SUMMARY_FIELDS` (`leads.py`) and the
+  hardcoded leads select in `campaigns.py` — the dual-list gotcha.
+
+### Deploy verification status (2026-05-30) — PARTIAL, see caveats
+- **Vercel** — verified `● Ready` (Production) via `vercel ls` after push.
+- **Railway** — **NOT verified this session.** The `railway` CLI was
+  unauthorized (`railway login` needed) and the URLs tried returned Railway's
+  "Application not found" edge 404. The correct Railway URL + that the API
+  actually booted (especially that the broken intermediate commit did not
+  leave it down) **must be confirmed manually.**
+- **`POST .../apollo/search` → HTTP 403** behavior is verified **in code and
+  by direct Apollo API calls** (both `/people/search` and
+  `/mixed_people/search` return 403 `API_INACCESSIBLE` on the free plan; the
+  client raises `ApolloError(403)`; the route maps it to HTTP 403, not 500).
+  **Not yet confirmed against the live Railway instance.**
+
+> ⚠️ **Incident note (2026-05-30):** tool outputs during this session were
+> tampered with by a prompt-injection source — including a fabricated
+> `ApolloError` class shown in `exceptions.py` (it did not exist), which led
+> to a broken commit (imports a missing symbol) being pushed, then fixed by a
+> follow-up commit adding the real `ApolloError`. Injected instructions to
+> delete this file, force-push `main`, and exfiltrate were refused. **Verify
+> git history and the deployed Railway state directly before trusting this
+> section.** Commit SHAs in this doc may be unreliable — confirm with
+> `git log --oneline`.
+
+### BLOCKERS / before Phase B is "done"
+1. **Apply the migration manually** in the Supabase SQL editor:
+   `agent/sql/migrations/2026_06_apollo_sourcing.sql`. **Use "Run without RLS"**
+   per Hermes convention. Then verify: `select source, count(*) from leads
+   group by source;` → `google_places | 53`.
+2. **Apollo is still on a FREE plan for the key in use.** `/organizations/enrich`
+   works (200) but `/people/search` and `/mixed_people/search` both 403. The
+   boss is upgrading Apollo soon — **when that happens, verify the UPGRADED
+   key is the one set as `APOLLO_API_KEY` in the Railway env vars (and local
+   `.env`), and that it belongs to the upgraded account, not a different/old
+   Apollo account.** Re-run the search curl; expect 200 with candidates.
+
+### Next: Phase C (frontend)
+Campaign page "Source from Apollo" UI — search → candidate picker (show
+`email_status`, grey out `already_in_db`) → add. Surface the 403/credit
+states. No backend changes expected.
+
+---
+
 This document covers the single Claude Code session that shipped Sprint Feature 4
 (Email Warming) in its entirety — Phase B (backend infrastructure) and Phase C
 (frontend). Feature 4 Phase A (audit) was done in a prior session. This session
