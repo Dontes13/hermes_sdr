@@ -18,6 +18,7 @@ import requests
 import structlog
 
 from agent.src.config import settings
+from agent.src.exceptions import ApolloError
 
 log = structlog.get_logger(__name__)
 
@@ -147,12 +148,15 @@ class ApolloClient:
         abandons on 429 so a best-effort enrich never blocks), this retries:
         sourcing must not silently drop a search page or a paid reveal. A 429
         means the request was rejected before processing, so retrying it does
-        not double-spend a credit. Returns parsed JSON, or None on a
-        non-retryable error / exhausted retries.
+        not double-spend a credit.
+
+        Returns parsed JSON on success. Raises ApolloError (carrying the
+        upstream status) on any terminal failure — the sourcing path surfaces
+        it rather than swallowing it into an empty result.
         """
         if not self._api_key:
             log.warning("apollo_disabled", reason="no_api_key")
-            return None
+            raise ApolloError("Apollo is not configured (no API key)", 503)
 
         safe_payload = {k: v for k, v in payload.items() if k != "api_key"}
         attempt = 0
@@ -176,7 +180,7 @@ class ApolloClient:
                 log.warning(
                     "apollo_request_failed", path=path, error=str(exc), attempt=attempt
                 )
-                return None
+                raise ApolloError(f"Apollo request failed: {exc}", 0) from exc
 
             self._log_rate_limit_headers(path, resp)
 
@@ -185,7 +189,7 @@ class ApolloClient:
                     log.warning(
                         "apollo_rate_limited_exhausted", path=path, attempt=attempt
                     )
-                    return None
+                    raise ApolloError("Apollo rate limit exceeded", 429)
                 wait = self._retry_after_seconds(resp, attempt)
                 log.warning(
                     "apollo_rate_limited_retry",
@@ -204,13 +208,16 @@ class ApolloClient:
                     status=resp.status_code,
                     body_snippet=resp.text[:300],
                 )
-                return None
+                raise ApolloError(
+                    f"Apollo API error {resp.status_code}: {resp.text[:300]}",
+                    resp.status_code,
+                )
 
             try:
                 return resp.json()
             except Exception as exc:
                 log.warning("apollo_parse_error", path=path, error=str(exc))
-                return None
+                raise ApolloError(f"Apollo response parse error: {exc}", resp.status_code) from exc
 
     def people_search(
         self, *, page: int = 1, per_page: int = 25, **filters
@@ -244,12 +251,23 @@ class ApolloClient:
 
         COSTS ONE CREDIT per call (even when no email is found). Returns the
         raw `person` dict (with the unlocked `email`) or None if the match
-        returned nothing.
+        returned nothing or the call failed. Per-id failures return None
+        (caught here) so a bulk reveal loop degrades to per-id skips rather
+        than aborting the whole batch.
         """
-        data = self._request_with_retry(
-            "/people/match",
-            {"id": apollo_id, "reveal_personal_emails": reveal_personal_emails},
-        )
+        try:
+            data = self._request_with_retry(
+                "/people/match",
+                {"id": apollo_id, "reveal_personal_emails": reveal_personal_emails},
+            )
+        except ApolloError as exc:
+            log.warning(
+                "apollo_reveal_failed",
+                apollo_id=apollo_id,
+                status=exc.status_code,
+                error=str(exc),
+            )
+            return None
         if not data or not data.get("person"):
             log.info(
                 "apollo_reveal_no_person",

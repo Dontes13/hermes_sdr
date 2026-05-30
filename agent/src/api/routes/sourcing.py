@@ -13,6 +13,7 @@ from pydantic import BaseModel, Field
 
 from agent.src.api.deps import CurrentUser
 from agent.src.clients.supabase_client import supabase
+from agent.src.exceptions import ApolloError
 from agent.src.functions.sourcing import reveal_and_persist, source_leads_from_apollo
 
 router = APIRouter()
@@ -50,14 +51,21 @@ def apollo_search(_user: CurrentUser, campaign_id: str, body: ApolloSearchBody):
     campaign = _load_campaign(campaign_id)
     target = body.target if body.target is not None else campaign["target"]
     city = body.city if body.city is not None else campaign["city"]
-    return source_leads_from_apollo(
-        target=target,
-        city=city,
-        campaign_id=campaign_id,
-        limit=body.per_page,
-        page=body.page,
-        use_mixed=body.use_mixed,
-    )
+    try:
+        return source_leads_from_apollo(
+            target=target,
+            city=city,
+            campaign_id=campaign_id,
+            limit=body.per_page,
+            page=body.page,
+            use_mixed=body.use_mixed,
+        )
+    except ApolloError as e:
+        # Surface the upstream Apollo status (e.g. 403 on the free plan)
+        # instead of a 200 with empty candidates. Transport-level failures
+        # (status 0) map to 502 Bad Gateway.
+        status = e.status_code if 400 <= e.status_code <= 599 else 502
+        raise HTTPException(status, f"Apollo search failed: {e}")
 
 
 @router.post("/{campaign_id}/apollo/add")

@@ -141,34 +141,14 @@ def source_leads_from_apollo(
     per_page = max(1, min(limit, _MAX_SEARCH_LIMIT))
     filters = _build_search_filters(target, city)
 
-    if not apollo_client.enabled:
-        log.warning("apollo_search_skipped", reason="disabled")
-        return {
-            "campaign_id": campaign_id,
-            "page": page,
-            "per_page": per_page,
-            "total_entries": 0,
-            "total_pages": 0,
-            "candidates": [],
-            "error": "apollo_disabled",
-        }
-
+    # Raises ApolloError (with the upstream status, e.g. 403 on a free plan)
+    # on failure — the route surfaces it rather than returning empty results.
     search = (
         apollo_client.mixed_people_search
         if use_mixed
         else apollo_client.people_search
     )
     data = search(page=page, per_page=per_page, **filters)
-    if data is None:
-        return {
-            "campaign_id": campaign_id,
-            "page": page,
-            "per_page": per_page,
-            "total_entries": 0,
-            "total_pages": 0,
-            "candidates": [],
-            "error": "apollo_request_failed",
-        }
 
     # mixed_people/search returns both net-new `people` and already-in-account
     # `contacts`; merge them. people/search returns just `people`.
