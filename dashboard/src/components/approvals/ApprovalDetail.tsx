@@ -443,7 +443,7 @@ export function ApprovalDetail({ leadId, onAfterAction }: ApprovalDetailProps) {
 
       {/* View prompt modal — the full rendered string sent to Gemini */}
       <Dialog open={promptOpen} onOpenChange={setPromptOpen}>
-        <DialogContent className="max-w-3xl">
+        <DialogContent className="max-w-3xl h-[85vh] flex flex-col gap-0">
           <DialogHeader>
             <DialogTitle className="font-mono uppercase tracking-wider text-xs text-text-dim">
               Prompt sent to Gemini
@@ -455,26 +455,27 @@ export function ApprovalDetail({ leadId, onAfterAction }: ApprovalDetailProps) {
           </DialogHeader>
 
           {promptLoading && (
-            <div className="flex items-center gap-2 py-8 text-text-mute text-sm">
+            <div className="flex-1 min-h-0 flex items-center justify-center gap-2 text-text-mute text-sm">
               <Loader2 className="h-4 w-4 animate-spin" /> Loading prompt…
             </div>
           )}
 
           {!promptLoading && promptMissing && (
-            <div className="py-8 text-center text-sm text-text-dim">
+            <div className="flex-1 min-h-0 flex items-center justify-center px-6 text-center text-sm text-text-dim">
               No prompt captured (drafted before observability shipped)
             </div>
           )}
 
           {!promptLoading && promptErr && (
-            <div className="py-8 text-center text-sm text-[color:var(--danger)]">
+            <div className="flex-1 min-h-0 flex items-center justify-center px-6 text-center text-sm text-[color:var(--danger)]">
               Couldn&apos;t load prompt: {promptErr}
             </div>
           )}
 
           {!promptLoading && prompt && (
-            <div className="space-y-4">
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] uppercase tracking-wider text-text-mute">
+            <>
+              {/* Metadata header — natural height, not part of the scroll area */}
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 pt-3 pb-2 font-mono text-[10px] uppercase tracking-wider text-text-mute">
                 <span>{prompt.model ?? "unknown model"}</span>
                 <span>·</span>
                 <span>{prompt.variant_name ?? "fallback variant"}</span>
@@ -482,46 +483,49 @@ export function ApprovalDetail({ leadId, onAfterAction }: ApprovalDetailProps) {
                 <span>captured {formatRelative(prompt.created_at)}</span>
               </div>
 
-              <div>
-                <div className="flex items-center justify-between pb-1.5">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-mute">
-                    Body prompt
-                  </span>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    onClick={() => copyText(prompt.body_prompt, "Body prompt")}
-                  >
-                    <Copy className="h-3.5 w-3.5" /> Copy
-                  </Button>
-                </div>
-                <pre className="whitespace-pre-wrap break-words font-mono text-xs leading-[1.6] text-text bg-bg border border-border p-3 max-h-[70vh] overflow-y-auto">
-                  {prompt.body_prompt}
-                </pre>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between pb-1.5">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-mute">
-                    Subject prompt
-                  </span>
-                  {prompt.subject_prompt && (
+              {/* Single scroll surface holding both sections */}
+              <div className="flex-1 min-h-0 overflow-y-auto space-y-4 pr-1">
+                <div>
+                  <div className="sticky top-0 bg-bg z-10 pb-1.5 flex items-center justify-between">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-mute">
+                      Body prompt
+                    </span>
                     <Button
                       size="sm"
                       variant="ghost"
-                      onClick={() =>
-                        copyText(prompt.subject_prompt as string, "Subject prompt")
-                      }
+                      onClick={() => copyText(prompt.body_prompt, "Body prompt")}
                     >
                       <Copy className="h-3.5 w-3.5" /> Copy
                     </Button>
-                  )}
+                  </div>
+                  <pre className="whitespace-pre-wrap break-words font-mono text-xs leading-[1.6] text-text bg-bg border border-border p-3">
+                    {prompt.body_prompt}
+                  </pre>
                 </div>
-                <pre className="whitespace-pre-wrap break-words font-mono text-xs leading-[1.6] text-text bg-bg border border-border p-3 max-h-[70vh] overflow-y-auto">
-                  {prompt.subject_prompt || "—"}
-                </pre>
+
+                <div>
+                  <div className="sticky top-0 bg-bg z-10 pb-1.5 flex items-center justify-between">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-mute">
+                      Subject prompt
+                    </span>
+                    {prompt.subject_prompt && (
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        onClick={() =>
+                          copyText(prompt.subject_prompt as string, "Subject prompt")
+                        }
+                      >
+                        <Copy className="h-3.5 w-3.5" /> Copy
+                      </Button>
+                    )}
+                  </div>
+                  <pre className="whitespace-pre-wrap break-words font-mono text-xs leading-[1.6] text-text bg-bg border border-border p-3">
+                    {prompt.subject_prompt || "—"}
+                  </pre>
+                </div>
               </div>
-            </div>
+            </>
           )}
         </DialogContent>
       </Dialog>
