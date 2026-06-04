@@ -13,6 +13,7 @@ from agent.src.api.routes import (
     config,
     inboxes,
     leads,
+    messages,
     replies,
     run,
     sourcing,
@@ -47,6 +48,7 @@ def create_app() -> FastAPI:
     )
 
     app.include_router(leads.router, prefix="/api/leads", tags=["leads"])
+    app.include_router(messages.router, prefix="/api/messages", tags=["messages"])
     app.include_router(stats.router, prefix="/api/stats", tags=["stats"])
     app.include_router(config.router, prefix="/api/config", tags=["config"])
     app.include_router(run.router, prefix="/api/run", tags=["run"])

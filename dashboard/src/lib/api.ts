@@ -13,6 +13,7 @@ import type {
   Lead,
   LeadStatus,
   LeadWithMessages,
+  MessagePrompt,
   ReplyEntry,
   ReplyIntent,
   Stats,
@@ -125,6 +126,9 @@ export const api = {
   },
 
   getLead: (id: string) => apiFetch<LeadWithMessages>(`/api/leads/${id}`),
+
+  getMessagePrompt: (messageId: string) =>
+    apiFetch<MessagePrompt>(`/api/messages/${messageId}/prompt`),
 
   approveLead: (id: string) =>
     apiFetch<{ ok?: boolean } & Record<string, unknown>>(`/api/leads/${id}/approve`, {

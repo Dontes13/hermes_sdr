@@ -7,6 +7,7 @@ from pydantic import BaseModel
 
 from agent.src.clients.gemini import gemini
 from agent.src.clients.supabase_client import supabase
+from agent.src.config import settings
 from agent.src.functions.hook_tiers import TIER_NAMES, compute_available_tiers
 from agent.src.functions.knowledge_base import load_knowledge_base
 
@@ -134,6 +135,10 @@ def draft(lead_id: str, sample_email: str | None = None) -> DraftResult:
         apollo_headcount=apollo_org.get("headcount"),
         apollo_tenure_start=apollo_contact.get("tenure_start"),
     )
+    # Track the prompt that actually hits Gemini. Overwritten below if the
+    # hook-tier correction retry fires (the corrective_prompt is what Gemini
+    # last sees in that case).
+    body_prompt_sent = body_prompt
 
     # 5. Call Gemini Pro for body + hook (hook tier selection happens here)
     body_result: BodyResult = gemini.generate_json_pro(body_prompt, BodyResult)
@@ -154,6 +159,7 @@ def draft(lead_id: str, sample_email: str | None = None) -> DraftResult:
             f"available tier is {min(available_tiers)}. You MUST choose a "
             f"tier from {available_tiers}. Try again."
         )
+        body_prompt_sent = corrective_prompt
         body_result2: BodyResult = gemini.generate_json_pro(
             corrective_prompt, BodyResult
         )
@@ -197,18 +203,38 @@ def draft(lead_id: str, sample_email: str | None = None) -> DraftResult:
         )
 
     # 9. Insert new message with variant tracking
-    supabase.table("messages").insert(
-        {
-            "lead_id": lead_id,
-            "direction": "outbound",
-            "subject": subject_result.subject,
-            "body": body_result.body,
-            "hook_tier_used": body_result.hook_tier_used,
-            "hook_text": body_result.hook_text,
-            "hook_rationale": body_result.hook_rationale,
-            "subject_variant_id": chosen_variant["id"] if chosen_variant else None,
-        }
-    ).execute()
+    msg_resp = (
+        supabase.table("messages")
+        .insert(
+            {
+                "lead_id": lead_id,
+                "direction": "outbound",
+                "subject": subject_result.subject,
+                "body": body_result.body,
+                "hook_tier_used": body_result.hook_tier_used,
+                "hook_text": body_result.hook_text,
+                "hook_rationale": body_result.hook_rationale,
+                "subject_variant_id": chosen_variant["id"] if chosen_variant else None,
+            }
+        )
+        .execute()
+    )
+
+    # 9a. Capture the fully-rendered prompts that hit Gemini (observability).
+    # Additive and best-effort: a capture failure must NEVER break draft creation.
+    try:
+        message_id = msg_resp.data[0]["id"]
+        supabase.table("message_prompts").insert(
+            {
+                "message_id": message_id,
+                "body_prompt": body_prompt_sent,
+                "subject_prompt": subject_prompt,
+                "model": settings.GEMINI_MODEL_PRO,
+                "subject_variant_id": chosen_variant["id"] if chosen_variant else None,
+            }
+        ).execute()
+    except Exception as exc:
+        log.warning("prompt_capture_failed", lead_id=lead_id, error=str(exc))
 
     # 10. Update lead status
     supabase.table("leads").update({"status": "drafted"}).eq(

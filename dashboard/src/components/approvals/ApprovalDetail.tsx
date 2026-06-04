@@ -5,6 +5,8 @@ import { useSWRConfig } from "swr";
 import { toast } from "sonner";
 import {
   Check,
+  Copy,
+  FileText,
   Loader2,
   Pencil,
   RefreshCw,
@@ -24,7 +26,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-import { api, errorMessage } from "@/lib/api";
+import { ApiError, api, errorMessage } from "@/lib/api";
+import type { MessagePrompt } from "@/lib/types";
 import { useLead } from "@/lib/hooks/useLead";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { IntelViewer } from "@/components/shared/IntelViewer";
@@ -51,6 +54,13 @@ export function ApprovalDetail({ leadId, onAfterAction }: ApprovalDetailProps) {
   const [confirm, setConfirm] = useState<ConfirmAction>(null);
   const [working, setWorking] = useState(false);
   const [recipient, setRecipient] = useState<string>("");
+
+  // "View prompt" modal: lazy-fetched on open.
+  const [promptOpen, setPromptOpen] = useState(false);
+  const [prompt, setPrompt] = useState<MessagePrompt | null>(null);
+  const [promptLoading, setPromptLoading] = useState(false);
+  const [promptMissing, setPromptMissing] = useState(false);
+  const [promptErr, setPromptErr] = useState<string | null>(null);
 
   // Reset recipient to the lead's real email whenever a new lead is selected
   // or the approve dialog reopens.
@@ -114,6 +124,35 @@ export function ApprovalDetail({ leadId, onAfterAction }: ApprovalDetailProps) {
       setEditing(false);
     } catch (e) {
       toast.error(`Save failed: ${errorMessage(e)}`);
+    }
+  };
+
+  const openPrompt = async () => {
+    setPromptOpen(true);
+    setPrompt(null);
+    setPromptMissing(false);
+    setPromptErr(null);
+    setPromptLoading(true);
+    try {
+      const p = await api.getMessagePrompt(draft.id);
+      setPrompt(p);
+    } catch (e) {
+      if (e instanceof ApiError && e.status === 404) {
+        setPromptMissing(true);
+      } else {
+        setPromptErr(errorMessage(e));
+      }
+    } finally {
+      setPromptLoading(false);
+    }
+  };
+
+  const copyText = async (text: string, label: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast.success(`${label} copied`);
+    } catch {
+      toast.error("Copy failed");
     }
   };
 
@@ -246,6 +285,14 @@ export function ApprovalDetail({ leadId, onAfterAction }: ApprovalDetailProps) {
                   disabled={working}
                 >
                   <RefreshCw className="h-3.5 w-3.5" /> Regenerate
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={openPrompt}
+                  disabled={working}
+                >
+                  <FileText className="h-3.5 w-3.5" /> View prompt
                 </Button>
                 <Button
                   size="sm"
@@ -391,6 +438,91 @@ export function ApprovalDetail({ leadId, onAfterAction }: ApprovalDetailProps) {
               )}
             </Button>
           </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* View prompt modal — the full rendered string sent to Gemini */}
+      <Dialog open={promptOpen} onOpenChange={setPromptOpen}>
+        <DialogContent className="max-w-3xl">
+          <DialogHeader>
+            <DialogTitle className="font-mono uppercase tracking-wider text-xs text-text-dim">
+              Prompt sent to Gemini
+            </DialogTitle>
+            <DialogDescription className="text-sm text-text-dim pt-2">
+              The exact prompt text rendered for this draft, including the
+              Helios knowledge base, lead briefing, and all instructions.
+            </DialogDescription>
+          </DialogHeader>
+
+          {promptLoading && (
+            <div className="flex items-center gap-2 py-8 text-text-mute text-sm">
+              <Loader2 className="h-4 w-4 animate-spin" /> Loading prompt…
+            </div>
+          )}
+
+          {!promptLoading && promptMissing && (
+            <div className="py-8 text-center text-sm text-text-dim">
+              No prompt captured (drafted before observability shipped)
+            </div>
+          )}
+
+          {!promptLoading && promptErr && (
+            <div className="py-8 text-center text-sm text-[color:var(--danger)]">
+              Couldn&apos;t load prompt: {promptErr}
+            </div>
+          )}
+
+          {!promptLoading && prompt && (
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] uppercase tracking-wider text-text-mute">
+                <span>{prompt.model ?? "unknown model"}</span>
+                <span>·</span>
+                <span>{prompt.variant_name ?? "fallback variant"}</span>
+                <span>·</span>
+                <span>captured {formatRelative(prompt.created_at)}</span>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between pb-1.5">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-mute">
+                    Body prompt
+                  </span>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => copyText(prompt.body_prompt, "Body prompt")}
+                  >
+                    <Copy className="h-3.5 w-3.5" /> Copy
+                  </Button>
+                </div>
+                <pre className="whitespace-pre-wrap break-words font-mono text-xs leading-[1.6] text-text bg-bg border border-border p-3 max-h-[70vh] overflow-y-auto">
+                  {prompt.body_prompt}
+                </pre>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between pb-1.5">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-mute">
+                    Subject prompt
+                  </span>
+                  {prompt.subject_prompt && (
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      onClick={() =>
+                        copyText(prompt.subject_prompt as string, "Subject prompt")
+                      }
+                    >
+                      <Copy className="h-3.5 w-3.5" /> Copy
+                    </Button>
+                  )}
+                </div>
+                <pre className="whitespace-pre-wrap break-words font-mono text-xs leading-[1.6] text-text bg-bg border border-border p-3 max-h-[70vh] overflow-y-auto">
+                  {prompt.subject_prompt || "—"}
+                </pre>
+              </div>
+            </div>
+          )}
         </DialogContent>
       </Dialog>
     </div>
