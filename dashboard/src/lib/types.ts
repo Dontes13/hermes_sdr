@@ -104,6 +104,15 @@ export interface LeadWithMessages {
   messages: Message[];
 }
 
+export interface MessagePrompt {
+  body_prompt: string;
+  subject_prompt: string | null;
+  model: string | null;
+  subject_variant_id: string | null;
+  variant_name: string | null;
+  created_at: string;
+}
+
 export interface ReplyEntry {
   lead: Lead;
   latest_inbound: Message | null;
