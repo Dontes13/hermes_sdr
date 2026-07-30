@@ -1,90 +1,50 @@
 # Helios SDR Agent
 
-AI-powered sales development agent that discovers real estate brokerages via Google Places, scrapes their websites for intelligence, and drafts personalized cold emails using a hook-tier system powered by Gemini. Phase 1 is a CLI-only pipeline that prospects, enriches, and drafts — no sending, no dashboard, no scheduling.
+An AI-powered sales development agent that finds real estate brokerages, researches them automatically, and drafts personalized cold outreach emails — end to end, from prospecting to sending.
 
-## Phase 1 Scope
+## What it does
 
-**Built:**
-- Google Places prospecting (searchText API)
-- Website scraping + subpage crawling (requests + BeautifulSoup)
-- Enrichment extraction via Gemini 2.5 Flash (structured output)
-- Cold email drafting via Gemini 2.5 Pro with 5-tier hook system
-- Supabase (Postgres) storage for leads, messages, and config
-- Rich terminal output with draft panels and summary tables
-- Redraft loop for iterating on individual leads
+Give it a city, and the agent will:
 
-**Not built (Phase 2):**
-- Email send/receive (Phase 2a adds AgentMail integration)
-- FastAPI server / Next.js dashboard
-- Cron scheduling / deployment
-- Reply handling / intent classification
-- Calendly integration / auth
+1. **Discover** real estate brokerages in that area using the Google Places API
+2. **Research** each one by crawling their website and extracting key intelligence with Gemini
+3. **Draft** a personalized cold email using a 5-tier hook system, so the pitch actually references something specific about the business
+4. **Send and track** outreach via AgentMail, with reply polling and a JWT-secured API for approvals
+
+It's built to remove the manual grind of SDR work — no spreadsheets, no copy-pasting company details, no generic templates.
+
+## Tech stack
+
+- **Python** — core agent pipeline (prospecting, scraping, enrichment, drafting)
+- **Google Places API** — brokerage discovery
+- **BeautifulSoup + requests** — website scraping and subpage crawling
+- **Gemini 2.5 Flash** — structured data extraction from scraped content
+- **Gemini 2.5 Pro** — cold email generation with hook-tier reasoning
+- **Supabase (Postgres)** — storage for leads, messages, and config
+- **FastAPI** — backend API for sending, polling, and approvals
+- **AgentMail** — API-first email provider (send/receive, auto-provisioned inbox)
+- **Rich** — terminal output for draft review and summary tables
 
 ## Setup
 
-1. **Supabase**: Create a project at [supabase.com](https://supabase.com). Copy the project URL and service role key (Settings > API).
+1. **Supabase** — create a project at [supabase.com](https://supabase.com) and copy the project URL and service role key from Settings → API.
 
-2. **Gemini API key**: Get one from [aistudio.google.com](https://aistudio.google.com).
+2. **Gemini API key** — get one from [aistudio.google.com](https://aistudio.google.com).
 
-3. **Google Places API key**: Create a key in the [GCP Console](https://console.cloud.google.com). Enable the **Places API (New)**.
+3. **Google Places API key** — create a key in the [GCP Console](https://console.cloud.google.com) and enable the **Places API (New)**.
 
-4. **Environment variables**:
+4. **AgentMail API key** — sign up at [agentmail.to](https://agentmail.to) and generate a key from the console.
+
+5. **Environment variables**:
    ```bash
    cp .env.example .env
-   # Fill in all keys in .env
    ```
-
-5. **Database schema**: Open the Supabase SQL Editor and run:
-   - `agent/sql/schema.sql` (creates tables, indexes, triggers)
-   - `agent/sql/seed.sql` (inserts default config)
-
-6. **Install dependencies**:
-   ```bash
-   make install
+   Fill in:
    ```
-
-7. **Run the test**:
-   ```bash
-   make test-single-lead CITY=Miami
-   ```
-
-## What Success Looks Like
-
-The test harness discovers 5 brokerages in your target city, scrapes their websites, extracts structured intel via Gemini Flash, and drafts personalized cold emails via Gemini Pro. Output includes:
-
-- Rich-formatted email panels showing subject, body, hook tier, and rationale
-- A summary table with each lead's final status, hook tier quality, and email availability
-
-Some leads may end up `dead` (no website, fetch failed, no email found). That's expected — partial success is normal.
-
-## Iteration
-
-To regenerate the draft for a specific lead:
-
-```bash
-make redraft LEAD_ID=<uuid>
-```
-
-This enters a loop: draft, display, confirm. Say `y` to redraft or `n` to accept.
-
-## Reset
-
-To clear all leads and messages (preserves config):
-
-```bash
-make reset-db
-```
-
-## Phase 2a — AgentMail + API
-
-Phase 2a adds email send/receive via [AgentMail](https://agentmail.to), a FastAPI backend, and JWT auth. AgentMail is an API-first email provider built for AI agents — no Google Workspace, no service accounts, no DWD. The inbox is auto-provisioned on first call.
-
-### Setup
-
-1. **Sign up**: Create an account at [agentmail.to](https://agentmail.to) and generate an API key from the console.
-
-2. **Add env vars** to `.env`:
-   ```
+   GOOGLE_PLACES_API_KEY=
+   GEMINI_API_KEY=
+   SUPABASE_URL=
+   SUPABASE_SERVICE_ROLE_KEY=
    AGENTMAIL_API_KEY=am_xxx
    AGENTMAIL_INBOX_USERNAME=outreach
    AGENTMAIL_INBOX_DOMAIN=          # leave blank for default @agentmail.to
@@ -92,57 +52,69 @@ Phase 2a adds email send/receive via [AgentMail](https://agentmail.to), a FastAP
    JWT_SECRET=your-32-char-secret
    ```
 
-3. **(Optional, paid plan)** Configure a custom domain in the AgentMail console and set `AGENTMAIL_INBOX_DOMAIN` to your verified domain.
+6. **Database schema** — in the Supabase SQL Editor, run:
+   - `agent/sql/schema.sql`
+   - `agent/sql/seed.sql`
 
-4. **Update schema**: Re-run `agent/sql/schema.sql` in the Supabase SQL Editor (idempotent — migrates `gmail_*` columns to `provider_*` and creates `agentmail_sync`).
-
-5. **Install deps**:
+7. **Install dependencies**:
    ```bash
    make install
    ```
 
-6. **Start the API**:
-   ```bash
-   make api
-   ```
-   The first call to any send/poll function auto-creates the inbox.
-
-### Running
+## Running it
 
 ```bash
-make api               # starts FastAPI on :8000
-make daily-run         # manually trigger prospect/enrich/draft
-make poll-replies      # manually check AgentMail for replies
-make send MESSAGE_ID=xxx  # send a single drafted message
+make test-single-lead CITY=Miami   # discover, enrich, and draft for a test city
+make api                            # start the FastAPI server on :8000
+make daily-run                      # manually trigger the full prospect/enrich/draft cycle
+make poll-replies                   # check AgentMail for new replies
+make send MESSAGE_ID=xxx            # send a single drafted message
 ```
 
-### Verification Workflow (curl)
+To regenerate a draft you're not happy with:
 
 ```bash
-# 1. Login and get JWT
+make redraft LEAD_ID=<uuid>
+```
+This enters a draft → review → accept/redraft loop.
+
+To wipe leads and messages while keeping your config:
+
+```bash
+make reset-db
+```
+
+## API quickstart
+
+```bash
+# Login and get a JWT
 TOKEN=$(curl -s -X POST http://localhost:8000/auth/login \
   -H "Content-Type: application/json" \
   -d '{"password":"your-password"}' | jq -r .token)
 
-# 2. Check stats
+# Check stats
 curl http://localhost:8000/api/stats \
   -H "Authorization: Bearer $TOKEN"
 
-# 3. List drafted leads
+# List drafted leads
 curl "http://localhost:8000/api/leads?status=drafted" \
   -H "Authorization: Bearer $TOKEN"
 
-# 4. Test-send a draft to your own inbox
+# Test-send a draft to your own inbox
 curl -X POST http://localhost:8000/api/test-send \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"lead_id":"<uuid>","to":"your-email@gmail.com"}'
 
-# 5. Approve and actually send to the broker
+# Approve and send to the broker
 curl -X POST http://localhost:8000/api/leads/<uuid>/approve \
   -H "Authorization: Bearer $TOKEN"
 ```
 
+## What success looks like
+
+A run against a target city surfaces a handful of brokerages, scrapes their sites, extracts structured intel, and produces personalized draft emails — shown in the terminal as formatted panels with subject, body, hook tier, and rationale, followed by a summary table. Some leads will end up `dead` (no website, failed fetch, no email found) — that's expected; partial success across a batch is normal.
+
 ## Troubleshooting
 
-_To be filled after first run._
+_To be filled in as issues come up._
