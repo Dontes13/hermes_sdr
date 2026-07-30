@@ -21,7 +21,7 @@ from agent.src.functions.send import send
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--to", default="perezalonsoenrique@gmail.com")
+    parser.add_argument("--to", default="you@example.com")
     parser.add_argument("--company", default="E2E Test Lead")
     parser.add_argument("--city", default="Miami")
     args = parser.parse_args()

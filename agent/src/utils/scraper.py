@@ -12,8 +12,8 @@ USER_AGENT = "Mozilla/5.0 (compatible; HeliosSDR/1.0)"
 # Matches email-like patterns shattered by inline HTML elements getting
 # space-separated by BeautifulSoup's get_text(separator=' ').
 # Examples:
-#   "DAVIDFREED @ KW.COM"      -> "DAVIDFREED@KW.COM"
-#   "davidfreed @ kw . com"    -> "davidfreed@kw.com"
+#   "JANEDOE @ EXAMPLE.COM"    -> "JANEDOE@EXAMPLE.COM"
+#   "janedoe @ example . com"  -> "janedoe@example.com"
 _SHATTERED_EMAIL_RE = re.compile(
     r"([A-Za-z0-9._%+-]+)\s*@\s*([A-Za-z0-9.-]+)\s*\.\s*([A-Za-z]{2,})"
 )
